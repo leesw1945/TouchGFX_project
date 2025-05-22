@@ -1,0 +1,25 @@
+3.0.3
+- Update to TouchGFX 4.25.0
+- Update to STM32CubeMX 6.14.0
+- Update to Firmware Package FW_H7RS V1.2.0
+- Correct PSRAM configuration
+- Add TouchGFX animation buffer to enable "Slide" screen transition
+- Set default opaque image format to ARGB8888
+
+3.0.2
+- Disable SBS Compensation cell to improve stability on OSPI external flash
+
+3.0.1
+- Updated to STM32CubeMX 6.13.0
+- Workarounds for GFXMMU removed, as it is now handled by STM32CubeMX
+
+3.0.0
+First released version
+- TouchGFX 4.24.1
+- STM32CubeMX 6.12.0
+- Firmware FW_H7RS V1.1.0
+- X-CUBE-FREERTOS 1.1.0
+- Support for STM32CubeIDE
+- Support for EWARM
+- Support for MDK-ARM
+- Support for "Run target" in TouchGFX Designer

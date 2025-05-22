@@ -1,0 +1,130 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Main",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "imgBackground",
+            "Width": 480,
+            "Height": 272,
+            "RelativeFilename": "bg.png"
+          },
+          {
+            "Type": "AnimatedImage",
+            "Name": "animation",
+            "X": 161,
+            "Y": 18,
+            "Width": 158,
+            "Height": 158,
+            "FileNameFirst": "ani_01.png",
+            "FileNameLast": "ani_14.png",
+            "UpdateTicksInterval": 30
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "btnToggle",
+            "X": 175,
+            "Y": 195,
+            "Width": 130,
+            "Height": 56,
+            "Pressed": "btn_pressed.png",
+            "Released": "btn.png",
+            "TextId": "TextStart",
+            "ReleasedColor": {
+              "Red": 213,
+              "Green": 115
+            },
+            "PressedColor": {
+              "Red": 213,
+              "Green": 115
+            },
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "buttonClicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnToggle"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (animation.isAnimatedImageRunning())\r\n{\r\n    animation.pauseAnimation();\r\n    btnToggle.setLabelText(TypedText(T_TEXTSTART));\r\n}\r\nelse\r\n{\r\n    animation.startAnimation(animation.isReverse(), false, true);\r\n    btnToggle.setLabelText(TypedText(T_TEXTSTOP));\r\n}"
+            }
+          },
+          {
+            "InteractionName": "animationEnded",
+            "Trigger": {
+              "Type": "TriggerAnimationEnded",
+              "TriggerComponent": "animation"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "animation.startAnimation(!animation.isReverse(), false, true);"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "MyAnimatedImageExampleH7S78",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 32,
+    "StartupScreenName": "Main",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      32
+    ],
+    "AvailableLCDs": {
+      "32": "LCDGPU2D"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../../gcc/Makefile flash",
+    "FlashTargetIntCommandOverride": "make -f ../../gcc/Makefile intflash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32H7",
+    "SubFamily": "STM32H7R7/7S7",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m7",
+    "ProjectFile": "../../STM32H7S78-DK_24bpp.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+      "GPU2D"
+    ],
+    "AdditionalFeatures": [
+      "GPU2DVector",
+      "VectorFonts",
+      "Video"
+    ]
+  },
+  "Version": "4.25.0",
+  "CreatedBy": "4.25.0"
+}

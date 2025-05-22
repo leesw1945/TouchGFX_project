@@ -1,0 +1,28 @@
+# TouchGFX Generated Files
+generated/
+build/
+simulator/build/
+
+# Images and Assets
+assets/images/
+assets/fonts/
+
+# Build artifacts
+*.o
+*.exe
+*.bin
+*.hex
+*.elf
+*.map
+
+# IDE Files
+.vscode/
+*.vcxproj.user
+*.sln.docstates
+
+# Temporary files
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db

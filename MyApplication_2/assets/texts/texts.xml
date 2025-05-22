@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.25.0">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_9MUO" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_TP0B" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_3A40" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;hour&gt;:&lt;min&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OJU5" Alignment="Center" TypographyId="buttonSave">
+        <Translation Language="GB">Clock</Translation>
+      </Text>
+      <Text Id="__SingleUse_3U9Q" Alignment="Center" TypographyId="buttonSave">
+        <Translation Language="GB">Save</Translation>
+      </Text>
+      <Text Id="__SingleUse_OLD0" Alignment="Center" TypographyId="buttonSave">
+        <Translation Language="GB">Save</Translation>
+      </Text>
+      <Text Id="__SingleUse_P29Y" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_7VEI" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LTP9" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Minute</Translation>
+      </Text>
+      <Text Id="__SingleUse_NXLR" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_F0UG" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_TA4N" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Hour</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="buttonSave" Font="verdana.ttf" Size="25" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+  </Typographies>
+</TextDatabase>
