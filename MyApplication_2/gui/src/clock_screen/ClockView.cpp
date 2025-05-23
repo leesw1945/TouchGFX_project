@@ -3,7 +3,8 @@
 ClockView::ClockView()
     : hour(0), minute(0), tickCount(0), addStart(1), addEnd(2)
 {
-
+    textClockBuffer1[0] = 0;
+    textClockBuffer2[0] = 0;
 }
 
 void ClockView::setupScreen()
@@ -15,6 +16,9 @@ void ClockView::setupScreen()
 
     Unicode::snprintf(textClockBuffer1, TEXTCLOCKBUFFER1_SIZE, "%02d", hour);
     Unicode::snprintf(textClockBuffer2, TEXTCLOCKBUFFER2_SIZE, "%02d", minute);
+
+    textClock.setWildcard1(textClockBuffer1);
+    textClock.setWildcard2(textClockBuffer2);
 }
 
 void ClockView::tearDownScreen()
@@ -25,7 +29,7 @@ void ClockView::tearDownScreen()
     ClockViewBase::tearDownScreen();
 }
 
-void Screen2View::handleTickEvent()
+void ClockView::handleTickEvent()
 {
     if (tickCount == 60)
     {
