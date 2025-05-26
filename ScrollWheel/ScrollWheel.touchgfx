@@ -1,0 +1,147 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box",
+            "Width": 800,
+            "Height": 480
+          },
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "X": 205,
+            "Y": 45,
+            "Width": 390,
+            "Height": 390,
+            "RelativeFilename": "background.png"
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "scrollWheel",
+            "X": 208,
+            "Y": 45,
+            "Width": 390,
+            "Height": 390,
+            "SelectedItemOffset": 160,
+            "ItemTemplateName": "MenuElement",
+            "NumberofItems": 20,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
+          },
+          {
+            "Type": "Image",
+            "Name": "overlay",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "overlay.png"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "MenuElement",
+        "Width": 390,
+        "Height": 70,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "icon",
+            "X": 34,
+            "Y": 17,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon00.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "text",
+            "X": 93,
+            "Y": 23,
+            "Width": 177,
+            "Height": 20,
+            "TextId": "__SingleUse_Z04W",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_U1CZ",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "Name": "ScrollWheel",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "touchgfx",
+    "UIPath": ".",
+    "ApplicationTemplateName": "Simulator",
+    "ApplicationTemplateVersion": "2.0.0",
+    "ApplicationTemplateDescription": "Simulator Application Template",
+    "AvailableColorDepths": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+    ],
+    "AvailableLCDs": {
+      "1": "LCD1bpp",
+      "2": "LCD2bpp",
+      "4": "LCD4bpp",
+      "8": "LCD8bpp_ARGB2222",
+      "16": "LCD16bpp",
+      "24": "LCD24bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD24bpp": {
+        "Id": "LCD24bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommand": "",
+    "FlashTargetCommand": "",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "AdditionalFeatures": [
+      "VectorFonts"
+    ]
+  },
+  "Version": "4.25.0",
+  "CreatedBy": "4.25.0"
+}
