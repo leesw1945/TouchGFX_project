@@ -1,0 +1,212 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "FlipScreen",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 800,
+            "Height": 480,
+            "Color": {
+              "Red": 97,
+              "Green": 97,
+              "Blue": 97
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteTensMain",
+            "X": 187,
+            "Y": 190,
+            "Width": 85,
+            "Height": 146,
+            "RelativeFilename": "number_0_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteTensUpper",
+            "X": 186,
+            "Y": 190,
+            "Width": 86,
+            "Height": 71,
+            "Visible": false,
+            "RelativeFilename": "number_0_upper.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteTensLower",
+            "X": 188,
+            "Y": 267,
+            "Width": 85,
+            "Height": 70,
+            "Visible": false,
+            "RelativeFilename": "number_0_lower.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteUnitsMain",
+            "X": 289,
+            "Y": 190,
+            "Width": 85,
+            "Height": 146,
+            "RelativeFilename": "number_0_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteUnitsUpper",
+            "X": 289,
+            "Y": 190,
+            "Width": 86,
+            "Height": 71,
+            "Visible": false,
+            "RelativeFilename": "number_0_upper.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "minuteUnitsLower",
+            "X": 290,
+            "Y": 265,
+            "Width": 85,
+            "Height": 70,
+            "Visible": false,
+            "RelativeFilename": "number_0_lower.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "colonText",
+            "X": 395,
+            "Y": 231,
+            "Width": 20,
+            "Height": 50,
+            "TextId": "__SingleUse_S6S8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 204,
+              "Green": 204,
+              "Blue": 204
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "secondTensMain",
+            "X": 435,
+            "Y": 190,
+            "Width": 85,
+            "Height": 146,
+            "RelativeFilename": "number_0_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "secondTensUpper",
+            "X": 434,
+            "Y": 190,
+            "Width": 86,
+            "Height": 71,
+            "Visible": false,
+            "RelativeFilename": "number_0_upper.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "secondTensLower",
+            "X": 436,
+            "Y": 266,
+            "Width": 85,
+            "Height": 70,
+            "Visible": false,
+            "RelativeFilename": "number_0_lower.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "secondUnitsMain",
+            "X": 537,
+            "Y": 190,
+            "Width": 85,
+            "Height": 146,
+            "RelativeFilename": "number_0_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "secondUnitsUpper",
+            "X": 537,
+            "Y": 190,
+            "Width": 86,
+            "Height": 71,
+            "Visible": false,
+            "RelativeFilename": "number_0_upper.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "secondUnitsLower",
+            "X": 538,
+            "Y": 265,
+            "Width": 85,
+            "Height": 70,
+            "Visible": false,
+            "RelativeFilename": "number_0_lower.png"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "FlipTextAnimation",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "FlipScreen",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "touchgfx",
+    "UIPath": ".",
+    "ApplicationTemplateName": "Simulator",
+    "ApplicationTemplateVersion": "2.0.0",
+    "ApplicationTemplateDescription": "Simulator Application Template",
+    "AvailableColorDepths": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+    ],
+    "AvailableLCDs": {
+      "1": "LCD1bpp",
+      "2": "LCD2bpp",
+      "4": "LCD4bpp",
+      "8": "LCD8bpp_ARGB2222",
+      "16": "LCD16bpp",
+      "24": "LCD24bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD24bpp": {
+        "Id": "LCD24bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommand": "",
+    "FlashTargetCommand": "",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "AdditionalFeatures": [
+      "VectorFonts"
+    ]
+  },
+  "Version": "4.25.0",
+  "CreatedBy": "4.25.0"
+}

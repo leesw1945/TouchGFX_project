@@ -89,8 +89,7 @@
             },
             "Action": {
               "Type": "ActionEmit",
-              "TriggerCustomTypeName": "ColorEmitter colorChanged happens",
-              "ParameterValue": "touchgfx::Color::getColorFromRGB(rand()%256, rand()%256, rand()%256)"
+              "TriggerCustomTypeName": "ColorEmitter colorChanged happens"
             }
           }
         ],
