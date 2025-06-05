@@ -1,0 +1,4755 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "RoussetDemo",
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "daySkyContainer",
+            "Y": 60,
+            "Width": 800,
+            "Height": 190,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "daySkyImage",
+                "Width": 800,
+                "Height": 190,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/sky_bg.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "sunTextureMapper",
+                "X": 673,
+                "Y": -2,
+                "Width": 124,
+                "Height": 124,
+                "LockPosition": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/sun.png",
+                "LockBitmapToCenter": true,
+                "Scale": 1.0,
+                "LockOrigoToCenter": true,
+                "XOrigo": 62.0,
+                "YOrigo": 62.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0,
+                "Moveable": true
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "cloudsCustomContainer",
+                "Y": 10,
+                "Width": 800,
+                "Height": 94,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "cloudCustomContainer"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "nightSkyContainer",
+            "Y": 60,
+            "Width": 800,
+            "Height": 190,
+            "Visible": false,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "nightSkyImage",
+                "Width": 800,
+                "Height": 190,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/night_sky_overlayed.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "starCustomContainer1",
+                "X": 6,
+                "Width": 780,
+                "Height": 170,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "starsCustomContainer"
+              },
+              {
+                "Type": "Image",
+                "Name": "moonImage",
+                "X": 690,
+                "Y": 15,
+                "Width": 90,
+                "Height": 90,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/moon.png",
+                "Moveable": true
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "contentContainer",
+            "Y": 60,
+            "Width": 800,
+            "Height": 420,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "Container",
+                "Name": "backgroundImageContainer",
+                "Width": 800,
+                "Height": 420,
+                "LockPosition": true,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "backgroundDayImage",
+                    "Y": 102,
+                    "Width": 800,
+                    "Height": 318,
+                    "LockPosition": true,
+                    "RelativeFilename": "RoussetDemo/day_forground_samlet.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "backgroundNightImage",
+                    "Y": 102,
+                    "Width": 800,
+                    "Height": 318,
+                    "Visible": false,
+                    "LockPosition": true,
+                    "RelativeFilename": "RoussetDemo/night_forground_samlet.png",
+                    "Fadeable": true
+                  },
+                  {
+                    "Type": "CustomContainerInstance",
+                    "Name": "clickableBuildingCustomContainer1",
+                    "X": 183,
+                    "Y": 178,
+                    "Width": 517,
+                    "Height": 150,
+                    "LockPosition": true,
+                    "CustomContainerDefinitionName": "clickableBuildingCustomContainer"
+                  }
+                ]
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "mcuTextureMapper",
+                "X": 195,
+                "Y": 99,
+                "Width": 85,
+                "Height": 85,
+                "Visible": false,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/chip_front.png",
+                "LockBitmapToCenter": true,
+                "XBitmapPosition": 10.0,
+                "YBitmapPosition": 10.0,
+                "Scale": 0.2,
+                "LockOrigoToCenter": true,
+                "XOrigo": 42.5,
+                "YOrigo": 42.5,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "chimneyCustomContainer1",
+                "X": 205,
+                "Y": 176,
+                "Width": 13,
+                "Height": 20,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "ChimneyCustomContainer"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "truckCustomContainer",
+                "X": 127,
+                "Y": 280,
+                "Width": 241,
+                "Height": 60,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "TruckCustomContainer",
+                "Moveable": true
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "pineconeTextureMapper",
+                "X": -50,
+                "Y": 370,
+                "Width": 40,
+                "Height": 40,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/pinecone.png",
+                "LockBitmapToCenter": true,
+                "XBitmapPosition": 1.0,
+                "Scale": 1.0,
+                "LockOrigoToCenter": true,
+                "XOrigo": 20.0,
+                "YOrigo": 20.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0,
+                "Clickable": true,
+                "Moveable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "treeOverlayImage",
+                "Y": 276,
+                "Width": 150,
+                "Height": 70,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/foreground_small_area.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "carImage",
+                "X": 398,
+                "Y": 304,
+                "Width": 190,
+                "Height": 30,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/car_lightsOFF.png"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "groundhogCustomContainer",
+                "X": 605,
+                "Y": 330,
+                "Width": 42,
+                "Height": 38,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "GroundhogCustomContainer"
+              },
+              {
+                "Type": "Container",
+                "Name": "buttonsContainer",
+                "Width": 800,
+                "Height": 420,
+                "LockPosition": true,
+                "Components": [
+                  {
+                    "Type": "FlexButton",
+                    "Name": "pineconeFlexButton",
+                    "Y": 203,
+                    "Width": 302,
+                    "Height": 217,
+                    "LockPosition": true,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "BorderSize": 5,
+                        "ColorReleased": {
+                          "Green": 102,
+                          "Blue": 153
+                        },
+                        "ColorPressed": {
+                          "Green": 153,
+                          "Blue": 204
+                        },
+                        "ColorBorderReleased": {
+                          "Green": 51,
+                          "Blue": 102
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 51,
+                          "Green": 102,
+                          "Blue": 153
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "FlexButton",
+                    "Name": "carFlexButton",
+                    "X": 391,
+                    "Y": 291,
+                    "Width": 111,
+                    "Height": 95,
+                    "LockPosition": true,
+                    "ButtonTrigger": {
+                      "Type": "ToggleButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "BorderSize": 5,
+                        "ColorReleased": {
+                          "Green": 102,
+                          "Blue": 153
+                        },
+                        "ColorPressed": {
+                          "Green": 153,
+                          "Blue": 204
+                        },
+                        "ColorBorderReleased": {
+                          "Green": 51,
+                          "Blue": 102
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 51,
+                          "Green": 102,
+                          "Blue": 153
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "FlexButton",
+                    "Name": "groundhogFlexButton",
+                    "X": 554,
+                    "Y": 330,
+                    "Width": 246,
+                    "Height": 90,
+                    "LockPosition": true,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "BorderSize": 5,
+                        "ColorReleased": {
+                          "Green": 102,
+                          "Blue": 153
+                        },
+                        "ColorPressed": {
+                          "Green": 153,
+                          "Blue": 204
+                        },
+                        "ColorBorderReleased": {
+                          "Green": 51,
+                          "Blue": 102
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 51,
+                          "Green": 102,
+                          "Blue": 153
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "FlexButton",
+                    "Name": "videoFlexButton",
+                    "X": 559,
+                    "Y": 112,
+                    "Width": 98,
+                    "Height": 58,
+                    "LockPosition": true,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "BorderSize": 5,
+                        "ColorReleased": {
+                          "Green": 102,
+                          "Blue": 153
+                        },
+                        "ColorPressed": {
+                          "Green": 153,
+                          "Blue": 204
+                        },
+                        "ColorBorderReleased": {
+                          "Green": 51,
+                          "Blue": 102
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 51,
+                          "Green": 102,
+                          "Blue": 153
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "FlexButton",
+                    "Name": "coverflowFlexButton",
+                    "X": 173,
+                    "Y": 170,
+                    "Width": 181,
+                    "Height": 176,
+                    "LockPosition": true,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "BorderSize": 5,
+                        "ColorReleased": {
+                          "Green": 102,
+                          "Blue": 153
+                        },
+                        "ColorPressed": {
+                          "Green": 153,
+                          "Blue": 204
+                        },
+                        "ColorBorderReleased": {
+                          "Green": 51,
+                          "Blue": 102
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 51,
+                          "Green": 102,
+                          "Blue": 153
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "handCustomContainer1",
+                "X": 231,
+                "Y": 210,
+                "Width": 46,
+                "Height": 51,
+                "LockPosition": true,
+                "CustomContainerDefinitionName": "handCustomContainer"
+              },
+              {
+                "Type": "Container",
+                "Name": "smallVideoContainer",
+                "X": 577,
+                "Y": 124,
+                "Width": 62,
+                "Height": 34,
+                "LockPosition": true,
+                "Components": [
+                  {
+                    "Type": "Video",
+                    "Name": "factoryVideo",
+                    "Width": 62,
+                    "Height": 34,
+                    "LockPosition": true,
+                    "VideoFileName": "RoussetDemo/smallRoussetFactoryDemo.avi",
+                    "AutoPlay": true,
+                    "Loop": true
+                  },
+                  {
+                    "Type": "Box",
+                    "Name": "videoFadeBox",
+                    "Width": 62,
+                    "Height": 34,
+                    "LockPosition": true,
+                    "Alpha": 0,
+                    "Fadeable": true
+                  }
+                ]
+              },
+              {
+                "Type": "Container",
+                "Name": "videoWindowContainer",
+                "X": 800,
+                "Y": 6,
+                "Width": 674,
+                "Height": 409,
+                "LockPosition": true,
+                "Moveable": true,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "largeVideoBackgroundImage",
+                    "Width": 674,
+                    "Height": 409,
+                    "LockPosition": true,
+                    "RelativeFilename": "RoussetDemo/coverflow_bg.png"
+                  },
+                  {
+                    "Type": "Button",
+                    "Name": "largeVideoCloseButton",
+                    "X": 586,
+                    "Y": 21,
+                    "Width": 60,
+                    "Height": 60,
+                    "LockPosition": true,
+                    "Pressed": "RoussetDemo/close_icon_largerTouchZone.png",
+                    "Released": "RoussetDemo/close_icon_largerTouchZone.png"
+                  },
+                  {
+                    "Type": "Container",
+                    "Name": "largeVideoContainer",
+                    "X": 97,
+                    "Y": 63,
+                    "Width": 480,
+                    "Height": 272,
+                    "Components": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "introAnimationContainer",
+            "Y": 60,
+            "Width": 800,
+            "Height": 420,
+            "Visible": false,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "mountainImage",
+                "X": 1,
+                "Y": 102,
+                "Width": 799,
+                "Height": 130,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/mountains-1.png"
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "hillsTextureMapper",
+                "Y": 115,
+                "Width": 800,
+                "Height": 270,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/hills.png",
+                "YBitmapPosition": 50.0,
+                "Scale": 1.0,
+                "XOrigo": 445.0,
+                "YOrigo": 135.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "stFactoryTextureMapper",
+                "X": 1,
+                "Y": 40,
+                "Width": 800,
+                "Height": 380,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/st_factory_car.png",
+                "YBitmapPosition": 75.0,
+                "Scale": 1.0,
+                "XOrigo": 450.0,
+                "YOrigo": 160.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "grassTextureMapper",
+                "Y": 261,
+                "Width": 800,
+                "Height": 159,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/grass.png",
+                "YBitmapPosition": 50.0,
+                "Scale": 1.0,
+                "XOrigo": 450.0,
+                "YOrigo": -100.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "foregroundTreesTextureMapper",
+                "Y": 106,
+                "Width": 800,
+                "Height": 314,
+                "LockPosition": true,
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Bilinear Interpolation",
+                "FileNameImage": "RoussetDemo/forground-1.png",
+                "YBitmapPosition": 50.0,
+                "Scale": 1.0,
+                "XOrigo": 450.0,
+                "YOrigo": 182.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "Box",
+                "Name": "fadeBox",
+                "Width": 800,
+                "Height": 420,
+                "LockPosition": true,
+                "Fadeable": true
+              }
+            ]
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "topBarContainer1",
+            "Width": 800,
+            "Height": 60,
+            "LockPosition": true,
+            "CustomContainerDefinitionName": "TopBarContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "rotatingCoverFlowCustomContainer1",
+            "Width": 800,
+            "Height": 480,
+            "Visible": false,
+            "LockPosition": true,
+            "CustomContainerDefinitionName": "rotatingCoverFlowCustomContainer"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "backButton",
+            "X": 10,
+            "Y": 3,
+            "Width": 54,
+            "Height": 54,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 54,
+                "Height": 54,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Image",
+            "Name": "backButtonIcon",
+            "X": 30,
+            "Y": 18,
+            "Width": 15,
+            "Height": 24,
+            "RelativeFilename": "RoussetDemo\\back_arrow.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "CloseLargeVideo",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "largeVideoCloseButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "closeLargeVideo"
+            }
+          },
+          {
+            "InteractionName": "OpenCoverflow",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "coverflowFlexButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "coverflowClickHandler"
+            }
+          },
+          {
+            "InteractionName": "OpenLargeVideo",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "videoFlexButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "videoClickHandler"
+            }
+          },
+          {
+            "InteractionName": "ActivateGroundhog",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "groundhogFlexButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "groundhogClickHandler"
+            }
+          },
+          {
+            "InteractionName": "ActivatePinecone",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "pineconeFlexButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "pineconeClickHandler"
+            }
+          },
+          {
+            "InteractionName": "ToogleCarLights",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "carFlexButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "carClickHandler"
+            }
+          },
+          {
+            "InteractionName": "ChangeScreenToMain",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "ScreenTransitions",
+        "Includes": "#include \"gui/common/structs.hpp\"",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "backgroundBox",
+            "Y": 10,
+            "Width": 800,
+            "Height": 470,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "background",
+            "Y": 50,
+            "Width": 800,
+            "Height": 430,
+            "RelativeFilename": "ScreenTransitions/background_day_full.png"
+          },
+          {
+            "Type": "SlideMenu",
+            "Name": "transitionMenu",
+            "Y": 330,
+            "Width": 800,
+            "Height": 150,
+            "FileNameBackground": "ScreenTransitions/emptyBottombarBg.png",
+            "FileNameButtonPressed": "",
+            "FileNameButtonReleased": "",
+            "State": "Expanded",
+            "ExpandDirection": "North",
+            "Easing": "Cubic",
+            "EasingOption": "InOut",
+            "AnimationDuration": 300,
+            "VisiblePixelsWhenCollapsed": 50,
+            "ExpandedStateTimeout": 3000,
+            "Components": [
+              {
+                "Type": "FlexButton",
+                "Name": "bottomBarButton",
+                "X": 326,
+                "Width": 148,
+                "Height": 60,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "bottombar",
+                "Width": 800,
+                "Height": 150,
+                "CustomContainerDefinitionName": "bottombarContainer"
+              }
+            ]
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "topbar",
+            "Width": 800,
+            "Height": 70,
+            "CustomContainerDefinitionName": "ScreenTranstionsTopbarContainer"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "selectedTransitionText",
+            "X": 200,
+            "Y": 267,
+            "Width": 400,
+            "Height": 48,
+            "TextId": "LargeCoverTransition",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Fadeable": true
+          },
+          {
+            "Type": "Button",
+            "Name": "startTransitionButton",
+            "X": 345,
+            "Y": 155,
+            "Width": 110,
+            "Height": 110,
+            "Pressed": "ScreenTransitions/icon_play_dark.png",
+            "Released": "ScreenTransitions/icon_play_dark.png",
+            "Fadeable": true
+          },
+          {
+            "Type": "Button",
+            "Name": "backButton",
+            "X": 12,
+            "Width": 55,
+            "Height": 55,
+            "Pressed": "__generated\\icon_theme_images_navigation_chevron_left_55_55_96A395.svg.png",
+            "Released": "__generated\\icon_theme_images_navigation_chevron_left_55_55_E9F5E9.svg.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "startTransitionPressedInteraction",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "startTransitionButton"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions startTransitionPressed",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "GetTransitionInfoInteraction",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "bottombarContainer getTransitionInfo happens",
+              "TriggerComponent": "bottombar"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions getTransitionInfo",
+              "ParameterValue": "value",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "ScrollWheelPressedInteraction",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "bottombarContainer scrollWheelPressed happens",
+              "TriggerComponent": "bottombar"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions scrollWheelPressed",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "ScrollWheelAnimationEndedInteraction",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "bottombarContainer scrollWheelAnimationEnded happens",
+              "TriggerComponent": "bottombar"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions scrollWheelAnimationEnded",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "SliderMenueStateChangedInteraction1",
+            "Trigger": {
+              "Type": "TriggerSlideMenuStateChanged",
+              "TriggerComponent": "transitionMenu"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call bottombarContainer animateArrow",
+              "ParameterValue": "transitionMenu.getState()",
+              "ActionComponent": "bottombar"
+            }
+          },
+          {
+            "InteractionName": "TopbarChromARTPressed",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "ScreenTranstionsTopbarContainer chromARTStateChangedTrigger happens",
+              "TriggerComponent": "topbar"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions ChromARTPressed",
+              "ParameterValue": "value",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "SliderMenueStateChangedInteraction2",
+            "Trigger": {
+              "Type": "TriggerSlideMenuStateChanged",
+              "TriggerComponent": "transitionMenu"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions sliderMenuStateChanged",
+              "ParameterValue": "transitionMenu.getState()",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "AnimationSpeeedButtonInteraction",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "bottombarContainer animaitonSpeedPressed happens",
+              "TriggerComponent": "bottombar"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTransitions animationSpeedButtonPressed",
+              "ParameterValue": "value",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "ChangeScreenToMain",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          },
+          {
+            "InteractionName": "bottomBarButtonClicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bottomBarButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "bottomBarButtonClicked"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "startTransitionPressed"
+          },
+          {
+            "Name": "getTransitionInfo",
+            "Description": "",
+            "HasValue": true,
+            "ValueType": "TransitionInfo*"
+          },
+          {
+            "Name": "scrollWheelPressed"
+          },
+          {
+            "Name": "scrollWheelAnimationEnded"
+          },
+          {
+            "Name": "sliderMenuStateChanged",
+            "HasValue": true,
+            "ValueType": "SlideMenu::State"
+          },
+          {
+            "Name": "ChromARTPressed",
+            "HasValue": true,
+            "ValueType": "bool"
+          },
+          {
+            "Name": "animationSpeedButtonPressed",
+            "HasValue": true,
+            "ValueType": "bool"
+          }
+        ]
+      },
+      {
+        "Name": "E_BikeScreen",
+        "CanvasBufferSize": 12000,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "background",
+            "Width": 800,
+            "Height": 480,
+            "LockPosition": true,
+            "RelativeFilename": "ebike-screen\\main_background_numbers.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "FPSLableText",
+            "X": 30,
+            "Y": 143,
+            "Width": 29,
+            "Height": 26,
+            "TextId": "FPSLabelText",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "neoChromLabelText",
+            "X": 30,
+            "Y": 259,
+            "Width": 89,
+            "Height": 26,
+            "TextId": "NeoChromLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "neoChromButton",
+            "X": 30,
+            "Y": 314,
+            "Width": 105,
+            "Height": 146,
+            "CustomContainerDefinitionName": "NeoChromToggleButton_E_Bike"
+          },
+          {
+            "Type": "Image",
+            "Name": "speedometerBackgroundMPH",
+            "X": 192,
+            "Width": 414,
+            "Height": 152,
+            "RelativeFilename": "ebike-screen\\main_background_numbers_mph.png"
+          },
+          {
+            "Type": "DynamicGraph",
+            "Name": "graph",
+            "X": 184,
+            "Y": 372,
+            "Width": 422,
+            "Height": 65,
+            "DataSeed": -205127896,
+            "NumberOfValues": 100,
+            "MaxY": 255.0,
+            "Precision": "1",
+            "LastIndex": 99,
+            "XAxisScale": 1.0,
+            "GraphType": "GraphScroll",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 3,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 25,
+                  "Green": 255,
+                  "Blue": 198
+                }
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "currentVelocity",
+            "X": 337,
+            "Y": 160,
+            "Width": 130,
+            "Height": 136,
+            "TextId": "SpeedValue",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_B6UT",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "totalDistance",
+            "X": 348,
+            "Y": 327,
+            "Width": 109,
+            "Height": 30,
+            "TextId": "TotalDistanceMoved",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_XB5M",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "remaining",
+            "X": 199,
+            "Y": 326,
+            "Width": 70,
+            "Height": 30,
+            "TextId": "BatteryLifeTime",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_49Q7",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "remainingLabel",
+            "X": 189,
+            "Y": 304,
+            "Width": 66,
+            "Height": 19,
+            "TextId": "RemainingLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "elevationLabel",
+            "X": 371,
+            "Y": 444,
+            "Width": 54,
+            "Height": 23,
+            "TextId": "ElevationValue",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_52Q4",
+              "UseBuffer": true,
+              "BufferSize": 7
+            }
+          },
+          {
+            "Type": "Circle",
+            "Name": "highlightMph",
+            "X": 160,
+            "Width": 480,
+            "Height": 480,
+            "LockPosition": true,
+            "FileNameImage": "ebike-screen\\speedometer_fill_overlay_numbers_mph.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "CenterX": 240.0,
+            "CenterY": 240.0,
+            "Radius": 186.0,
+            "LineWidth": 108.0,
+            "StartAngle": -90.0,
+            "EndAngle": -57.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "Circle",
+            "Name": "highlightKmh",
+            "X": 160,
+            "Width": 480,
+            "Height": 480,
+            "Visible": false,
+            "LockPosition": true,
+            "FileNameImage": "ebike-screen\\speedometer_fill_overlay_numbers_kmh.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "CenterX": 240.0,
+            "CenterY": 240.0,
+            "Radius": 186.0,
+            "LineWidth": 108.0,
+            "StartAngle": -90.0,
+            "EndAngle": -57.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "needle",
+            "X": 160,
+            "Width": 480,
+            "Height": 240,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "ebike-screen\\speedometer_needle.png",
+            "XBitmapPosition": 214.0,
+            "ZAngle": -1.0,
+            "Scale": 1.0,
+            "XOrigo": 240.0,
+            "YOrigo": 240.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "Button",
+            "Name": "velocityMiles",
+            "X": 361,
+            "Y": 133,
+            "Width": 78,
+            "Height": 44,
+            "Pressed": "ebike-screen\\button_mph_pressed.png",
+            "Released": "ebike-screen\\button_mph_normal.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "velocityKmh",
+            "X": 361,
+            "Y": 133,
+            "Width": 78,
+            "Height": 44,
+            "Visible": false,
+            "Pressed": "ebike-screen\\button_kmh_pressed.png",
+            "Released": "ebike-screen\\button_kmh_normal.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "totalDistanceKm",
+            "X": 372,
+            "Y": 303,
+            "Width": 55,
+            "Height": 26,
+            "Visible": false,
+            "TextId": "TotalDistanceKm_Lable",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "totalDistanceMi",
+            "X": 374,
+            "Y": 303,
+            "Width": 54,
+            "Height": 19,
+            "TextId": "TotalDistanceMPH_Lable",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "battery6",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "RelativeFilename": "ebike-screen\\battery_steps_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battery5",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "Visible": false,
+            "RelativeFilename": "ebike-screen\\battery_steps_5of6.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battery4",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "Visible": false,
+            "RelativeFilename": "ebike-screen\\battery_steps_4of6.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battery3",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "Visible": false,
+            "RelativeFilename": "ebike-screen\\battery_steps_3of6.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battery2",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "Visible": false,
+            "RelativeFilename": "ebike-screen\\battery_steps_2of6.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battery1",
+            "X": 192,
+            "Y": 263,
+            "Width": 68,
+            "Height": 28,
+            "Visible": false,
+            "RelativeFilename": "ebike-screen\\battery_steps_low.png"
+          },
+          {
+            "Type": "RadioButton",
+            "Name": "modeOff",
+            "X": 463,
+            "Y": 334,
+            "Width": 158,
+            "Height": 32,
+            "FileNameSelected": "ebike-screen\\off_button_active.png",
+            "FileNameSelectedPressed": "ebike-screen\\off_button_active.png",
+            "FileNameUnselected": "ebike-screen\\off_button_normal.png",
+            "FileNameUnselectedPressed": "ebike-screen\\off_button_active.png",
+            "RadioButtonGroup": "modeGroup"
+          },
+          {
+            "Type": "RadioButton",
+            "Name": "modeStandard",
+            "X": 481,
+            "Y": 303,
+            "Width": 152,
+            "Height": 31,
+            "Selected": true,
+            "FileNameSelected": "ebike-screen\\standard_button_active.png",
+            "FileNameSelectedPressed": "ebike-screen\\standard_button_active.png",
+            "FileNameUnselected": "ebike-screen\\standard_button_normal.png",
+            "FileNameUnselectedPressed": "ebike-screen\\standard_button_active.png",
+            "RadioButtonGroup": "modeGroup"
+          },
+          {
+            "Type": "RadioButton",
+            "Name": "modeSport",
+            "X": 507,
+            "Y": 272,
+            "Width": 132,
+            "Height": 31,
+            "FileNameSelected": "ebike-screen\\mode_sport_active.png",
+            "FileNameSelectedPressed": "ebike-screen\\mode_sport_active.png",
+            "FileNameUnselected": "ebike-screen\\mode_sport_inactive.png",
+            "FileNameUnselectedPressed": "ebike-screen\\mode_sport_active.png",
+            "RadioButtonGroup": "modeGroup"
+          },
+          {
+            "Type": "RadioButton",
+            "Name": "modeMax",
+            "X": 520,
+            "Y": 241,
+            "Width": 120,
+            "Height": 32,
+            "FileNameSelected": "ebike-screen\\max_button_active.png",
+            "FileNameSelectedPressed": "ebike-screen\\max_button_active.png",
+            "FileNameUnselected": "ebike-screen\\max_button_normal.png",
+            "FileNameUnselectedPressed": "ebike-screen\\max_button_active.png",
+            "RadioButtonGroup": "modeGroup"
+          },
+          {
+            "Type": "Button",
+            "Name": "backButton",
+            "Width": 184,
+            "Height": 50,
+            "Pressed": "ebike-screen\\back_button_pressed_e_bike.png",
+            "Released": "ebike-screen\\back_button_normal_e_bike.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "directionLabelText",
+            "X": 682,
+            "Y": 22,
+            "Width": 85,
+            "Height": 35,
+            "TextId": "DirectionLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "rotationDegreeText",
+            "X": 635,
+            "Y": 61,
+            "Width": 151,
+            "Height": 79,
+            "TextId": "rotationDegree",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_ZU1M",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "rotationDirectionText",
+            "X": 693,
+            "Y": 141,
+            "Width": 90,
+            "Height": 110,
+            "TextId": "rotationDirection",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 25,
+              "Green": 255,
+              "Blue": 198
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_3RS8",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "navigationLabelText",
+            "X": 667,
+            "Y": 259,
+            "Width": 95,
+            "Height": 35,
+            "TextId": "NavigationLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "compass",
+            "X": 633,
+            "Y": 313,
+            "Width": 148,
+            "Height": 148,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "ebike-screen\\compass.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 1.0,
+            "YBitmapPosition": 1.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 74.0,
+            "YOrigo": 74.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "Image",
+            "Name": "compassNeedle",
+            "X": 658,
+            "Y": 357,
+            "Width": 98,
+            "Height": 65,
+            "RelativeFilename": "ebike-screen\\compass_arrow.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MCULoadLableText",
+            "X": 30,
+            "Y": 67,
+            "Width": 76,
+            "Height": 26,
+            "TextId": "MCULabelText",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "mcuLoadPercentage",
+            "X": 27,
+            "Y": 92,
+            "Width": 98,
+            "Height": 45,
+            "CustomContainerDefinitionName": "MCULoadPercentage_E_Bike"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "frameRate",
+            "X": 27,
+            "Y": 169,
+            "Width": 59,
+            "Height": 45,
+            "CustomContainerDefinitionName": "FrameRate_E_Bike"
+          },
+          {
+            "Type": "Image",
+            "Name": "graphOverlay",
+            "X": 170,
+            "Y": 370,
+            "Width": 454,
+            "Height": 110,
+            "RelativeFilename": "ebike-screen\\graph Overlay.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "selectMiles",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "velocityKmh"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "selectMiles"
+            }
+          },
+          {
+            "InteractionName": "selectKmh",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "velocityMiles"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "selectKmh"
+            }
+          },
+          {
+            "InteractionName": "hideKmhButton",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "velocityKmh"
+            }
+          },
+          {
+            "InteractionName": "showMilesButton",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "velocityMiles"
+            }
+          },
+          {
+            "InteractionName": "hideMilesButton",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "velocityMiles"
+            }
+          },
+          {
+            "InteractionName": "showKmhButton",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "velocityKmh"
+            }
+          },
+          {
+            "InteractionName": "showTotalDistanceMiles",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "totalDistanceMi"
+            }
+          },
+          {
+            "InteractionName": "hideTotalDistanceKm",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "totalDistanceKm"
+            }
+          },
+          {
+            "InteractionName": "showTotalDistanceKm",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "totalDistanceKm"
+            }
+          },
+          {
+            "InteractionName": "hideTotalDistanceMi",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "totalDistanceMi"
+            }
+          },
+          {
+            "InteractionName": "hideHighlightKmh",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "highlightKmh"
+            }
+          },
+          {
+            "InteractionName": "showHighlightMph",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "highlightMph"
+            }
+          },
+          {
+            "InteractionName": "showHighlightKmh",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "highlightKmh"
+            }
+          },
+          {
+            "InteractionName": "hideHighlightMph",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "highlightMph"
+            }
+          },
+          {
+            "InteractionName": "showMphBackground",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectMiles"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "speedometerBackgroundMPH"
+            }
+          },
+          {
+            "InteractionName": "hideMphBackground",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "selectKmh"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "speedometerBackgroundMPH"
+            }
+          },
+          {
+            "InteractionName": "ChangeScreenToMain",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "goToMain"
+          }
+        ]
+      },
+      {
+        "Name": "CompassScreen",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "background",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "compass-screen\\compass_background_800_480.png"
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "wheel",
+            "X": 252,
+            "Y": 30,
+            "Width": 420,
+            "Height": 420,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "compass-screen\\compass_disc.png",
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 210.0,
+            "YOrigo": 210.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextArea",
+            "Name": "angleVerbose",
+            "X": 26,
+            "Y": 257,
+            "Width": 175,
+            "Height": 60,
+            "TextId": "rotationLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Green": 221,
+              "Blue": 246
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_VVZP",
+              "UseBuffer": true,
+              "BufferSize": 11
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "angleNumeric",
+            "X": 22,
+            "Y": 118,
+            "Width": 151,
+            "Height": 79,
+            "TextId": "rotationDegree",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_MUJS",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "compassCenter",
+            "X": 391,
+            "Y": 169,
+            "Width": 142,
+            "Height": 142,
+            "RelativeFilename": "compass-screen\\Ellipse.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "backButton",
+            "Width": 184,
+            "Height": 50,
+            "Pressed": "compass-screen\\back_button_pressed.png",
+            "Released": "compass-screen\\back_button_normal.png"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "neoChromToggleButton",
+            "X": 30,
+            "Y": 351,
+            "Width": 174,
+            "Height": 97,
+            "CustomContainerDefinitionName": "NeoChromToggleButton_Compass"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuLoadLabelText",
+            "X": 684,
+            "Y": 21,
+            "Width": 100,
+            "Height": 35,
+            "TextId": "MCULabelText_Compass",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 137,
+              "Green": 154,
+              "Blue": 254
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsLabelText",
+            "X": 740,
+            "Y": 364,
+            "Width": 35,
+            "Height": 35,
+            "TextId": "FPSLabelText_Compass",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 137,
+              "Green": 154,
+              "Blue": 254
+            }
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "frameRate",
+            "X": 717,
+            "Y": 395,
+            "Width": 67,
+            "Height": 53,
+            "CustomContainerDefinitionName": "FrameRate_Compass"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "mcuLoadPercentage",
+            "X": 698,
+            "Y": 54,
+            "Width": 85,
+            "Height": 54,
+            "CustomContainerDefinitionName": "MCULoadPercentage_Compass"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ChangeScreenToMain",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "goToMain",
+            "Description": "when action is invoked the application will change screen to the Main screen"
+          }
+        ]
+      },
+      {
+        "Name": "VideoIntroScreen",
+        "Components": [
+          {
+            "Type": "Video",
+            "Name": "introVideo",
+            "Width": 800,
+            "Height": 480,
+            "VideoFileName": "menu-launcher\\output_short.avi",
+            "AutoPlay": true
+          },
+          {
+            "Type": "Image",
+            "Name": "lastVideoFrameImage",
+            "Width": 800,
+            "Height": 480,
+            "Visible": false,
+            "RelativeFilename": "menu-launcher\\last_video_frame.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "menu-launcher\\Blue_bg.png",
+            "Alpha": 0
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "GoToMenuScreen",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "FadeInBackground"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          },
+          {
+            "InteractionName": "FadeInBackground",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerVideoEnded",
+              "TriggerComponent": "introVideo"
+            },
+            "Action": {
+              "Type": "ActionFade",
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 1000,
+              "ActionComponent": "backgroundImage"
+            }
+          },
+          {
+            "InteractionName": "replaceVideoWithImage",
+            "Trigger": {
+              "Type": "TriggerVideoEnded",
+              "TriggerComponent": "introVideo"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "lastVideoFrameImage"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "MenuLauncherScreen",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "menu-launcher\\Blue_bg.png"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "sphere_wheel1",
+            "Y": 6,
+            "Width": 800,
+            "Height": 480,
+            "CustomContainerDefinitionName": "sphere_wheel"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "selectedDemoName",
+            "X": 136,
+            "Y": 18,
+            "Width": 529,
+            "Height": 55,
+            "TextId": "demo3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Fadeable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "sphere_wheel animationEndded happens",
+              "TriggerComponent": "sphere_wheel1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call MenuLauncherScreen sphereWheelAnimationEndded",
+              "ParameterValue": "value",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "sphere_wheel animationStarted happens",
+              "TriggerComponent": "sphere_wheel1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call MenuLauncherScreen sphereWheelAnimationStarted",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "sphere_wheel itemSelected happens",
+              "TriggerComponent": "sphere_wheel1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call MenuLauncherScreen sphereWheelItemSelected",
+              "ParameterValue": "value",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToDemoCompass"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "CompassScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToDemoEbike"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "E_BikeScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToDemoRousset"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "RoussetDemo"
+            }
+          },
+          {
+            "InteractionName": "Interaction7",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToDemoTransition"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "ScreenTransitions"
+            }
+          },
+          {
+            "InteractionName": "Interaction8",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToInfoScreen"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "InfoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction9",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuLauncherScreen goToSVGScreen"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "SVG"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "sphereWheelAnimationStarted"
+          },
+          {
+            "Name": "sphereWheelAnimationEndded",
+            "HasValue": true,
+            "ValueType": "uint16_t"
+          },
+          {
+            "Name": "sphereWheelItemSelected",
+            "HasValue": true,
+            "ValueType": "uint16_t"
+          },
+          {
+            "Name": "goToDemoRousset"
+          },
+          {
+            "Name": "goToDemoTransition"
+          },
+          {
+            "Name": "goToDemoCompass"
+          },
+          {
+            "Name": "goToDemoEbike"
+          },
+          {
+            "Name": "goToInfoScreen"
+          },
+          {
+            "Name": "goToSVGScreen"
+          }
+        ]
+      },
+      {
+        "Name": "InfoScreen",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "menu-launcher\\Blue_bg.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "demoTextArea2",
+            "X": 30,
+            "Y": 428,
+            "Width": 717,
+            "Height": 29,
+            "TextId": "__SingleUse_7IX9",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "WideTextAction": 1
+          },
+          {
+            "Type": "TextArea",
+            "Name": "demoTextArea1",
+            "X": 30,
+            "Y": 399,
+            "Width": 57,
+            "Height": 29,
+            "TextId": "__SingleUse_09R3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "boardTextArea2",
+            "X": 30,
+            "Y": 300,
+            "Width": 587,
+            "Height": 87,
+            "TextId": "__SingleUse_XZ89",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "WideTextAction": 1
+          },
+          {
+            "Type": "TextArea",
+            "Name": "boardTextArea1",
+            "X": 30,
+            "Y": 271,
+            "Width": 153,
+            "Height": 29,
+            "TextId": "__SingleUse_K5SS",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "featuresTextArea2",
+            "X": 30,
+            "Y": 201,
+            "Width": 686,
+            "Height": 58,
+            "TextId": "__SingleUse_6DGZ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "WideTextAction": 1
+          },
+          {
+            "Type": "TextArea",
+            "Name": "featuresTextArea1",
+            "X": 30,
+            "Y": 172,
+            "Width": 158,
+            "Height": 29,
+            "TextId": "__SingleUse_XQ2O",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "sramTextArea2",
+            "X": 166,
+            "Y": 131,
+            "Width": 55,
+            "Height": 29,
+            "TextId": "__SingleUse_KJP3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "sramTextArea1",
+            "X": 30,
+            "Y": 131,
+            "Width": 136,
+            "Height": 29,
+            "TextId": "__SingleUse_LLRY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "flashTextArea2",
+            "X": 156,
+            "Y": 102,
+            "Width": 129,
+            "Height": 29,
+            "TextId": "__SingleUse_TNK2",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "flashTextArea1",
+            "X": 30,
+            "Y": 102,
+            "Width": 126,
+            "Height": 29,
+            "TextId": "__SingleUse_K5A4",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuTextArea2",
+            "X": 82,
+            "Y": 73,
+            "Width": 411,
+            "Height": 29,
+            "TextId": "__SingleUse_Q7BX",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuTextArea1",
+            "X": 30,
+            "Y": 73,
+            "Width": 52,
+            "Height": 29,
+            "TextId": "__SingleUse_11W7",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 246,
+              "Green": 190,
+              "Blue": 40
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "healineTextArea",
+            "X": 76,
+            "Y": 31,
+            "Width": 497,
+            "Height": 29,
+            "TextId": "__SingleUse_94P5",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "iconImage",
+            "X": 30,
+            "Y": 30,
+            "Width": 30,
+            "Height": 30,
+            "RelativeFilename": "info-screen\\infoscreen-icon.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "backButton",
+            "X": 680,
+            "Width": 120,
+            "Height": 120,
+            "Pressed": "info-screen\\back_corner.png",
+            "Released": "info-screen\\back_corner.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "SVG",
+        "CanvasBufferSize": 12000,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "svg-screen\\ice_cream_backgrond_with_shadow.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "backButton",
+            "Width": 184,
+            "Height": 50,
+            "Pressed": "svg-screen\\icecream_back_button_pressed.png",
+            "Released": "svg-screen\\icecream_back_button_normal.png"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "mcuLoadPercentageContainer",
+            "X": 21,
+            "Y": 439,
+            "Width": 122,
+            "Height": 41,
+            "CustomContainerDefinitionName": "MCULoadPercentage_SVG"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "frameRateContainer",
+            "X": 691,
+            "Y": 439,
+            "Width": 85,
+            "Height": 41,
+            "CustomContainerDefinitionName": "FrameRate_SVG"
+          },
+          {
+            "Type": "SvgImage",
+            "Name": "mainWaffle",
+            "X": 290,
+            "Y": 230,
+            "Width": 220,
+            "Height": 220,
+            "Image": "svg-screen\\waffle_large.svg",
+            "ImagePositionX": 49.0,
+            "ImagePositionY": 15.0,
+            "ImageHorizontalScale": 1.0,
+            "ImageVerticalScale": 1.0,
+            "RotationCenterX": 110.0,
+            "RotationCenterY": 110.0,
+            "Moveable": true
+          },
+          {
+            "Type": "Button",
+            "Name": "leftButton",
+            "X": 207,
+            "Y": 314,
+            "Width": 98,
+            "Height": 80,
+            "Pressed": "svg-screen\\icecream_prevoius_pressed.png",
+            "Released": "svg-screen\\icecream_prevoius_normal.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "rightButton",
+            "X": 495,
+            "Y": 314,
+            "Width": 98,
+            "Height": 80,
+            "Pressed": "svg-screen\\icecream_next_pressed.png",
+            "Released": "svg-screen\\icecream_next_normal.png"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "waffleMenu",
+            "X": 570,
+            "Y": -3,
+            "Width": 230,
+            "Height": 135,
+            "CustomContainerDefinitionName": "WaffleMenuContainer"
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "iceScoopScrollWheel",
+            "Y": 130,
+            "Width": 800,
+            "Height": 200,
+            "SelectedItemOffset": 100,
+            "IsHorizontal": true,
+            "IsCircular": true,
+            "ItemTemplateName": "IceScoopItemContainer_SVG",
+            "NumberofItems": 10,
+            "InitialElement": 3,
+            "Easing": "Sine",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ChangeTheMainWaffle",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "HideTheMainWaffle"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "changeTheMainWaffle"
+            }
+          },
+          {
+            "InteractionName": "HideTheMainWaffle",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "WaffleMenuContainer newWaffleIsChosen happens",
+              "TriggerComponent": "waffleMenu"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 290,
+              "Y": 480,
+              "Easing": "Cubic",
+              "EasingOption": "In",
+              "Duration": 400,
+              "ActionComponent": "mainWaffle"
+            }
+          },
+          {
+            "InteractionName": "MoveTheIceScoopsToLeft",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "moveIceScoopsToLeft"
+            }
+          },
+          {
+            "InteractionName": "MoveTheIceScoopsToRight",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "moveIceScoopsToRight"
+            }
+          },
+          {
+            "InteractionName": "ResetTheTickCounter",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "WaffleMenuContainer slideMenuChangedState happens",
+              "TriggerComponent": "waffleMenu"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "resetTickCounter"
+            }
+          },
+          {
+            "InteractionName": "GoBackToMenu",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MenuLauncherScreen"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "starsCustomContainer",
+        "Width": 780,
+        "Height": 170,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "starsImage",
+            "Width": 780,
+            "Height": 170,
+            "RelativeFilename": "RoussetDemo/stars_few.png",
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "starsTextureMapper",
+            "Width": 780,
+            "Height": 170,
+            "Visible": false,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "RoussetDemo/stars_few.png",
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 390.0,
+            "YOrigo": 85.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0,
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "Container",
+            "Name": "blinkingStarsContainer",
+            "Width": 719,
+            "Height": 116,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "starShiny5Image",
+                "X": 709,
+                "Y": 106,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single_shiny.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "starShiny4Image",
+                "X": 321,
+                "Y": 73,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single_shiny.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "starShiny3Image",
+                "X": 98,
+                "Y": 15,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single_shiny.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "starShiny2Image",
+                "X": 156,
+                "Y": 57,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single_shiny.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "starShiny1Image",
+                "X": 423,
+                "Y": 88,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single_shiny.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "star5Image",
+                "X": 540,
+                "Y": 40,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "star4Image",
+                "X": 624,
+                "Y": 88,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "star3Image",
+                "X": 298,
+                "Y": 20,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "star2Image",
+                "X": 263,
+                "Y": 55,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single.png",
+                "Fadeable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "star1Image",
+                "X": 649,
+                "Y": 30,
+                "Width": 10,
+                "Height": 10,
+                "RelativeFilename": "RoussetDemo/star_single.png",
+                "Fadeable": true
+              }
+            ]
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "elementCoverFlowCustomContainer",
+        "Width": 196,
+        "Height": 301,
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "chipTextureMapper",
+            "Width": 196,
+            "Height": 301,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "RoussetDemo/chips_coverFlow\\h725_shadow.png",
+            "YBitmapPosition": 17.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 98.0,
+            "YOrigo": 150.5,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "rotatingCoverFlowCustomContainer",
+        "Width": 800,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "X": 63,
+            "Y": 66,
+            "Width": 674,
+            "Height": 409,
+            "RelativeFilename": "RoussetDemo/coverflow_bg.png"
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "backgroundTextureMapper",
+            "Y": -129,
+            "Width": 800,
+            "Height": 800,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "RoussetDemo/coverflow_bg.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 63.0,
+            "YBitmapPosition": 195.5,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 400.0,
+            "YOrigo": 400.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0,
+            "Moveable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "scrollWheelCoverFlow1",
+            "X": 85,
+            "Y": 145,
+            "Width": 630,
+            "Height": 301,
+            "CustomContainerDefinitionName": "scrollWheelCoverFlow"
+          },
+          {
+            "Type": "Button",
+            "Name": "closeCoverFlowButton",
+            "X": 649,
+            "Y": 87,
+            "Width": 60,
+            "Height": 60,
+            "Pressed": "RoussetDemo/close_icon_largerTouchZone.png",
+            "Released": "RoussetDemo/close_icon_largerTouchZone.png",
+            "Fadeable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "InteractionCloseTextureMapper",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "closeCoverFlowButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "close"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "TopBarContainer",
+        "Width": 800,
+        "Height": 60,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "topbarBox",
+            "Width": 800,
+            "Height": 60,
+            "Color": {
+              "Red": 5,
+              "Green": 10,
+              "Blue": 22
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuTitle",
+            "X": 90,
+            "Y": 17,
+            "Width": 49,
+            "Height": 31,
+            "TextId": "__SingleUse_TAN1",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuValue",
+            "X": 133,
+            "Y": 17,
+            "Width": 60,
+            "Height": 31,
+            "TextId": "__SingleUse_VTBS",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_KN4X",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsTitle",
+            "X": 220,
+            "Y": 17,
+            "Width": 42,
+            "Height": 31,
+            "TextId": "__SingleUse_IBNT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsValue",
+            "X": 254,
+            "Y": 17,
+            "Width": 43,
+            "Height": 31,
+            "TextId": "__SingleUse_DT2G",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_A5XM",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          },
+          {
+            "Type": "Button",
+            "Name": "infoButton",
+            "X": 384,
+            "Y": 14,
+            "Width": 32,
+            "Height": 32,
+            "Visible": false,
+            "Pressed": "RoussetDemo/info_icon.png",
+            "Released": "RoussetDemo/info_icon.png"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "neoChromButton",
+            "X": 570,
+            "Y": 12,
+            "Width": 220,
+            "Height": 36,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 7,
+                "Y": 5,
+                "TextId": "__SingleUse_BMXW",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 5,
+                  "Green": 10,
+                  "Blue": 22
+                },
+                "ColorPressed": {
+                  "Red": 5,
+                  "Green": 10,
+                  "Blue": 22
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "LockFlexButtonToImageSize": true,
+                "ImageReleased": "RoussetDemo/neochrom_bar_bg.png",
+                "ImagePressed": "RoussetDemo/neochrom_bar_bg.png"
+              }
+            ]
+          },
+          {
+            "Type": "Image",
+            "Name": "neoChromSelectImage",
+            "X": 684,
+            "Y": 16,
+            "Width": 50,
+            "Height": 28,
+            "RelativeFilename": "RoussetDemo/neochrom_tab_active.png",
+            "Moveable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "neoChromOnText",
+            "X": 695,
+            "Y": 17,
+            "Width": 29,
+            "Height": 31,
+            "TextId": "__SingleUse_OM0E",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 5,
+              "Green": 10,
+              "Blue": 22
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "neoChromOffText",
+            "X": 743,
+            "Y": 17,
+            "Width": 37,
+            "Height": 31,
+            "TextId": "__SingleUse_0KXI",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 132,
+              "Green": 138,
+              "Blue": 156
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "toggleNeoChrom",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "neoChromButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "toggleNeoChrom"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "scrollWheelCoverFlow",
+        "Width": 630,
+        "Height": 301,
+        "Components": [
+          {
+            "Type": "ScrollWheel",
+            "Name": "scrollWheel",
+            "Width": 630,
+            "Height": 301,
+            "SelectedItemOffset": 203,
+            "IsHorizontal": true,
+            "IsCircular": true,
+            "ItemTemplateName": "elementCoverFlowCustomContainer",
+            "NumberofItems": 7,
+            "InitialElement": 3,
+            "ItemMargin": 14,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "TruckCustomContainer",
+        "Width": 241,
+        "Height": 60,
+        "Components": [
+          {
+            "Type": "ScalableImage",
+            "Name": "truckScalableImage",
+            "X": 81,
+            "Width": 142,
+            "Height": 59,
+            "Filename": "RoussetDemo/truck_blue.png",
+            "ScalingAlgorithm": "Bilinear Interpolation"
+          },
+          {
+            "Type": "Image",
+            "Name": "frontLightImage",
+            "Y": 31,
+            "Width": 84,
+            "Height": 40,
+            "RelativeFilename": "RoussetDemo/truck_front_light.png",
+            "Fadeable": true
+          },
+          {
+            "Type": "Image",
+            "Name": "backLightImage",
+            "X": 212,
+            "Y": 32,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "RoussetDemo/back_light.png",
+            "Fadeable": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "cloudCustomContainer",
+        "Width": 800,
+        "Height": 94,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "cloudLeftImage",
+            "X": 73,
+            "Width": 208,
+            "Height": 94,
+            "RelativeFilename": "RoussetDemo/sky_2.png",
+            "Clickable": true
+          },
+          {
+            "Type": "Image",
+            "Name": "cloudRightImage",
+            "X": 445,
+            "Width": 174,
+            "Height": 84,
+            "RelativeFilename": "RoussetDemo/sky_1.png",
+            "Clickable": true
+          },
+          {
+            "Type": "Image",
+            "Name": "cloudOutsideImage",
+            "X": -447,
+            "Width": 174,
+            "Height": 84,
+            "RelativeFilename": "RoussetDemo/sky_1.png",
+            "Clickable": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "clickableBuildingCustomContainer",
+        "X": 283,
+        "Y": 165,
+        "Width": 517,
+        "Height": 150,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "backgroundDayImage",
+            "X": -183,
+            "Y": -76,
+            "Width": 800,
+            "Height": 318,
+            "Visible": false,
+            "LockPosition": true,
+            "RelativeFilename": "RoussetDemo/night_forground_samlet.png"
+          },
+          {
+            "Type": "Container",
+            "Name": "entranceClickableContainer",
+            "X": 313,
+            "Y": 68,
+            "Width": 88,
+            "Height": 85,
+            "LockPosition": true,
+            "Clickable": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "entranceImage",
+                "X": 6,
+                "Y": 25,
+                "Width": 49,
+                "Height": 52,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/windows_entrance_building.png",
+                "Fadeable": true
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "leftBuildingClickableContainer",
+            "X": 7,
+            "Y": 45,
+            "Width": 250,
+            "Height": 106,
+            "LockPosition": true,
+            "Clickable": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "leftBuildingImage",
+                "X": 4,
+                "Y": 3,
+                "Width": 218,
+                "Height": 93,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/windows_left_building.png",
+                "Fadeable": true
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "topBuildingClickableContainer",
+            "X": 278,
+            "Y": 1,
+            "Width": 215,
+            "Height": 74,
+            "LockPosition": true,
+            "Clickable": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "topBuildingImage",
+                "X": 1,
+                "Y": 11,
+                "Width": 194,
+                "Height": 46,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/windows_top_building.png",
+                "Fadeable": true
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "rightBuildingClickableContainer",
+            "X": 401,
+            "Y": 81,
+            "Width": 159,
+            "Height": 71,
+            "LockPosition": true,
+            "Clickable": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "rightBuildingImage",
+                "X": 19,
+                "Y": 13,
+                "Width": 62,
+                "Height": 47,
+                "LockPosition": true,
+                "RelativeFilename": "RoussetDemo/windows_right_building.png",
+                "Fadeable": true
+              }
+            ]
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "GroundhogCustomContainer",
+        "Width": 42,
+        "Height": 38,
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "holeTextureMapper",
+            "Y": 26,
+            "Width": 42,
+            "Height": 12,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "RoussetDemo/groundhog_hole.png",
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 21.0,
+            "YOrigo": 6.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "Container",
+            "Name": "groundhogContainer",
+            "X": 7,
+            "Width": 29,
+            "Height": 34,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "groundhogImage",
+                "Y": 3,
+                "Width": 29,
+                "Height": 35,
+                "RelativeFilename": "RoussetDemo/groundhog.png",
+                "Moveable": true
+              }
+            ]
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "holeOverlayImage",
+            "Y": 30,
+            "Width": 40,
+            "Height": 8,
+            "Filename": "RoussetDemo/groundhog_hole_overlay.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "handCustomContainer",
+        "Width": 46,
+        "Height": 51,
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "handTextureMapper",
+            "Width": 46,
+            "Height": 51,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "RoussetDemo/hand.png",
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 23.0,
+            "YOrigo": 25.5,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "ChimneyCustomContainer",
+        "Width": 13,
+        "Height": 20,
+        "Components": [
+          {
+            "Type": "ScalableImage",
+            "Name": "chimneyScalableImage",
+            "Y": 7,
+            "Width": 13,
+            "Height": 13,
+            "Filename": "RoussetDemo/chimney_day.png",
+            "ScalingAlgorithm": "Bilinear Interpolation"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "ScreenTranstionsTopbarContainer",
+        "Width": 800,
+        "Height": 70,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "bar",
+            "Width": 800,
+            "Height": 70,
+            "RelativeFilename": "ScreenTransitions/trans_top_bar.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuTitle",
+            "X": 248,
+            "Y": 10,
+            "Width": 49,
+            "Height": 32,
+            "TextId": "__SingleUse_64RR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 255,
+              "Blue": 202
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuValue",
+            "X": 291,
+            "Y": 10,
+            "Width": 60,
+            "Height": 32,
+            "TextId": "__SingleUse_7UUF",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 255,
+              "Blue": 202
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_0UZB",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsTite",
+            "X": 448,
+            "Y": 10,
+            "Width": 42,
+            "Height": 32,
+            "TextId": "__SingleUse_BFF4",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 255,
+              "Blue": 202
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsValue",
+            "X": 482,
+            "Y": 10,
+            "Width": 43,
+            "Height": 32,
+            "TextId": "__SingleUse_GO6F",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 255,
+              "Blue": 202
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_1PIT",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "infoIcon",
+            "X": 385,
+            "Y": 10,
+            "Width": 30,
+            "Height": 30,
+            "RelativeFilename": "ScreenTransitions\\icon_info.png"
+          },
+          {
+            "Type": "ToggleButton",
+            "Name": "chromArtButton",
+            "X": 645,
+            "Y": -1,
+            "Width": 152,
+            "Height": 52,
+            "InitialStatePressed": true,
+            "Pressed": "ScreenTransitions/chrom-art_on.png",
+            "Released": "ScreenTransitions/chrom-art_off.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "chromArtGradient",
+            "X": 645,
+            "Y": -1,
+            "Width": 152,
+            "Height": 52,
+            "RelativeFilename": "ScreenTransitions/chrom-art_on_light.png",
+            "Alpha": 0,
+            "Fadeable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ChromARTButtonPressed1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chromArtButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "ScreenTranstionsTopbarContainer chromARTStateChangedTrigger happens",
+              "ParameterValue": "chromArtButton.getState()"
+            }
+          },
+          {
+            "InteractionName": "ChromARTButtonPressed2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chromArtButton"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call ScreenTranstionsTopbarContainer chromARTStateChangedAction",
+              "ParameterValue": "chromArtButton.getState()",
+              "ActionComponent": "ScreenTranstionsTopbarContainer"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "chromARTStateChangedTrigger",
+            "HasValue": true,
+            "ValueType": "bool"
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "chromARTStateChangedAction",
+            "HasValue": true,
+            "ValueType": "bool"
+          }
+        ]
+      },
+      {
+        "Name": "transitionItem",
+        "Width": 64,
+        "Height": 82,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "transiotionIcon",
+            "Width": 64,
+            "Height": 54,
+            "RelativeFilename": "ScreenTransitions/transitionType1.png",
+            "Fadeable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "transitionName",
+            "Y": 58,
+            "Width": 64,
+            "Height": 18,
+            "TextId": "CoverTransition",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "bottombarContainer",
+        "Width": 800,
+        "Height": 150,
+        "Includes": "#include \"gui/common/structs.hpp\"\r\n#include <touchgfx/containers/SlideMenu.hpp>",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "background",
+            "Y": 30,
+            "Width": 800,
+            "Height": 120,
+            "RelativeFilename": "ScreenTransitions/trans_bund_bg.png"
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "transitionSelectionWheel",
+            "X": 138,
+            "Y": 68,
+            "Width": 524,
+            "Height": 82,
+            "SelectedItemOffset": 220,
+            "IsHorizontal": true,
+            "IsCircular": true,
+            "ItemTemplateName": "transitionItem",
+            "NumberofItems": 10,
+            "ItemMargin": 10,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0
+          },
+          {
+            "Type": "Image",
+            "Name": "overlay1",
+            "Y": 30,
+            "Width": 800,
+            "Height": 120,
+            "RelativeFilename": "ScreenTransitions/trans_bund_gradient_overlay_1.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "overlay2",
+            "Y": 30,
+            "Width": 800,
+            "Height": 120,
+            "RelativeFilename": "ScreenTransitions/trans_bund_gradient_overlay_2.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "top",
+            "X": 326,
+            "Y": 3,
+            "Width": 148,
+            "Height": 48,
+            "RelativeFilename": "ScreenTransitions/trans_bund_tab.png",
+            "Fadeable": true
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "buttonIndicator",
+            "X": 380,
+            "Y": 13,
+            "Width": 40,
+            "Height": 40,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "ScreenTransitions/icon_tab_close.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 11.0,
+            "YBitmapPosition": 15.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 20.0,
+            "YOrigo": 20.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0,
+            "Fadeable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "animationSpeedButton",
+            "Y": 41,
+            "Width": 130,
+            "Height": 120,
+            "CustomContainerDefinitionName": "animationButton"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "animationSpeedPressed",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "animationButton buttonPressed happens",
+              "TriggerComponent": "animationSpeedButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "bottombarContainer animaitonSpeedPressed happens",
+              "ParameterValue": "value"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "getTransitionInfo",
+            "HasValue": true,
+            "ValueType": "TransitionInfo*"
+          },
+          {
+            "Name": "scrollWheelPressed"
+          },
+          {
+            "Name": "scrollWheelAnimationEnded"
+          },
+          {
+            "Name": "animaitonSpeedPressed",
+            "HasValue": true,
+            "ValueType": "bool"
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "animateArrow",
+            "HasValue": true,
+            "ValueType": "SlideMenu::State"
+          }
+        ]
+      },
+      {
+        "Name": "animationButton",
+        "Width": 130,
+        "Height": 120,
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "backgroundAnimationSpeed",
+            "Width": 130,
+            "Height": 120,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "ScreenTransitions/toggle_speed_bg.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 12.0,
+            "YBitmapPosition": 23.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 65.0,
+            "YOrigo": 60.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "needleAnimationSpeed",
+            "Width": 130,
+            "Height": 120,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "ScreenTransitions/icon_speed_slider.png",
+            "XBitmapPosition": 60.0,
+            "YBitmapPosition": 40.0,
+            "ZAngle": -0.1,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 65.0,
+            "YOrigo": 60.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "sliderAnimationSpeed",
+            "X": 55,
+            "Y": 80,
+            "Width": 44,
+            "Height": 21,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "ScreenTransitions/icon_tab_mini_slider.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 11.0,
+            "YBitmapPosition": 9.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 22.0,
+            "YOrigo": 10.5,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextArea",
+            "Name": "speedText",
+            "X": 20,
+            "Y": 65,
+            "Width": 90,
+            "Height": 18,
+            "TextId": "NormalSpeed",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 255,
+              "Blue": 202
+            },
+            "Fadeable": true
+          }
+        ],
+        "Interactions": [],
+        "CustomTriggers": [
+          {
+            "Name": "buttonPressed",
+            "HasValue": true,
+            "ValueType": "bool"
+          }
+        ]
+      },
+      {
+        "Name": "NeoChromToggleButton_E_Bike",
+        "Width": 105,
+        "Height": 146,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "buttonBackground",
+            "Width": 48,
+            "Height": 146,
+            "RelativeFilename": "ebike-screen\\neochrom_switch_e_bike.png"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "buttonClickListener",
+            "Width": 48,
+            "Height": 146,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 48,
+                "Height": 146,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Image",
+            "Name": "onIndicator",
+            "X": 1,
+            "Y": 2,
+            "Width": 46,
+            "Height": 90,
+            "RelativeFilename": "ebike-screen\\neochrom_button_on.png",
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "Image",
+            "Name": "offIndicator",
+            "X": 1,
+            "Y": 2,
+            "Width": 46,
+            "Height": 90,
+            "RelativeFilename": "ebike-screen\\neochrom_button_off.png",
+            "Alpha": 0,
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "offLabel",
+            "X": 66,
+            "Y": 92,
+            "Width": 29,
+            "Height": 26,
+            "TextId": "NeoChromOffLabelText_E_Bike",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 125,
+              "Green": 142,
+              "Blue": 245
+            },
+            "LineSpacing": 1
+          },
+          {
+            "Type": "TextArea",
+            "Name": "onLabel",
+            "X": 66,
+            "Y": 18,
+            "Width": 23,
+            "Height": 26,
+            "TextId": "NeoChromOnLabelText_E_Bike",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 25,
+              "Green": 255,
+              "Blue": 198
+            },
+            "LineSpacing": 1
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ToggleTheButton",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonClickListener"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "toggleNeoChrom"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "MCULoadPercentage_E_Bike",
+        "Width": 98,
+        "Height": 45,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "mcuLoadPercentage",
+            "Width": 98,
+            "Height": 45,
+            "TextId": "MCULoadPercentage",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_MO1T",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "FrameRate_E_Bike",
+        "Width": 59,
+        "Height": 45,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "fpsValue",
+            "Width": 59,
+            "Height": 45,
+            "TextId": "FPSValue",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 210,
+              "Green": 243,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_BYCA",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "NeoChromToggleButton_Compass",
+        "Width": 174,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "buttonBackground",
+            "Y": 49,
+            "Width": 174,
+            "Height": 48,
+            "RelativeFilename": "compass-screen\\neochrom_switch.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "neoChromLableText",
+            "X": 34,
+            "Y": 4,
+            "Width": 110,
+            "Height": 35,
+            "TextId": "NeoChromLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 137,
+              "Green": 154,
+              "Blue": 254
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "buttonClickListener",
+            "Y": 48,
+            "Width": 174,
+            "Height": 50,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 174,
+                "Height": 50,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Image",
+            "Name": "onIndicator",
+            "X": 83,
+            "Y": 50,
+            "Width": 90,
+            "Height": 46,
+            "RelativeFilename": "compass-screen\\neochrom_on.png",
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "Image",
+            "Name": "offIndicator",
+            "X": 1,
+            "Y": 50,
+            "Width": 90,
+            "Height": 46,
+            "RelativeFilename": "compass-screen\\neochrom_off.png",
+            "Alpha": 0,
+            "Fadeable": true,
+            "Moveable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "offLabel",
+            "X": 32,
+            "Y": 57,
+            "Width": 34,
+            "Height": 41,
+            "TextId": "NeoChromOffLabelText_Compass",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 137,
+              "Green": 154,
+              "Blue": 254
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "onLabel",
+            "X": 117,
+            "Y": 57,
+            "Width": 27,
+            "Height": 41,
+            "TextId": "NeoChromOnLabelText_Compass",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 21,
+              "Green": 6,
+              "Blue": 67
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ToggleTheButton",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonClickListener"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "toggleNeoChrom"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "FrameRate_Compass",
+        "Width": 67,
+        "Height": 53,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "fpsValue",
+            "Width": 67,
+            "Height": 53,
+            "TextId": "FPSValue",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_BYCA",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "MCULoadPercentage_Compass",
+        "Width": 85,
+        "Height": 54,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "mcuLoadPercentage",
+            "Width": 85,
+            "Height": 54,
+            "TextId": "MCULoadPercentage",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_MO1T",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "sphere_wheel",
+        "Width": 800,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "wheel_element_4",
+            "X": 235,
+            "Y": -8,
+            "Width": 324,
+            "Height": 402,
+            "CustomContainerDefinitionName": "wheel_element",
+            "Moveable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "wheel_element_3",
+            "X": -35,
+            "Y": 32,
+            "Width": 324,
+            "Height": 402,
+            "CustomContainerDefinitionName": "wheel_element",
+            "Moveable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "wheel_element_2",
+            "X": 235,
+            "Y": 72,
+            "Width": 324,
+            "Height": 402,
+            "CustomContainerDefinitionName": "wheel_element",
+            "Moveable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "wheel_element_1",
+            "X": 505,
+            "Y": 32,
+            "Width": 324,
+            "Height": 402,
+            "CustomContainerDefinitionName": "wheel_element",
+            "Moveable": true
+          }
+        ],
+        "Interactions": [],
+        "CustomTriggers": [
+          {
+            "Name": "animationStarted"
+          },
+          {
+            "Name": "animationEndded",
+            "HasValue": true,
+            "ValueType": "uint16_t"
+          },
+          {
+            "Name": "itemSelected",
+            "HasValue": true,
+            "ValueType": "uint16_t"
+          }
+        ]
+      },
+      {
+        "Name": "wheel_element",
+        "Width": 324,
+        "Height": 402,
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "shadowTextureMapper",
+            "Y": 285,
+            "Width": 324,
+            "Height": 80,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "menu-launcher\\ball_shadow.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 21.5,
+            "YBitmapPosition": 4.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 162.0,
+            "YOrigo": 40.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "reflectionTextureMapper",
+            "Y": 322,
+            "Width": 324,
+            "Height": 80,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "menu-launcher\\ball_reflect.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 2.0,
+            "Scale": 1.0,
+            "XOrigo": 162.0,
+            "YOrigo": 80.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "ballTextureMapper",
+            "Width": 324,
+            "Height": 324,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "menu-launcher\\ball_big.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 2.0,
+            "YBitmapPosition": 2.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 162.0,
+            "YOrigo": 162.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "logoTextureMapper",
+            "X": 77,
+            "Y": 77,
+            "Width": 170,
+            "Height": 170,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "menu-launcher\\Logos\\ST_Factory\\ST_Factory_00000.png",
+            "LockBitmapToCenter": true,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 85.0,
+            "YOrigo": 85.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "AnimatedImage",
+            "Name": "logoAnimatedImage",
+            "X": 77,
+            "Y": 77,
+            "Width": 170,
+            "Height": 170,
+            "Visible": false,
+            "FileNameFirst": "menu-launcher\\Logos\\ST_Factory\\ST_Factory_00000.png",
+            "UpdateTicksInterval": 10
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "MCULoadPercentage_SVG",
+        "Width": 122,
+        "Height": 41,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "mcuValue",
+            "X": 55,
+            "Width": 50,
+            "Height": 41,
+            "TextId": "__SingleUse_B9OK",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 216,
+              "Green": 169,
+              "Blue": 252
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_9RDV",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "mcuTitle",
+            "Width": 47,
+            "Height": 41,
+            "TextId": "__SingleUse_5FZL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 216,
+              "Green": 169,
+              "Blue": 252
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "FrameRate_SVG",
+        "Width": 85,
+        "Height": 41,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "fpsTite",
+            "Width": 39,
+            "Height": 41,
+            "TextId": "__SingleUse_QGUA",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 216,
+              "Green": 169,
+              "Blue": 252
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "fpsValue",
+            "X": 47,
+            "Width": 24,
+            "Height": 41,
+            "TextId": "__SingleUse_V2NX",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 216,
+              "Green": 169,
+              "Blue": 252
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_S875",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "WaffleMenuContainer",
+        "X": 570,
+        "Width": 230,
+        "Height": 135,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "waffleLabel",
+            "X": 127,
+            "Y": 47,
+            "Width": 40,
+            "Height": 86,
+            "LockPosition": true,
+            "RelativeFilename": "svg-screen\\waffle_menu_title.png",
+            "Fadeable": true
+          },
+          {
+            "Type": "SlideMenu",
+            "Name": "slideMenu",
+            "Y": 17,
+            "Width": 230,
+            "Height": 120,
+            "FileNameBackground": "svg-screen\\waffle_menu_expand.png",
+            "FileNameButtonPressed": "",
+            "FileNameButtonReleased": "",
+            "State": "Collapsed",
+            "ExpandDirection": "West",
+            "Easing": "Cubic",
+            "EasingOption": "InOut",
+            "AnimationDuration": 300,
+            "VisiblePixelsWhenCollapsed": 80,
+            "ExpandedStateTimeout": 15000,
+            "Components": [
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "bigWaffleMenuIcon",
+                "X": 12,
+                "Y": 10,
+                "Width": 65,
+                "Height": 100,
+                "CustomContainerDefinitionName": "WaffleMenuIcon"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "mediumWaffleMenuIcon",
+                "X": 85,
+                "Y": 10,
+                "Width": 65,
+                "Height": 100,
+                "CustomContainerDefinitionName": "WaffleMenuIcon"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "smallWaffleMenuIcon",
+                "X": 160,
+                "Y": 10,
+                "Width": 65,
+                "Height": 100,
+                "CustomContainerDefinitionName": "WaffleMenuIcon"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "menuClickListener",
+            "X": 147,
+            "Y": 30,
+            "Width": 84,
+            "Height": 100,
+            "LockPosition": true,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 84,
+                "Height": 100,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ExpandTheMenu",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "menuClickListener"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call WaffleMenuContainer changeStateOfMenuTo",
+              "ParameterValue": "SlideMenu::EXPANDED",
+              "ActionComponent": "WaffleMenuContainer"
+            }
+          },
+          {
+            "InteractionName": "BigWaffleIsChosen",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "WaffleMenuIcon IconIsPressed happens",
+              "TriggerComponent": "bigWaffleMenuIcon"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "bigWaffleIsChosen"
+            }
+          },
+          {
+            "InteractionName": "MediumWaffleIsChosen",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "WaffleMenuIcon IconIsPressed happens",
+              "TriggerComponent": "mediumWaffleMenuIcon"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "mediumWaffleIsChosen"
+            }
+          },
+          {
+            "InteractionName": "SmallWaffleIsChosen",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "WaffleMenuIcon IconIsPressed happens",
+              "TriggerComponent": "smallWaffleMenuIcon"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "smallWaffleIsChosen"
+            }
+          },
+          {
+            "InteractionName": "ChangeWaffleLabelAndClickListenerWhenStateOfMenuChanges",
+            "Trigger": {
+              "Type": "TriggerSlideMenuAnimationEnded",
+              "TriggerComponent": "slideMenu"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "reactAccordinglyToTheNewStateOfMenu"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "newWaffleIsChosen"
+          },
+          {
+            "Name": "slideMenuChangedState"
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "changeStateOfMenuTo",
+            "HasValue": true,
+            "ValueType": "SlideMenu::State"
+          }
+        ]
+      },
+      {
+        "Name": "WaffleMenuIcon",
+        "Width": 65,
+        "Height": 100,
+        "Includes": "",
+        "Components": [
+          {
+            "Type": "TextureMapper",
+            "Name": "icon",
+            "Width": 65,
+            "Height": 100,
+            "UseAnimation": true,
+            "RenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameImage": "svg-screen\\waffle_menu_cone_large.png",
+            "XBitmapPosition": 2.0,
+            "YBitmapPosition": 2.0,
+            "ZAngle": 6.3,
+            "Scale": 0.9,
+            "LockOrigoToCenter": true,
+            "XOrigo": 32.5,
+            "YOrigo": 50.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "clickListener",
+            "Width": 65,
+            "Height": 100,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 50,
+                "Height": 50,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "scaleIconDown",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "clickListener"
+            },
+            "Action": {
+              "Type": "ActionScaleTextureMapper",
+              "Scale": 0.7,
+              "Easing": "Quart",
+              "EasingOption": "InOut",
+              "Duration": 100,
+              "ActionComponent": "icon"
+            }
+          },
+          {
+            "InteractionName": "scaleIconBackToNormal",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "scaleIconDown"
+            },
+            "Action": {
+              "Type": "ActionScaleTextureMapper",
+              "Scale": 0.9,
+              "Easing": "Quint",
+              "EasingOption": "InOut",
+              "Duration": 100,
+              "ActionComponent": "icon"
+            }
+          },
+          {
+            "InteractionName": "EmitIconIsPressed",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "scaleIconBackToNormal"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "WaffleMenuIcon IconIsPressed happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "IconIsPressed"
+          }
+        ]
+      },
+      {
+        "Name": "IceScoopItemContainer_SVG",
+        "Width": 200,
+        "Height": 200,
+        "Components": [
+          {
+            "Type": "SvgImage",
+            "Name": "iceScoopSVG",
+            "Width": 200,
+            "Height": 200,
+            "Image": "svg-screen\\Scoop_Ball_2.svg",
+            "ImagePositionX": 20.0,
+            "ImagePositionY": 10.0,
+            "ImageHorizontalScale": 1.0,
+            "ImageVerticalScale": 1.0,
+            "RotationCenterX": 100.0,
+            "RotationCenterY": 100.0
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "Name": "H7RSDemo",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "VideoIntroScreen",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "24": "LCD24bpp",
+      "16": "LCDGPU2D"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../../gcc/Makefile flash",
+    "FlashTargetIntCommandOverride": "make -f ../../gcc/Makefile intflash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32H7",
+    "SubFamily": "STM32H7R7/7S7",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m7",
+    "ProjectFile": "../../STM32H7S78-DK.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+      "GPU2D"
+    ],
+    "AdditionalFeatures": [
+      "GPU2DVector",
+      "VectorFonts",
+      "Video"
+    ]
+  },
+  "Version": "4.24.0",
+  "CreatedBy": "4.24.0"
+}

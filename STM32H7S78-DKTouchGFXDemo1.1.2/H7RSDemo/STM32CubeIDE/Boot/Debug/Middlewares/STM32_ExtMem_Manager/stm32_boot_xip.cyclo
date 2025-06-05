@@ -1,0 +1,3 @@
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:56:20:BOOT_Application	2
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:83:20:MapMemory	5
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:116:20:JumpToApplication	4

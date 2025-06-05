@@ -1,0 +1,4 @@
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/model/Model.cpp:4:1:Model::Model()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/model/Model.cpp:9:6:void Model::tick()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/model/Model.cpp:14:6:void Model::setSelectedDemoNumber(int)	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/model/Model.cpp:19:5:int Model::getSelectedDemoNumber()	1

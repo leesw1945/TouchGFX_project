@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/infoscreen_screen/InfoScreenPresenter.hpp:28:13:InfoScreenPresenter::~InfoScreenPresenter()	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/infoscreen_screen/InfoScreenPresenter.cpp:10:6:virtual void InfoScreenPresenter::activate()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/infoscreen_screen/InfoScreenPresenter.hpp:28:13:virtual InfoScreenPresenter::~InfoScreenPresenter()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/infoscreen_screen/InfoScreenPresenter.hpp:28:13:virtual void* InfoScreenPresenter::_ZThn4_N19InfoScreenPresenterD1Ev()	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/infoscreen_screen/InfoScreenPresenter.cpp:4:1:InfoScreenPresenter::InfoScreenPresenter(InfoScreenView&)	0	static

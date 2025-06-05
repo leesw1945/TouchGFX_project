@@ -1,0 +1,32 @@
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:65:13:touchgfx::TypedText::~TypedText()	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:touchgfx::Callback<ScreenTransitionsView, short unsigned int>::~Callback()	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:touchgfx::Callback<ScreenTransitionsView, const touchgfx::FadeAnimator<touchgfx::Button>&>::~Callback()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:97:6:virtual void ScreenTransitionsView::tearDownScreen()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:216:6:virtual void ScreenTransitionsView::sliderMenuStateChanged(touchgfx::SlideMenu::State)	2
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:224:6:virtual void ScreenTransitionsView::animationSpeedButtonPressed(bool)	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:386:18:void touchgfx::Callback<dest_type, T1, void, void>::execute(T1) [with dest_type = ScreenTransitionsView; T1 = const touchgfx::FadeAnimator<touchgfx::Button>&]	2
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:396:18:bool touchgfx::Callback<dest_type, T1, void, void>::isValid() const [with dest_type = ScreenTransitionsView; T1 = const touchgfx::FadeAnimator<touchgfx::Button>&]	3
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:386:18:void touchgfx::Callback<dest_type, T1, void, void>::execute(T1) [with dest_type = ScreenTransitionsView; T1 = short unsigned int]	2
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:396:18:bool touchgfx::Callback<dest_type, T1, void, void>::isValid() const [with dest_type = ScreenTransitionsView; T1 = short unsigned int]	3
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:65:13:virtual touchgfx::TypedText::~TypedText()	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:virtual touchgfx::Callback<ScreenTransitionsView, short unsigned int>::~Callback()	1
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:virtual touchgfx::Callback<ScreenTransitionsView, const touchgfx::FadeAnimator<touchgfx::Button>&>::~Callback()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:192:6:virtual void ScreenTransitionsView::getTransitionInfo(TransitionInfo*)	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:209:6:virtual void ScreenTransitionsView::ChromARTPressed(bool)	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:8:1:ScreenTransitionsView::ScreenTransitionsView()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:243:6:void ScreenTransitionsView::updateMCU(uint16_t)	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:248:6:void ScreenTransitionsView::updateFPS(uint16_t)	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:23:6:virtual void ScreenTransitionsView::setupScreen()	9
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:103:6:virtual void ScreenTransitionsView::handleClickEvent(const touchgfx::ClickEvent&)	7
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:229:6:virtual void ScreenTransitionsView::bottomBarButtonClicked()	2
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:115:6:virtual void ScreenTransitionsView::handleTickEvent()	11
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:122:10:void touchgfx::FadeAnimator<T>::startFadeAnimation(uint8_t, uint16_t, touchgfx::EasingEquation) [with T = touchgfx::TextArea]	9
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:171:6:virtual void ScreenTransitionsView::startTransitionPressed()	3
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:198:6:virtual void ScreenTransitionsView::scrollWheelPressed()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:203:6:virtual void ScreenTransitionsView::scrollWheelAnimationEnded()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:253:6:void ScreenTransitionsView::transitionEndedHandler(uint16_t)	2
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsView.cpp:273:6:void ScreenTransitionsView::buttonFadeAnimationEndedHandler(const touchgfx::FadeAnimator<touchgfx::Button>&)	4
+../../Appli/../../Appli/TouchGFX/gui/include/gui/screentransitions_screen/ScreenTransitionsView.hpp:20:13:ScreenTransitionsView::~ScreenTransitionsView()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/screentransitions_screen/ScreenTransitionsView.hpp:20:13:virtual ScreenTransitionsView::~ScreenTransitionsView()	1

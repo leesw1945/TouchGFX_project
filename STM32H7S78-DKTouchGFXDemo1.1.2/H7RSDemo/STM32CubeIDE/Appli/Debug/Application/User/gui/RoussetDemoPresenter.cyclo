@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/roussetdemo_screen/RoussetDemoPresenter.hpp:28:13:RoussetDemoPresenter::~RoussetDemoPresenter()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/roussetdemo_screen/RoussetDemoPresenter.cpp:10:6:virtual void RoussetDemoPresenter::activate()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/roussetdemo_screen/RoussetDemoPresenter.hpp:28:13:virtual RoussetDemoPresenter::~RoussetDemoPresenter()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/roussetdemo_screen/RoussetDemoPresenter.hpp:28:13:virtual void* RoussetDemoPresenter::_ZThn4_N20RoussetDemoPresenterD1Ev()	1
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/roussetdemo_screen/RoussetDemoPresenter.cpp:4:1:RoussetDemoPresenter::RoussetDemoPresenter(RoussetDemoView&)	1

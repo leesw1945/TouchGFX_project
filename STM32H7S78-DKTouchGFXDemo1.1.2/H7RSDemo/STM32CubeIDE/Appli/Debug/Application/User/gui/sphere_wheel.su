@@ -1,0 +1,30 @@
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:356:18:virtual void touchgfx::Drawable::setWidth(int16_t)	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:368:18:virtual void touchgfx::Drawable::setHeight(int16_t)	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:378:18:virtual void touchgfx::Drawable::childGeometryChanged()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	4	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/sphere_wheel.hpp:11:13:sphere_wheel::~sphere_wheel()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/sphere_wheel.hpp:11:13:virtual sphere_wheel::~sphere_wheel()	8	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:166:6:virtual void sphere_wheel::handleGestureEvent(const touchgfx::GestureEvent&)	16	static
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/sphere_wheelBase.hpp:58:18:virtual void sphere_wheelBase::emitItemSelectedCallback(uint16_t)	16	static
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/sphere_wheelBase.hpp:51:18:virtual void sphere_wheelBase::emitAnimationEnddedCallback(uint16_t)	16	static
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/sphere_wheelBase.hpp:44:18:virtual void sphere_wheelBase::emitAnimationStartedCallback()	8	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	16	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:19:1:sphere_wheel::sphere_wheel()	8	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:231:6:void sphere_wheel::animateToClosesItem()	16	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:310:6:void sphere_wheel::reorder()	32	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:264:6:void sphere_wheel::moveIcons(float)	56	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:139:6:virtual void sphere_wheel::handleDragEvent(const touchgfx::DragEvent&)	24	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:335:9:int16_t sphere_wheel::getCenterSphere()	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:81:6:virtual void sphere_wheel::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:204:6:virtual void sphere_wheel::handleTickEvent()	32	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:351:10:uint16_t sphere_wheel::positiveModulo(int16_t, int16_t)	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:356:7:float sphere_wheel::floatCubicEaseOut(float, float, float, float)	0	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:363:6:void sphere_wheel::startIconAnimation()	8	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:368:6:void sphere_wheel::stopIconAnimation()	16	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:131:10:void touchgfx::MoveAnimator<T>::startMoveAnimation(int16_t, int16_t, uint16_t, touchgfx::EasingEquation, touchgfx::EasingEquation) [with T = wheel_element]	32	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:43:6:virtual void sphere_wheel::startWheel(uint8_t)	64	static
+C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/containers/sphere_wheel.cpp:31:6:virtual void sphere_wheel::initialize()	8	static
