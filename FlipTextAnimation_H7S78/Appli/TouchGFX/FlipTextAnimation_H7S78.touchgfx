@@ -17,126 +17,193 @@
           },
           {
             "Type": "Container",
-            "Name": "containerTens",
-            "X": 310,
-            "Y": 180,
-            "Width": 80,
-            "Height": 120,
+            "Name": "flipContainer",
+            "X": 300,
+            "Y": 150,
+            "Width": 200,
+            "Height": 180,
             "Components": [
               {
-                "Type": "Image",
-                "Name": "imgCurrentTen",
-                "Width": 80,
-                "Height": 80
+                "Type": "Container",
+                "Name": "tensDigitContainer",
+                "Width": 90,
+                "Height": 180,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "tensUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_upper.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "tensLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_lower.png"
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "tensFlipUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_upper.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.0,
+                    "YBitmapPosition": 9.5,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "YOrigo": 90.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "tensFlipLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_lower.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.5,
+                    "YBitmapPosition": 10.0,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  }
+                ]
               },
               {
-                "Type": "Image",
-                "Name": "imgTopTen",
-                "Width": 80,
-                "Height": 80
-              },
-              {
-                "Type": "Image",
-                "Name": "imgBottomTen",
-                "Y": 60,
-                "Width": 80,
-                "Height": 80
-              },
-              {
-                "Type": "Image",
-                "Name": "imgNextTen",
-                "Width": 80,
-                "Height": 80
+                "Type": "Container",
+                "Name": "onesDigitContainer_1",
+                "X": 110,
+                "Width": 90,
+                "Height": 180,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "onesUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_upper.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "onesLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_lower.png"
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "onesFlipUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_upper.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.0,
+                    "YBitmapPosition": 9.5,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "YOrigo": 90.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "onesFlipLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_lower.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.5,
+                    "YBitmapPosition": 10.0,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  }
+                ]
               }
             ]
           },
           {
-            "Type": "Container",
-            "Name": "containerOnes",
-            "X": 410,
-            "Y": 180,
-            "Width": 80,
-            "Height": 120,
-            "Components": [
-              {
-                "Type": "Image",
-                "Name": "imgCurrentOne",
-                "Width": 80,
-                "Height": 80
-              },
-              {
-                "Type": "Image",
-                "Name": "imgTopOne",
-                "Width": 80,
-                "Height": 80
-              },
-              {
-                "Type": "Image",
-                "Name": "imgBottomOne",
-                "Y": 60,
-                "Width": 80,
-                "Height": 80
-              },
-              {
-                "Type": "Image",
-                "Name": "imgNextOne",
-                "Width": 80,
-                "Height": 80
-              }
-            ]
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textInstructions",
-            "X": 200,
-            "Y": 79,
-            "Width": 400,
+            "Type": "FlexButton",
+            "Name": "incrementButton",
+            "X": 350,
+            "Y": 350,
+            "Width": 100,
             "Height": 40,
-            "TextId": "__SingleUse_J1HX",
-            "TextRotation": "0"
-          },
-          {
-            "Type": "Button",
-            "Name": "btnIncrement",
-            "X": 260,
-            "Y": 342,
-            "Width": 130,
-            "Height": 56,
-            "Pressed": "button_up_pressed.png",
-            "Released": "button_up_released.png"
-          },
-          {
-            "Type": "Button",
-            "Name": "btnDecrement",
-            "X": 410,
-            "Y": 342,
-            "Width": 130,
-            "Height": 56,
-            "Pressed": "button_down_pressed.png",
-            "Released": "button_down_released.png"
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 5,
+                "TextId": "__SingleUse_X8QK",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                },
+                "ColorPressed": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 100,
+                "Height": 40,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "incrementNumber",
+            "InteractionName": "incrementCounter",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "btnIncrement"
+              "TriggerComponent": "incrementButton"
             },
             "Action": {
               "Type": "ActionCustom",
-              "FunctionName": "incrementNumber"
-            }
-          },
-          {
-            "InteractionName": "decrementNumber",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnDecrement"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "decrementNumber"
+              "FunctionName": "incrementCounter"
             }
           }
         ]

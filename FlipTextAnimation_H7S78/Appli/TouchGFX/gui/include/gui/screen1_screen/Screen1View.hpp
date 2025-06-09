@@ -3,7 +3,8 @@
 
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/Box.hpp>
 
 class Screen1View : public Screen1ViewBase
 {
@@ -13,72 +14,38 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-    // 버튼 클릭 핸들러 (TouchGFX Designer에서 생성된 함수들)
-    virtual void incrementNumber();
-    virtual void decrementNumber();
+    // Designer에서 생성한 가상 함수
+    virtual void incrementCounter();
 
-    // 타이머 콜백
-    virtual void handleTickEvent() override;
+    // 애니메이션 틱 처리
+    virtual void handleTickEvent();
 
 protected:
-    // ============ 애니메이션 관련 변수 ============
-    uint8_t currentNumber;      // 현재 표시 중인 숫자 (0~99)
-    uint8_t tensDigit;         // 십의 자리 (0~9)
-    uint8_t onesDigit;         // 일의 자리 (0~9)
+    // 현재 표시 중인 숫자
+    uint8_t currentNumber;
+    uint8_t targetNumber;
 
-    bool isAnimating;          // 애니메이션 진행 중 여부
-    uint8_t animationStep;     // 현재 애니메이션 단계
-    uint8_t maxAnimationSteps; // 전체 애니메이션 단계 수
+    // 애니메이션 상태
+    bool isAnimatingTens;
+    bool isAnimatingOnes;
+    uint16_t animationStep;
+    static const uint16_t ANIMATION_DURATION = 80;
 
-    bool animatingTens;        // 십의 자리 애니메이션 중
-    bool animatingOnes;        // 일의 자리 애니메이션 중
+    // 타이머용 컨테이너 (handleTickEvent를 받기 위해)
+    Container tickHandler;
 
-    uint8_t nextTensDigit;     // 다음 십의 자리 숫자
-    uint8_t nextOnesDigit;     // 다음 일의 자리 숫자
+    // 이미지 ID를 저장할 배열
+    uint16_t upperImageIds[10];
+    uint16_t lowerImageIds[10];
 
-    // ============ 3D 효과 관련 변수 ============
-    bool use3DEffect;          // 3D 효과 사용 여부
-    bool imageSwapped;         // 90도 지점에서 이미지 교체 완료 여부
+    // 경계선을 위한 Box 위젯
+    touchgfx::Box tensMiddleLine;
+    touchgfx::Box onesMiddleLine;
 
-    // 3D TextureMapper 위젯들
-    TextureMapper flipperTens;      // 십의 자리용 3D 위젯
-    TextureMapper flipperOnes;      // 일의 자리용 3D 위젯
-
-    // ============ Container 내부 위젯 참조 (getChild 대신 사용) ============
-    Image* imgCurrentTens;
-    Image* imgTopTens;
-    Image* imgBottomTens;
-    Image* imgNextTens;
-
-    Image* imgCurrentOnes;
-    Image* imgTopOnes;
-    Image* imgBottomOnes;
-    Image* imgNextOnes;
-
-    // ============ 애니메이션 함수들 ============
-    void startFlipAnimation(bool tens, bool ones);
+    // 헬퍼 함수
+    void startFlipAnimation(uint8_t newNumber);
     void updateFlipAnimation();
-    void update3DFlipAnimation(float angle);
-    void update2DFlipAnimation(float angle);
-    void finishFlipAnimation();
-
-    // ============ 숫자 업데이트 함수들 ============
-    void updateDigitDisplay();
-    void setDigitImages(bool isTens, uint8_t digit, bool isNext = false);
-    void findContainerChildren();  // Container 내부 위젯들 찾기
-
-    // ============ 3D 효과 함수들 ============
-    void setup3DFlippers();
-    void toggle3DMode();
-
-    // ============ 유틸리티 함수들 ============
-    float applyCubicEaseOut(float progress);
-    void updateNumber(int8_t delta);
+    void setDigitImages(uint8_t number);
 };
-
-// ============ 이미지 ID 배열들 (extern 선언) ============
-extern const uint16_t numberImages[10];
-extern const uint16_t numberTopImages[10];
-extern const uint16_t numberBottomImages[10];
 
 #endif // SCREEN1VIEW_HPP
