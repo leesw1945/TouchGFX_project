@@ -159,6 +159,12 @@ void Screen1View::handleTickEvent()
         onesFlipUpper.setVisible(false);
         onesFlipLower.setVisible(false);
 
+        // 알파값 완전히 리셋 (중요!)
+        tensUpper.setAlpha(255);
+        tensLower.setAlpha(255);
+        onesUpper.setAlpha(255);
+        onesLower.setAlpha(255);
+
         // 각도 리셋
         tensFlipUpper.updateXAngle(0);
         tensFlipLower.updateXAngle(0);
@@ -214,6 +220,19 @@ void Screen1View::updateFlipAnimation()
             // X축 회전 (0도에서 90도까지)
             onesFlipUpper.updateXAngle(angle * 2.0f);
             onesFlipUpper.invalidate();
+
+            // 그림자 효과: 접히는 각도에 따라 아래쪽이 어두워짐
+            // 접히는 부분이 가리는 만큼만 그림자 생성
+            if(angle > 0.02f)
+            {
+                // 그림자의 강도는 접히는 각도에 비례
+                // sin 함수를 사용하여 자연스러운 그림자 효과
+                float shadowIntensity = sin(angle) * 0.6f;  // 최대 60% 어둡게
+                uint8_t shadowAlpha = 255 - (uint8_t)(255 * shadowIntensity);
+
+                onesLower.setAlpha(shadowAlpha);
+                onesLower.invalidate();
+            }
         }
         else
         {
@@ -223,6 +242,16 @@ void Screen1View::updateFlipAnimation()
             // 아래쪽에 새 숫자 표시
             onesLower.setBitmap(Bitmap(lowerImageIds[targetOnes]));
             onesLower.setVisible(true);
+
+            // 그림자가 위에서부터 점차 사라지는 효과
+            float fadeProgress = (progress - 0.5f) * 2.0f;  // 0~1로 정규화
+
+            // 그림자가 위쪽부터 사라지는 듯한 효과를 위해
+            // cos 함수 사용하여 부드럽게 밝아짐
+            float shadowRemoval = 1.0f - cos(fadeProgress * M_PI / 2.0f);
+            uint8_t brightness = 153 + (uint8_t)(102 * shadowRemoval);  // 153(60% 어둠)에서 255로
+
+            onesLower.setAlpha(brightness);
             onesLower.invalidate();
         }
     }
@@ -246,6 +275,17 @@ void Screen1View::updateFlipAnimation()
             // X축 회전 (0도에서 90도까지)
             tensFlipUpper.updateXAngle(angle * 2.0f);
             tensFlipUpper.invalidate();
+
+            // 그림자 효과: 접히는 각도에 따라 아래쪽이 어두워짐
+            if(angle > 0.02f)
+            {
+                // 그림자의 강도는 접히는 각도에 비례
+                float shadowIntensity = sin(angle) * 0.6f;  // 최대 60% 어둡게
+                uint8_t shadowAlpha = 255 - (uint8_t)(255 * shadowIntensity);
+
+                tensLower.setAlpha(shadowAlpha);
+                tensLower.invalidate();
+            }
         }
         else
         {
@@ -255,6 +295,15 @@ void Screen1View::updateFlipAnimation()
             // 아래쪽에 새 숫자 표시
             tensLower.setBitmap(Bitmap(lowerImageIds[targetTens]));
             tensLower.setVisible(true);
+
+            // 그림자가 위에서부터 점차 사라지는 효과
+            float fadeProgress = (progress - 0.5f) * 2.0f;
+
+            // cos 함수로 부드러운 밝아짐 효과
+            float shadowRemoval = 1.0f - cos(fadeProgress * M_PI / 2.0f);
+            uint8_t brightness = 153 + (uint8_t)(102 * shadowRemoval);
+
+            tensLower.setAlpha(brightness);
             tensLower.invalidate();
         }
     }
