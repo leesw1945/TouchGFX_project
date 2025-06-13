@@ -1,0 +1,5 @@
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/ST/STM32_ExtMem_Manager/psram/stm32_psram_driver.c:84:35:EXTMEM_DRIVER_PSRAM_Init	5
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/ST/STM32_ExtMem_Manager/psram/stm32_psram_driver.c:149:35:EXTMEM_DRIVER_PSRAM_DeInit	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/ST/STM32_ExtMem_Manager/psram/stm32_psram_driver.c:156:35:EXTMEM_DRIVER_PSRAM_Enable_MemoryMappedMode	3
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/ST/STM32_ExtMem_Manager/psram/stm32_psram_driver.c:180:35:EXTMEM_DRIVER_PSRAM_Disable_MemoryMappedMode	2
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/ST/STM32_ExtMem_Manager/psram/stm32_psram_driver.c:207:35:PSRAM_ExecuteCommand	4

@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorPresenter.hpp:28:13:APR_ErrorPresenter::~APR_ErrorPresenter()	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/apr_error_screen/APR_ErrorPresenter.cpp:10:6:virtual void APR_ErrorPresenter::activate()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorPresenter.hpp:28:13:virtual APR_ErrorPresenter::~APR_ErrorPresenter()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorPresenter.hpp:28:13:virtual void* APR_ErrorPresenter::_ZThn4_N18APR_ErrorPresenterD1Ev()	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/apr_error_screen/APR_ErrorPresenter.cpp:4:1:APR_ErrorPresenter::APR_ErrorPresenter(APR_ErrorView&)	0	static
