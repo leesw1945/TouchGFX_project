@@ -1,3 +1,0 @@
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:56:20:BOOT_Application	16	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:83:20:MapMemory	16	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/boot/stm32_boot_xip.c:116:20:JumpToApplication	48	static,ignoring_inline_asm

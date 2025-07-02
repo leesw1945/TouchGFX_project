@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/e_bikescreen_screen/E_BikeScreenPresenter.hpp:28:13:E_BikeScreenPresenter::~E_BikeScreenPresenter()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/e_bikescreen_screen/E_BikeScreenPresenter.cpp:10:6:virtual void E_BikeScreenPresenter::activate()	0	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/e_bikescreen_screen/E_BikeScreenPresenter.hpp:28:13:virtual E_BikeScreenPresenter::~E_BikeScreenPresenter()	8	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/e_bikescreen_screen/E_BikeScreenPresenter.hpp:28:13:virtual void* E_BikeScreenPresenter::_ZThn4_N21E_BikeScreenPresenterD1Ev()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/e_bikescreen_screen/E_BikeScreenPresenter.cpp:4:1:E_BikeScreenPresenter::E_BikeScreenPresenter(E_BikeScreenView&)	0	static

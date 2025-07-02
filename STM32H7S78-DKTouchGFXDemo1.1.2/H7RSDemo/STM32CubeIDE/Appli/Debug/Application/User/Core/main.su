@@ -1,4 +1,0 @@
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/Core/Src/main.c:618:6:StartDefaultTask	8	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/Core/Src/main.c:107:5:main	88	static,ignoring_inline_asm
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/Core/Src/main.c:727:6:HAL_TIM_PeriodElapsedCallback	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/Core/Src/main.c:744:6:Error_Handler	0	static,ignoring_inline_asm

@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/compassscreen_screen/CompassScreenPresenter.hpp:28:13:CompassScreenPresenter::~CompassScreenPresenter()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/compassscreen_screen/CompassScreenPresenter.cpp:10:6:virtual void CompassScreenPresenter::activate()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/compassscreen_screen/CompassScreenPresenter.hpp:28:13:virtual CompassScreenPresenter::~CompassScreenPresenter()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/compassscreen_screen/CompassScreenPresenter.hpp:28:13:virtual void* CompassScreenPresenter::_ZThn4_N22CompassScreenPresenterD1Ev()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/compassscreen_screen/CompassScreenPresenter.cpp:4:1:CompassScreenPresenter::CompassScreenPresenter(CompassScreenView&)	1

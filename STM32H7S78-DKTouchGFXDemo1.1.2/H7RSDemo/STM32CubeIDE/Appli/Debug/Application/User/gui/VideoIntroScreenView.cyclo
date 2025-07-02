@@ -1,8 +1,0 @@
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/videointroscreen_screen/VideoIntroScreenView.cpp:14:6:virtual void VideoIntroScreenView::tearDownScreen()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/videointroscreen_screen/VideoIntroScreenView.hpp:11:13:VideoIntroScreenView::~VideoIntroScreenView()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/videointroscreen_screen/VideoIntroScreenView.hpp:11:13:virtual VideoIntroScreenView::~VideoIntroScreenView()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/videointroscreen_screen/VideoIntroScreenView.cpp:3:1:VideoIntroScreenView::VideoIntroScreenView()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/videointroscreen_screen/VideoIntroScreenView.cpp:8:6:virtual void VideoIntroScreenView::setupScreen()	1

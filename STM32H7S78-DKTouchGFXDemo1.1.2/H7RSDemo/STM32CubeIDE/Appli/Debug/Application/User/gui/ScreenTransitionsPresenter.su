@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/screentransitions_screen/ScreenTransitionsPresenter.hpp:28:13:ScreenTransitionsPresenter::~ScreenTransitionsPresenter()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsPresenter.cpp:10:6:virtual void ScreenTransitionsPresenter::activate()	0	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/screentransitions_screen/ScreenTransitionsPresenter.hpp:28:13:virtual ScreenTransitionsPresenter::~ScreenTransitionsPresenter()	8	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/screentransitions_screen/ScreenTransitionsPresenter.hpp:28:13:virtual void* ScreenTransitionsPresenter::_ZThn4_N26ScreenTransitionsPresenterD1Ev()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/screentransitions_screen/ScreenTransitionsPresenter.cpp:4:1:ScreenTransitionsPresenter::ScreenTransitionsPresenter(ScreenTransitionsView&)	0	static

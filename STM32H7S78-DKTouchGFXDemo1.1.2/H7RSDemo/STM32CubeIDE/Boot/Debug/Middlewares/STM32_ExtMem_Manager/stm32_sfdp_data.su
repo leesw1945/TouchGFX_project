@@ -1,9 +1,0 @@
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1057:20:SFDP_GetHeader	24	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1092:20:SFDP_CollectData	40	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1159:20:SFDP_MemoryReset	32	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1302:20:SFDP_BuildGenericDriver	64	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1806:10:sfdp_getfrequencevalue	56	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1824:20:sfdp_read_header	24	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1866:20:sfdp_get_paraminfo	40	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:1991:20:sfpd_enter_octal_mode	32	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_data.c:2080:20:sfpd_set_dummycycle	48	static

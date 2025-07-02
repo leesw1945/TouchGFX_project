@@ -1,3 +1,0 @@
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Drivers/STM32H7RSxx_HAL_Driver/Src/stm32h7rsxx_hal_crc_ex.c:89:19:HAL_CRCEx_Polynomial_Set	8	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Drivers/STM32H7RSxx_HAL_Driver/Src/stm32h7rsxx_hal_crc_ex.c:168:19:HAL_CRCEx_Input_Data_Reverse	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Drivers/STM32H7RSxx_HAL_Driver/Src/stm32h7rsxx_hal_crc_ex.c:194:19:HAL_CRCEx_Output_Data_Reverse	0	static

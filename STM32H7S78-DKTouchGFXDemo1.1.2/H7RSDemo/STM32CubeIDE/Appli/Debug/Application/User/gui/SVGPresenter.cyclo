@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/svg_screen/SVGPresenter.hpp:28:13:SVGPresenter::~SVGPresenter()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/svg_screen/SVGPresenter.cpp:10:6:virtual void SVGPresenter::activate()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/svg_screen/SVGPresenter.hpp:28:13:virtual SVGPresenter::~SVGPresenter()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/svg_screen/SVGPresenter.hpp:28:13:virtual void* SVGPresenter::_ZThn4_N12SVGPresenterD1Ev()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/svg_screen/SVGPresenter.cpp:4:1:SVGPresenter::SVGPresenter(SVGView&)	1

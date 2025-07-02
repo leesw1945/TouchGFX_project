@@ -1,7 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/menulauncherscreen_screen/MenuLauncherScreenPresenter.hpp:28:13:MenuLauncherScreenPresenter::~MenuLauncherScreenPresenter()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/menulauncherscreen_screen/MenuLauncherScreenPresenter.cpp:10:6:virtual void MenuLauncherScreenPresenter::activate()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/menulauncherscreen_screen/MenuLauncherScreenPresenter.hpp:28:13:virtual MenuLauncherScreenPresenter::~MenuLauncherScreenPresenter()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/menulauncherscreen_screen/MenuLauncherScreenPresenter.hpp:28:13:virtual void* MenuLauncherScreenPresenter::_ZThn4_N27MenuLauncherScreenPresenterD1Ev()	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/menulauncherscreen_screen/MenuLauncherScreenPresenter.cpp:4:1:MenuLauncherScreenPresenter::MenuLauncherScreenPresenter(MenuLauncherScreenView&)	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/menulauncherscreen_screen/MenuLauncherScreenPresenter.cpp:20:6:void MenuLauncherScreenPresenter::setSelectedDemoNumber(int)	1
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/menulauncherscreen_screen/MenuLauncherScreenPresenter.cpp:25:5:int MenuLauncherScreenPresenter::getSelectedDemoNumber()	1

@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/videointroscreen_screen/VideoIntroScreenPresenter.hpp:28:13:VideoIntroScreenPresenter::~VideoIntroScreenPresenter()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/videointroscreen_screen/VideoIntroScreenPresenter.cpp:10:6:virtual void VideoIntroScreenPresenter::activate()	0	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/videointroscreen_screen/VideoIntroScreenPresenter.hpp:28:13:virtual VideoIntroScreenPresenter::~VideoIntroScreenPresenter()	8	static
-../../Appli/../../Appli/TouchGFX/gui/include/gui/videointroscreen_screen/VideoIntroScreenPresenter.hpp:28:13:virtual void* VideoIntroScreenPresenter::_ZThn4_N25VideoIntroScreenPresenterD1Ev()	0	static
-C:/TouchGFXProjects/STM32H7S78-DKTouchGFXDemo1.1.2/H7RSDemo/Appli/TouchGFX/gui/src/videointroscreen_screen/VideoIntroScreenPresenter.cpp:4:1:VideoIntroScreenPresenter::VideoIntroScreenPresenter(VideoIntroScreenView&)	0	static
