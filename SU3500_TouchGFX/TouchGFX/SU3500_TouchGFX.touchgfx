@@ -6,45 +6,53 @@
         "Components": [
           {
             "Type": "Box",
-            "Name": "box1",
+            "Name": "backGround",
             "Width": 800,
             "Height": 480,
             "Color": {
-              "Green": 8,
-              "Blue": 255
+              "Red": 208,
+              "Green": 235,
+              "Blue": 120
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 340,
-            "Y": 230,
-            "Width": 121,
-            "Height": 20,
-            "TextId": "__SingleUse_5KWA",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "Box",
-            "Name": "box2",
-            "Y": 321,
-            "Width": 800,
-            "Height": 50,
-            "Color": {
-              "Red": 255
-            }
+            "Type": "ScalableImage",
+            "Name": "gearImage",
+            "X": 577,
+            "Y": 257,
+            "Width": 200,
+            "Height": 200,
+            "Filename": "cogwheel.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
           }
         ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerOnEveryTick",
+              "TickCount": 1
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Easing": "Linear",
+              "EasingOption": "Out",
+              "Duration": 1000,
+              "ActionComponent": "gearImage"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "FlipDigit",
+        "Width": 80,
+        "Height": 120,
+        "Components": [],
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
     "Name": "MyApplication",
     "Resolution": {
       "Width": 800,
