@@ -55,7 +55,7 @@
 "./TouchGFX/generated/gui_generated/src/screen_screen/screenViewBase.o"
 "./TouchGFX/generated/images/src/BitmapDatabase.o"
 "./TouchGFX/generated/images/src/SVGDatabase.o"
-"./TouchGFX/generated/images/src/image_cogwheel.o"
+"./TouchGFX/generated/images/src/image_SENSOR_MODEL.o"
 "./TouchGFX/generated/texts/src/LanguageGb.o"
 "./TouchGFX/generated/texts/src/Texts.o"
 "./TouchGFX/generated/texts/src/TypedTextDatabase.o"

@@ -10,20 +10,19 @@
             "Width": 800,
             "Height": 480,
             "Color": {
-              "Red": 208,
-              "Green": 235,
-              "Blue": 120
+              "Red": 237,
+              "Green": 237,
+              "Blue": 237
             }
           },
           {
-            "Type": "ScalableImage",
-            "Name": "gearImage",
-            "X": 577,
-            "Y": 257,
-            "Width": 200,
-            "Height": 200,
-            "Filename": "cogwheel.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
+            "Type": "Image",
+            "Name": "image1",
+            "X": 618,
+            "Y": 26,
+            "Width": 134,
+            "Height": 286,
+            "RelativeFilename": "SENSOR_MODEL.png"
           }
         ],
         "Interactions": [
@@ -36,9 +35,9 @@
             "Action": {
               "Type": "ActionMove",
               "Easing": "Linear",
-              "EasingOption": "Out",
+              "EasingOption": "In",
               "Duration": 1000,
-              "ActionComponent": "gearImage"
+              "ActionComponent": "image1"
             }
           }
         ]
