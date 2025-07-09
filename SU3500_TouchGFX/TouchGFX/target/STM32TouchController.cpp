@@ -23,6 +23,7 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include <STM32TouchController.hpp>
+#include "main.h"
 
 void STM32TouchController::init()
 {
