@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "i2c.h"
 #include "ltdc.h"
 #include "gpio.h"
 #include "fmc.h"
@@ -110,6 +111,7 @@ int main(void)
   MX_CRC_Init();
   MX_FMC_Init();
   MX_LTDC_Init();
+  MX_I2C2_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   SDRAM_Initialization_Sequence(&hsdram1);
