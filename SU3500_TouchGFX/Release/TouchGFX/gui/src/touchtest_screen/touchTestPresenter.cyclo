@@ -1,0 +1,5 @@
+../TouchGFX/gui/include/gui/touchtest_screen/touchTestPresenter.hpp:28:13:touchTestPresenter::~touchTestPresenter()	1
+../TouchGFX/gui/src/touchtest_screen/touchTestPresenter.cpp:10:6:virtual void touchTestPresenter::activate()	1
+../TouchGFX/gui/include/gui/touchtest_screen/touchTestPresenter.hpp:28:13:virtual touchTestPresenter::~touchTestPresenter()	1
+../TouchGFX/gui/include/gui/touchtest_screen/touchTestPresenter.hpp:28:13:virtual void* touchTestPresenter::_ZThn4_N18touchTestPresenterD1Ev()	1
+../TouchGFX/gui/src/touchtest_screen/touchTestPresenter.cpp:4:1:touchTestPresenter::touchTestPresenter(touchTestView&)	1

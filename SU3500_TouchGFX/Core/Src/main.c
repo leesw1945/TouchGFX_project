@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../../Drivers/CustomDriver/ak4183.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,12 +66,18 @@
 
 
 static FMC_SDRAM_CommandTypeDef Command;
+
+extern AK4183_Handle_t ak4183_handle;  // STM32TouchController.cpp에서 정의됨
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 static void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram);
+
+// 터치 테스트 함수 (디버그용)
+static void Test_TouchController(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -140,6 +146,10 @@ int main(void)
 //    test_success = 0;
 //  }
 
+  // 터치 컨트롤러 테스트 (옵션)
+  #ifdef TOUCH_DEBUG
+  Test_TouchController();
+  #endif
 
   /* USER CODE END 2 */
 
@@ -248,6 +258,41 @@ void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
 
   /* Step 5: Set a clock configuration enable command */
   HAL_SDRAM_ProgramRefreshRate(hsdram, REFRESH_COUNT);
+}
+
+/**
+  * @brief 터치 컨트롤러 테스트 함수
+  * @note 디버그 목적으로 터치 동작을 확인
+  */
+static void Test_TouchController(void)
+{
+    AK4183_Handle_t test_handle;
+    AK4183_TouchData_t touch_data;
+
+    // 터치 컨트롤러 초기화
+    if (AK4183_Init(&test_handle, &hi2c2) == AK4183_OK) {
+        // LED 켜기 (초기화 성공)
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
+
+        // 5초간 터치 테스트
+        uint32_t start_time = HAL_GetTick();
+        while ((HAL_GetTick() - start_time) < 5000) {
+            // 터치 데이터 읽기
+            if (AK4183_ReadTouch(&test_handle, &touch_data) == AK4183_OK) {
+                if (touch_data.state == AK4183_TOUCH_PRESSED) {
+                    // 터치됨 - LED 토글
+                    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
+
+                    // 디버그 출력 (UART나 SWO 사용 시)
+                    #ifdef USE_DEBUG_UART
+                    printf("Touch: X=%d, Y=%d, Pressure=%d\n",
+                           touch_data.x, touch_data.y, touch_data.pressure);
+                    #endif
+                }
+            }
+            HAL_Delay(50);  // 50ms 주기로 확인
+        }
+    }
 }
 /* USER CODE END 4 */
 

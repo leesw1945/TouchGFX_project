@@ -1,4 +1,8 @@
-../TouchGFX/target/STM32TouchController.cpp:27:6:virtual void STM32TouchController::init()	1
-../TouchGFX/target/STM32TouchController.cpp:35:6:virtual bool STM32TouchController::sampleTouch(int32_t&, int32_t&)	1
+../TouchGFX/target/STM32TouchController.cpp:147:13:void TouchReleasedCallback()	1
 ../TouchGFX/target/STM32TouchController.hpp:38:7:STM32TouchController::~STM32TouchController()	1
 ../TouchGFX/target/STM32TouchController.hpp:38:7:virtual STM32TouchController::~STM32TouchController()	1
+../TouchGFX/target/STM32TouchController.cpp:90:6:virtual bool STM32TouchController::sampleTouch(int32_t&, int32_t&)	2
+../TouchGFX/target/STM32TouchController.cpp:62:6:virtual void STM32TouchController::init()	2
+../TouchGFX/target/STM32TouchController.cpp:126:13:void TouchDetectedCallback(AK4183_TouchData_t*)	4
+../TouchGFX/target/STM32TouchController.cpp:196:6:void HAL_GPIO_EXTI_Callback(uint16_t)	2
+../TouchGFX/target/STM32TouchController.cpp:208:6:void HAL_I2C_ErrorCallback(I2C_HandleTypeDef*)	2

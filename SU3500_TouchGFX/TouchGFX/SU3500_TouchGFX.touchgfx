@@ -2,45 +2,75 @@
   "Application": {
     "Screens": [
       {
-        "Name": "screen",
+        "Name": "BootLogoView",
         "Components": [
           {
             "Type": "Box",
-            "Name": "backGround",
+            "Name": "box1",
             "Width": 800,
             "Height": 480,
             "Color": {
-              "Red": 237,
-              "Green": 237,
-              "Blue": 237
+              "Red": 187,
+              "Green": 202,
+              "Blue": 250
             }
           },
           {
             "Type": "Image",
             "Name": "image1",
-            "X": 618,
-            "Y": 26,
-            "Width": 134,
-            "Height": 286,
-            "RelativeFilename": "SENSOR_MODEL.png"
+            "X": 242,
+            "Y": 196,
+            "Width": 317,
+            "Height": 89,
+            "RelativeFilename": "SYFM.png",
+            "Alpha": 0
           }
         ],
         "Interactions": [
           {
             "InteractionName": "Interaction1",
             "Trigger": {
-              "Type": "TriggerOnEveryTick",
-              "TickCount": 1
+              "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionMove",
-              "Easing": "Linear",
+              "Type": "ActionFade",
+              "Easing": "Quad",
               "EasingOption": "In",
               "Duration": 1000,
               "ActionComponent": "image1"
             }
           }
         ]
+      },
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 800,
+            "Height": 480,
+            "Color": {
+              "Red": 187,
+              "Green": 202,
+              "Blue": 250
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 426,
+            "Y": 178,
+            "Width": 219,
+            "Height": 175,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [
@@ -58,7 +88,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "screen",
+    "StartupScreenName": "BootLogoView",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
