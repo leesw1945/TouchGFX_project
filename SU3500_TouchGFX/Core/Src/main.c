@@ -67,7 +67,8 @@
 
 static FMC_SDRAM_CommandTypeDef Command;
 
-extern AK4183_Handle_t ak4183_handle;  // STM32TouchController.cpp에서 정의됨
+//extern AK4183_Handle_t ak4183_handle;  // STM32TouchController.cpp에서 정의됨
+AK4183_Handle_t *g_ak4183_handle = NULL;
 
 /* USER CODE END PV */
 
@@ -82,7 +83,103 @@ static void Test_TouchController(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/**
+ * @brief 터치 감지 콜백 함수
+ * @param data 터치 데이터
+ */
+void Touch_Detected_Callback(AK4183_TouchData_t *data)
+{
+    // 터치 감지 시 처리
+    // 예: LED 토글
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
 
+    // 터치 좌표 정보 출력 (디버그용)
+    #ifdef AK4183_DEBUG
+    AK4183_PrintTouchData(data);
+    #endif
+}
+
+/**
+ * @brief 터치 해제 콜백 함수
+ */
+void Touch_Released_Callback(void)
+{
+    // 터치 해제 시 처리
+    // 예: LED 끄기
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+}
+
+/**
+ * @brief EXTI 인터럽트 콜백 함수 (HAL에서 호출)
+ * @param GPIO_Pin 인터럽트가 발생한 GPIO 핀
+ * @note 이 함수는 HAL_GPIO_EXTI_IRQHandler에서 자동으로 호출됨
+ */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == GPIO_PIN_3) {  // PE3 핀 (PENIRQN)
+        if (g_ak4183_handle != NULL) {
+            // AK4183 인터럽트 핸들러 호출
+            AK4183_IRQHandler(g_ak4183_handle);
+        }
+    }
+}
+
+/**
+ * @brief 터치 컨트롤러 초기화
+ * @return 0: 성공, 1: 실패
+ */
+static int Init_TouchController(void)
+{
+    // 전역 핸들 얻기
+    g_ak4183_handle = AK4183_GetHandle();
+
+    // AK4183 초기화
+    if (AK4183_Init(g_ak4183_handle, &hi2c2) != AK4183_OK) {
+        return 1;  // 초기화 실패
+    }
+
+    // 콜백 함수 등록
+    AK4183_RegisterTouchDetectedCallback(g_ak4183_handle, Touch_Detected_Callback);
+    AK4183_RegisterTouchReleasedCallback(g_ak4183_handle, Touch_Released_Callback);
+
+    return 0;  // 성공
+}
+
+/**
+ * @brief 터치 컨트롤러 테스트 함수 (폴링 방식)
+ * @note 디버그 목적으로 터치 동작을 확인
+ */
+static void Test_TouchController_Polling(void)
+{
+    AK4183_TouchData_t touch_data;
+
+    // 터치 컨트롤러 초기화
+    if (Init_TouchController() == 0) {
+        // LED 켜기 (초기화 성공)
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
+
+        // 5초간 터치 테스트
+        uint32_t start_time = HAL_GetTick();
+        while ((HAL_GetTick() - start_time) < 5000) {
+            // 터치 데이터 읽기
+            if (AK4183_ReadTouch(g_ak4183_handle, &touch_data) == AK4183_OK) {
+                if (touch_data.state == AK4183_TOUCH_PRESSED) {
+                    // 터치됨 - LED 토글
+                    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
+
+                    // 디버그 출력
+                    #ifdef AK4183_DEBUG
+                    AK4183_PrintTouchData(&touch_data);
+                    #endif
+                }
+            }
+            HAL_Delay(50);  // 50ms 주기로 확인
+        }
+
+        // LED 끄기
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+    }
+}
 /* USER CODE END 0 */
 
 /**
@@ -122,33 +219,19 @@ int main(void)
   /* USER CODE BEGIN 2 */
   SDRAM_Initialization_Sequence(&hsdram1);
 
-  /* --- SDRAM 쓰기/읽기 테스트 변수 선언 --- */
-//  uint32_t *sdram_address = (uint32_t*)0xD0000000; // Bank 2의 시작 주소로 수정
-//  uint32_t write_data = 0xAAAAAAAA; // 테스트를 위해 쓸 값
-//  uint32_t read_data = 0;
-//  volatile uint32_t test_success = 0; // volatile 키워드 추가: 컴파일러 최적화 방지
-//
-//  /* --- 1. 쓰기 테스트 --- */
-//  *sdram_address = write_data;
-//
-//  /* --- 2. 읽기 테스트 --- */
-//  read_data = *sdram_address;
-//
-//  /* --- 3. 검증 --- */
-//  if (read_data == write_data)
-//  {
-//    // 성공!
-//    test_success = 1;
-//  }
-//  else
-//  {
-//    // 실패!
-//    test_success = 0;
-//  }
+  // 터치 컨트롤러 초기화
+  if (Init_TouchController() != 0) {
+      // 초기화 실패 시 LED로 에러 표시
+      while(1) {
+          HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
+          HAL_Delay(200);
+      }
+  }
 
-  // 터치 컨트롤러 테스트 (옵션)
-  #ifdef TOUCH_DEBUG
-  Test_TouchController();
+  // 터치 컨트롤러 테스트 (디버그용 - 필요시 주석 해제)
+  // #define TOUCH_DEBUG_TEST
+  #ifdef TOUCH_DEBUG_TEST
+  Test_TouchController_Polling();
   #endif
 
   /* USER CODE END 2 */

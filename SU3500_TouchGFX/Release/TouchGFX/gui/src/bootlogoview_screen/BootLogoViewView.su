@@ -1,0 +1,8 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
+../TouchGFX/gui/src/bootlogoview_screen/BootLogoViewView.cpp:13:6:virtual void BootLogoViewView::tearDownScreen()	0	static
+../TouchGFX/gui/include/gui/bootlogoview_screen/BootLogoViewView.hpp:11:13:BootLogoViewView::~BootLogoViewView()	8	static
+../TouchGFX/gui/include/gui/bootlogoview_screen/BootLogoViewView.hpp:11:13:virtual BootLogoViewView::~BootLogoViewView()	8	static
+../TouchGFX/gui/src/bootlogoview_screen/BootLogoViewView.cpp:3:1:BootLogoViewView::BootLogoViewView()	8	static
+../TouchGFX/gui/src/bootlogoview_screen/BootLogoViewView.cpp:8:6:virtual void BootLogoViewView::setupScreen()	0	static

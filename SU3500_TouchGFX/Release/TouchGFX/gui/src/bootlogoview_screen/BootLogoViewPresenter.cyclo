@@ -1,0 +1,5 @@
+../TouchGFX/gui/include/gui/bootlogoview_screen/BootLogoViewPresenter.hpp:28:13:BootLogoViewPresenter::~BootLogoViewPresenter()	1
+../TouchGFX/gui/src/bootlogoview_screen/BootLogoViewPresenter.cpp:10:6:virtual void BootLogoViewPresenter::activate()	1
+../TouchGFX/gui/include/gui/bootlogoview_screen/BootLogoViewPresenter.hpp:28:13:virtual BootLogoViewPresenter::~BootLogoViewPresenter()	1
+../TouchGFX/gui/include/gui/bootlogoview_screen/BootLogoViewPresenter.hpp:28:13:virtual void* BootLogoViewPresenter::_ZThn4_N21BootLogoViewPresenterD1Ev()	1
+../TouchGFX/gui/src/bootlogoview_screen/BootLogoViewPresenter.cpp:4:1:BootLogoViewPresenter::BootLogoViewPresenter(BootLogoViewView&)	1

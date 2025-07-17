@@ -1,6 +1,6 @@
 /**
  * @file AK4183.h
- * @brief AK4183 저항식 터치 컨트롤러 드라이버 헤더
+ * @brief AK4183 저항식 터치 컨트롤러 드라이버 헤더 (수정된 버전)
  * @author
  * @date 2025-07-14
  *
@@ -24,10 +24,10 @@ extern "C" {
 
 /* Defines -------------------------------------------------------------------*/
 // AK4183 I2C 주소 (CAD0 핀 상태에 따라 결정)
-#define AK4183_I2C_ADDR_CAD0_LOW    0x48  // CAD0 = 0
-#define AK4183_I2C_ADDR_CAD0_HIGH   0x49  // CAD0 = 1
+#define AK4183_I2C_ADDR_CAD0_LOW    0x48  // CAD0 = 0 (GND)
+#define AK4183_I2C_ADDR_CAD0_HIGH   0x49  // CAD0 = 1 (VCC)
 
-// 기본 I2C 주소 (회로도에서 CAD0 상태 확인 필요)
+// 기본 I2C 주소 (회로도 확인 필요)
 #define AK4183_I2C_ADDR             AK4183_I2C_ADDR_CAD0_LOW
 
 // AK4183 컨트롤 명령어 비트 정의
@@ -39,9 +39,9 @@ extern "C" {
 
 // 채널 선택 비트 (A2-A0)
 #define AK4183_CMD_MEASURE_X        0x10  // 100: X축 측정
-#define AK4183_CMD_MEASURE_Y        0x20  // 101: Y축 측정
-#define AK4183_CMD_MEASURE_Z1       0x30  // 110: Z1 압력 측정
-#define AK4183_CMD_MEASURE_Z2       0x38  // 111: Z2 압력 측정
+#define AK4183_CMD_MEASURE_Y        0x50  // 101: Y축 측정
+#define AK4183_CMD_MEASURE_Z1       0x30  // 011: Z1 압력 측정
+#define AK4183_CMD_MEASURE_Z2       0x40  // 100: Z2 압력 측정
 
 // 가속 모드 (빠른 드라이버 스위칭)
 #define AK4183_CMD_ACCEL_X_DRIVER   0x00  // 000: X 드라이버 가속
@@ -52,7 +52,7 @@ extern "C" {
 #define AK4183_CMD_READ_Y_12BIT     (AK4183_CMD_START_BIT | AK4183_CMD_MEASURE_Y | AK4183_CMD_12BIT_MODE | AK4183_CMD_PD0_ENABLE)
 #define AK4183_CMD_READ_Z1_12BIT    (AK4183_CMD_START_BIT | AK4183_CMD_MEASURE_Z1 | AK4183_CMD_12BIT_MODE | AK4183_CMD_PD0_ENABLE)
 #define AK4183_CMD_READ_Z2_12BIT    (AK4183_CMD_START_BIT | AK4183_CMD_MEASURE_Z2 | AK4183_CMD_12BIT_MODE | AK4183_CMD_PD0_ENABLE)
-#define AK4183_CMD_SLEEP            0x70  // Sleep mode command
+#define AK4183_CMD_SLEEP            0x00  // Sleep mode command
 
 // 타이밍 정의 (us)
 #define AK4183_CONVERSION_TIME_US   120   // 변환 시간 (데이터시트 참조)
@@ -63,8 +63,11 @@ extern "C" {
 #define AK4183_TOUCH_THRESHOLD_MAX  3900  // 최대 유효 값 (12bit: 4095)
 
 // 필터링 파라미터
-#define AK4183_SAMPLE_COUNT         4     // 평균을 위한 샘플 수
+#define AK4183_SAMPLE_COUNT         3     // 평균을 위한 샘플 수
 #define AK4183_MAX_DELTA            100   // 노이즈 제거를 위한 최대 변화량
+
+// 디버그 활성화 (필요시 주석 해제)
+// #define AK4183_DEBUG
 
 /* Type Definitions ----------------------------------------------------------*/
 // AK4183 상태 열거형
@@ -148,6 +151,9 @@ void AK4183_RegisterTouchDetectedCallback(AK4183_Handle_t *handle,
                                          void (*callback)(AK4183_TouchData_t *));
 void AK4183_RegisterTouchReleasedCallback(AK4183_Handle_t *handle,
                                          void (*callback)(void));
+
+// 전역 핸들 접근
+AK4183_Handle_t* AK4183_GetHandle(void);
 
 // 디버그 함수
 #ifdef AK4183_DEBUG
