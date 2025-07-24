@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:MainPresenter::~MainPresenter()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/main_screen/MainPresenter.cpp:10:6:virtual void MainPresenter::activate()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:virtual MainPresenter::~MainPresenter()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:virtual void* MainPresenter::_ZThn4_N13MainPresenterD1Ev()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/main_screen/MainPresenter.cpp:4:1:MainPresenter::MainPresenter(MainView&)	1

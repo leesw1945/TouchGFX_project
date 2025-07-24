@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp:28:13:BootingIntroPresenter::~BootingIntroPresenter()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/bootingintro_screen/BootingIntroPresenter.cpp:10:6:virtual void BootingIntroPresenter::activate()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp:28:13:virtual BootingIntroPresenter::~BootingIntroPresenter()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp:28:13:virtual void* BootingIntroPresenter::_ZThn4_N21BootingIntroPresenterD1Ev()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/bootingintro_screen/BootingIntroPresenter.cpp:4:1:BootingIntroPresenter::BootingIntroPresenter(BootingIntroView&)	1

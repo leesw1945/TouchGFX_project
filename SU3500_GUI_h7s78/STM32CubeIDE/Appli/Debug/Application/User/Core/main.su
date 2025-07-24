@@ -1,0 +1,4 @@
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/Core/Src/main.c:685:6:StartDefaultTask	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/Core/Src/main.c:111:5:main	88	static,ignoring_inline_asm
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/Core/Src/main.c:820:6:HAL_TIM_PeriodElapsedCallback	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/Core/Src/main.c:837:6:Error_Handler	0	static,ignoring_inline_asm

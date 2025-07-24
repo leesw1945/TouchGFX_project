@@ -1,0 +1,8 @@
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/bootingintro_screen/BootingIntroView.cpp:13:6:virtual void BootingIntroView::tearDownScreen()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroView.hpp:11:13:BootingIntroView::~BootingIntroView()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroView.hpp:11:13:virtual BootingIntroView::~BootingIntroView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/bootingintro_screen/BootingIntroView.cpp:3:1:BootingIntroView::BootingIntroView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/bootingintro_screen/BootingIntroView.cpp:8:6:virtual void BootingIntroView::setupScreen()	0	static
