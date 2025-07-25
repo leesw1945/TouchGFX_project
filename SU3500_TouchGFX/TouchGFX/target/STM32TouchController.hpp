@@ -26,7 +26,6 @@
 #define STM32TOUCHCONTROLLER_HPP
 
 #include <platform/driver/touch/TouchController.hpp>
-#include <touchgfx/hal/Types.hpp>
 
 /**
  * @class STM32TouchController
@@ -40,7 +39,7 @@ class STM32TouchController : public touchgfx::TouchController
 {
 public:
 
-    STM32TouchController();
+    STM32TouchController() {}
 
     /**
      * @fn virtual void STM32TouchController::init() = 0;
@@ -64,27 +63,6 @@ public:
      * @return True if a touch has been detected, otherwise false.
      */
     virtual bool sampleTouch(int32_t& x, int32_t& y);
-
-    /**
-     * @brief 터치 캘리브레이션 값 설정
-     * @param x_min X축 최소값
-     * @param x_max X축 최대값
-     * @param y_min Y축 최소값
-     * @param y_max Y축 최대값
-     */
-    void setCalibration(uint16_t x_min, uint16_t x_max,
-                       uint16_t y_min, uint16_t y_max);
-
-    /**
-     * @brief 터치 패널 테스트 함수
-     * @note 터치 좌표 확인 및 캘리브레이션용
-     */
-    void testTouchPanel(void);
-
-private:
-    int32_t last_x;
-    int32_t last_y;
-    bool touch_detected;
 };
 
 #endif // STM32TOUCHCONTROLLER_HPP

@@ -2,72 +2,34 @@
   "Application": {
     "Screens": [
       {
-        "Name": "BootLogoView",
-        "Components": [
-          {
-            "Type": "Box",
-            "Name": "box1",
-            "Width": 800,
-            "Height": 480,
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "Image",
-            "Name": "image1",
-            "X": 242,
-            "Y": 196,
-            "Width": 317,
-            "Height": 89,
-            "RelativeFilename": "SYFM.png",
-            "Alpha": 0
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerScreenTransitionBegins"
-            },
-            "Action": {
-              "Type": "ActionFade",
-              "Easing": "Quad",
-              "EasingOption": "In",
-              "Duration": 1000,
-              "ActionComponent": "image1"
-            }
-          }
-        ]
-      },
-      {
         "Name": "Screen1",
         "Components": [
           {
-            "Type": "Box",
-            "Name": "box1",
+            "Type": "Image",
+            "Name": "image1",
             "Width": 800,
             "Height": 480,
-            "Color": {
-              "Red": 187,
-              "Green": 202,
-              "Blue": 250
-            }
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
           },
           {
-            "Type": "Box",
-            "Name": "box2",
-            "X": 426,
-            "Y": 178,
-            "Width": 219,
-            "Height": 175,
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
+            "Type": "ScalableImage",
+            "Name": "scalableImage1",
+            "X": 108,
+            "Y": 7,
+            "Width": 129,
+            "Height": 138,
+            "Filename": "__generated\\clay_theme_images_dividers_vertical_large_thin_neutral.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage2",
+            "X": 30,
+            "Y": 33,
+            "Width": 709,
+            "Height": 414,
+            "Filename": "__generated\\clay_theme_images_previews_preview0.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
           }
         ],
         "Interactions": []
@@ -88,7 +50,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "BootLogoView",
+    "StartupScreenName": "Screen1",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

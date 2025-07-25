@@ -27,12 +27,12 @@
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\calibration_screen\CalibrationViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\bootingintro_screen\BootingIntroPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\bootingintro_screen\BootingIntroView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\bootingintro_screen\BootingIntroViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\control_screen\ControlPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\control_screen\ControlView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\control_screen\ControlViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,12 +189,12 @@
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\calibration_screen\CalibrationViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\bootingintro_screen\BootingIntroPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\bootingintro_screen\BootingIntroView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\bootingintro_screen\BootingIntroViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\control_screen\ControlPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\control_screen\ControlView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\control_screen\ControlViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

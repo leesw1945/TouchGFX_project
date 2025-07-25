@@ -9,7 +9,7 @@
             "Name": "video1",
             "Width": 800,
             "Height": 480,
-            "VideoFileName": "output.avi",
+            "VideoFileName": "output3.avi",
             "AutoPlay": true
           }
         ],
@@ -23,97 +23,49 @@
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Main"
+              "ActionComponent": "Control"
             }
           }
         ]
       },
       {
-        "Name": "Main",
+        "Name": "Control",
         "Components": [
           {
-            "Type": "Image",
-            "Name": "MainBG",
+            "Type": "Box",
+            "Name": "box1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "rMAIN_H.png"
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "SetBtn",
-            "Width": 38,
-            "Height": 28,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Height": 50,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ]
-          },
-          {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 58,
-            "Y": 383,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          },
-          {
-            "Type": "QRCode",
-            "Name": "qrCode1",
-            "X": 596,
-            "Y": 340,
-            "Width": 105,
-            "Height": 105,
-            "QRVersion": 1,
-            "Scale": 5,
-            "Text": "syfm.co.kr/",
-            "BackgroundColor": {
+            "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
             }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 196,
+            "Y": 111,
+            "Width": 39,
+            "Height": 259,
+            "Color": {
+              "Red": 175,
+              "Green": 175,
+              "Blue": 175
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 158,
+            "Y": 111,
+            "Width": 115,
+            "Height": 225,
+            "RelativeFilename": "SENSOR_MODEL_parts.png"
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "SetBtn"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "Calibration"
-            }
-          }
-        ]
+        "Interactions": []
       },
       {
         "Name": "Calibration",
@@ -235,34 +187,7 @@
             ]
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_Cal"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "West",
-              "ActionComponent": "Main"
-            }
-          },
-          {
-            "InteractionName": "Interaction2",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "APRBtn_Cal"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "APR_Error"
-            }
-          }
-        ]
+        "Interactions": []
       },
       {
         "Name": "APR_Error",
@@ -384,34 +309,7 @@
             ]
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_APR"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "West",
-              "ActionComponent": "Main"
-            }
-          },
-          {
-            "InteractionName": "Interaction2",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "CalBtn_APR"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "Calibration"
-            }
-          }
-        ]
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
