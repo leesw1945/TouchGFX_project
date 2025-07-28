@@ -43,29 +43,61 @@
             }
           },
           {
-            "Type": "Box",
-            "Name": "box2",
-            "X": 196,
-            "Y": 111,
-            "Width": 39,
-            "Height": 259,
-            "Color": {
-              "Red": 175,
-              "Green": 175,
-              "Blue": 175
-            }
-          },
-          {
-            "Type": "Image",
-            "Name": "image1",
-            "X": 158,
-            "Y": 111,
-            "Width": 115,
-            "Height": 225,
-            "RelativeFilename": "SENSOR_MODEL_parts.png"
+            "Type": "Container",
+            "Name": "container1",
+            "X": 42,
+            "Y": 110,
+            "Width": 520,
+            "Height": 329,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "box2",
+                "X": 88,
+                "Y": 44,
+                "Width": 39,
+                "Height": 259,
+                "Color": {
+                  "Red": 175,
+                  "Green": 175,
+                  "Blue": 175
+                }
+              },
+              {
+                "Type": "Button",
+                "Name": "button1",
+                "X": 204,
+                "Y": 193,
+                "Width": 240,
+                "Height": 50,
+                "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+                "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+                "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+              },
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "X": 50,
+                "Y": 61,
+                "Width": 115,
+                "Height": 225,
+                "RelativeFilename": "SENSOR_MODEL_parts.png"
+              }
+            ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "changeColor"
+            }
+          }
+        ]
       },
       {
         "Name": "Calibration",
