@@ -11,7 +11,6 @@ public:
     virtual ~ControlView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-    virtual void changeColor();
 protected:
 };
 

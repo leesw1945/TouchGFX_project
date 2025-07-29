@@ -33,6 +33,14 @@
     <ClCompile Include="..\..\gui\src\control_screen\ControlPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\control_screen\ControlView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\control_screen\ControlViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\controlLabelARM.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelARMBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\controlLabelHeight.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelHeightBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\controlLabelReceptor.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelReceptorBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\controlLabelSID.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelSIDBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -195,6 +203,14 @@
     <ClInclude Include="..\..\gui\include\gui\control_screen\ControlPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\control_screen\ControlView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\control_screen\ControlViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelARM.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelARMBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelHeight.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelHeightBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelReceptor.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelReceptorBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelSID.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelSIDBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

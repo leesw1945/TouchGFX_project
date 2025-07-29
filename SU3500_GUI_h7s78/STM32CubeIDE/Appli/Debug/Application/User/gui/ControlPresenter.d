@@ -47,7 +47,23 @@ Application/User/gui/ControlPresenter.o: \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlPresenter.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelSID.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelSIDBase.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelHeight.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelHeightBase.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelReceptor.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelReceptorBase.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelARM.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelARMBase.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlView.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/control_screen/ControlViewBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -96,3 +112,19 @@ Application/User/gui/ControlPresenter.o: \
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelSID.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelSIDBase.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelHeight.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelHeightBase.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelReceptor.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelReceptorBase.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/controlLabelARM.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/controlLabelARMBase.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:

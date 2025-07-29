@@ -351,6 +351,26 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/controlLabelARM.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/controlLabelARM.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/controlLabelHeight.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/controlLabelHeight.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/controlLabelReceptor.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/controlLabelReceptor.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/controlLabelSID.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/controlLabelSID.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/ControlPresenter.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/control_screen/ControlPresenter.cpp</locationURI>
@@ -471,6 +491,26 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/controlLabelARMBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/controlLabelARMBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/controlLabelHeightBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/controlLabelHeightBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/controlLabelReceptorBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/controlLabelReceptorBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/controlLabelSIDBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/controlLabelSIDBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/ControlViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/control_screen/ControlViewBase.cpp</locationURI>
@@ -486,14 +526,49 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/SVGDatabase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.cpp</name>
+			<name>Application/User/generated/image_alternate_theme_images_effects_240x240_shade_right_light.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.cpp</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_effects_240x240_shade_right_light.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.cpp</name>
+			<name>Application/User/generated/image_alternate_theme_images_widgets_slider_horizontal_thick_filler_small.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.cpp</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_slider_horizontal_thick_filler_small.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_alternate_theme_images_widgets_slider_horizontal_thick_track_small.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_slider_horizontal_thick_track_small.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_backgrounds_800x480_puzzle.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_backgrounds_800x480_puzzle.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_action.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_action.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_normal.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_normal.cpp</name>
@@ -504,6 +579,16 @@
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_pressed.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_APR_BG.cpp</name>
