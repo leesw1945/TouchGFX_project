@@ -6,7 +6,7 @@
         "Components": [
           {
             "Type": "Video",
-            "Name": "video1",
+            "Name": "SYFMIntro",
             "Width": 800,
             "Height": 480,
             "VideoFileName": "output3.avi",
@@ -18,7 +18,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerVideoEnded",
-              "TriggerComponent": "video1"
+              "TriggerComponent": "SYFMIntro"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -33,22 +33,22 @@
         "Components": [
           {
             "Type": "Image",
-            "Name": "image2",
+            "Name": "Con_BG",
             "Width": 800,
             "Height": 480,
             "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
           },
           {
             "Type": "Container",
-            "Name": "container1",
-            "X": 28,
-            "Y": 102,
+            "Name": "DeviceContain",
+            "X": 35,
+            "Y": 106,
             "Width": 202,
             "Height": 329,
             "Components": [
               {
                 "Type": "Box",
-                "Name": "box2",
+                "Name": "Device2",
                 "X": 88,
                 "Y": 44,
                 "Width": 39,
@@ -61,7 +61,7 @@
               },
               {
                 "Type": "ScalableImage",
-                "Name": "scalableImage3",
+                "Name": "DeviceGradient",
                 "X": 88,
                 "Y": 44,
                 "Width": 39,
@@ -72,7 +72,7 @@
               },
               {
                 "Type": "Image",
-                "Name": "image1",
+                "Name": "Devie",
                 "X": 50,
                 "Y": 61,
                 "Width": 115,
@@ -83,7 +83,7 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "controlLabel1",
+            "Name": "SidCContain",
             "X": 267,
             "Y": 22,
             "Width": 267,
@@ -92,7 +92,7 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "controlLabelHeight1",
+            "Name": "HeightCContain",
             "X": 267,
             "Y": 127,
             "Width": 267,
@@ -101,7 +101,7 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "controlLabelReceptor1",
+            "Name": "ReceptorCContain",
             "X": 267,
             "Y": 230,
             "Width": 267,
@@ -110,7 +110,7 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "controlLabelARM1",
+            "Name": "ArmCContain",
             "X": 267,
             "Y": 332,
             "Width": 267,
@@ -118,39 +118,26 @@
             "CustomContainerDefinitionName": "controlLabelARM"
           },
           {
-            "Type": "Container",
-            "Name": "container3",
-            "X": 539,
-            "Y": 43,
-            "Width": 247,
-            "Height": 59,
-            "Components": [
-              {
-                "Type": "ScalableImage",
-                "Name": "scalableImage2",
-                "X": -19,
-                "Y": 11,
-                "Width": 275,
-                "Height": 36,
-                "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_action.png",
-                "ScalingAlgorithm": "Nearest-neighbor"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "textArea4",
-                "X": 32,
-                "Y": 17,
-                "Width": 172,
-                "Height": 24,
-                "TextId": "__SingleUse_XAUU",
-                "TextRotation": "0",
-                "AutoSize": true
-              }
-            ]
+            "Type": "ButtonWithLabel",
+            "Name": "ApListBtn",
+            "X": 524,
+            "Y": 40,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_rounded_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_rounded_action.png",
+            "TextId": "__SingleUse_2W0S",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_rounded_action.json"
           },
           {
             "Type": "Container",
-            "Name": "container4",
+            "Name": "ApBtn1Contain",
             "X": 518,
             "Y": 90,
             "Width": 277,
@@ -158,7 +145,7 @@
             "Components": [
               {
                 "Type": "ButtonWithLabel",
-                "Name": "buttonWithLabel1",
+                "Name": "ApBtn1",
                 "X": 6,
                 "Y": 10,
                 "Width": 264,
@@ -178,7 +165,7 @@
           },
           {
             "Type": "Container",
-            "Name": "container4_1",
+            "Name": "ApBtn2Contain",
             "X": 518,
             "Y": 155,
             "Width": 277,
@@ -186,7 +173,7 @@
             "Components": [
               {
                 "Type": "ButtonWithLabel",
-                "Name": "buttonWithLabel1_1",
+                "Name": "ApBtn2",
                 "X": 6,
                 "Y": 10,
                 "Width": 264,
@@ -206,7 +193,7 @@
           },
           {
             "Type": "Container",
-            "Name": "container4_1_1",
+            "Name": "ApBtn3Contain",
             "X": 518,
             "Y": 220,
             "Width": 277,
@@ -214,7 +201,7 @@
             "Components": [
               {
                 "Type": "ButtonWithLabel",
-                "Name": "buttonWithLabel1_1_1",
+                "Name": "ApBtn3",
                 "X": 6,
                 "Y": 10,
                 "Width": 264,
@@ -234,7 +221,7 @@
           },
           {
             "Type": "Container",
-            "Name": "container4_1_1_1",
+            "Name": "ApBtn4Contain",
             "X": 518,
             "Y": 285,
             "Width": 277,
@@ -242,7 +229,7 @@
             "Components": [
               {
                 "Type": "ButtonWithLabel",
-                "Name": "buttonWithLabel1_1_1_1",
+                "Name": "ApBtn4",
                 "X": 6,
                 "Y": 10,
                 "Width": 264,
@@ -262,7 +249,7 @@
           },
           {
             "Type": "Container",
-            "Name": "container4_1_1_1_1",
+            "Name": "ApBtn5Contain",
             "X": 518,
             "Y": 350,
             "Width": 277,
@@ -270,7 +257,7 @@
             "Components": [
               {
                 "Type": "ButtonWithLabel",
-                "Name": "buttonWithLabel1_1_1_1_1",
+                "Name": "ApBtn5",
                 "X": 6,
                 "Y": 10,
                 "Width": 264,
@@ -290,7 +277,7 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel2",
+            "Name": "CaliBtn_Con",
             "Width": 150,
             "Height": 80,
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
@@ -306,7 +293,7 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel2_1",
+            "Name": "AprBtn_Con",
             "X": 117,
             "Width": 150,
             "Height": 80,
@@ -320,6 +307,17 @@
             },
             "TextRotation": "0",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
+          },
+          {
+            "Type": "DigitalClock",
+            "Name": "ConClock",
+            "X": 700,
+            "Width": 100,
+            "Height": 25,
+            "TextId": "__SingleUse_2POB",
+            "DisplayLeadingZeroForHourIndicator": true,
+            "InitialHour": 10,
+            "InitialMinute": 10
           }
         ],
         "Interactions": [
@@ -327,7 +325,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "buttonWithLabel2"
+              "TriggerComponent": "CaliBtn_Con"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -340,13 +338,26 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "buttonWithLabel2_1"
+              "TriggerComponent": "AprBtn_Con"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "East",
-              "ActionComponent": "APR_Error"
+              "ActionComponent": "Apr_Error"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ApListBtn"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "AutoPostionSet"
             }
           }
         ]
@@ -363,7 +374,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "MainBtn_Cal",
+            "Name": "MainBtn_Cali",
             "Width": 227,
             "Height": 51,
             "ButtonTrigger": {
@@ -417,7 +428,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "APRBtn_Cal",
+            "Name": "AprBtn_Cali",
             "X": 227,
             "Width": 227,
             "Height": 51,
@@ -469,6 +480,17 @@
                 }
               }
             ]
+          },
+          {
+            "Type": "DigitalClock",
+            "Name": "CaliClock",
+            "X": 700,
+            "Width": 100,
+            "Height": 25,
+            "TextId": "__SingleUse_RCBC",
+            "DisplayLeadingZeroForHourIndicator": true,
+            "InitialHour": 10,
+            "InitialMinute": 10
           }
         ],
         "Interactions": [
@@ -476,7 +498,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_Cal"
+              "TriggerComponent": "MainBtn_Cali"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -489,30 +511,30 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "APRBtn_Cal"
+              "TriggerComponent": "AprBtn_Cali"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "East",
-              "ActionComponent": "APR_Error"
+              "ActionComponent": "Apr_Error"
             }
           }
         ]
       },
       {
-        "Name": "APR_Error",
+        "Name": "Apr_Error",
         "Components": [
           {
             "Type": "Image",
-            "Name": "APR_BG",
+            "Name": "Apr_BG",
             "Width": 800,
             "Height": 480,
             "RelativeFilename": "APR_BG.png"
           },
           {
             "Type": "FlexButton",
-            "Name": "CalBtn_APR",
+            "Name": "CaliBtn_Apr",
             "X": 227,
             "Width": 227,
             "Height": 51,
@@ -567,7 +589,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "MainBtn_APR",
+            "Name": "MainBtn_Apr",
             "Width": 227,
             "Height": 51,
             "ButtonTrigger": {
@@ -618,6 +640,17 @@
                 }
               }
             ]
+          },
+          {
+            "Type": "DigitalClock",
+            "Name": "AprClock",
+            "X": 700,
+            "Width": 100,
+            "Height": 25,
+            "TextId": "__SingleUse_BJ88",
+            "DisplayLeadingZeroForHourIndicator": true,
+            "InitialHour": 10,
+            "InitialMinute": 10
           }
         ],
         "Interactions": [
@@ -625,7 +658,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_APR"
+              "TriggerComponent": "MainBtn_Apr"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -638,7 +671,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "CalBtn_APR"
+              "TriggerComponent": "CaliBtn_Apr"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -648,6 +681,19 @@
             }
           }
         ]
+      },
+      {
+        "Name": "AutoPostionSet",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [
@@ -682,7 +728,7 @@
             "Name": "slider1",
             "X": 28,
             "Y": 70,
-            "Width": 332,
+            "Width": 232,
             "Height": 32,
             "IsHorizontalSlider": true,
             "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
@@ -690,8 +736,9 @@
             "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
             "BackgroundX": 16,
             "BackgroundY": 11,
-            "IndicatorMax": 300,
-            "ValueMax": 100
+            "IndicatorMax": 200,
+            "ValueMax": 100,
+            "InitValue": 50
           },
           {
             "Type": "TextArea",
@@ -738,7 +785,7 @@
             "Name": "slider1",
             "X": 28,
             "Y": 70,
-            "Width": 332,
+            "Width": 232,
             "Height": 32,
             "IsHorizontalSlider": true,
             "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
@@ -746,8 +793,9 @@
             "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
             "BackgroundX": 16,
             "BackgroundY": 11,
-            "IndicatorMax": 300,
-            "ValueMax": 100
+            "IndicatorMax": 200,
+            "ValueMax": 100,
+            "InitValue": 50
           },
           {
             "Type": "TextArea",
@@ -794,7 +842,7 @@
             "Name": "slider1",
             "X": 28,
             "Y": 70,
-            "Width": 332,
+            "Width": 232,
             "Height": 32,
             "IsHorizontalSlider": true,
             "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
@@ -802,8 +850,9 @@
             "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
             "BackgroundX": 16,
             "BackgroundY": 11,
-            "IndicatorMax": 300,
-            "ValueMax": 100
+            "IndicatorMax": 200,
+            "ValueMax": 100,
+            "InitValue": 50
           },
           {
             "Type": "TextArea",
@@ -850,7 +899,7 @@
             "Name": "slider1",
             "X": 28,
             "Y": 70,
-            "Width": 332,
+            "Width": 232,
             "Height": 32,
             "IsHorizontalSlider": true,
             "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
@@ -858,8 +907,9 @@
             "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
             "BackgroundX": 16,
             "BackgroundY": 11,
-            "IndicatorMax": 300,
-            "ValueMax": 100
+            "IndicatorMax": 200,
+            "ValueMax": 100,
+            "InitValue": 50
           },
           {
             "Type": "TextArea",

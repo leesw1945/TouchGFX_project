@@ -1,17 +1,17 @@
-#ifndef APR_ERRORPRESENTER_HPP
-#define APR_ERRORPRESENTER_HPP
+#ifndef AUTOPOSTIONSETPRESENTER_HPP
+#define AUTOPOSTIONSETPRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class Apr_ErrorView;
+class AutoPostionSetView;
 
-class Apr_ErrorPresenter : public touchgfx::Presenter, public ModelListener
+class AutoPostionSetPresenter : public touchgfx::Presenter, public ModelListener
 {
 public:
-    Apr_ErrorPresenter(Apr_ErrorView& v);
+    AutoPostionSetPresenter(AutoPostionSetView& v);
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -25,12 +25,12 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~Apr_ErrorPresenter() {}
+    virtual ~AutoPostionSetPresenter() {}
 
 private:
-    Apr_ErrorPresenter();
+    AutoPostionSetPresenter();
 
-    Apr_ErrorView& view;
+    AutoPostionSetView& view;
 };
 
-#endif // APR_ERRORPRESENTER_HPP
+#endif // AUTOPOSTIONSETPRESENTER_HPP

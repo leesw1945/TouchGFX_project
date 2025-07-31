@@ -316,14 +316,24 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/target/generated/nema_hal.c</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/APR_ErrorPresenter.cpp</name>
+			<name>Application/User/gui/Apr_ErrorPresenter.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/apr_error_screen/APR_ErrorPresenter.cpp</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/apr_error_screen/Apr_ErrorPresenter.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/APR_ErrorView.cpp</name>
+			<name>Application/User/gui/Apr_ErrorView.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/apr_error_screen/APR_ErrorView.cpp</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/apr_error_screen/Apr_ErrorView.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/AutoPostionSetPresenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetPresenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/AutoPostionSetView.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/BootingIntroPresenter.cpp</name>
@@ -471,9 +481,14 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/APR_ErrorViewBase.cpp</name>
+			<name>Application/User/generated/Apr_ErrorViewBase.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/apr_error_screen/APR_ErrorViewBase.cpp</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/apr_error_screen/Apr_ErrorViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/AutoPostionSetViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/autopostionset_screen/AutoPostionSetViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/BootingIntroViewBase.cpp</name>
@@ -551,11 +566,6 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_backgrounds_800x480_puzzle.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_action.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_action.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.cpp</locationURI>
@@ -569,6 +579,11 @@
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_action.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_action.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_normal.cpp</name>

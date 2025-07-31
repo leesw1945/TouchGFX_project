@@ -6,6 +6,18 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_2W0S" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Auto Position List</Translation>
+      </Text>
+      <Text Id="__SingleUse_BJ88" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_RCBC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_2POB" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_IBI7" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">APR</Translation>
       </Text>
@@ -26,9 +38,6 @@
       </Text>
       <Text Id="__SingleUse_5FFJ" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">CHEST</Translation>
-      </Text>
-      <Text Id="__SingleUse_XAUU" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Auto Position List</Translation>
       </Text>
       <Text Id="__SingleUse_TS4N" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0°</Translation>
@@ -81,7 +90,7 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WidgetWildcardCharacters="0123456789 :APM" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>

@@ -232,6 +232,18 @@
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>1AAACA6D-4F74-2C12-B417-A285B0207019</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\autopostionset_screen">
+      <UniqueIdentifier>08869F7E-382E-F3F7-BCDF-858E494D7255</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\autopostionset_screen">
+      <UniqueIdentifier>34F0689C-6FE9-BB72-55EA-FC661319E954</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\autopostionset_screen">
+      <UniqueIdentifier>B56C6288-A564-CB95-05DB-8A1770BAC2F6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\autopostionset_screen">
+      <UniqueIdentifier>314981A3-6A88-E568-6F58-3D57CE7E7576</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -263,15 +275,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\apr_error_screen\APR_ErrorPresenter.cpp">
-      <Filter>Source Files\gui\apr_error_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\apr_error_screen\APR_ErrorView.cpp">
-      <Filter>Source Files\gui\apr_error_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\apr_error_screen\APR_ErrorViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\apr_error_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationPresenter.cpp">
       <Filter>Source Files\gui\calibration_screen</Filter>
@@ -323,6 +326,24 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelSIDBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorPresenter.cpp">
+      <Filter>Source Files\gui\apr_error_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorView.cpp">
+      <Filter>Source Files\gui\apr_error_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\apr_error_screen\Apr_ErrorViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\apr_error_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetPresenter.cpp">
+      <Filter>Source Files\gui\autopostionset_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetView.cpp">
+      <Filter>Source Files\gui\autopostionset_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\autopostionset_screen\AutoPostionSetViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\autopostionset_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -766,15 +787,6 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\APR_ErrorPresenter.hpp">
-      <Filter>Header Files\gui\apr_error_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\APR_ErrorView.hpp">
-      <Filter>Header Files\gui\apr_error_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\apr_error_screen\APR_ErrorViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\apr_error_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationPresenter.hpp">
       <Filter>Header Files\gui\calibration_screen</Filter>
     </ClInclude>
@@ -825,6 +837,24 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelSIDBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorPresenter.hpp">
+      <Filter>Header Files\gui\apr_error_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorView.hpp">
+      <Filter>Header Files\gui\apr_error_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\apr_error_screen\Apr_ErrorViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\apr_error_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetPresenter.hpp">
+      <Filter>Header Files\gui\autopostionset_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetView.hpp">
+      <Filter>Header Files\gui\autopostionset_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\autopostionset_screen\AutoPostionSetViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\autopostionset_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

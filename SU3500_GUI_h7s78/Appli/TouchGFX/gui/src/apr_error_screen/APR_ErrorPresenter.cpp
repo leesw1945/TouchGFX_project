@@ -1,18 +1,18 @@
-#include <gui/apr_error_screen/APR_ErrorView.hpp>
-#include <gui/apr_error_screen/APR_ErrorPresenter.hpp>
+#include <gui/apr_error_screen/Apr_ErrorView.hpp>
+#include <gui/apr_error_screen/Apr_ErrorPresenter.hpp>
 
-APR_ErrorPresenter::APR_ErrorPresenter(APR_ErrorView& v)
+Apr_ErrorPresenter::Apr_ErrorPresenter(Apr_ErrorView& v)
     : view(v)
 {
 
 }
 
-void APR_ErrorPresenter::activate()
+void Apr_ErrorPresenter::activate()
 {
 
 }
 
-void APR_ErrorPresenter::deactivate()
+void Apr_ErrorPresenter::deactivate()
 {
 
 }

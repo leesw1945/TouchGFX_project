@@ -1,16 +1,16 @@
-#include <gui/apr_error_screen/APR_ErrorView.hpp>
+#include <gui/apr_error_screen/Apr_ErrorView.hpp>
 
-APR_ErrorView::APR_ErrorView()
+Apr_ErrorView::Apr_ErrorView()
 {
 
 }
 
-void APR_ErrorView::setupScreen()
+void Apr_ErrorView::setupScreen()
 {
-    APR_ErrorViewBase::setupScreen();
+    Apr_ErrorViewBase::setupScreen();
 }
 
-void APR_ErrorView::tearDownScreen()
+void Apr_ErrorView::tearDownScreen()
 {
-    APR_ErrorViewBase::tearDownScreen();
+    Apr_ErrorViewBase::tearDownScreen();
 }

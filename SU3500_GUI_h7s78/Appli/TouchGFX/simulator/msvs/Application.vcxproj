@@ -21,9 +21,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
-    <ClCompile Include="..\..\gui\src\apr_error_screen\APR_ErrorPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\apr_error_screen\APR_ErrorView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\apr_error_screen\APR_ErrorViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\calibration_screen\CalibrationViewBase.cpp"/>
@@ -41,6 +38,12 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelReceptorBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\controlLabelSID.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelSIDBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\apr_error_screen\Apr_ErrorViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\autopostionset_screen\AutoPostionSetViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -191,9 +194,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\APR_ErrorPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\APR_ErrorView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\apr_error_screen\APR_ErrorViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\calibration_screen\CalibrationViewBase.hpp"/>
@@ -211,6 +211,12 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelReceptorBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\controlLabelSID.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelSIDBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\apr_error_screen\Apr_ErrorViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\autopostionset_screen\AutoPostionSetViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

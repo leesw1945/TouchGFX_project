@@ -1,14 +1,14 @@
 #ifndef APR_ERRORVIEW_HPP
 #define APR_ERRORVIEW_HPP
 
-#include <gui_generated/apr_error_screen/APR_ErrorViewBase.hpp>
-#include <gui/apr_error_screen/APR_ErrorPresenter.hpp>
+#include <gui_generated/apr_error_screen/Apr_ErrorViewBase.hpp>
+#include <gui/apr_error_screen/Apr_ErrorPresenter.hpp>
 
-class APR_ErrorView : public APR_ErrorViewBase
+class Apr_ErrorView : public Apr_ErrorViewBase
 {
 public:
-    APR_ErrorView();
-    virtual ~APR_ErrorView() {}
+    Apr_ErrorView();
+    virtual ~Apr_ErrorView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
 protected:
