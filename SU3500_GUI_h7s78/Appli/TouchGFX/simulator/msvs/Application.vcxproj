@@ -44,6 +44,9 @@
     <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\autopostionset_screen\AutoPostionSetView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\autopostionset_screen\AutoPostionSetViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\setting_screen\SettingPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\setting_screen\SettingView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\setting_screen\SettingViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -217,6 +220,9 @@
     <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\autopostionset_screen\AutoPostionSetView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\autopostionset_screen\AutoPostionSetViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\setting_screen\SettingPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\setting_screen\SettingView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\setting_screen\SettingViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

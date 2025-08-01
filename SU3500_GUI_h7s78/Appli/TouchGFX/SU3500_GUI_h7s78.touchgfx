@@ -694,6 +694,19 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "Setting",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [
@@ -874,6 +887,17 @@
         "Height": 122,
         "Components": [
           {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 299,
+            "Height": 164,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
             "Type": "ScalableImage",
             "Name": "scalableImage1",
             "X": 17,
@@ -933,7 +957,7 @@
     },
     "SelectedColorDepth": 32,
     "StartupScreenName": "BootingIntro",
-    "SelectedStartupLanguage": "GB",
+    "SelectedStartupLanguage": "KO",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "ApplicationTemplateName": "Simulator",
