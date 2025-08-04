@@ -1,0 +1,8 @@
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetView.cpp:13:6:virtual void AutoPostionSetView::tearDownScreen()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetView.hpp:11:13:AutoPostionSetView::~AutoPostionSetView()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetView.hpp:11:13:virtual AutoPostionSetView::~AutoPostionSetView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetView.cpp:3:1:AutoPostionSetView::AutoPostionSetView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetView.cpp:8:6:virtual void AutoPostionSetView::setupScreen()	0	static

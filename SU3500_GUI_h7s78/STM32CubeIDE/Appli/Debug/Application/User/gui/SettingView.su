@@ -1,0 +1,9 @@
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingView.cpp:14:6:virtual void SettingView::tearDownScreen()	0	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingView.hpp:11:13:SettingView::~SettingView()	8	static
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingView.hpp:11:13:virtual SettingView::~SettingView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingView.cpp:4:1:SettingView::SettingView()	8	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingView.cpp:9:6:virtual void SettingView::setupScreen()	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingView.cpp:19:6:virtual void SettingView::changeLanguage()	8	static

@@ -7,6 +7,14 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_VDO0" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Main</Translation>
+        <Translation Language="KO">컨트롤 페이지</Translation>
+      </Text>
+      <Text Id="__SingleUse_BN2F" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Language</Translation>
+        <Translation Language="KO">언어</Translation>
+      </Text>
       <Text Id="__SingleUse_2W0S" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Auto Position List</Translation>
         <Translation Language="KO"></Translation>

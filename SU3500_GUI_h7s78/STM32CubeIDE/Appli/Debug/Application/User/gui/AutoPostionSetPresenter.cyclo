@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetPresenter.hpp:28:13:AutoPostionSetPresenter::~AutoPostionSetPresenter()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetPresenter.cpp:10:6:virtual void AutoPostionSetPresenter::activate()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetPresenter.hpp:28:13:virtual AutoPostionSetPresenter::~AutoPostionSetPresenter()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetPresenter.hpp:28:13:virtual void* AutoPostionSetPresenter::_ZThn4_N23AutoPostionSetPresenterD1Ev()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/autopostionset_screen/AutoPostionSetPresenter.cpp:4:1:AutoPostionSetPresenter::AutoPostionSetPresenter(AutoPostionSetView&)	1

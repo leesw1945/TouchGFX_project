@@ -1,0 +1,5 @@
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingPresenter.hpp:28:13:SettingPresenter::~SettingPresenter()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingPresenter.cpp:10:6:virtual void SettingPresenter::activate()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingPresenter.hpp:28:13:virtual SettingPresenter::~SettingPresenter()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingPresenter.hpp:28:13:virtual void* SettingPresenter::_ZThn4_N16SettingPresenterD1Ev()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingPresenter.cpp:4:1:SettingPresenter::SettingPresenter(SettingView&)	1

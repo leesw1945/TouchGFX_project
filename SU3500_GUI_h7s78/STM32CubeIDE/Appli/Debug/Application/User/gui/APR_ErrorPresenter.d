@@ -1,7 +1,7 @@
-Application/User/gui/APR_ErrorPresenter.o: \
- C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/apr_error_screen/APR_ErrorPresenter.cpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorView.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/APR_ErrorViewBase.hpp \
+Application/User/gui/Apr_ErrorPresenter.o: \
+ C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/apr_error_screen/Apr_ErrorPresenter.cpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorView.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/Apr_ErrorViewBase.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
  ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -44,7 +44,7 @@ Application/User/gui/APR_ErrorPresenter.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorPresenter.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorPresenter.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
@@ -68,9 +68,11 @@ Application/User/gui/APR_ErrorPresenter.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp
-../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorView.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/APR_ErrorViewBase.hpp:
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp
+../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorView.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/Apr_ErrorViewBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
@@ -113,7 +115,7 @@ Application/User/gui/APR_ErrorPresenter.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/APR_ErrorPresenter.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorPresenter.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
@@ -138,3 +140,5 @@ Application/User/gui/APR_ErrorPresenter.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp:

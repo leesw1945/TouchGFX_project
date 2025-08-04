@@ -119,6 +119,96 @@
           },
           {
             "Type": "ButtonWithLabel",
+            "Name": "ApBtn5",
+            "X": 524,
+            "Y": 360,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_IBE2",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ApBtn4",
+            "X": 524,
+            "Y": 295,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_RM0W",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ApBtn3",
+            "X": 524,
+            "Y": 230,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_FGQE",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ApBtn2",
+            "X": 524,
+            "Y": 165,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_9SRA",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ApBtn1",
+            "X": 524,
+            "Y": 100,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_5FFJ",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
             "Name": "ApListBtn",
             "X": 524,
             "Y": 40,
@@ -134,146 +224,6 @@
             },
             "TextRotation": "0",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_rounded_action.json"
-          },
-          {
-            "Type": "Container",
-            "Name": "ApBtn1Contain",
-            "X": 518,
-            "Y": 90,
-            "Width": 277,
-            "Height": 101,
-            "Components": [
-              {
-                "Type": "ButtonWithLabel",
-                "Name": "ApBtn1",
-                "X": 6,
-                "Y": 10,
-                "Width": 264,
-                "Height": 80,
-                "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
-                "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
-                "TextId": "__SingleUse_5FFJ",
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-              }
-            ]
-          },
-          {
-            "Type": "Container",
-            "Name": "ApBtn2Contain",
-            "X": 518,
-            "Y": 155,
-            "Width": 277,
-            "Height": 101,
-            "Components": [
-              {
-                "Type": "ButtonWithLabel",
-                "Name": "ApBtn2",
-                "X": 6,
-                "Y": 10,
-                "Width": 264,
-                "Height": 80,
-                "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
-                "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
-                "TextId": "__SingleUse_9SRA",
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-              }
-            ]
-          },
-          {
-            "Type": "Container",
-            "Name": "ApBtn3Contain",
-            "X": 518,
-            "Y": 220,
-            "Width": 277,
-            "Height": 101,
-            "Components": [
-              {
-                "Type": "ButtonWithLabel",
-                "Name": "ApBtn3",
-                "X": 6,
-                "Y": 10,
-                "Width": 264,
-                "Height": 80,
-                "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
-                "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
-                "TextId": "__SingleUse_FGQE",
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-              }
-            ]
-          },
-          {
-            "Type": "Container",
-            "Name": "ApBtn4Contain",
-            "X": 518,
-            "Y": 285,
-            "Width": 277,
-            "Height": 101,
-            "Components": [
-              {
-                "Type": "ButtonWithLabel",
-                "Name": "ApBtn4",
-                "X": 6,
-                "Y": 10,
-                "Width": 264,
-                "Height": 80,
-                "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
-                "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
-                "TextId": "__SingleUse_RM0W",
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-              }
-            ]
-          },
-          {
-            "Type": "Container",
-            "Name": "ApBtn5Contain",
-            "X": 518,
-            "Y": 350,
-            "Width": 277,
-            "Height": 101,
-            "Components": [
-              {
-                "Type": "ButtonWithLabel",
-                "Name": "ApBtn5",
-                "X": 6,
-                "Y": 10,
-                "Width": 264,
-                "Height": 80,
-                "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
-                "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
-                "TextId": "__SingleUse_IBE2",
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-              }
-            ]
           },
           {
             "Type": "ButtonWithLabel",
@@ -318,6 +268,17 @@
             "DisplayLeadingZeroForHourIndicator": true,
             "InitialHour": 10,
             "InitialMinute": 10
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 22,
+            "Y": 426,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
           }
         ],
         "Interactions": [
@@ -358,6 +319,19 @@
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "AutoPostionSet"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Setting"
             }
           }
         ]
@@ -704,9 +678,70 @@
             "Width": 800,
             "Height": 480,
             "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ChangeLanguageBtn",
+            "X": 230,
+            "Y": 209,
+            "Width": 188,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_small_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_small_round_normal.png",
+            "TextId": "__SingleUse_BN2F",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\small_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "ConBtn_Set",
+            "X": 31,
+            "Y": 40,
+            "Width": 264,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_normal.png",
+            "TextId": "__SingleUse_VDO0",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ChangeLanguageBtn"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "changeLanguage"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ConBtn_Set"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "Control"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [
@@ -887,17 +922,6 @@
         "Height": 122,
         "Components": [
           {
-            "Type": "Box",
-            "Name": "box1",
-            "Width": 299,
-            "Height": 164,
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
             "Type": "ScalableImage",
             "Name": "scalableImage1",
             "X": 17,
@@ -912,7 +936,7 @@
             "Name": "textArea1",
             "X": 61,
             "Y": 27,
-            "Width": 37,
+            "Width": 12,
             "Height": 24,
             "TextId": "__SingleUse_CP30",
             "TextRotation": "0",

@@ -451,6 +451,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_24.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_25.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_25.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_26.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_26.cpp</locationURI>
@@ -611,6 +616,16 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_effects_240x240_shade_right_light.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_alternate_theme_images_widgets_slider_horizontal_thick_filler_small.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_slider_horizontal_thick_filler_small.cpp</locationURI>
@@ -659,6 +674,16 @@
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_pressed.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_medium_rounded_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_small_round_normal.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_small_round_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_small_round_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_small_round_pressed.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.cpp</name>

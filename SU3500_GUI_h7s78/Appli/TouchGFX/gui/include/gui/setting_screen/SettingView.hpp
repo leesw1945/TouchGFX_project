@@ -11,6 +11,8 @@ public:
     virtual ~SettingView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    virtual void changeLanguage();
 protected:
 };
 

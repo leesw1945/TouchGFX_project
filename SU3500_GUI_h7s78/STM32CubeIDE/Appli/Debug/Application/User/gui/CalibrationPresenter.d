@@ -68,7 +68,9 @@ Application/User/gui/CalibrationPresenter.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/calibration_screen/CalibrationView.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/calibration_screen/CalibrationViewBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -138,3 +140,5 @@ Application/User/gui/CalibrationPresenter.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp:

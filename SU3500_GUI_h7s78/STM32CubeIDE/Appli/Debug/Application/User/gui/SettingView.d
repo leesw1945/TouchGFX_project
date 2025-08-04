@@ -1,7 +1,7 @@
-Application/User/gui/Apr_ErrorView.o: \
- C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/apr_error_screen/Apr_ErrorView.cpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorView.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/Apr_ErrorViewBase.hpp \
+Application/User/gui/SettingView.o: \
+ C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/setting_screen/SettingView.cpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingView.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/setting_screen/SettingViewBase.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
  ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -44,35 +44,18 @@ Application/User/gui/Apr_ErrorView.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorPresenter.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingPresenter.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/Buttons.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AnimatedImageButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AbstractButtonContainer.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AnimatedImage.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ClickButtonTrigger.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/IconButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ImageButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/RepeatButtonTrigger.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TextButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TiledImageButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TiledImage.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ToggleButtonTrigger.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp
-../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorView.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/apr_error_screen/Apr_ErrorViewBase.hpp:
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingView.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/setting_screen/SettingViewBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
@@ -115,30 +98,13 @@ Application/User/gui/Apr_ErrorView.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/apr_error_screen/Apr_ErrorPresenter.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/setting_screen/SettingPresenter.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/Buttons.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AnimatedImageButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AbstractButtonContainer.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AnimatedImage.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ClickButtonTrigger.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/IconButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ImageButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/RepeatButtonTrigger.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TextButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TiledImageButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TiledImage.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ToggleButtonTrigger.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/DigitalClock.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/clock/AbstractClock.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
+../../Appli/../../Appli/TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp:
