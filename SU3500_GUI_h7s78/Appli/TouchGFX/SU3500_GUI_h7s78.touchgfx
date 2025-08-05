@@ -39,49 +39,6 @@
             "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
           },
           {
-            "Type": "Container",
-            "Name": "DeviceContain",
-            "X": 35,
-            "Y": 106,
-            "Width": 202,
-            "Height": 329,
-            "Components": [
-              {
-                "Type": "Box",
-                "Name": "Device2",
-                "X": 88,
-                "Y": 44,
-                "Width": 39,
-                "Height": 259,
-                "Color": {
-                  "Red": 97,
-                  "Green": 97,
-                  "Blue": 97
-                }
-              },
-              {
-                "Type": "ScalableImage",
-                "Name": "DeviceGradient",
-                "X": 88,
-                "Y": 44,
-                "Width": 39,
-                "Height": 259,
-                "Filename": "__generated\\alternate_theme_images_effects_240x240_shade_right_light.png",
-                "Alpha": 161,
-                "ScalingAlgorithm": "Nearest-neighbor"
-              },
-              {
-                "Type": "Image",
-                "Name": "Devie",
-                "X": 50,
-                "Y": 61,
-                "Width": 115,
-                "Height": 225,
-                "RelativeFilename": "SENSOR_MODEL_parts.png"
-              }
-            ]
-          },
-          {
             "Type": "CustomContainerInstance",
             "Name": "SidCContain",
             "X": 267,
@@ -89,33 +46,6 @@
             "Width": 267,
             "Height": 122,
             "CustomContainerDefinitionName": "controlLabelSID"
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "HeightCContain",
-            "X": 267,
-            "Y": 127,
-            "Width": 267,
-            "Height": 122,
-            "CustomContainerDefinitionName": "controlLabelHeight"
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "ReceptorCContain",
-            "X": 267,
-            "Y": 230,
-            "Width": 267,
-            "Height": 122,
-            "CustomContainerDefinitionName": "controlLabelReceptor"
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "ArmCContain",
-            "X": 267,
-            "Y": 332,
-            "Width": 267,
-            "Height": 122,
-            "CustomContainerDefinitionName": "controlLabelARM"
           },
           {
             "Type": "ButtonWithLabel",
@@ -664,10 +594,35 @@
             "Name": "image1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+            "RelativeFilename": "APR_BG.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 92,
+            "Y": 232,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "Control"
+            }
+          }
+        ]
       },
       {
         "Name": "Setting",
@@ -677,7 +632,7 @@
             "Name": "image1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+            "RelativeFilename": "APR_BG.png"
           },
           {
             "Type": "ButtonWithLabel",
@@ -981,7 +936,7 @@
     },
     "SelectedColorDepth": 32,
     "StartupScreenName": "BootingIntro",
-    "SelectedStartupLanguage": "KO",
+    "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "ApplicationTemplateName": "Simulator",

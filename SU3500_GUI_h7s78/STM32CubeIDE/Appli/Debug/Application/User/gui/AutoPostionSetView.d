@@ -47,7 +47,9 @@ Application/User/gui/AutoPostionSetView.o: \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetPresenter.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/autopostionset_screen/AutoPostionSetView.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/autopostionset_screen/AutoPostionSetViewBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -96,3 +98,5 @@ Application/User/gui/AutoPostionSetView.o: \
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:

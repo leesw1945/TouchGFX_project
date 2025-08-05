@@ -66,7 +66,6 @@
 "./Application/User/generated/image_SENSOR_MODEL.o"
 "./Application/User/generated/image_SENSOR_MODEL_parts.o"
 "./Application/User/generated/image_SET_BG.o"
-"./Application/User/generated/image_alternate_theme_images_effects_240x240_shade_right_light.o"
 "./Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.o"
 "./Application/User/generated/image_alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.o"
 "./Application/User/generated/image_alternate_theme_images_widgets_slider_horizontal_thick_filler_small.o"
