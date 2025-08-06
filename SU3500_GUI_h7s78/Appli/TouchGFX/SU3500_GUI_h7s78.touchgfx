@@ -33,19 +33,10 @@
         "Components": [
           {
             "Type": "Image",
-            "Name": "Con_BG",
+            "Name": "Ctrl_BG",
             "Width": 800,
             "Height": 480,
             "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "SidCContain",
-            "X": 267,
-            "Y": 22,
-            "Width": 267,
-            "Height": 122,
-            "CustomContainerDefinitionName": "controlLabelSID"
           },
           {
             "Type": "ButtonWithLabel",
@@ -157,7 +148,7 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "CaliBtn_Con",
+            "Name": "MenuBtn_Ctrl",
             "Width": 150,
             "Height": 80,
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
@@ -172,25 +163,8 @@
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
           },
           {
-            "Type": "ButtonWithLabel",
-            "Name": "AprBtn_Con",
-            "X": 117,
-            "Width": 150,
-            "Height": 80,
-            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
-            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
-            "TextId": "__SingleUse_IBI7",
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
-          },
-          {
             "Type": "DigitalClock",
-            "Name": "ConClock",
+            "Name": "CtrlClock",
             "X": 700,
             "Width": 100,
             "Height": 25,
@@ -200,15 +174,147 @@
             "InitialMinute": 10
           },
           {
+            "Type": "Container",
+            "Name": "DeviceCon",
+            "X": 64,
+            "Y": 120,
+            "Width": 168,
+            "Height": 309,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "DeviceStand",
+                "X": 67,
+                "Y": 65,
+                "Width": 33,
+                "Height": 228,
+                "Color": {
+                  "Red": 168,
+                  "Green": 168,
+                  "Blue": 168
+                },
+                "Alpha": 184
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "DeviceGradient",
+                "X": 67,
+                "Y": 65,
+                "Width": 33,
+                "Height": 228,
+                "Filename": "__generated\\clay_theme_images_effects_480x272_shade_right_light.png",
+                "Alpha": 168,
+                "ScalingAlgorithm": "Nearest-neighbor"
+              },
+              {
+                "Type": "Image",
+                "Name": "Device",
+                "X": 27,
+                "Y": 21,
+                "Width": 115,
+                "Height": 225,
+                "RelativeFilename": "SENSOR_MODEL_parts.png"
+              }
+            ]
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "SidCCon",
+            "X": 267,
+            "Y": 22,
+            "Width": 267,
+            "Height": 122,
+            "CustomContainerDefinitionName": "ControlLabelLength"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidCConText",
+            "X": 328,
+            "Y": 50,
+            "Width": 37,
+            "Height": 24,
+            "TextId": "__SingleUse_HJBM",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "HeightCCon",
+            "X": 267,
+            "Y": 123,
+            "Width": 267,
+            "Height": 122,
+            "CustomContainerDefinitionName": "ControlLabelLength"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "HeightCConText",
+            "X": 314,
+            "Y": 151,
+            "Width": 65,
+            "Height": 24,
+            "TextId": "__SingleUse_T33L",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "ReceptorCCon",
+            "X": 267,
+            "Y": 224,
+            "Width": 267,
+            "Height": 122,
+            "CustomContainerDefinitionName": "ControlLabelAngle"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ReceptorCConText",
+            "X": 302,
+            "Y": 251,
+            "Width": 89,
+            "Height": 24,
+            "TextId": "__SingleUse_N4CU",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "ArmCCon",
+            "X": 267,
+            "Y": 325,
+            "Width": 267,
+            "Height": 122,
+            "CustomContainerDefinitionName": "ControlLabelAngle"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ArmCConText",
+            "X": 324,
+            "Y": 353,
+            "Width": 45,
+            "Height": 24,
+            "TextId": "__SingleUse_0NUN",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "menuScrollWheel1",
+            "Y": -487,
+            "Width": 800,
+            "Height": 480,
+            "CustomContainerDefinitionName": "MenuScrollWheel"
+          },
+          {
             "Type": "Button",
             "Name": "button1",
-            "X": 22,
-            "Y": 426,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+            "X": -21,
+            "Y": 401,
+            "Width": 104,
+            "Height": 92,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_icon_round_micro_fill_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_icon_round_micro_fill_normal.png",
+            "Preset": "clay_theme\\presets\\button\\icon\\round\\micro_fill_normal.json"
           }
         ],
         "Interactions": [
@@ -216,26 +322,14 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "CaliBtn_Con"
+              "TriggerComponent": "MenuBtn_Ctrl"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "Calibration"
-            }
-          },
-          {
-            "InteractionName": "Interaction2",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "AprBtn_Con"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "Apr_Error"
+              "Type": "ActionMove",
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 500,
+              "ActionComponent": "menuScrollWheel1"
             }
           },
           {
@@ -246,7 +340,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "AutoPostionSet"
             }
@@ -259,7 +353,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "Setting"
             }
@@ -278,7 +372,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "MainBtn_Cali",
+            "Name": "CtrlBtn_Cali",
             "Width": 227,
             "Height": 51,
             "ButtonTrigger": {
@@ -402,11 +496,11 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_Cali"
+              "TriggerComponent": "CtrlBtn_Cali"
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "West",
               "ActionComponent": "Control"
             }
@@ -419,7 +513,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "Apr_Error"
             }
@@ -493,7 +587,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "MainBtn_Apr",
+            "Name": "CtrlBtn_Apr",
             "Width": 227,
             "Height": 51,
             "ButtonTrigger": {
@@ -562,11 +656,11 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "MainBtn_Apr"
+              "TriggerComponent": "CtrlBtn_Apr"
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "West",
               "ActionComponent": "Control"
             }
@@ -579,7 +673,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "Calibration"
             }
@@ -594,13 +688,13 @@
             "Name": "image1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "APR_BG.png"
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
           },
           {
             "Type": "Button",
             "Name": "button1",
-            "X": 92,
-            "Y": 232,
+            "X": 45,
+            "Y": 410,
             "Width": 240,
             "Height": 50,
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
@@ -617,7 +711,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "West",
               "ActionComponent": "Control"
             }
@@ -632,7 +726,7 @@
             "Name": "image1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "APR_BG.png"
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
           },
           {
             "Type": "ButtonWithLabel",
@@ -654,7 +748,7 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "ConBtn_Set",
+            "Name": "CtrlBtn_Set",
             "X": 31,
             "Y": 40,
             "Width": 264,
@@ -687,11 +781,11 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "ConBtn_Set"
+              "TriggerComponent": "CtrlBtn_Set"
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "West",
               "ActionComponent": "Control"
             }
@@ -701,13 +795,13 @@
     ],
     "CustomContainerDefinitions": [
       {
-        "Name": "controlLabelARM",
+        "Name": "ControlLabelAngle",
         "Width": 267,
         "Height": 122,
         "Components": [
           {
             "Type": "ScalableImage",
-            "Name": "scalableImage1",
+            "Name": "AngleLabel",
             "X": 17,
             "Y": 16,
             "Width": 125,
@@ -716,19 +810,8 @@
             "ScalingAlgorithm": "Nearest-neighbor"
           },
           {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 57,
-            "Y": 26,
-            "Width": 45,
-            "Height": 24,
-            "TextId": "__SingleUse_EK4M",
-            "TextRotation": "0",
-            "AutoSize": true
-          },
-          {
             "Type": "Slider",
-            "Name": "slider1",
+            "Name": "AngleSlider",
             "X": 28,
             "Y": 70,
             "Width": 232,
@@ -745,126 +828,12 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea2",
-            "X": 182,
-            "Y": 28,
-            "Width": 24,
-            "Height": 24,
-            "TextId": "__SingleUse_TS4N",
-            "TextRotation": "0",
-            "AutoSize": true
-          }
-        ],
-        "Interactions": []
-      },
-      {
-        "Name": "controlLabelReceptor",
-        "Width": 267,
-        "Height": 122,
-        "Components": [
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage1",
-            "X": 17,
-            "Y": 16,
-            "Width": 125,
-            "Height": 48,
-            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 35,
-            "Y": 26,
-            "Width": 89,
-            "Height": 24,
-            "TextId": "__SingleUse_61OY",
-            "TextRotation": "0",
-            "AutoSize": true
-          },
-          {
-            "Type": "Slider",
-            "Name": "slider1",
-            "X": 28,
-            "Y": 70,
-            "Width": 232,
-            "Height": 32,
-            "IsHorizontalSlider": true,
-            "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
-            "BackgroundSelected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_filler_small.png",
-            "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
-            "BackgroundX": 16,
-            "BackgroundY": 11,
-            "IndicatorMax": 200,
-            "ValueMax": 100,
-            "InitValue": 50
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea2",
-            "X": 182,
-            "Y": 28,
-            "Width": 24,
-            "Height": 24,
-            "TextId": "__SingleUse_HIL2",
-            "TextRotation": "0",
-            "AutoSize": true
-          }
-        ],
-        "Interactions": []
-      },
-      {
-        "Name": "controlLabelHeight",
-        "Width": 267,
-        "Height": 122,
-        "Components": [
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage1",
-            "X": 17,
-            "Y": 16,
-            "Width": 125,
-            "Height": 48,
-            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 47,
-            "Y": 26,
-            "Width": 65,
-            "Height": 24,
-            "TextId": "__SingleUse_8UOC",
-            "TextRotation": "0",
-            "AutoSize": true
-          },
-          {
-            "Type": "Slider",
-            "Name": "slider1",
-            "X": 28,
-            "Y": 70,
-            "Width": 232,
-            "Height": 32,
-            "IsHorizontalSlider": true,
-            "BackgroundUnselected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_track_small.png",
-            "BackgroundSelected": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_filler_small.png",
-            "Indicator": "__generated\\alternate_theme_images_widgets_slider_horizontal_thick_rounded_dark.png",
-            "BackgroundX": 16,
-            "BackgroundY": 11,
-            "IndicatorMax": 200,
-            "ValueMax": 100,
-            "InitValue": 50
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea2",
-            "X": 160,
+            "Name": "AngleText",
+            "X": 185,
             "Y": 30,
-            "Width": 68,
+            "Width": 24,
             "Height": 24,
-            "TextId": "__SingleUse_3RCS",
+            "TextId": "__SingleUse_A01B",
             "TextRotation": "0",
             "AutoSize": true
           }
@@ -872,13 +841,13 @@
         "Interactions": []
       },
       {
-        "Name": "controlLabelSID",
+        "Name": "ControlLabelLength",
         "Width": 267,
         "Height": 122,
         "Components": [
           {
             "Type": "ScalableImage",
-            "Name": "scalableImage1",
+            "Name": "LengthLabel",
             "X": 17,
             "Y": 16,
             "Width": 125,
@@ -887,19 +856,8 @@
             "ScalingAlgorithm": "Nearest-neighbor"
           },
           {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 61,
-            "Y": 27,
-            "Width": 12,
-            "Height": 24,
-            "TextId": "__SingleUse_CP30",
-            "TextRotation": "0",
-            "AutoSize": true
-          },
-          {
             "Type": "Slider",
-            "Name": "slider1",
+            "Name": "LengthSlider",
             "X": 28,
             "Y": 70,
             "Width": 232,
@@ -916,7 +874,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea2",
+            "Name": "LengthCmText",
             "X": 160,
             "Y": 30,
             "Width": 68,
@@ -924,6 +882,110 @@
             "TextId": "__SingleUse_VNJW",
             "TextRotation": "0",
             "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LengthInchText",
+            "X": 160,
+            "Y": 30,
+            "Width": 68,
+            "Height": 24,
+            "Visible": false,
+            "TextId": "__SingleUse_3PZC",
+            "TextRotation": "0",
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "MenuScrollWheel",
+        "Width": 800,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "scrollWheel1",
+            "Width": 800,
+            "Height": 480,
+            "SelectedItemOffset": 275,
+            "UseSelectedStyle": true,
+            "SelectedItemTemplateName": "MenuScrollCenterBtn",
+            "IsHorizontal": true,
+            "IsCircular": true,
+            "ItemTemplateName": "MenuScrollBtn",
+            "NumberofItems": 5,
+            "Easing": "Cubic",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 4.0,
+            "DragAcceleration": 1.0
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionHide"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "MenuScrollCenterBtn",
+        "Width": 247,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "X": 2,
+            "Y": 125,
+            "Width": 243,
+            "Height": 231,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_icon_rounded_large_fill_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_icon_rounded_large_fill_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_maps_local_hospital_90_90_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_maps_local_hospital_90_90_000000.svg.png",
+            "IconX": 78,
+            "IconY": 72,
+            "IconHeight": 90,
+            "IconWidth": 90,
+            "Preset": "clay_theme\\presets\\button\\icon\\rounded\\large_fill_normal.json"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "MenuScrollBtn",
+        "Width": 250,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "X": 22,
+            "Y": 143,
+            "Width": 206,
+            "Height": 194,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_icon_rounded_medium_fill_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_icon_rounded_medium_fill_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_maps_local_hospital_70_70_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_maps_local_hospital_70_70_000000.svg.png",
+            "IconX": 69,
+            "IconY": 64,
+            "IconHeight": 70,
+            "IconWidth": 70,
+            "Preset": "clay_theme\\presets\\button\\icon\\rounded\\medium_fill_normal.json"
           }
         ],
         "Interactions": []

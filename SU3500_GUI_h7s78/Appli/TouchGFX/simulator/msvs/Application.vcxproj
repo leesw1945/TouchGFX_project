@@ -30,14 +30,6 @@
     <ClCompile Include="..\..\gui\src\control_screen\ControlPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\control_screen\ControlView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\control_screen\ControlViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\controlLabelARM.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelARMBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\controlLabelHeight.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelHeightBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\controlLabelReceptor.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelReceptorBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\controlLabelSID.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\controlLabelSIDBase.cpp"/>
     <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\apr_error_screen\Apr_ErrorView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\apr_error_screen\Apr_ErrorViewBase.cpp"/>
@@ -47,6 +39,16 @@
     <ClCompile Include="..\..\gui\src\setting_screen\SettingPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\setting_screen\SettingView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\setting_screen\SettingViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\ControlLabelAngle.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ControlLabelAngleBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\ControlLabelLength.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ControlLabelLengthBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\MenuScrollBtn.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollBtnBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\MenuScrollCenterBtn.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollCenterBtnBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\MenuScrollWheel.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollWheelBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -206,14 +208,6 @@
     <ClInclude Include="..\..\gui\include\gui\control_screen\ControlPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\control_screen\ControlView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\control_screen\ControlViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelARM.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelARMBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelHeight.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelHeightBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelReceptor.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelReceptorBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\controlLabelSID.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\controlLabelSIDBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\apr_error_screen\Apr_ErrorView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\apr_error_screen\Apr_ErrorViewBase.hpp"/>
@@ -223,6 +217,16 @@
     <ClInclude Include="..\..\gui\include\gui\setting_screen\SettingPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\setting_screen\SettingView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\setting_screen\SettingViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\ControlLabelAngle.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ControlLabelAngleBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\ControlLabelLength.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ControlLabelLengthBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\MenuScrollBtn.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollBtnBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\MenuScrollCenterBtn.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollCenterBtnBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\MenuScrollWheel.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollWheelBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

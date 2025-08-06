@@ -7,17 +7,41 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_3PZC" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">39.37"</Translation>
+        <Translation Language="KO">39.37"</Translation>
+      </Text>
+      <Text Id="__SingleUse_0NUN" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">ARM</Translation>
+        <Translation Language="KO">ARM</Translation>
+      </Text>
+      <Text Id="__SingleUse_N4CU" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">Receptor</Translation>
+        <Translation Language="KO">Receptor</Translation>
+      </Text>
+      <Text Id="__SingleUse_T33L" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">Height</Translation>
+        <Translation Language="KO">Height</Translation>
+      </Text>
+      <Text Id="__SingleUse_HJBM" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">SID</Translation>
+        <Translation Language="KO">SID</Translation>
+      </Text>
+      <Text Id="__SingleUse_A01B" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">0°</Translation>
+        <Translation Language="KO">0°</Translation>
+      </Text>
       <Text Id="__SingleUse_VDO0" Alignment="Center" TypographyId="Test">
-        <Translation Language="GB">Main</Translation>
-        <Translation Language="KO">컨트롤 페이지</Translation>
+        <Translation Language="GB">Control</Translation>
+        <Translation Language="KO">Control</Translation>
       </Text>
       <Text Id="__SingleUse_BN2F" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">Language</Translation>
         <Translation Language="KO">언어</Translation>
       </Text>
-      <Text Id="__SingleUse_2W0S" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_2W0S" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">Auto Position List</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">Auto Position List</Translation>
       </Text>
       <Text Id="__SingleUse_BJ88" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">&lt;&gt;</Translation>
@@ -31,17 +55,13 @@
         <Translation Language="GB">&lt;&gt;</Translation>
         <Translation Language="KO">&lt;&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_IBI7" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">APR</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_93I2" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Menu</Translation>
+        <Translation Language="KO">Cal</Translation>
       </Text>
-      <Text Id="__SingleUse_93I2" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Cal</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_IBE2" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_IBE2" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">PELVIS</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">골반</Translation>
       </Text>
       <Text Id="__SingleUse_RM0W" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">TABLE</Translation>
@@ -59,69 +79,41 @@
         <Translation Language="GB">CHEST</Translation>
         <Translation Language="KO">가슴</Translation>
       </Text>
-      <Text Id="__SingleUse_TS4N" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0°</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_EK4M" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">ARM</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_HIL2" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0°</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_61OY" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Receptor</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_3RCS" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_VNJW" Alignment="Left" TypographyId="Test">
         <Translation Language="GB">100cm</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">100cm</Translation>
       </Text>
-      <Text Id="__SingleUse_8UOC" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Height</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_WAXA" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Control</Translation>
+        <Translation Language="KO">Control</Translation>
       </Text>
-      <Text Id="__SingleUse_VNJW" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">100cm</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_CP30" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">SID</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_WAXA" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Main</Translation>
-        <Translation Language="KO"></Translation>
-      </Text>
-      <Text Id="__SingleUse_08X8" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_08X8" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">Calibration</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">Calibration</Translation>
       </Text>
-      <Text Id="__SingleUse_ZE6D" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Main</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_ZE6D" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Control</Translation>
+        <Translation Language="KO">Control</Translation>
       </Text>
-      <Text Id="__SingleUse_W2Y1" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_W2Y1" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">APR</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">APR</Translation>
       </Text>
-      <Text Id="__SingleUse_MF51" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Main</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_MF51" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Control</Translation>
+        <Translation Language="KO">Control</Translation>
       </Text>
-      <Text Id="__SingleUse_UF71" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_UF71" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">Calibration</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO">Calibration</Translation>
       </Text>
-      <Text Id="__SingleUse_PTSH" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Main</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_PTSH" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Control</Translation>
+        <Translation Language="KO">Control</Translation>
       </Text>
-      <Text Id="__SingleUse_LHPH" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">ARP</Translation>
-        <Translation Language="KO"></Translation>
+      <Text Id="__SingleUse_LHPH" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">APR</Translation>
+        <Translation Language="KO">APR</Translation>
       </Text>
     </TextGroup>
   </Texts>
@@ -129,7 +121,7 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WidgetWildcardCharacters="0123456789 :APM" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Test" Font="trebucbd.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,0-9,A-Z">
+    <Typography Id="Test" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,0-9,A-Z">
       <LanguageSetting Language="KO" Font="NotoSansKR-Regular.ttf" Size="20" Bpp="4" IsVector="no" IsCompressed="no" Direction="LTR" FallbackCharacter="?" />
     </Typography>
   </Typographies>

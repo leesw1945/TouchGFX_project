@@ -22,6 +22,6 @@ void SettingView::changeLanguage()
 
 	Texts::setLanguage(idLanguage);
 	//SettingView::invalidate();
-	ConBtn_Set.invalidate();
+	CtrlBtn_Set.invalidate();
 	ChangeLanguageBtn.invalidate();
 }
