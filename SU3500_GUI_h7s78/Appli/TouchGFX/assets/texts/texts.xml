@@ -7,6 +7,10 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_FTR9" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">Menu</Translation>
+        <Translation Language="KO">New Text</Translation>
+      </Text>
       <Text Id="__SingleUse_3PZC" Alignment="Left" TypographyId="Test">
         <Translation Language="GB">39.37"</Translation>
         <Translation Language="KO">39.37"</Translation>

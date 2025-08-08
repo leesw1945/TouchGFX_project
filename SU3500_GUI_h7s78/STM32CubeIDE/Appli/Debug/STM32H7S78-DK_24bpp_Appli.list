@@ -14042,9 +14042,9 @@ class DrawableListItems : public DrawableListItemsInterface
 700055ee:	4628      	mov	r0, r5
 700055f0:	4924      	ldr	r1, [pc, #144]	@ (70005684 <_ZN19MenuScrollWheelBaseC1Ev+0x194>)
 700055f2:	f007 f967 	bl	7000c8c4 <_ZN8touchgfx10ScrollBase17setEasingEquationEPFstsstE>
-    scrollWheel1.setSwipeAcceleration(40);
+    scrollWheel1.setSwipeAcceleration(60);
 700055f6:	4628      	mov	r0, r5
-700055f8:	2128      	movs	r1, #40	@ 0x28
+700055f8:	213c      	movs	r1, #60	@ 0x3c
 700055fa:	f007 f966 	bl	7000c8ca <_ZN8touchgfx10ScrollBase20setSwipeAccelerationEt>
     scrollWheel1.setDragAcceleration(10);
 700055fe:	4628      	mov	r0, r5

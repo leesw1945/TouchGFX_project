@@ -147,22 +147,6 @@
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_rounded_action.json"
           },
           {
-            "Type": "ButtonWithLabel",
-            "Name": "MenuBtn_Ctrl",
-            "Width": 150,
-            "Height": 80,
-            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
-            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
-            "TextId": "__SingleUse_93I2",
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
-          },
-          {
             "Type": "DigitalClock",
             "Name": "CtrlClock",
             "X": 700,
@@ -298,14 +282,6 @@
             "AutoSize": true
           },
           {
-            "Type": "CustomContainerInstance",
-            "Name": "menuScrollWheel1",
-            "Y": -487,
-            "Width": 800,
-            "Height": 480,
-            "CustomContainerDefinitionName": "MenuScrollWheel"
-          },
-          {
             "Type": "Button",
             "Name": "button1",
             "X": -21,
@@ -315,21 +291,43 @@
             "Pressed": "__generated\\clay_theme_images_widgets_button_icon_round_micro_fill_pressed.png",
             "Released": "__generated\\clay_theme_images_widgets_button_icon_round_micro_fill_normal.png",
             "Preset": "clay_theme\\presets\\button\\icon\\round\\micro_fill_normal.json"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "menuScrollWheel1",
+            "Y": -480,
+            "Width": 800,
+            "Height": 480,
+            "CustomContainerDefinitionName": "MenuScrollWheel",
+            "Moveable": true
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "MenuBtn_Ctrl",
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
+            "TextId": "__SingleUse_93I2",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "menu",
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "MenuBtn_Ctrl"
             },
             "Action": {
-              "Type": "ActionMove",
-              "Easing": "Cubic",
-              "EasingOption": "Out",
-              "Duration": 500,
-              "ActionComponent": "menuScrollWheel1"
+              "Type": "ActionCustom",
+              "FunctionName": "moveMenuScroll"
             }
           },
           {
@@ -763,6 +761,49 @@
             },
             "TextRotation": "0",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "Width": 50,
+            "Height": 50,
+            "RelativeFilename": "__generated\\icon_theme_images_action_settings_50_50_000000.svg.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 332,
+            "Y": 25,
+            "Width": 46,
+            "Height": 46,
+            "RelativeFilename": "__generated\\icon_theme_images_alert_error_outline_46_46_000000.svg.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image4",
+            "X": 25,
+            "Y": 143,
+            "Width": 48,
+            "Height": 48,
+            "RelativeFilename": "__generated\\icon_theme_images_action_build_circle_48_48_000000.svg.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image6",
+            "X": 447,
+            "Y": 78,
+            "Width": 50,
+            "Height": 50,
+            "RelativeFilename": "__generated\\icon_theme_images_action_bookmarks_50_50_000000.svg.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image7",
+            "X": 315,
+            "Y": 128,
+            "Width": 50,
+            "Height": 50,
+            "RelativeFilename": "__generated\\icon_theme_images_action_g_translate_50_50_000000.svg.png"
           }
         ],
         "Interactions": [
@@ -904,41 +945,39 @@
         "Height": 480,
         "Components": [
           {
-            "Type": "Image",
-            "Name": "image1",
+            "Type": "Container",
+            "Name": "container1",
             "Width": 800,
             "Height": 480,
-            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
-          },
-          {
-            "Type": "ScrollWheel",
-            "Name": "scrollWheel1",
-            "Width": 800,
-            "Height": 480,
-            "SelectedItemOffset": 275,
-            "UseSelectedStyle": true,
-            "SelectedItemTemplateName": "MenuScrollCenterBtn",
-            "IsHorizontal": true,
-            "IsCircular": true,
-            "ItemTemplateName": "MenuScrollBtn",
-            "NumberofItems": 5,
-            "Easing": "Cubic",
-            "EasingOption": "Out",
-            "SwipeAcceleration": 4.0,
-            "DragAcceleration": 1.0
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "Width": 800,
+                "Height": 480,
+                "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+              },
+              {
+                "Type": "ScrollWheel",
+                "Name": "scrollWheel1",
+                "Width": 800,
+                "Height": 480,
+                "SelectedItemOffset": 275,
+                "UseSelectedStyle": true,
+                "SelectedItemTemplateName": "MenuScrollCenterBtn",
+                "IsHorizontal": true,
+                "IsCircular": true,
+                "ItemTemplateName": "MenuScrollBtn",
+                "NumberofItems": 5,
+                "Easing": "Cubic",
+                "EasingOption": "Out",
+                "SwipeAcceleration": 6.0,
+                "DragAcceleration": 1.0
+              }
+            ]
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerNone"
-            },
-            "Action": {
-              "Type": "ActionHide"
-            }
-          }
-        ]
+        "Interactions": []
       },
       {
         "Name": "MenuScrollCenterBtn",
@@ -989,6 +1028,35 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "MenuBtn",
+        "Width": 150,
+        "Height": 80,
+        "Components": [
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1",
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
+            "TextId": "__SingleUse_FTR9",
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
+          }
+        ],
+        "Interactions": [],
+        "CustomActions": [
+          {
+            "Name": "action1"
+          }
+        ]
       }
     ],
     "Name": "SU3500_GUI_TEST",

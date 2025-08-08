@@ -49,6 +49,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollCenterBtnBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\MenuScrollWheel.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollWheelBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\MenuBtn.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuBtnBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -227,6 +229,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollCenterBtnBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\MenuScrollWheel.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollWheelBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\MenuBtn.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuBtnBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -371,6 +371,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/ControlLabelLength.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/MenuBtn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuBtn.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/MenuScrollBtn.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp</locationURI>
@@ -566,6 +571,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/ControlLabelLengthBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/MenuBtnBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuBtnBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/MenuScrollBtnBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuScrollBtnBase.cpp</locationURI>
@@ -714,6 +724,31 @@
 			<name>Application/User/generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_icon_theme_images_action_bookmarks_50_50_000000.svg.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_bookmarks_50_50_000000.svg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_icon_theme_images_action_build_circle_48_48_000000.svg.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_build_circle_48_48_000000.svg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_icon_theme_images_action_g_translate_50_50_000000.svg.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_g_translate_50_50_000000.svg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_icon_theme_images_action_settings_50_50_000000.svg.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_settings_50_50_000000.svg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_icon_theme_images_alert_error_outline_46_46_000000.svg.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/__generated/image_icon_theme_images_alert_error_outline_46_46_000000.svg.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_icon_theme_images_maps_local_hospital_70_70_000000.svg.cpp</name>
