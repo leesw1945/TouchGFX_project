@@ -2,6 +2,7 @@
 #define MENUSCROLLCENTERBTN_HPP
 
 #include <gui_generated/containers/MenuScrollCenterBtnBase.hpp>
+#include <touchgfx/Bitmap.hpp>
 
 class MenuScrollCenterBtn : public MenuScrollCenterBtnBase
 {
@@ -10,6 +11,9 @@ public:
     virtual ~MenuScrollCenterBtn() {}
 
     virtual void initialize();
+
+    void updateIcon(touchgfx::Bitmap icon);
+    
 protected:
 };
 

@@ -10,6 +10,10 @@ public:
     virtual ~MenuScrollWheel() {}
 
     virtual void initialize();
+
+    virtual void scrollWheel1UpdateItem(MenuScrollBtn& item, int16_t itemIndex) override;
+    virtual void scrollWheel1UpdateCenterItem(MenuScrollCenterBtn& item, int16_t itemIndex) override;
+    
 protected:
 };
 

@@ -5,4 +5,6 @@ C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/Contr
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlView.hpp:11:13:ControlView::~ControlView()	8	static
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlView.hpp:11:13:virtual ControlView::~ControlView()	8	static
 C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/ControlView.cpp:5:1:ControlView::ControlView()	8	static
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:131:10:void touchgfx::MoveAnimator<T>::startMoveAnimation(int16_t, int16_t, uint16_t, touchgfx::EasingEquation, touchgfx::EasingEquation) [with T = MenuScrollWheel]	32	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/ControlView.cpp:20:6:virtual void ControlView::moveMenuScroll()	16	static
 C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/ControlView.cpp:10:6:virtual void ControlView::setupScreen()	0	static
