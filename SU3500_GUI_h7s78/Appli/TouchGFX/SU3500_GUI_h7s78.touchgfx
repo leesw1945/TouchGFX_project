@@ -729,8 +729,8 @@
           {
             "Type": "ButtonWithLabel",
             "Name": "ChangeLanguageBtn",
-            "X": 230,
-            "Y": 209,
+            "X": 31,
+            "Y": 129,
             "Width": 188,
             "Height": 80,
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_small_round_pressed.png",
@@ -747,8 +747,8 @@
           {
             "Type": "ButtonWithLabel",
             "Name": "CtrlBtn_Set",
-            "X": 31,
-            "Y": 40,
+            "X": -7,
+            "Y": 31,
             "Width": 264,
             "Height": 80,
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_medium_round_pressed.png",
@@ -761,49 +761,6 @@
             },
             "TextRotation": "0",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\medium_round_normal.json"
-          },
-          {
-            "Type": "Image",
-            "Name": "image2",
-            "Width": 50,
-            "Height": 50,
-            "RelativeFilename": "__generated\\icon_theme_images_action_settings_50_50_000000.svg.png"
-          },
-          {
-            "Type": "Image",
-            "Name": "image3",
-            "X": 332,
-            "Y": 25,
-            "Width": 46,
-            "Height": 46,
-            "RelativeFilename": "__generated\\icon_theme_images_alert_error_outline_46_46_000000.svg.png"
-          },
-          {
-            "Type": "Image",
-            "Name": "image4",
-            "X": 25,
-            "Y": 143,
-            "Width": 48,
-            "Height": 48,
-            "RelativeFilename": "__generated\\icon_theme_images_action_build_circle_48_48_000000.svg.png"
-          },
-          {
-            "Type": "Image",
-            "Name": "image6",
-            "X": 447,
-            "Y": 78,
-            "Width": 50,
-            "Height": 50,
-            "RelativeFilename": "__generated\\icon_theme_images_action_bookmarks_50_50_000000.svg.png"
-          },
-          {
-            "Type": "Image",
-            "Name": "image7",
-            "X": 315,
-            "Y": 128,
-            "Width": 50,
-            "Height": 50,
-            "RelativeFilename": "__generated\\icon_theme_images_action_g_translate_50_50_000000.svg.png"
           }
         ],
         "Interactions": [
@@ -993,8 +950,8 @@
             "Height": 231,
             "Pressed": "__generated\\clay_theme_images_widgets_button_icon_rounded_large_fill_pressed.png",
             "Released": "__generated\\clay_theme_images_widgets_button_icon_rounded_large_fill_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_maps_local_hospital_90_90_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_maps_local_hospital_90_90_000000.svg.png",
+            "IconPressed": "icon_theme_images_maps_local_hospital_90_90_E8F6FB.svg.png",
+            "IconReleased": "icon_theme_images_maps_local_hospital_90_90_000000.svg.png",
             "IconX": 78,
             "IconY": 72,
             "IconHeight": 90,
@@ -1018,8 +975,8 @@
             "Height": 194,
             "Pressed": "__generated\\clay_theme_images_widgets_button_icon_rounded_medium_fill_pressed.png",
             "Released": "__generated\\clay_theme_images_widgets_button_icon_rounded_medium_fill_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_maps_local_hospital_70_70_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_maps_local_hospital_70_70_000000.svg.png",
+            "IconPressed": "icon_theme_images_maps_local_hospital_70_70_E8F6FB.svg.png",
+            "IconReleased": "icon_theme_images_maps_local_hospital_70_70_000000.svg.png",
             "IconX": 69,
             "IconY": 64,
             "IconHeight": 70,
