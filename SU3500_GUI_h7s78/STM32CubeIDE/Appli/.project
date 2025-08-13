@@ -451,6 +451,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_21.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_22.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_22.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_23.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_23.cpp</locationURI>
@@ -459,6 +464,11 @@
 			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_24.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_24.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_25.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_NotoSansKR_Regular_20_4bpp_25.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Font_NotoSansKR_Regular_20_4bpp_26.cpp</name>

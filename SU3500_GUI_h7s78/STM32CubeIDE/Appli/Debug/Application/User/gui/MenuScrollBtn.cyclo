@@ -9,8 +9,9 @@
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:10:13:MenuScrollBtn::~MenuScrollBtn()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:10:13:virtual MenuScrollBtn::~MenuScrollBtn()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:11:13:MenuScrollBtn::~MenuScrollBtn()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:11:13:virtual MenuScrollBtn::~MenuScrollBtn()	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	2
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp:3:1:MenuScrollBtn::MenuScrollBtn()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp:8:6:virtual void MenuScrollBtn::initialize()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp:5:1:MenuScrollBtn::MenuScrollBtn()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp:10:6:virtual void MenuScrollBtn::initialize()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollBtn.cpp:15:6:void MenuScrollBtn::updateIcon(touchgfx::Bitmap)	1

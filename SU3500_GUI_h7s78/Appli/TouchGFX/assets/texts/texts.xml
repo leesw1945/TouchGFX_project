@@ -7,6 +7,18 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_I7IJ" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">APR set</Translation>
+        <Translation Language="KO">apr 세팅</Translation>
+      </Text>
+      <Text Id="__SingleUse_5X61" Alignment="Left" TypographyId="Test">
+        <Translation Language="GB">error</Translation>
+        <Translation Language="KO">에러</Translation>
+      </Text>
+      <Text Id="__SingleUse_WI6L" Alignment="Center" TypographyId="Test">
+        <Translation Language="GB">cal</Translation>
+        <Translation Language="KO">캘리캘리</Translation>
+      </Text>
       <Text Id="__SingleUse_FTR9" Alignment="Center" TypographyId="Test">
         <Translation Language="GB">Menu</Translation>
         <Translation Language="KO">New Text</Translation>

@@ -487,6 +487,17 @@
             "DisplayLeadingZeroForHourIndicator": true,
             "InitialHour": 10,
             "InitialMinute": 10
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 354,
+            "Y": 117,
+            "Width": 27,
+            "Height": 24,
+            "TextId": "__SingleUse_WI6L",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": [
@@ -647,6 +658,17 @@
             "DisplayLeadingZeroForHourIndicator": true,
             "InitialHour": 10,
             "InitialMinute": 10
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 254,
+            "Y": 96,
+            "Width": 51,
+            "Height": 24,
+            "TextId": "__SingleUse_5X61",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": [
@@ -698,6 +720,17 @@
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
             "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
             "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 308,
+            "Y": 216,
+            "Width": 77,
+            "Height": 24,
+            "TextId": "__SingleUse_I7IJ",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": [
@@ -980,8 +1013,7 @@
             "IconX": 69,
             "IconY": 64,
             "IconHeight": 70,
-            "IconWidth": 70,
-            "Preset": "clay_theme\\presets\\button\\icon\\rounded\\medium_fill_normal.json"
+            "IconWidth": 70
           }
         ],
         "Interactions": []

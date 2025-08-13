@@ -1,8 +1,11 @@
 #include <gui/containers/MenuScrollCenterBtn.hpp>
+#include <gui/containers/MenuScrollWheel.hpp>
 #include <touchgfx\Bitmap.hpp>
 #include <images/BitmapDatabase.hpp>
 
-MenuScrollCenterBtn::MenuScrollCenterBtn()
+MenuScrollCenterBtn::MenuScrollCenterBtn() : 
+    buttonCallback(this, &MenuScrollCenterBtn::buttonCallbackHandler),
+    parentWheel(nullptr)
 {
 
 }
@@ -10,6 +13,9 @@ MenuScrollCenterBtn::MenuScrollCenterBtn()
 void MenuScrollCenterBtn::initialize()
 {
     MenuScrollCenterBtnBase::initialize();
+
+    // 버튼 클릭 콜백 설정
+    buttonWithIcon1.setAction(buttonCallback);
 }
 
 void MenuScrollCenterBtn::updateIcon(touchgfx::Bitmap icon)
@@ -19,4 +25,18 @@ void MenuScrollCenterBtn::updateIcon(touchgfx::Bitmap icon)
     touchgfx::Bitmap backgroundPressed(BITMAP_CLAY_THEME_IMAGES_WIDGETS_BUTTON_ICON_ROUNDED_LARGE_FILL_PRESSED_ID);
     buttonWithIcon1.setBitmaps(backgroundNormal, backgroundPressed, icon, icon);
     buttonWithIcon1.invalidate();
+}
+
+void MenuScrollCenterBtn::setCenterButtonAction(MenuScrollWheel* parent)
+{
+    parentWheel = parent;
+}
+
+void MenuScrollCenterBtn::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithIcon1 && parentWheel != nullptr)
+    {
+        // 부모 MenuScrollWheel의 centerButtonClicked 메서드 호출
+        parentWheel->centerButtonClicked();
+    }
 }

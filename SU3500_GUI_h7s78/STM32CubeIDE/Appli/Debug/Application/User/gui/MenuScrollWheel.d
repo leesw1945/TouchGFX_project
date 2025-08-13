@@ -55,7 +55,8 @@ Application/User/gui/MenuScrollWheel.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollWheel.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollWheelBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -112,3 +113,4 @@ Application/User/gui/MenuScrollWheel.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp:
+../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
