@@ -70,11 +70,11 @@ Application/User/gui/ControlView.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollBtnBase.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp \
  ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp \
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlView.hpp:
@@ -147,10 +147,10 @@ Application/User/gui/ControlView.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollBtnBase.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:

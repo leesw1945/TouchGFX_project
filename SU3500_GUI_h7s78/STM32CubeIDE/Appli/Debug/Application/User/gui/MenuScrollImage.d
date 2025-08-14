@@ -1,7 +1,7 @@
-Application/User/gui/MenuScrollWheel.o: \
- C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollWheel.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollWheelBase.hpp \
+Application/User/gui/MenuScrollImage.o: \
+ C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollImage.cpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
  ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -44,21 +44,9 @@ Application/User/gui/MenuScrollWheel.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
  ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelWithSelectionStyle.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/DrawableList.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
- ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollWheel.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollWheelBase.hpp:
+ ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx\Bitmap.hpp
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
@@ -101,16 +89,4 @@ Application/User/gui/MenuScrollWheel.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp:
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/model/Model.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelWithSelectionStyle.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/DrawableList.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollCenterBtnBase.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithIcon.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
-../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
-../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
+../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx\Bitmap.hpp:

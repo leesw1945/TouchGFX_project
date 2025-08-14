@@ -371,6 +371,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/ControlLabelLength.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/Keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/Keyboard.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/MenuBtn.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuBtn.cpp</locationURI>
@@ -386,9 +391,69 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/MenuScrollImage.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuScrollImage.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/MenuScrollWheel.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonDeleteCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonDeleteCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonModeCapitalLetterCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonModeCapitalLetterCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonModeCharPartTwoCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonModeCharPartTwoCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonModeNumberCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonModeNumberCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonSkipLineCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonSkipLineCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardButtonSpacebarCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardButtonSpacebarCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardLetterCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardLetterCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardNumberCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardNumberCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardSpecialCharPartOneCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardSpecialCharPartOneCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardSpecialCharPartTwoCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardSpecialCharPartTwoCustomContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/keyboardcapitalLetterCustomContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/gui/src/containers/keyboardcapitalLetterCustomContainer.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/ControlPresenter.cpp</name>
@@ -481,6 +546,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_verdana_15_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_verdana_15_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_verdana_20_4bpp_0.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp</locationURI>
@@ -506,6 +576,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Kerning_verdana_15_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Kerning_verdana_15_4bpp.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Kerning_verdana_20_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp</locationURI>
@@ -524,6 +599,11 @@
 			<name>Application/User/generated/Table_verdana_10_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Table_verdana_15_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/fonts/src/Table_verdana_15_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Table_verdana_20_4bpp.cpp</name>
@@ -581,6 +661,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/ControlLabelLengthBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/KeyboardBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/KeyboardBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/MenuBtnBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuBtnBase.cpp</locationURI>
@@ -596,9 +681,69 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuScrollCenterBtnBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/MenuScrollImageBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuScrollImageBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/MenuScrollWheelBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/MenuScrollWheelBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonDeleteCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonDeleteCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonModeCapitalLetterCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonModeCapitalLetterCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonModeCharPartTwoCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonModeCharPartTwoCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonModeNumberCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonModeNumberCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonSkipLineCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonSkipLineCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardButtonSpacebarCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardButtonSpacebarCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardLetterCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardLetterCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardNumberCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardNumberCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardSpecialCharPartOneCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardSpecialCharPartOneCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardSpecialCharPartTwoCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardSpecialCharPartTwoCustomContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/keyboardcapitalLetterCustomContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/gui_generated/src/containers/keyboardcapitalLetterCustomContainerBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/ControlViewBase.cpp</name>
@@ -741,6 +886,26 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_APR_BG.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_APRset.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_APRset.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Calibration.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_Calibration.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Control.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_Control.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Error.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_Error.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_SENSOR_MODEL.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_SENSOR_MODEL.cpp</locationURI>
@@ -754,6 +919,11 @@
 			<name>Application/User/generated/image_SET_BG.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_SET_BG.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Setting.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_Setting.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_clay_theme_images_backgrounds_30kb.cpp</name>
@@ -864,6 +1034,76 @@
 			<name>Application/User/generated/image_icon_theme_images_maps_local_hospital_90_90_E8F6FB.svg.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_icon_theme_images_maps_local_hospital_90_90_E8F6FB.svg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keybaordButtonSpacePressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keybaordButtonSpacePressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButton.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButton.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButton123.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButton123.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButton123Pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButton123Pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonCapital.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonCapital.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonCapitalPressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonCapitalPressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonCharacter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonCharacter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonCharacterPressing.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonCharacterPressing.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonDelete.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonDelete.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonDeletePressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonDeletePressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonPressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonPressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonReturn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonReturn.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonReturnPressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonReturnPressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboardButtonSpace.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Appli/TouchGFX/generated/images/src/image_keyboardButtonSpace.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_rMAIN_H.cpp</name>

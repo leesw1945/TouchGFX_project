@@ -14,7 +14,7 @@ public:
 
     virtual void initialize();
 
-    void updateIcon(touchgfx::Bitmap icon);
+    void updateIcon(touchgfx::Bitmap normal, touchgfx::Bitmap pressed);
 
     // 클릭 액션 설정을 위한 메서드
     void setCenterButtonAction(MenuScrollWheel* parent);

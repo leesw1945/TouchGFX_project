@@ -16,8 +16,8 @@
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:13:13:MenuScrollCenterBtn::~MenuScrollCenterBtn()	8	static
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:13:13:virtual MenuScrollCenterBtn::~MenuScrollCenterBtn()	8	static
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	0	static
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:35:6:void MenuScrollCenterBtn::buttonCallbackHandler(const touchgfx::AbstractButton&)	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:34:6:void MenuScrollCenterBtn::buttonCallbackHandler(const touchgfx::AbstractButton&)	0	static
 C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:6:1:MenuScrollCenterBtn::MenuScrollCenterBtn()	8	static
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:30:6:void MenuScrollCenterBtn::setCenterButtonAction(MenuScrollWheel*)	0	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:29:6:void MenuScrollCenterBtn::setCenterButtonAction(MenuScrollWheel*)	0	static
 C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:13:6:virtual void MenuScrollCenterBtn::initialize()	8	static
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:21:6:void MenuScrollCenterBtn::updateIcon(touchgfx::Bitmap)	32	static
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollCenterBtn.cpp:21:6:void MenuScrollCenterBtn::updateIcon(touchgfx::Bitmap, touchgfx::Bitmap)	32	static

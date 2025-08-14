@@ -54,8 +54,8 @@ Application/User/gui/MenuScrollCenterBtn.o: \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
- ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp \
- ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollBtnBase.hpp \
+ ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp \
+ ../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp \
  ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx\Bitmap.hpp \
  ../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp
 ../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollCenterBtn.hpp:
@@ -112,7 +112,7 @@ Application/User/gui/MenuScrollCenterBtn.o: \
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollWheelBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/scrollers/ScrollBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollBtn.hpp:
-../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollBtnBase.hpp:
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:
+../../Appli/../../Appli/TouchGFX/generated/gui_generated/include/gui_generated/containers/MenuScrollImageBase.hpp:
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx\Bitmap.hpp:
 ../../Appli/../../Appli/TouchGFX/generated/images/include/images/BitmapDatabase.hpp:

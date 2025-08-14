@@ -9,11 +9,9 @@
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp:42:6:virtual void MenuScrollWheel::scrollWheel1UpdateItem(MenuScrollImage&, int16_t)	6
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp:68:6:virtual void MenuScrollWheel::scrollWheel1UpdateCenterItem(MenuScrollCenterBtn&, int16_t)	6
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollWheel.hpp:10:13:MenuScrollWheel::~MenuScrollWheel()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollWheel.hpp:10:13:virtual MenuScrollWheel::~MenuScrollWheel()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:11:13:MenuScrollImage::~MenuScrollImage()	1
+../../Appli/../../Appli/TouchGFX/gui/include/gui/containers/MenuScrollImage.hpp:11:13:virtual MenuScrollImage::~MenuScrollImage()	1
 ../../Appli/../../Appli/Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	2
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp:4:1:MenuScrollWheel::MenuScrollWheel()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp:104:6:void MenuScrollWheel::centerButtonClicked()	5
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollWheel.cpp:9:6:virtual void MenuScrollWheel::initialize()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollImage.cpp:4:1:MenuScrollImage::MenuScrollImage()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollImage.cpp:9:6:virtual void MenuScrollImage::initialize()	1
+C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/containers/MenuScrollImage.cpp:14:6:void MenuScrollImage::updateImage(touchgfx::Bitmap)	1

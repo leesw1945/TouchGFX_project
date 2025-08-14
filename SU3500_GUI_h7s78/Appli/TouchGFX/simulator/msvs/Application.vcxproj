@@ -51,6 +51,32 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollWheelBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\MenuBtn.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuBtnBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\MenuScrollImage.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\MenuScrollImageBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Keyboard.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\KeyboardBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonDeleteCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonDeleteCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonModeCapitalLetterCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonModeCapitalLetterCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonModeCharPartTwoCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonModeCharPartTwoCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonModeNumberCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonModeNumberCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonSkipLineCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonSkipLineCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardButtonSpacebarCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardButtonSpacebarCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardcapitalLetterCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardcapitalLetterCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardLetterCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardLetterCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardNumberCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardNumberCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardSpecialCharPartOneCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardSpecialCharPartOneCustomContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardSpecialCharPartTwoCustomContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardSpecialCharPartTwoCustomContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -231,6 +257,32 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollWheelBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\MenuBtn.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuBtnBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\MenuScrollImage.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\MenuScrollImageBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Keyboard.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\KeyboardBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonDeleteCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonDeleteCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonModeCapitalLetterCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonModeCapitalLetterCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonModeCharPartTwoCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonModeCharPartTwoCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonModeNumberCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonModeNumberCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonSkipLineCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonSkipLineCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardButtonSpacebarCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardButtonSpacebarCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardcapitalLetterCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardcapitalLetterCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardLetterCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardLetterCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardNumberCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardNumberCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardSpecialCharPartOneCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardSpecialCharPartOneCustomContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardSpecialCharPartTwoCustomContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardSpecialCharPartTwoCustomContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

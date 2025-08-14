@@ -283,7 +283,7 @@
           },
           {
             "Type": "Button",
-            "Name": "button1",
+            "Name": "SettingBtn",
             "X": -21,
             "Y": 401,
             "Width": 104,
@@ -316,6 +316,24 @@
             },
             "TextRotation": "0",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
+          },
+          {
+            "Type": "Button",
+            "Name": "KeyboardBtn",
+            "Y": 100,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "Keyboard",
+            "Y": 480,
+            "Width": 272,
+            "Height": 249,
+            "CustomContainerDefinitionName": "Keyboard"
           }
         ],
         "Interactions": [
@@ -347,13 +365,28 @@
             "InteractionName": "Interaction4",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
+              "TriggerComponent": "SettingBtn"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "Setting"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "KeyboardBtn"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 231,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 500,
+              "ActionComponent": "Keyboard"
             }
           }
         ]
@@ -957,7 +990,7 @@
                 "SelectedItemTemplateName": "MenuScrollCenterBtn",
                 "IsHorizontal": true,
                 "IsCircular": true,
-                "ItemTemplateName": "MenuScrollBtn",
+                "ItemTemplateName": "MenuScrollImage",
                 "NumberofItems": 5,
                 "Easing": "Cubic",
                 "EasingOption": "Out",
@@ -1044,6 +1077,5155 @@
         "CustomActions": [
           {
             "Name": "action1"
+          }
+        ]
+      },
+      {
+        "Name": "MenuScrollImage",
+        "Width": 250,
+        "Height": 480,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 20,
+            "Y": 135,
+            "Width": 210,
+            "Height": 210,
+            "RelativeFilename": "Control.png"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "Keyboard",
+        "Width": 272,
+        "Height": 249,
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "permanentKeyContainer",
+            "Y": 90,
+            "Width": 272,
+            "Height": 159,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "backgroundBox",
+                "Width": 271,
+                "Height": 159,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "buttonSkipLineContainer",
+                "X": 191,
+                "Y": 115,
+                "Width": 81,
+                "Height": 40,
+                "CustomContainerDefinitionName": "keyboardButtonSkipLineCustomContainer"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "buttonDeleteContainer",
+                "X": 231,
+                "Y": 77,
+                "Width": 40,
+                "Height": 40,
+                "CustomContainerDefinitionName": "keyboardButtonDeleteCustomContainer"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "buttonSpacebarContainer",
+                "X": 85,
+                "Y": 115,
+                "Width": 100,
+                "Height": 40,
+                "CustomContainerDefinitionName": "keyboardButtonSpacebarCustomContainer"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "buttonModeNumberContainer",
+                "X": 5,
+                "Y": 115,
+                "Width": 88,
+                "Height": 55,
+                "CustomContainerDefinitionName": "keyboardButtonModeNumberCustomContainer"
+              }
+            ]
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "letterContainer",
+            "X": 6,
+            "Y": 96,
+            "Width": 259,
+            "Height": 108,
+            "CustomContainerDefinitionName": "keyboardLetterCustomContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "buttonModeCapitalLetterContainer",
+            "X": 5,
+            "Y": 167,
+            "Width": 40,
+            "Height": 40,
+            "CustomContainerDefinitionName": "keyboardButtonModeCapitalLetterCustomContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "capitalLetterContainer",
+            "X": 5,
+            "Y": 96,
+            "Width": 259,
+            "Height": 109,
+            "Visible": false,
+            "CustomContainerDefinitionName": "keyboardcapitalLetterCustomContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "buttonModeCharPartTwoContainer",
+            "X": 5,
+            "Y": 167,
+            "Width": 89,
+            "Height": 40,
+            "Visible": false,
+            "CustomContainerDefinitionName": "keyboardButtonModeCharPartTwoCustomContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "specialCharPartTwoContainer",
+            "X": 32,
+            "Y": 96,
+            "Width": 208,
+            "Height": 109,
+            "Visible": false,
+            "CustomContainerDefinitionName": "keyboardSpecialCharPartTwoCustomContainer"
+          },
+          {
+            "Type": "Container",
+            "Name": "numberModeContainer",
+            "Y": 90,
+            "Width": 272,
+            "Height": 159,
+            "Visible": false,
+            "Components": [
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "specialCharPartOneCustomContainer1",
+                "X": -10,
+                "Y": -4,
+                "Width": 288,
+                "Height": 126,
+                "CustomContainerDefinitionName": "keyboardSpecialCharPartOneCustomContainer"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "numberCustomContainer1",
+                "X": 5,
+                "Y": 6,
+                "Width": 259,
+                "Height": 35,
+                "CustomContainerDefinitionName": "keyboardNumberCustomContainer"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "textKeyboardContainer",
+            "Width": 271,
+            "Height": 74,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "backgroundTextBox",
+                "Width": 271,
+                "Height": 74,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "keyboardTextArea",
+                "Width": 271,
+                "Height": 74,
+                "TextId": "keyboardCustomContainerText",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 60
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "writeCharacter_Number",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "TriggerComponent": "numberCustomContainer1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "writeCharacter_Lettre",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "TriggerComponent": "letterContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "deleteTheLastCharacter",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonDeleteCustomContainer valueDelete happens",
+              "TriggerComponent": "buttonDeleteContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard deleteLastCharacter",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "addASpace",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonSpacebarCustomContainer charValueSpace happens",
+              "TriggerComponent": "buttonSpacebarContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "writeCharacter_CapitalLetters",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "TriggerComponent": "capitalLetterContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "displayButtons_Numbers",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonModeNumberCustomContainer valueModeNumber happens",
+              "TriggerComponent": "buttonModeNumberContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard displayNumbers",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "skipALine",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonSkipLineCustomContainer charValueSkipLine happens",
+              "TriggerComponent": "buttonSkipLineContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "writeCharacter_SpecialCharPartOne",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "TriggerComponent": "specialCharPartOneCustomContainer1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "displayButtons_SpecialCharPartTwo",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonModeCharPartTwoCustomContainer valueModeCharPartTwo happens",
+              "TriggerComponent": "buttonModeCharPartTwoContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard displayCharactersPartTwo",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "writeCharacter_SpecialCharPartTwo",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "TriggerComponent": "specialCharPartTwoContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard writeButtonCharacter",
+              "ParameterValue": "value",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "displayButtons_CapitalLetters",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "keyboardButtonModeCapitalLetterCustomContainer valueCapitalLetterMode happens",
+              "TriggerComponent": "buttonModeCapitalLetterContainer"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Keyboard displayCapitalLetters",
+              "ActionComponent": "Keyboard"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "writeButtonCharacter",
+            "Description": "display the character cliking on the button",
+            "HasValue": true,
+            "ValueType": "char"
+          },
+          {
+            "Name": "deleteLastCharacter",
+            "Description": "delete the last character cliking"
+          },
+          {
+            "Name": "displayCapitalLetters",
+            "Description": "display the capital letters"
+          },
+          {
+            "Name": "displayNumbers",
+            "Description": "display the numbers"
+          },
+          {
+            "Name": "displayCharactersPartTwo",
+            "Description": " display the second part of the special characters"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonSkipLineCustomContainer",
+        "Width": 81,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "skipLineFlexButton",
+            "Width": 100,
+            "Height": 40,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButtonReturn.png",
+                "ImagePressed": "keyboardButtonReturnPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "putSkipLine",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "skipLineFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonSkipLineCustomContainer charValueSkipLine happens",
+              "ParameterValue": "'\\n'"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "charValueSkipLine",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonDeleteCustomContainer",
+        "Width": 40,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "deleteFlexButton",
+            "Width": 40,
+            "Height": 40,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "LockFlexButtonToImageSize": true,
+                "ImageReleased": "keyboardButtonDelete.png",
+                "ImagePressed": "keyboardButtonDeletePressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "deleteCharacter",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "deleteFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonDeleteCustomContainer valueDelete happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueDelete"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonSpacebarCustomContainer",
+        "X": 42,
+        "Y": 10,
+        "Width": 100,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "SpacebarFlexButton",
+            "Width": 100,
+            "Height": 40,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "LockFlexButtonToImageSize": true,
+                "ImageReleased": "keyboardButtonSpace.png",
+                "ImagePressed": "keybaordButtonSpacePressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "addSpace",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "SpacebarFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonSpacebarCustomContainer charValueSpace happens",
+              "ParameterValue": "' '"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "charValueSpace",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonModeNumberCustomContainer",
+        "Width": 88,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "ToggleButton",
+            "Name": "modeNumberToggleButton",
+            "Width": 100,
+            "Height": 40,
+            "Pressed": "keyboardButton123Pressed.png",
+            "Released": "keyboardButton123.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "putModeNumber",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "modeNumberToggleButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonModeNumberCustomContainer valueModeNumber happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueModeNumber"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardLetterCustomContainer",
+        "Width": 259,
+        "Height": 108,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "qFlexButton",
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_q",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "wFlexButton",
+            "X": 26,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_w",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "eFlexButton",
+            "X": 52,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_e",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rFlexButton",
+            "X": 78,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_r",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "tFlexButton",
+            "X": 104,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_t",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "yFlexButton",
+            "X": 130,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_y",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "uFlexButton",
+            "X": 156,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_u",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "iFlexButton",
+            "X": 182,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_i",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "oFlexButton",
+            "X": 208,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_o",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "pFlexButton",
+            "X": 234,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_p",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "aFlexButton",
+            "X": 13,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_a",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "sFlexButton",
+            "X": 39,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_s",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "dFlexButton",
+            "X": 65,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_d",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "fFlexButton",
+            "X": 91,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_f",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "gFlexButton",
+            "X": 117,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_g",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "hFlexButton",
+            "X": 143,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_h",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "jFlexButton",
+            "X": 169,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_j",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "kFlexButton",
+            "X": 195,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_k",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "lFlexButton",
+            "X": 221,
+            "Y": 36,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_l",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "zFlexButton",
+            "X": 40,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_z",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "xFlexButton",
+            "X": 66,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_x",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "cFlexButton",
+            "X": 92,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_c",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "vFlexButton",
+            "X": 118,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_v",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bFlexButton",
+            "X": 144,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_b",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "nFlexButton",
+            "X": 170,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_n",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "mFlexButton",
+            "X": 196,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_m",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "writeCharacterM",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "mFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'m'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterN",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "nFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'n'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterB",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'b'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterV",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "vFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'v'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacteC",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'c'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacteX",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "xFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'x'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterZ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "zFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'z'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterL",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "lFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'l'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterK",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "kFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'k'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterJ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "jFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'j'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterH",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'h'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterG",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "gFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'g'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterF",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "fFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'f'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterD",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'d'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterS",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "sFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'s'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterA",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "aFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'a'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterP",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "pFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'p'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterO",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "oFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'o'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterI",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "iFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'i'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterU",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "uFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'u'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterY",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "yFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'y'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterT",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "tFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'t'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterR",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'r'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterE",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "eFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'e'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterW",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "wFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'w'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterQ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "qFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardLetterCustomContainer charValueLetter happens",
+              "ParameterValue": "'q'"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "charValueLetter",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonModeCapitalLetterCustomContainer",
+        "Width": 40,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "ToggleButton",
+            "Name": "capitalLetterToggleButton",
+            "Width": 40,
+            "Height": 40,
+            "Pressed": "keyboardButtonCapitalPressed.png",
+            "Released": "keyboardButtonCapital.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "putModeCapitalLetter",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "capitalLetterToggleButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonModeCapitalLetterCustomContainer valueCapitalLetterMode happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueCapitalLetterMode"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardcapitalLetterCustomContainer",
+        "X": 1,
+        "Width": 259,
+        "Height": 109,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "QFlexButton",
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalQ",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "WFlexButton",
+            "X": 26,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalW",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "EFlexButton",
+            "X": 52,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalE",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "RFlexButton",
+            "X": 78,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalR",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "TFlexButton",
+            "X": 104,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalT",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "YFlexButton",
+            "X": 130,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalY",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "UFlexButton",
+            "X": 156,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalU",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "IFlexButton",
+            "X": 182,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalI",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "OFlexButton",
+            "X": 208,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalO",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "PFlexButton",
+            "X": 234,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalP",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "AFlexButton",
+            "X": 14,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalA",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "SFlexButton",
+            "X": 40,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalS",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "DFlexButton",
+            "X": 66,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalD",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "FFlexButton",
+            "X": 92,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalF",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "GFlexButton",
+            "X": 118,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalG",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "HFlexButton",
+            "X": 144,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalH",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "JFlexButton",
+            "X": 170,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalJ",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "KFlexButton",
+            "X": 196,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalK",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "LFlexButton",
+            "X": 222,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalL",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "ZFlexButton",
+            "X": 41,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalZ",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "XFlexButton",
+            "X": 67,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalX",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "CFlexButton",
+            "X": 93,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalC",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "VFlexButton",
+            "X": 119,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalV",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "BFlexButton",
+            "X": 145,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalB",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "NFlexButton",
+            "X": 171,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalN",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "MFlexButton",
+            "X": 197,
+            "Y": 74,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_capitalM",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "writeCharacterCapitalM",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "MFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'M'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalN",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "NFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'N'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalB",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "BFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'B'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalV",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "VFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'V'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalC",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "CFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'C'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalX",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "XFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'X'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalZ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ZFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'Z'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalL",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "LFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'L'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalK",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "KFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'K'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalJ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "JFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'J'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalH",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "HFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'H'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalG",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "GFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'G'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalF",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "FFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'F'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalD",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "DFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'D'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalS",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "SFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'S'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalA",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "AFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'A'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalP",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "PFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'P'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalO",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "OFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'O'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalI",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "IFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'I'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalU",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "UFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'U'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalY",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "YFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'Y'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalT",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "TFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'T'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalR",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "RFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'R'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalE",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "EFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'E'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalW",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "WFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'W'"
+            }
+          },
+          {
+            "InteractionName": "writeCharacterCapitalQ",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "QFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardcapitalLetterCustomContainer valueCapitalLetter happens",
+              "ParameterValue": "'Q'"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueCapitalLetter",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardButtonModeCharPartTwoCustomContainer",
+        "Width": 89,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "ToggleButton",
+            "Name": "characterPartTwoToggleButton",
+            "Width": 100,
+            "Height": 40,
+            "Pressed": "keyboardButtonCharacterPressing.png",
+            "Released": "keyboardButtonCharacter.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "putModeCharPartTwo",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "characterPartTwoToggleButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardButtonModeCharPartTwoCustomContainer valueModeCharPartTwo happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueModeCharPartTwo"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardSpecialCharPartTwoCustomContainer",
+        "Width": 208,
+        "Height": 109,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "periodFlexButton",
+            "X": 65,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_period",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "commaFlexButton",
+            "X": 91,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_comma",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "questionFlexButton",
+            "X": 117,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_question",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "exclammationFlexButton",
+            "X": 143,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_exclamation",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "apostrophyFlexButton",
+            "X": 169,
+            "Y": 73,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_apostrophe",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "hook2FlexButton",
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_squarebracketL",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "hook1FlexButton",
+            "X": 26,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_squarebracketR",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "brace2FlexButton",
+            "X": 52,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_bracesL",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "hachtagFlexButton",
+            "X": 104,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_pound",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "percentFlexButton",
+            "X": 130,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_percent",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "hatFlexButton",
+            "X": 156,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_power",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "starFlexButton",
+            "X": 182,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_star",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "moreFlexButton",
+            "X": 157,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_plus",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "equalFlexButton",
+            "X": 183,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_equal",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "brace1FlexButton",
+            "X": 78,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_bracesR",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "dash8FlexButton",
+            "X": 1,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_emdash",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "antiFlexButton",
+            "X": 27,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_backslash",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "lawFlexButton",
+            "X": 53,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_verticalbar",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "waveFlexButton",
+            "X": 79,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_wave",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "arrowRFlexButton",
+            "X": 105,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_signlow",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "arrowLFlexButton",
+            "X": 131,
+            "Y": 37,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_signmore",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "getCharPeriod",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "periodFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'.'"
+            }
+          },
+          {
+            "InteractionName": "getCharComma",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "commaFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "','"
+            }
+          },
+          {
+            "InteractionName": "getCharQuestion",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "questionFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'?'"
+            }
+          },
+          {
+            "InteractionName": "getCharExclammation",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "exclammationFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'!'"
+            }
+          },
+          {
+            "InteractionName": "getCharApostrophy",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "apostrophyFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "39"
+            }
+          },
+          {
+            "InteractionName": "getCharArrowL",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "arrowLFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'>'"
+            }
+          },
+          {
+            "InteractionName": "getCharArrowR",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "arrowRFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'<'"
+            }
+          },
+          {
+            "InteractionName": "getCharWave",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "waveFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "126"
+            }
+          },
+          {
+            "InteractionName": "getCharLaw",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "lawFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "124"
+            }
+          },
+          {
+            "InteractionName": "getCharAnti",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "antiFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "92"
+            }
+          },
+          {
+            "InteractionName": "getCharDash8",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dash8FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'_'"
+            }
+          },
+          {
+            "InteractionName": "getCharEqual",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "equalFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'='"
+            }
+          },
+          {
+            "InteractionName": "getCharMore",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "moreFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'+'"
+            }
+          },
+          {
+            "InteractionName": "getCharStar",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "starFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'*'"
+            }
+          },
+          {
+            "InteractionName": "getCharHat",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hatFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'^'"
+            }
+          },
+          {
+            "InteractionName": "getCharPercent",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "percentFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'%'"
+            }
+          },
+          {
+            "InteractionName": "getCharHachtag",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hachtagFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'#'"
+            }
+          },
+          {
+            "InteractionName": "getCharBrace1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "brace1FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'}'"
+            }
+          },
+          {
+            "InteractionName": "getCharBrace2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "brace2FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'{'"
+            }
+          },
+          {
+            "InteractionName": "getCharHook1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hook1FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "']'"
+            }
+          },
+          {
+            "InteractionName": "getCharHook2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hook2FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartTwoCustomContainer valueSpecialCharPartTwo happens",
+              "ParameterValue": "'['"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueSpecialCharPartTwo",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardSpecialCharPartOneCustomContainer",
+        "Width": 288,
+        "Height": 126,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "dashFlexButton",
+            "X": 15,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_endash",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "slachFlexButton",
+            "X": 41,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_slash",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "colonFlexButton",
+            "X": 67,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_colon",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "semicolonFlexButton",
+            "X": 93,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_semicolon",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bracket1FlexButton",
+            "X": 119,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_parenthesesL",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bracket2FlexButton",
+            "X": 145,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_parenthesesR",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "dollardFlexButton",
+            "X": 171,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_dollard",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "andFlexButton",
+            "X": 197,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_andpersand",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "atFlexButton",
+            "X": 223,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_at",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "periodFlexButton",
+            "X": 107,
+            "Y": 82,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_period2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "commaFlexButton",
+            "X": 133,
+            "Y": 82,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_comma2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "questionFlexButton",
+            "X": 159,
+            "Y": 82,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_question2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "exclammationFlexButton",
+            "X": 185,
+            "Y": 82,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_exclamation2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "apostrophyFlexButton",
+            "X": 211,
+            "Y": 82,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_apostrophe2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "quotationmarkFlexButton",
+            "X": 249,
+            "Y": 46,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_quotation",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "getCharQuotationmark",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "quotationmarkFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "34"
+            }
+          },
+          {
+            "InteractionName": "getCharAT",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "atFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'@'"
+            }
+          },
+          {
+            "InteractionName": "getCharAnd",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "andFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'&'"
+            }
+          },
+          {
+            "InteractionName": "getCharDollard",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dollardFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'$'"
+            }
+          },
+          {
+            "InteractionName": "getCharBracket2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bracket2FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "')'"
+            }
+          },
+          {
+            "InteractionName": "getCharBracket1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bracket1FlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'('"
+            }
+          },
+          {
+            "InteractionName": "getCharSemicolon",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "semicolonFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "';'"
+            }
+          },
+          {
+            "InteractionName": "getCharColon",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "colonFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "':'"
+            }
+          },
+          {
+            "InteractionName": "getCharSlach",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "slachFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'/'"
+            }
+          },
+          {
+            "InteractionName": "getCharDash",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dashFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'-'"
+            }
+          },
+          {
+            "InteractionName": "getCharApostrophy",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "apostrophyFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "39"
+            }
+          },
+          {
+            "InteractionName": "getCharExclammation",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "exclammationFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'!'"
+            }
+          },
+          {
+            "InteractionName": "getCharQuestion",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "questionFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'?'"
+            }
+          },
+          {
+            "InteractionName": "getCharComma",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "commaFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "','"
+            }
+          },
+          {
+            "InteractionName": "getCharPeriod",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "periodFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardSpecialCharPartOneCustomContainer valueSpecialCharPartOne happens",
+              "ParameterValue": "'.'"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueSpecialCharPartOne",
+            "HasValue": true,
+            "ValueType": "char"
+          }
+        ]
+      },
+      {
+        "Name": "keyboardNumberCustomContainer",
+        "Y": 7,
+        "Width": 259,
+        "Height": 35,
+        "Components": [
+          {
+            "Type": "FlexButton",
+            "Name": "oneFlexButton",
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_1",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "twoFlexButton",
+            "X": 26,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_2",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "threeFlexButton",
+            "X": 52,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_3",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "fourFlexButton",
+            "X": 78,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_4",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "fiveFlexButton",
+            "X": 104,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_5",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "sixFlexButton",
+            "X": 130,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_6",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "sevenFlexButton",
+            "X": 156,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_7",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "eightFlexButton",
+            "X": 182,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_8",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "nineFlexButton",
+            "X": 208,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_9",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "zeroFlexButton",
+            "X": 234,
+            "Width": 25,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 7,
+                "TextId": "keyboardCustomContainerText_0",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                },
+                "ColorPressed": {
+                  "Red": 84,
+                  "Green": 84,
+                  "Blue": 84
+                }
+              },
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "keyboardButton.png",
+                "ImagePressed": "keyboardButtonPressed.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "writeCharThree",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "threeFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'3'"
+            }
+          },
+          {
+            "InteractionName": "writeCharFour",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "fourFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'4'"
+            }
+          },
+          {
+            "InteractionName": "writeCharFive",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "fiveFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'5'"
+            }
+          },
+          {
+            "InteractionName": "writeCharSix",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "sixFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'6'"
+            }
+          },
+          {
+            "InteractionName": "writeCharOne",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "oneFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'1'"
+            }
+          },
+          {
+            "InteractionName": "writeCharTwo",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "twoFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'2'"
+            }
+          },
+          {
+            "InteractionName": "writeCharSeven",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "sevenFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'7'"
+            }
+          },
+          {
+            "InteractionName": "writeCharEight",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "eightFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'8'"
+            }
+          },
+          {
+            "InteractionName": "writeCharNine",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "nineFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'9'"
+            }
+          },
+          {
+            "InteractionName": "writeCharZero",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "zeroFlexButton"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardNumberCustomContainer valueNumber happens",
+              "ParameterValue": "'0'"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "valueNumber",
+            "Description": "",
+            "HasValue": true,
+            "ValueType": "char"
           }
         ]
       }
