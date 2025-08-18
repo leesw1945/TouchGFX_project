@@ -18,6 +18,7 @@ public:
     // 버튼 클릭 처리를 위한 메서드 추가
     void centerButtonClicked();
     
+    
 protected:
 };
 
