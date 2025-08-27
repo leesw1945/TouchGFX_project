@@ -1,5 +1,0 @@
-../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlPresenter.hpp:28:13:ControlPresenter::~ControlPresenter()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/ControlPresenter.cpp:10:6:virtual void ControlPresenter::activate()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlPresenter.hpp:28:13:virtual ControlPresenter::~ControlPresenter()	1
-../../Appli/../../Appli/TouchGFX/gui/include/gui/control_screen/ControlPresenter.hpp:28:13:virtual void* ControlPresenter::_ZThn4_N16ControlPresenterD1Ev()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/gui/src/control_screen/ControlPresenter.cpp:4:1:ControlPresenter::ControlPresenter(ControlView&)	1
