@@ -3,15 +3,15 @@
   "Application": {
     "Name": "SU6000_Center",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
-    "AvailableColorDepths": [ 16 ],
+    "AvailableColorDepths": [ 24 ],
     "AvailableLCDs":
     {
-      "16": "LCD16bpp"
+      "24": "LCD24bpp"
     },
     "AvailableResolutions": [
       {
-        "Width": 32,
-        "Height": 32
+        "Width": 800,
+        "Height": 480
       }
     ],
     "PostGenerateTargetCommand": "touchgfx update_project",

@@ -19,8 +19,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "hspi.h"
+#include "i2c.h"
 #include "icache.h"
+#include "ltdc.h"
 #include "memorymap.h"
+#include "octospi.h"
 #include "gpio.h"
 #include "app_touchgfx.h"
 
@@ -92,6 +96,11 @@ int main(void)
   MX_GPIO_Init();
   MX_CRC_Init();
   MX_ICACHE_Init();
+  MX_OCTOSPI1_Init();
+  MX_HSPI1_Init();
+  MX_I2C1_Init();
+  MX_LTDC_Init();
+  MX_I2C2_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -127,7 +136,8 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = RCC_MSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_0;
