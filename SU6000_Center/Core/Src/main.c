@@ -56,6 +56,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void PeriphCommonClock_Config(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -87,6 +88,9 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
+
+  /* Configure the peripherals common clocks */
+  PeriphCommonClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
@@ -168,6 +172,36 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /** Initializes the common periph clock
+  */
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_HSPI|RCC_PERIPHCLK_LTDC
+                              |RCC_PERIPHCLK_OSPI;
+  PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL2;
+  PeriphClkInit.HspiClockSelection = RCC_HSPICLKSOURCE_PLL2;
+  PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
+  PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
+  PeriphClkInit.PLL2.PLL2M = 1;
+  PeriphClkInit.PLL2.PLL2N = 8;
+  PeriphClkInit.PLL2.PLL2P = 2;
+  PeriphClkInit.PLL2.PLL2Q = 1;
+  PeriphClkInit.PLL2.PLL2R = 16;
+  PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_1;
+  PeriphClkInit.PLL2.PLL2FRACN = 2560;
+  PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVQ;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }

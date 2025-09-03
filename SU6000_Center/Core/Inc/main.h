@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define TOUCH_I2C_IRQ_Pin GPIO_PIN_2
 #define TOUCH_I2C_IRQ_GPIO_Port GPIOF
+#define LCD_MODE_Pin GPIO_PIN_2
+#define LCD_MODE_GPIO_Port GPIOD
 #define LCD_BK_POWER_ON_Pin GPIO_PIN_4
 #define LCD_BK_POWER_ON_GPIO_Port GPIOD
 

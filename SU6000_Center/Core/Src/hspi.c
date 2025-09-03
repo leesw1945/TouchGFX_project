@@ -41,7 +41,7 @@ void MX_HSPI1_Init(void)
   hxspi1.Init.FifoThresholdByte = 1;
   hxspi1.Init.MemoryMode = HAL_XSPI_SINGLE_MEM;
   hxspi1.Init.MemoryType = HAL_XSPI_MEMTYPE_MACRONIX;
-  hxspi1.Init.MemorySize = HAL_XSPI_SIZE_16B;
+  hxspi1.Init.MemorySize = HAL_XSPI_SIZE_128MB;
   hxspi1.Init.ChipSelectHighTimeCycle = 1;
   hxspi1.Init.FreeRunningClock = HAL_XSPI_FREERUNCLK_DISABLE;
   hxspi1.Init.ClockMode = HAL_XSPI_CLOCK_MODE_0;
@@ -66,22 +66,11 @@ void HAL_XSPI_MspInit(XSPI_HandleTypeDef* xspiHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(xspiHandle->Instance==HSPI1)
   {
   /* USER CODE BEGIN HSPI1_MspInit 0 */
 
   /* USER CODE END HSPI1_MspInit 0 */
-
-  /** Initializes the peripherals clock
-  */
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_HSPI;
-    PeriphClkInit.HspiClockSelection = RCC_HSPICLKSOURCE_SYSCLK;
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-    {
-      Error_Handler();
-    }
-
     /* HSPI1 clock enable */
     __HAL_RCC_HSPI1_CLK_ENABLE();
 

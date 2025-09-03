@@ -52,7 +52,7 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOI_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LCD_BK_POWER_ON_GPIO_Port, LCD_BK_POWER_ON_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOD, LCD_MODE_Pin|LCD_BK_POWER_ON_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : PC13 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_12;
@@ -66,12 +66,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TOUCH_I2C_IRQ_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LCD_BK_POWER_ON_Pin */
-  GPIO_InitStruct.Pin = LCD_BK_POWER_ON_Pin;
+  /*Configure GPIO pins : LCD_MODE_Pin LCD_BK_POWER_ON_Pin */
+  GPIO_InitStruct.Pin = LCD_MODE_Pin|LCD_BK_POWER_ON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LCD_BK_POWER_ON_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
 }
 
