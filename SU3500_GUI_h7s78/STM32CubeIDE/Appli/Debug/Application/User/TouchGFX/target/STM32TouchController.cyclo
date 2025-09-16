@@ -1,5 +1,0 @@
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/target/STM32TouchController.cpp:58:6:virtual void STM32TouchController::init()	1
-../../../Appli/TouchGFX/target/STM32TouchController.hpp:38:7:STM32TouchController::~STM32TouchController()	1
-../../../Appli/TouchGFX/target/STM32TouchController.hpp:38:7:virtual STM32TouchController::~STM32TouchController()	1
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/target/STM32TouchController.cpp:63:6:virtual bool STM32TouchController::sampleTouch(int32_t&, int32_t&)	3
-C:/TouchGFXProjects/SU3500_GUI_h7s78/Appli/TouchGFX/target/STM32TouchController.cpp:36:10:void HAL_GPIO_EXTI_Callback(uint16_t)	2

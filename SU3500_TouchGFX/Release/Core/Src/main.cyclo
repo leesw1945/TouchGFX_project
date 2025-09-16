@@ -1,0 +1,10 @@
+../Core/Src/main.c:90:6:Touch_Detected_Callback	1
+../Core/Src/main.c:105:6:Touch_Released_Callback	1
+../Core/Src/main.c:117:6:HAL_GPIO_EXTI_Callback	3
+../Core/Src/main.c:131:12:Init_TouchController	2
+../Core/Src/main.c:152:13:Test_TouchController_Polling	5
+../Core/Src/main.c:189:5:main	2
+../Core/Src/main.c:255:6:SystemClock_Config	4
+../Core/Src/main.c:304:6:SDRAM_Initialization_Sequence	1
+../Core/Src/main.c:350:13:Test_TouchController	5
+../Core/Src/main.c:386:6:Error_Handler	1
