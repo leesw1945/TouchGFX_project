@@ -45,6 +45,14 @@ Middlewares/ST/usbx/common/core/src \
 Middlewares/ST/usbx/common/usbx_device_classes/src \
 Middlewares/ST/usbx/common/usbx_stm32_device_controllers \
 TouchGFX/App \
+TouchGFX/generated/fonts/src \
+TouchGFX/generated/gui_generated/src/common \
+TouchGFX/generated/gui_generated/src/screen_screen \
+TouchGFX/generated/images/src \
+TouchGFX/generated/texts/src \
+TouchGFX/gui/src/common \
+TouchGFX/gui/src/model \
+TouchGFX/gui/src/screen_screen \
 TouchGFX/target \
 TouchGFX/target/generated \
 USBX/App \
