@@ -24,6 +24,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "usbd_cdc_if.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,7 +97,7 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_GPIO_WritePin(USB_PULL_UP_GPIO_Port, USB_PULL_UP_Pin, GPIO_PIN_SET);
+  //HAL_GPIO_WritePin(USB_PULL_UP_GPIO_Port, USB_PULL_UP_Pin, GPIO_PIN_SET);
 
   /* USER CODE END 2 */
 
@@ -104,11 +106,11 @@ int main(void)
   while (1)
   {
 
-	  uint16_t len = strlen((const char*)UserRxBufferFX);
+	  uint16_t len = strlen((const char*)UserRxBufferFS);
 
 	  if(len > 0)
 	  {
-		  strncpy((char*)UserTxBufferFX, (const char*)UserRxBufferFS, len);
+		  strncpy((char*)UserTxBufferFS, (const char*)UserRxBufferFS, len);
 		  strcat((char*)UserTxBufferFS, "\r\n");
 		  CDC_Transmit_FS((uint8_t*)UserTxBufferFS, strlen((const char*)UserTxBufferFS));
 		  memset(UserRxBufferFS, 0, sizeof(UserRxBufferFS));
