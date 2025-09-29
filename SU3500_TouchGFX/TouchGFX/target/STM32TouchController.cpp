@@ -46,14 +46,14 @@ extern "C" {
 
 /* Private variables ---------------------------------------------------------*/
 static STM32TouchController* touchController_instance = nullptr;
-static AK4183_Handle_t* ak4183_handle = nullptr;
+//static AK4183_Handle_t* ak4183_handle = nullptr;  111111111
 static volatile bool new_touch_event = false;
 static volatile int32_t touch_x = 0;
 static volatile int32_t touch_y = 0;
 static volatile bool touch_pressed = false;
 
 /* Private function prototypes -----------------------------------------------*/
-static void Touch_Event_Callback(AK4183_TouchData_t* data);
+//static void Touch_Event_Callback(AK4183_TouchData_t* data);   111111111
 static void Touch_Release_Callback(void);
 static int32_t Convert_X_Coordinate(uint16_t touch_x);
 static int32_t Convert_Y_Coordinate(uint16_t touch_y);
@@ -62,19 +62,19 @@ static int32_t Convert_Y_Coordinate(uint16_t touch_y);
 /**
  * @brief STM32TouchController 생성자
  */
-STM32TouchController::STM32TouchController()
-    : last_x(0), last_y(0), touch_detected(false)
-{
-    touchController_instance = this;
-    ak4183_handle = AK4183_GetHandle();
-
-    // 터치 드라이버 초기화는 main.c에서 수행됨
-    // 여기서는 콜백만 등록
-    if (ak4183_handle != nullptr) {
-        AK4183_RegisterTouchDetectedCallback(ak4183_handle, Touch_Event_Callback);
-        AK4183_RegisterTouchReleasedCallback(ak4183_handle, Touch_Release_Callback);
-    }
-}
+//STM32TouchController::STM32TouchController()    111111111
+//    : last_x(0), last_y(0), touch_detected(false)
+//{
+//    touchController_instance = this;
+//    ak4183_handle = AK4183_GetHandle();
+//
+//    // 터치 드라이버 초기화는 main.c에서 수행됨
+//    // 여기서는 콜백만 등록
+//    if (ak4183_handle != nullptr) {
+//        AK4183_RegisterTouchDetectedCallback(ak4183_handle, Touch_Event_Callback);
+//        AK4183_RegisterTouchReleasedCallback(ak4183_handle, Touch_Release_Callback);
+//    }
+//}
 
 
 /**
@@ -82,12 +82,12 @@ STM32TouchController::STM32TouchController()
  */
 void STM32TouchController::init()
 {
-    // 초기화는 main.c에서 수행되므로 여기서는 상태만 확인
-    if (ak4183_handle != nullptr) {
-        // 터치 드라이버가 정상적으로 초기화되었는지 확인
-        touch_detected = false;
-        new_touch_event = false;
-    }
+//    // 초기화는 main.c에서 수행되므로 여기서는 상태만 확인      111111111
+//    if (ak4183_handle != nullptr) {
+//        // 터치 드라이버가 정상적으로 초기화되었는지 확인
+//        touch_detected = false;
+//        new_touch_event = false;
+//    }
 }
 
 /**
@@ -98,50 +98,50 @@ void STM32TouchController::init()
  */
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 {
-    // 새로운 터치 이벤트가 있는지 확인
-    if (new_touch_event && touch_pressed) {
-        x = touch_x;
-        y = touch_y;
-
-        // 좌표 저장 (다음 호출을 위해)
-        last_x = x;
-        last_y = y;
-        touch_detected = true;
-
-        return true;
-    } else if (touch_detected && !touch_pressed) {
-        // 터치 해제됨
-        x = last_x;
-        y = last_y;
-        touch_detected = false;
-        new_touch_event = false;
-
-        return false;
-    }
-
-    return touch_detected;
+//    // 새로운 터치 이벤트가 있는지 확인                                 111111111
+//    if (new_touch_event && touch_pressed) {
+//        x = touch_x;
+//        y = touch_y;
+//
+//        // 좌표 저장 (다음 호출을 위해)
+//        last_x = x;
+//        last_y = y;
+//        touch_detected = true;
+//
+//        return true;
+//    } else if (touch_detected && !touch_pressed) {
+//        // 터치 해제됨
+//        x = last_x;
+//        y = last_y;
+//        touch_detected = false;
+//        new_touch_event = false;
+//
+//        return false;
+//    }
+//
+//    return touch_detected;
 }
 /* Private functions ---------------------------------------------------------*/
 /**
  * @brief 터치 감지 콜백 함수
  * @param data AK4183 터치 데이터
  */
-static void Touch_Event_Callback(AK4183_TouchData_t* data)
-{
-    if (data != nullptr && touchController_instance != nullptr) {
-        // 터치 좌표 변환
-        int32_t lcd_x = Convert_X_Coordinate(data->x);
-        int32_t lcd_y = Convert_Y_Coordinate(data->y);
-
-        // 화면 범위 체크
-        if (lcd_x >= 0 && lcd_x < LCD_WIDTH && lcd_y >= 0 && lcd_y < LCD_HEIGHT) {
-            touch_x = lcd_x;
-            touch_y = lcd_y;
-            touch_pressed = true;
-            new_touch_event = true;
-        }
-    }
-}
+//static void Touch_Event_Callback(AK4183_TouchData_t* data)   111111111
+//{
+//    if (data != nullptr && touchController_instance != nullptr) {
+//        // 터치 좌표 변환
+//        int32_t lcd_x = Convert_X_Coordinate(data->x);
+//        int32_t lcd_y = Convert_Y_Coordinate(data->y);
+//
+//        // 화면 범위 체크
+//        if (lcd_x >= 0 && lcd_x < LCD_WIDTH && lcd_y >= 0 && lcd_y < LCD_HEIGHT) {
+//            touch_x = lcd_x;
+//            touch_y = lcd_y;
+//            touch_pressed = true;
+//            new_touch_event = true;
+//        }
+//    }
+//}
 
 /**
  * @brief 터치 해제 콜백 함수
@@ -221,45 +221,45 @@ static int32_t Convert_Y_Coordinate(uint16_t touch_raw_y)
  * @param y_min Y축 최소값
  * @param y_max Y축 최대값
  */
-void STM32TouchController::setCalibration(uint16_t x_min, uint16_t x_max,
-                                         uint16_t y_min, uint16_t y_max)
-{
-    // 실제 구현에서는 이 값들을 전역 변수나 구조체에 저장
-    // 여기서는 컴파일 타임 상수로 정의했으므로 런타임에는 변경 불가
-    // 필요시 동적 캘리브레이션 기능 추가
-}
+//void STM32TouchController::setCalibration(uint16_t x_min, uint16_t x_max,   111111111
+//                                         uint16_t y_min, uint16_t y_max)
+//{
+//    // 실제 구현에서는 이 값들을 전역 변수나 구조체에 저장
+//    // 여기서는 컴파일 타임 상수로 정의했으므로 런타임에는 변경 불가
+//    // 필요시 동적 캘리브레이션 기능 추가
+//}
 
 /**
  * @brief 터치 패널 테스트 함수
  * @note 터치 좌표 확인 및 캘리브레이션용
  */
-void STM32TouchController::testTouchPanel(void)
-{
-    AK4183_TouchData_t touch_data;
-
-    if (ak4183_handle != nullptr) {
-        // 터치 데이터 읽기
-        if (AK4183_ReadTouch(ak4183_handle, &touch_data) == AK4183_OK) {
-            if (touch_data.state == AK4183_TOUCH_PRESSED) {
-                // 원시 터치 좌표 출력 (디버그용)
-                #ifdef AK4183_DEBUG
-                // 디버거에서 확인할 수 있도록 volatile 변수 사용
-                volatile uint16_t debug_x = touch_data.x;
-                volatile uint16_t debug_y = touch_data.y;
-                volatile uint16_t debug_pressure = touch_data.pressure;
-
-                // 변환된 LCD 좌표
-                volatile int32_t lcd_x = Convert_X_Coordinate(touch_data.x);
-                volatile int32_t lcd_y = Convert_Y_Coordinate(touch_data.y);
-
-                // 컴파일러 최적화 방지
-                (void)debug_x; (void)debug_y; (void)debug_pressure;
-                (void)lcd_x; (void)lcd_y;
-                #endif
-            }
-        }
-    }
-}
+//void STM32TouchController::testTouchPanel(void)  111111111
+//{
+//    AK4183_TouchData_t touch_data;
+//
+//    if (ak4183_handle != nullptr) {
+//        // 터치 데이터 읽기
+//        if (AK4183_ReadTouch(ak4183_handle, &touch_data) == AK4183_OK) {
+//            if (touch_data.state == AK4183_TOUCH_PRESSED) {
+//                // 원시 터치 좌표 출력 (디버그용)
+//                #ifdef AK4183_DEBUG
+//                // 디버거에서 확인할 수 있도록 volatile 변수 사용
+//                volatile uint16_t debug_x = touch_data.x;
+//                volatile uint16_t debug_y = touch_data.y;
+//                volatile uint16_t debug_pressure = touch_data.pressure;
+//
+//                // 변환된 LCD 좌표
+//                volatile int32_t lcd_x = Convert_X_Coordinate(touch_data.x);
+//                volatile int32_t lcd_y = Convert_Y_Coordinate(touch_data.y);
+//
+//                // 컴파일러 최적화 방지
+//                (void)debug_x; (void)debug_y; (void)debug_pressure;
+//                (void)lcd_x; (void)lcd_y;
+//                #endif
+//            }
+//        }
+//    }
+//}
 
 /* USER CODE END STM32TouchController */
 
