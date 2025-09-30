@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.25.0">
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.26.0">
   <Languages>
     <Language Id="GB" />
     <Language Id="KO" />
@@ -133,395 +133,395 @@
       </Text>
       <Text Id="keyboardCustomContainerText_q" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">q</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_w" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">w</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_e" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">e</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_r" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">r</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_t" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">t</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_y" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">y</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_u" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">u</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_i" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">i</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_o" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">o</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_p" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">p</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_a" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">a</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_s" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">s</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_d" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">d</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_f" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">f</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_g" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">g</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_h" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">h</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_j" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">j</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_k" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">k</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_l" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">l</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_z" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">z</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_x" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">x</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_c" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">c</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_v" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">v</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_b" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">b</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_n" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">n</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_m" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">m</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalQ" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">Q</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalW" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">W</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalE" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">E</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalR" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">R</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalT" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">T</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalY" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">Y</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalU" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">U</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalI" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">I</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalO" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">O</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalP" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">P</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalA" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">A</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalS" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">S</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalD" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">D</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalF" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">F</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalG" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">G</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalH" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">H</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalJ" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">J</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalK" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">K</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalL" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">L</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalZ" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">Z</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalX" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">X</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalC" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">C</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalV" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">V</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalB" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">B</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalN" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">N</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_capitalM" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">M</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_period" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">.</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_comma" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">,</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_question" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">?</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_exclamation" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">!</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_apostrophe" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">'</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_squarebracketL" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">[</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_squarebracketR" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">]</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_bracesL" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">{</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_pound" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">#</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_percent" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">%</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_power" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">^</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_star" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">*</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_plus" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">+</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_equal" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">=</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_bracesR" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">}</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_emdash" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">_</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_backslash" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">\</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_verticalbar" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">|</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_wave" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">~</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_signlow" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">&lt;</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_signmore" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">&gt;</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_endash" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">-</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_slash" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">/</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_colon" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">:</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_semicolon" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">;</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_parenthesesL" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">(</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_parenthesesR" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">)</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_dollard" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">$</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_andpersand" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">&amp;</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_at" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">@</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_period2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">.</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_comma2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">,</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_question2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">?</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_exclamation2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">!</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_apostrophe2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">'</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_quotation" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">"</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_1" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">1</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_2" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">2</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_3" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">3</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_4" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">4</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_5" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">5</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_6" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">6</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_7" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">7</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_8" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">8</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_9" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">9</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText_0" Alignment="Center" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">0</Translation>
-        <Translation Language="KO"></Translation>
+        <Translation Language="KO" />
       </Text>
       <Text Id="keyboardCustomContainerText" Alignment="Left" TypographyId="TypogrphyKeybord">
         <Translation Language="GB">&lt;value&gt;</Translation>

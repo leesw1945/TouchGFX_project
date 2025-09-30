@@ -2,8 +2,168 @@
   "Application": {
     "Screens": [
       {
-        "Name": "screen",
-        "Components": [],
+        "Name": "BootingIntro",
+        "Components": [
+          {
+            "Type": "Video",
+            "Name": "syfmBootingIntro",
+            "Width": 800,
+            "Height": 480,
+            "VideoFileName": "output3.avi",
+            "AutoPlay": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerVideoEnded",
+              "TriggerComponent": "syfmBootingIntro"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Main",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "mainBG",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_puzzle.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 230,
+            "Y": 375,
+            "Width": 340,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_large_round_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_large_round_normal.png",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\large_round_normal.json"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage1",
+            "X": 55,
+            "Y": 118,
+            "Width": 122,
+            "Height": 254,
+            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage2",
+            "X": 240,
+            "Y": 118,
+            "Width": 122,
+            "Height": 254,
+            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage3",
+            "X": 425,
+            "Y": 118,
+            "Width": 122,
+            "Height": 254,
+            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage4",
+            "X": 616,
+            "Y": 118,
+            "Width": 122,
+            "Height": 254,
+            "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage5",
+            "X": 55,
+            "Y": 38,
+            "Width": 122,
+            "Height": 80,
+            "Filename": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_round_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage5_1",
+            "X": 240,
+            "Y": 38,
+            "Width": 122,
+            "Height": 80,
+            "Filename": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_round_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage5_2",
+            "X": 384,
+            "Y": 38,
+            "Width": 205,
+            "Height": 80,
+            "Filename": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_round_normal.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 98,
+            "Y": 68,
+            "Width": 37,
+            "Height": 20,
+            "TextId": "__SingleUse_X68P",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "X": 262,
+            "Y": 68,
+            "Width": 79,
+            "Height": 20,
+            "TextId": "__SingleUse_5EOY",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea3",
+            "X": 432,
+            "Y": 68,
+            "Width": 108,
+            "Height": 20,
+            "TextId": "__SingleUse_YC7Q",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea4",
+            "X": 655,
+            "Y": 68,
+            "Width": 45,
+            "Height": 20,
+            "TextId": "__SingleUse_EIMQ",
+            "TextRotation": "0",
+            "AutoSize": true
+          }
+        ],
         "Interactions": []
       }
     ],
@@ -14,7 +174,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "screen",
+    "StartupScreenName": "BootingIntro",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
@@ -60,5 +220,5 @@
     "OptionalComponents": [],
     "AdditionalFeatures": []
   },
-  "Version": "4.25.0"
+  "Version": "4.26.0"
 }
