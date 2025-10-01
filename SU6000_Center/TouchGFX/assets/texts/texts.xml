@@ -7,10 +7,10 @@
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
       <Text Id="__SingleUse_EIMQ" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">ARM</Translation>
+        <Translation Language="GB">RECEPTOR</Translation>
       </Text>
       <Text Id="__SingleUse_YC7Q" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">RECEPTOR</Translation>
+        <Translation Language="GB">ARM</Translation>
       </Text>
       <Text Id="__SingleUse_5EOY" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">HEIGHT</Translation>
