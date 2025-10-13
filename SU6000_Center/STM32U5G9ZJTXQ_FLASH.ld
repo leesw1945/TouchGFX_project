@@ -46,6 +46,7 @@ MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 3008K
   FLASH    (rx)    : ORIGIN = 0x08000000,   LENGTH = 4096K
+  EXTFLASH (rx) : ORIGIN = 0x90000000, LENGTH = 16384K
 }
 
 /* Sections */
@@ -163,6 +164,14 @@ SECTIONS
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
   } >RAM
+  
+  /* ExtFlashSection */
+  ExtFlashSection :
+  {
+    *(ExtFlashSection ExtFlashSection.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(4);
+  } >EXTFLASH
 
   /* User_heap_stack section, used to check that there is enough "RAM" Ram  type memory left */
   ._user_heap_stack :

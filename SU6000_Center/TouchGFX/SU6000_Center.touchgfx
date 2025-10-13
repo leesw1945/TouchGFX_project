@@ -3,22 +3,12 @@
     "Screens": [
       {
         "Name": "BootingIntro",
-        "Components": [
-          {
-            "Type": "Video",
-            "Name": "syfmBootingIntro",
-            "Width": 800,
-            "Height": 480,
-            "VideoFileName": "output3.avi",
-            "AutoPlay": true
-          }
-        ],
+        "Components": [],
         "Interactions": [
           {
             "InteractionName": "Interaction1",
             "Trigger": {
-              "Type": "TriggerVideoEnded",
-              "TriggerComponent": "syfmBootingIntro"
+              "Type": "TriggerNone"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -171,7 +161,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "BootingIntro",
+    "StartupScreenName": "Main",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

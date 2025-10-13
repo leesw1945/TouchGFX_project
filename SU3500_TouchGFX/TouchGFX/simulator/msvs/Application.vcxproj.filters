@@ -187,26 +187,14 @@
     <Filter Include="Source Files\gui\screen1_screen">
       <UniqueIdentifier>A8492A68-71DB-52B0-AB27-4509C4DA4E69</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\bootlogoview_screen">
-      <UniqueIdentifier>AC4969E5-02D2-B7A0-C0B8-8397401858EF</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\bootlogoview_screen">
-      <UniqueIdentifier>B579A69E-32D3-C476-23BE-27BBED621951</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\screen1_screen">
       <UniqueIdentifier>CDFC6F8B-EFB8-3305-7B67-18AE9BE9B40A</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\generated\gui_generated\screen1_screen">
       <UniqueIdentifier>F54F6BE6-EB10-7D59-3C30-F23260B64E2E</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\bootlogoview_screen">
-      <UniqueIdentifier>654E579B-9A75-D358-B521-7DED3A98B5C5</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated\screen1_screen">
       <UniqueIdentifier>C469DED1-4CD8-D3C7-C265-C6E22B8E3C21</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\bootlogoview_screen">
-      <UniqueIdentifier>EC7B3636-7443-70FA-C5AA-6E52D90F7F5A</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -245,15 +233,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\FlipDigitBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\bootlogoview_screen\BootLogoViewPresenter.cpp">
-      <Filter>Source Files\gui\bootlogoview_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\bootlogoview_screen\BootLogoViewView.cpp">
-      <Filter>Source Files\gui\bootlogoview_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\bootlogoview_screen\BootLogoViewViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\bootlogoview_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
       <Filter>Source Files\gui\screen1_screen</Filter>
@@ -711,15 +690,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\FlipDigitBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\bootlogoview_screen\BootLogoViewPresenter.hpp">
-      <Filter>Header Files\gui\bootlogoview_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\bootlogoview_screen\BootLogoViewView.hpp">
-      <Filter>Header Files\gui\bootlogoview_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\bootlogoview_screen\BootLogoViewViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\bootlogoview_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp">
       <Filter>Header Files\gui\screen1_screen</Filter>
