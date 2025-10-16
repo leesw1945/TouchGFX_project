@@ -31,7 +31,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage1",
-            "X": 36,
+            "X": 55,
             "Y": 80,
             "Width": 300,
             "Height": 160,
@@ -41,8 +41,8 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage2",
-            "X": 400,
-            "Y": 74,
+            "X": 433,
+            "Y": 80,
             "Width": 300,
             "Height": 160,
             "Filename": "__generated\\clay_theme_images_widgets_button_icon_rounded_huge_fill_normal.png",
@@ -51,7 +51,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage3",
-            "X": 36,
+            "X": 55,
             "Y": 307,
             "Width": 300,
             "Height": 160,
@@ -61,7 +61,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage4",
-            "X": 400,
+            "X": 433,
             "Y": 307,
             "Width": 300,
             "Height": 160,
@@ -71,7 +71,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage5",
-            "X": 16,
+            "X": 35,
             "Width": 148,
             "Height": 80,
             "Filename": "__generated\\clay_theme_images_widgets_button_regular_height_36_large_rounded_normal.png",
@@ -80,7 +80,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage5_1",
-            "X": 387,
+            "X": 420,
             "Width": 148,
             "Height": 80,
             "Filename": "__generated\\clay_theme_images_widgets_button_regular_height_36_large_rounded_normal.png",
@@ -89,7 +89,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage5_2",
-            "X": 16,
+            "X": 35,
             "Y": 240,
             "Width": 148,
             "Height": 80,
@@ -99,7 +99,7 @@
           {
             "Type": "ScalableImage",
             "Name": "scalableImage5_3",
-            "X": 387,
+            "X": 420,
             "Y": 240,
             "Width": 148,
             "Height": 80,
@@ -109,8 +109,8 @@
           {
             "Type": "TextArea",
             "Name": "textArea1",
-            "X": 72,
-            "Y": 30,
+            "X": 91,
+            "Y": 29,
             "Width": 37,
             "Height": 20,
             "TextId": "__SingleUse_X68P",
@@ -120,8 +120,8 @@
           {
             "Type": "TextArea",
             "Name": "textArea2",
-            "X": 422,
-            "Y": 30,
+            "X": 455,
+            "Y": 29,
             "Width": 79,
             "Height": 20,
             "TextId": "__SingleUse_5EOY",
@@ -131,8 +131,8 @@
           {
             "Type": "TextArea",
             "Name": "textArea3",
-            "X": 78,
-            "Y": 274,
+            "X": 87,
+            "Y": 269,
             "Width": 45,
             "Height": 20,
             "TextId": "__SingleUse_YC7Q",
@@ -142,8 +142,8 @@
           {
             "Type": "TextArea",
             "Name": "textArea4",
-            "X": 407,
-            "Y": 274,
+            "X": 440,
+            "Y": 269,
             "Width": 108,
             "Height": 20,
             "TextId": "__SingleUse_EIMQ",
