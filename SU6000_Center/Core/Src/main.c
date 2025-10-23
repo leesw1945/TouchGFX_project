@@ -19,16 +19,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
-#include "hspi.h"
-#include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
 #include "memorymap.h"
 #include "octospi.h"
-#include "app_usbx_device.h"
-#include "usb_otg.h"
 #include "gpio.h"
-#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -59,6 +54,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
+static void SystemPower_Config(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -88,6 +84,9 @@ int main(void)
 
   /* USER CODE END Init */
 
+  /* Configure the System Power */
+  SystemPower_Config();
+
   /* Configure the system clock */
   SystemClock_Config();
 
@@ -102,14 +101,8 @@ int main(void)
   MX_GPIO_Init();
   MX_CRC_Init();
   MX_ICACHE_Init();
-  MX_OCTOSPI1_Init();
-  MX_HSPI1_Init();
-  MX_I2C1_Init();
   MX_LTDC_Init();
-  MX_I2C2_Init();
-  MX_USB_OTG_HS_PCD_Init();
-  MX_USBX_Device_Init();
-  MX_TouchGFX_Init();
+  MX_OCTOSPI1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -120,8 +113,15 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
+  HAL_Delay(1000);
+
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
+  HAL_Delay(1000);
+
+//  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_5);
+//  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -188,24 +188,45 @@ void PeriphCommonClock_Config(void)
 
   /** Initializes the common periph clock
   */
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_HSPI|RCC_PERIPHCLK_LTDC
-                              |RCC_PERIPHCLK_OSPI;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_OSPI;
   PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL2;
-  PeriphClkInit.HspiClockSelection = RCC_HSPICLKSOURCE_PLL2;
   PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
   PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
   PeriphClkInit.PLL2.PLL2M = 1;
   PeriphClkInit.PLL2.PLL2N = 8;
   PeriphClkInit.PLL2.PLL2P = 2;
   PeriphClkInit.PLL2.PLL2Q = 1;
-  PeriphClkInit.PLL2.PLL2R = 16;
+  PeriphClkInit.PLL2.PLL2R = 4;
   PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_1;
-  PeriphClkInit.PLL2.PLL2FRACN = 2560;
+  PeriphClkInit.PLL2.PLL2FRACN = 0;
   PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVQ;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief Power Configuration
+  * @retval None
+  */
+static void SystemPower_Config(void)
+{
+
+  /*
+   * Disable the internal Pull-Up in Dead Battery pins of UCPD peripheral
+   */
+  HAL_PWREx_DisableUCPDDeadBattery();
+
+  /*
+   * Switch to SMPS regulator instead of LDO
+   */
+  if (HAL_PWREx_ConfigSupply(PWR_SMPS_SUPPLY) != HAL_OK)
+  {
+    Error_Handler();
+  }
+/* USER CODE BEGIN PWR */
+/* USER CODE END PWR */
 }
 
 /* USER CODE BEGIN 4 */

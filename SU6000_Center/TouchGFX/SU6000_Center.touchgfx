@@ -149,6 +149,28 @@
             "TextId": "__SingleUse_EIMQ",
             "TextRotation": "0",
             "AutoSize": true
+          },
+          {
+            "Type": "TextProgress",
+            "Name": "textProgress1",
+            "X": 128,
+            "Y": 135,
+            "Width": 175,
+            "Height": 50,
+            "TextId": "__SingleUse_UTJB",
+            "Color": {
+              "Red": 12,
+              "Green": 27,
+              "Blue": 55
+            },
+            "Preset": "alternate_theme\\presets\\textprogress\\rounded.json",
+            "FileNameBackground": "__generated\\alternate_theme_images_widgets_textprogress_backgrounds_rounded_light.png",
+            "IndicatorPositionX": 12,
+            "IndicatorPositionY": 10,
+            "IndicatorPositionWidth": 150,
+            "IndicatorPositionHeight": 30,
+            "ProgressRangeMax": 100,
+            "ProgressInitialValue": 60
           }
         ],
         "Interactions": []
