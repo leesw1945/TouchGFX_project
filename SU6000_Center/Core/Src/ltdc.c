@@ -51,7 +51,7 @@ void MX_LTDC_Init(void)
   hltdc.Init.AccumulatedActiveW = 935;
   hltdc.Init.AccumulatedActiveH = 514;
   hltdc.Init.TotalWidth = 975;
-  hltdc.Init.TotalHeigh = 516;
+  hltdc.Init.TotalHeigh = 527;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -88,11 +88,31 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(ltdcHandle->Instance==LTDC)
   {
   /* USER CODE BEGIN LTDC_MspInit 0 */
 
   /* USER CODE END LTDC_MspInit 0 */
+
+  /** Initializes the peripherals clock
+  */
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
+    PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
+    PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
+    PeriphClkInit.PLL2.PLL2M = 1;
+    PeriphClkInit.PLL2.PLL2N = 8;
+    PeriphClkInit.PLL2.PLL2P = 2;
+    PeriphClkInit.PLL2.PLL2Q = 1;
+    PeriphClkInit.PLL2.PLL2R = 4;
+    PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_1;
+    PeriphClkInit.PLL2.PLL2FRACN = 0;
+    PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVR;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
     /* LTDC clock enable */
     __HAL_RCC_LTDC_CLK_ENABLE();
 
