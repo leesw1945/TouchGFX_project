@@ -55,6 +55,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern XSPI_HandleTypeDef hxspi1;
 extern LTDC_HandleTypeDef hltdc;
 /* USER CODE BEGIN EV */
 
@@ -197,6 +198,20 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32u5xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles HSPI1 global interrupt.
+  */
+void HSPI1_IRQHandler(void)
+{
+  /* USER CODE BEGIN HSPI1_IRQn 0 */
+
+  /* USER CODE END HSPI1_IRQn 0 */
+  HAL_XSPI_IRQHandler(&hxspi1);
+  /* USER CODE BEGIN HSPI1_IRQn 1 */
+
+  /* USER CODE END HSPI1_IRQn 1 */
+}
 
 /**
   * @brief This function handles LCD-TFT global interrupt.

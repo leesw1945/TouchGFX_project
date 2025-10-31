@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    octospi.h
+  * @file    hspi.h
   * @brief   This file contains all the function prototypes for
-  *          the octospi.c file
+  *          the hspi.c file
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,8 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __OCTOSPI_H__
-#define __OCTOSPI_H__
+#ifndef __HSPI_H__
+#define __HSPI_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,13 +32,13 @@ extern "C" {
 
 /* USER CODE END Includes */
 
-extern OSPI_HandleTypeDef hospi1;
+extern XSPI_HandleTypeDef hxspi1;
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_OCTOSPI1_Init(void);
+void MX_HSPI1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -48,5 +48,5 @@ void MX_OCTOSPI1_Init(void);
 }
 #endif
 
-#endif /* __OCTOSPI_H__ */
+#endif /* __HSPI_H__ */
 
