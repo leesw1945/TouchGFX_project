@@ -66,11 +66,22 @@ void HAL_XSPI_MspInit(XSPI_HandleTypeDef* xspiHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(xspiHandle->Instance==HSPI1)
   {
   /* USER CODE BEGIN HSPI1_MspInit 0 */
 
   /* USER CODE END HSPI1_MspInit 0 */
+
+  /** Initializes the peripherals clock
+  */
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_HSPI;
+    PeriphClkInit.HspiClockSelection = RCC_HSPICLKSOURCE_PLL1;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
     /* HSPI1 clock enable */
     __HAL_RCC_HSPI1_CLK_ENABLE();
 

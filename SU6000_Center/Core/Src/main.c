@@ -24,6 +24,7 @@
 #include "icache.h"
 #include "ltdc.h"
 #include "memorymap.h"
+#include "app_usbx_device.h"
 #include "usb_otg.h"
 #include "gpio.h"
 #include "app_touchgfx.h"
@@ -56,7 +57,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void PeriphCommonClock_Config(void);
 static void SystemPower_Config(void);
 /* USER CODE BEGIN PFP */
 
@@ -93,9 +93,6 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
-  /* Configure the peripherals common clocks */
-  PeriphCommonClock_Config();
-
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -109,6 +106,7 @@ int main(void)
   MX_I2C2_Init();
   MX_USB_OTG_HS_PCD_Init();
   MX_HSPI1_Init();
+  MX_USBX_Device_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -157,7 +155,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLMBOOST = RCC_PLLMBOOST_DIV1;
   RCC_OscInitStruct.PLL.PLLM = 1;
   RCC_OscInitStruct.PLL.PLLN = 10;
-  RCC_OscInitStruct.PLL.PLLP = 2;
+  RCC_OscInitStruct.PLL.PLLP = 10;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 1;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLLVCIRANGE_1;
@@ -179,34 +177,6 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-/**
-  * @brief Peripherals Common Clock Configuration
-  * @retval None
-  */
-void PeriphCommonClock_Config(void)
-{
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-
-  /** Initializes the common periph clock
-  */
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_HSPI|RCC_PERIPHCLK_LTDC;
-  PeriphClkInit.HspiClockSelection = RCC_HSPICLKSOURCE_PLL2;
-  PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
-  PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
-  PeriphClkInit.PLL2.PLL2M = 1;
-  PeriphClkInit.PLL2.PLL2N = 8;
-  PeriphClkInit.PLL2.PLL2P = 2;
-  PeriphClkInit.PLL2.PLL2Q = 1;
-  PeriphClkInit.PLL2.PLL2R = 4;
-  PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_1;
-  PeriphClkInit.PLL2.PLL2FRACN = 0;
-  PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVQ;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
