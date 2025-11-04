@@ -1,0 +1,270 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 800,
+            "Height": 480,
+            "Color": {
+              "Red": 84,
+              "Green": 84,
+              "Blue": 84
+            }
+          },
+          {
+            "Type": "Container",
+            "Name": "flipContainer",
+            "X": 300,
+            "Y": 150,
+            "Width": 200,
+            "Height": 180,
+            "Components": [
+              {
+                "Type": "Container",
+                "Name": "tensDigitContainer",
+                "Width": 90,
+                "Height": 180,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "tensUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_upper.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "tensLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_lower.png"
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "tensFlipUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_upper.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.0,
+                    "YBitmapPosition": 9.5,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "YOrigo": 90.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "tensFlipLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_lower.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.5,
+                    "YBitmapPosition": 10.0,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  }
+                ]
+              },
+              {
+                "Type": "Container",
+                "Name": "onesDigitContainer_1",
+                "X": 110,
+                "Width": 90,
+                "Height": 180,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "onesUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_upper.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "onesLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "RelativeFilename": "number_0_lower.png"
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "onesFlipUpper",
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_upper.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.0,
+                    "YBitmapPosition": 9.5,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "YOrigo": 90.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  },
+                  {
+                    "Type": "TextureMapper",
+                    "Name": "onesFlipLower",
+                    "Y": 90,
+                    "Width": 90,
+                    "Height": 90,
+                    "Visible": false,
+                    "RenderingAlgorithm": "Bilinear Interpolation",
+                    "FileNameImage": "number_0_lower.png",
+                    "LockBitmapToCenter": true,
+                    "XBitmapPosition": 2.5,
+                    "YBitmapPosition": 10.0,
+                    "Scale": 1.0,
+                    "XOrigo": 45.0,
+                    "ZOrigo": 300.0,
+                    "CameraDistance": 300.0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "incrementButton",
+            "X": 350,
+            "Y": 350,
+            "Width": 100,
+            "Height": 40,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "Y": 5,
+                "TextId": "__SingleUse_X8QK",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                },
+                "ColorPressed": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 100,
+                "Height": 40,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "incrementCounter",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "incrementButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "incrementCounter"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "FlipTextAnimation_H7S78",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 32,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      32
+    ],
+    "AvailableLCDs": {
+      "32": "LCDGPU2D"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../../gcc/Makefile flash",
+    "FlashTargetIntCommandOverride": "make -f ../../gcc/Makefile intflash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32H7",
+    "SubFamily": "STM32H7R7/7S7",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m7",
+    "ProjectFile": "../../STM32H7S78-DK_24bpp.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+      "GPU2D"
+    ],
+    "AdditionalFeatures": [
+      "GPU2DVector",
+      "VectorFonts",
+      "Video"
+    ]
+  },
+  "Version": "4.25.0",
+  "CreatedBy": "4.25.0"
+}

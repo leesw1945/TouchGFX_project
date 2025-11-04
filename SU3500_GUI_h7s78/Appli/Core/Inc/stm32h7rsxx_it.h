@@ -56,6 +56,7 @@ void EXTI3_IRQHandler(void);
 void TIM6_IRQHandler(void);
 void HPDMA1_Channel0_IRQHandler(void);
 void HPDMA1_Channel1_IRQHandler(void);
+void OTG_HS_IRQHandler(void);
 void LTDC_IRQHandler(void);
 void DMA2D_IRQHandler(void);
 void JPEG_IRQHandler(void);

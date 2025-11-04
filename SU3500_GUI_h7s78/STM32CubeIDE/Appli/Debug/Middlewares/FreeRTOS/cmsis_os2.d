@@ -7,6 +7,7 @@ Middlewares/FreeRTOS/cmsis_os2.o: \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../../../Middlewares/Third_Party/FreeRTOS/Source/include/newlib-freertos.h \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
@@ -52,6 +53,9 @@ Middlewares/FreeRTOS/cmsis_os2.o: \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_jpeg.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc_ex.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_ll_usb.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd_ex.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr_ex.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_tim.h \
@@ -65,6 +69,7 @@ Middlewares/FreeRTOS/cmsis_os2.o: \
 ../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
 ../../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
 ../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+../../../Middlewares/Third_Party/FreeRTOS/Source/include/newlib-freertos.h:
 ../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
@@ -110,6 +115,9 @@ C:/TouchGFXProjects/SU3500_GUI_h7s78/Middlewares/Third_Party/FreeRTOS/Source/CMS
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_jpeg.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc_ex.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_ll_usb.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd_ex.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr_ex.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_tim.h:

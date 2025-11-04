@@ -329,7 +329,7 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "Keyboard",
+            "Name": "KeyboardGUI",
             "Y": 480,
             "Width": 272,
             "Height": 249,
@@ -386,7 +386,7 @@
               "Easing": "Cubic",
               "EasingOption": "Out",
               "Duration": 500,
-              "ActionComponent": "Keyboard"
+              "ActionComponent": "KeyboardGUI"
             }
           }
         ]

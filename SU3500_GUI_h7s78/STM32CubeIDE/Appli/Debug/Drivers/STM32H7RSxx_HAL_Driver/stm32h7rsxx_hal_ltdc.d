@@ -35,6 +35,9 @@ Drivers/STM32H7RSxx_HAL_Driver/stm32h7rsxx_hal_ltdc.o: \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_jpeg.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc_ex.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_ll_usb.h \
+ ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd_ex.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr_ex.h \
  ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_tim.h \
@@ -74,6 +77,9 @@ Drivers/STM32H7RSxx_HAL_Driver/stm32h7rsxx_hal_ltdc.o: \
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_jpeg.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_ltdc_ex.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_ll_usb.h:
+../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pcd_ex.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_pwr_ex.h:
 ../../../Drivers/STM32H7RSxx_HAL_Driver/Inc/stm32h7rsxx_hal_tim.h:
