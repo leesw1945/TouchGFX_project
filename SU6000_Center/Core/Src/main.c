@@ -19,11 +19,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
-#include "hspi.h"
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
 #include "memorymap.h"
+#include "octospi.h"
 #include "app_usbx_device.h"
 #include "usb_otg.h"
 #include "gpio.h"
@@ -105,8 +105,8 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_USB_OTG_HS_PCD_Init();
-  MX_HSPI1_Init();
   MX_USBX_Device_Init();
+  MX_OCTOSPI1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -156,7 +156,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 1;
   RCC_OscInitStruct.PLL.PLLN = 10;
   RCC_OscInitStruct.PLL.PLLP = 10;
-  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
   RCC_OscInitStruct.PLL.PLLR = 1;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLLVCIRANGE_1;
   RCC_OscInitStruct.PLL.PLLFRACN = 0;

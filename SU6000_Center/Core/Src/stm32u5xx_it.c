@@ -55,8 +55,8 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern XSPI_HandleTypeDef hxspi1;
 extern LTDC_HandleTypeDef hltdc;
+extern OSPI_HandleTypeDef hospi1;
 extern PCD_HandleTypeDef hpcd_USB_OTG_HS;
 /* USER CODE BEGIN EV */
 
@@ -215,17 +215,17 @@ void OTG_HS_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles HSPI1 global interrupt.
+  * @brief This function handles OCTOSPI1 global interrupt.
   */
-void HSPI1_IRQHandler(void)
+void OCTOSPI1_IRQHandler(void)
 {
-  /* USER CODE BEGIN HSPI1_IRQn 0 */
+  /* USER CODE BEGIN OCTOSPI1_IRQn 0 */
 
-  /* USER CODE END HSPI1_IRQn 0 */
-  HAL_XSPI_IRQHandler(&hxspi1);
-  /* USER CODE BEGIN HSPI1_IRQn 1 */
+  /* USER CODE END OCTOSPI1_IRQn 0 */
+  HAL_OSPI_IRQHandler(&hospi1);
+  /* USER CODE BEGIN OCTOSPI1_IRQn 1 */
 
-  /* USER CODE END HSPI1_IRQn 1 */
+  /* USER CODE END OCTOSPI1_IRQn 1 */
 }
 
 /**
