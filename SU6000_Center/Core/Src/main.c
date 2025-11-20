@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "dcache.h"
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
@@ -31,6 +32,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "mx25l12833f.h"
+#include <stdio.h>
+#include <string.h>
 
 /* USER CODE END Includes */
 
@@ -53,6 +58,10 @@
 
 /* USER CODE BEGIN PV */
 
+uint8_t flash_write_buffer[256];
+uint8_t flash_read_buffer[256];
+uint8_t flash_id[3];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -64,6 +73,25 @@ static void SystemPower_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// STM32U5 D-Cache 제어 함수 (HAL에 없어서 직접 정의)
+__STATIC_INLINE void SCB_CleanInvalidateDCache(void)
+{
+    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+      SCB->DCCIMVAC = 0;                // D-Cache Clean & Invalidate by MVA to PoC
+      __DSB();
+      __ISB();
+    #endif
+}
+
+__STATIC_INLINE void SCB_InvalidateDCache(void)
+{
+    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+      SCB->DCIMVAC = 0;
+      __DSB();
+      __ISB();
+    #endif
+}
 
 /* USER CODE END 0 */
 
@@ -107,8 +135,54 @@ int main(void)
   MX_USB_OTG_HS_PCD_Init();
   MX_USBX_Device_Init();
   MX_OCTOSPI1_Init();
+  MX_DCACHE1_Init();
+  MX_DCACHE2_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+
+  // 1. Flash 초기화 (Reset + Quad Mode 활성화)
+    if (MX25L12833F_Init(&hospi1) != MX25L12833F_OK)
+    {
+      Error_Handler();
+    }
+
+    // 2. Flash ID 읽기 (선택사항)
+    MX25L12833F_ReadID(&hospi1, flash_id);
+    // Expected: 0xC2 0x20 0x18
+
+    // 3. 테스트 데이터 준비
+    for (int i = 0; i < 256; i++)
+    {
+      flash_write_buffer[i] = i;
+    }
+
+    // 4. Sector Erase (4KB)
+    uint32_t test_address = 0x00000000;
+    if (MX25L12833F_Erase_Sector(&hospi1, test_address) != MX25L12833F_OK)
+    {
+      Error_Handler();
+    }
+
+    // 5. 데이터 쓰기
+    if (MX25L12833F_Write(&hospi1, flash_write_buffer, test_address, 256) != MX25L12833F_OK)
+    {
+      Error_Handler();
+    }
+
+    // 6. 데이터 읽기
+    if (MX25L12833F_Read(&hospi1, flash_read_buffer, test_address, 256) != MX25L12833F_OK)
+    {
+      Error_Handler();
+    }
+
+    // 7. 데이터 검증
+    if (memcmp(flash_write_buffer, flash_read_buffer, 256) == 0)
+    {
+    	SCB_CleanInvalidateDCache();
+      // 성공!
+    	MX25L12833F_EnableMemoryMappedMode(&hospi1);
+    }
+
 
   /* USER CODE END 2 */
 

@@ -1,0 +1,17 @@
+../Core/Src/mx25l12833f.c:23:22:MX25L12833F_Init	16	static
+../Core/Src/mx25l12833f.c:45:22:MX25L12833F_Reset	96	static
+../Core/Src/mx25l12833f.c:87:22:MX25L12833F_GetInfo	16	static
+../Core/Src/mx25l12833f.c:103:22:MX25L12833F_EnableQuadMode	104	static
+../Core/Src/mx25l12833f.c:176:22:MX25L12833F_DisableQuadMode	104	static
+../Core/Src/mx25l12833f.c:244:22:MX25L12833F_Read	104	static
+../Core/Src/mx25l12833f.c:291:22:MX25L12833F_Write	40	static
+../Core/Src/mx25l12833f.c:336:29:MX25L12833F_WritePage	104	static
+../Core/Src/mx25l12833f.c:390:22:MX25L12833F_Erase_Sector	96	static
+../Core/Src/mx25l12833f.c:437:22:MX25L12833F_Erase_Block	96	static
+../Core/Src/mx25l12833f.c:483:22:MX25L12833F_Erase_Chip	96	static
+../Core/Src/mx25l12833f.c:526:22:MX25L12833F_EnableMemoryMappedMode	104	static
+../Core/Src/mx25l12833f.c:573:22:MX25L12833F_WriteEnable	96	static
+../Core/Src/mx25l12833f.c:604:22:MX25L12833F_WriteDisable	96	static
+../Core/Src/mx25l12833f.c:636:22:MX25L12833F_ReadStatusRegister	96	static
+../Core/Src/mx25l12833f.c:675:22:MX25L12833F_WaitForWriteEnd	24	static
+../Core/Src/mx25l12833f.c:706:22:MX25L12833F_ReadID	96	static
