@@ -75,23 +75,23 @@ static void SystemPower_Config(void);
 /* USER CODE BEGIN 0 */
 
 // STM32U5 D-Cache 제어 함수 (HAL에 없어서 직접 정의)
-__STATIC_INLINE void SCB_CleanInvalidateDCache(void)
-{
-    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
-      SCB->DCCIMVAC = 0;                // D-Cache Clean & Invalidate by MVA to PoC
-      __DSB();
-      __ISB();
-    #endif
-}
-
-__STATIC_INLINE void SCB_InvalidateDCache(void)
-{
-    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
-      SCB->DCIMVAC = 0;
-      __DSB();
-      __ISB();
-    #endif
-}
+//__STATIC_INLINE void SCB_CleanInvalidateDCache(void)
+//{
+//    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+//      SCB->DCCIMVAC = 0;                // D-Cache Clean & Invalidate by MVA to PoC
+//      __DSB();
+//      __ISB();
+//    #endif
+//}
+//
+//__STATIC_INLINE void SCB_InvalidateDCache(void)
+//{
+//    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+//      SCB->DCIMVAC = 0;
+//      __DSB();
+//      __ISB();
+//    #endif
+//}
 
 /* USER CODE END 0 */
 
@@ -178,7 +178,7 @@ int main(void)
     // 7. 데이터 검증
     if (memcmp(flash_write_buffer, flash_read_buffer, 256) == 0)
     {
-    	SCB_CleanInvalidateDCache();
+    	//SCB_CleanInvalidateDCache();
       // 성공!
     	MX25L12833F_EnableMemoryMappedMode(&hospi1);
     }
