@@ -25,8 +25,6 @@
 #include "ltdc.h"
 #include "memorymap.h"
 #include "octospi.h"
-#include "app_usbx_device.h"
-#include "usb_otg.h"
 #include "gpio.h"
 #include "app_touchgfx.h"
 
@@ -132,8 +130,6 @@ int main(void)
   MX_LTDC_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
-  MX_USB_OTG_HS_PCD_Init();
-  MX_USBX_Device_Init();
   MX_OCTOSPI1_Init();
   MX_DCACHE1_Init();
   MX_DCACHE2_Init();
