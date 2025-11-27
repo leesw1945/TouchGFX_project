@@ -76,6 +76,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 MX25L12833F_Loader.list \
 
+OBJCOPY_HEX += \
+MX25L12833F_Loader.hex \
+
+OBJCOPY_BIN += \
+MX25L12833F_Loader.bin \
+
 
 # All Target
 all:
@@ -85,8 +91,8 @@ all:
 main-build: MX25L12833F_Loader.elf secondary-outputs
 
 # Tool invocations
-MX25L12833F_Loader.elf MX25L12833F_Loader.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\MX25L12833F_Loader\stm32u5xx_flash_extspi.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "MX25L12833F_Loader.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\stm32u5xx_flash_extspi.ld" --specs=nosys.specs -Wl,-Map="MX25L12833F_Loader.map" -Wl,--gc-sections -nostartfiles -nodefaultlibs -nostdlib -static -Wl,--gc-sections -Wl,--entry=Init -Wl,--undefined=Init -Wl,--no-demangle -Wl,--export-dynamic -nostdlib -nodefaultlibs -nostartfiles --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+MX25L12833F_Loader.elf MX25L12833F_Loader.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9ZJTXQ_RAM2.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "MX25L12833F_Loader.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9ZJTXQ_RAM2.ld" --specs=nosys.specs -Wl,-Map="MX25L12833F_Loader.map" -Wl,--gc-sections -static -Wl,--gc-sections -Wl,--entry=Init -Wl,--undefined=Init -Wl,--no-demangle -Wl,--export-dynamic -nostdlib -nodefaultlibs -nostartfiles --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -100,16 +106,26 @@ MX25L12833F_Loader.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 	@echo 'Finished building: $@'
 	@echo ' '
 
+MX25L12833F_Loader.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "MX25L12833F_Loader.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+MX25L12833F_Loader.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "MX25L12833F_Loader.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) MX25L12833F_Loader.elf MX25L12833F_Loader.list MX25L12833F_Loader.map default.size.stdout
+	-$(RM) MX25L12833F_Loader.bin MX25L12833F_Loader.elf MX25L12833F_Loader.hex MX25L12833F_Loader.list MX25L12833F_Loader.map default.size.stdout
 	-@echo ' '
 
 post-build:
-	arm-none-eabi-objcopy -O binary "MX25L12833F_Loader.elf" "../MX25L12833F_STM32U5G9.stldr"
+	arm-none-eabi-objcopy -O binary "C:/TouchGFXProjects/MX25L12833F_Loader/Debug/MX25L12833F_Loader.elf" "C:/TouchGFXProjects/MX25L12833F_Loader/MX25L12833F_Loader.stldr"
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

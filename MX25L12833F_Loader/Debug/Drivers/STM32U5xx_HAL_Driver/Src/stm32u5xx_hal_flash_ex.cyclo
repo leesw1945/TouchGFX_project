@@ -10,5 +10,5 @@
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:839:10:HAL_FLASHEx_GetLowPowerRead	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:852:6:HAL_FLASHEx_GetOperation	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:921:6:FLASH_PageErase	2
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:180:19:HAL_FLASHEx_Erase	6
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:180:19:HAL_FLASHEx_Erase	7
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c:252:19:HAL_FLASHEx_Erase_IT	4

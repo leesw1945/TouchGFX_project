@@ -46,7 +46,7 @@
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1628:13:HAL_PWREx_IO2VMCallback	0	static
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1639:13:HAL_PWREx_AVM1Callback	0	static
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1650:13:HAL_PWREx_AVM2Callback	0	static
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1548:6:HAL_PWREx_PVD_PVM_IRQHandler	16	static
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1548:6:HAL_PWREx_PVD_PVM_IRQHandler	8	static
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1718:6:HAL_PWREx_EnableSRAM2ContentStandbyRetention	0	static
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1738:6:HAL_PWREx_DisableSRAM2ContentStandbyRetention	0	static
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c:1756:6:HAL_PWREx_EnableRAMsContentStopRetention	0	static

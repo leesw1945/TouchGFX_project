@@ -1,0 +1,10 @@
+../Core/Src/Loader_Src.c:313:13:MX_OCTOSPI1_Init	304	static
+../Core/Src/Loader_Src.c:40:5:Init	136	static
+../Core/Src/Loader_Src.c:78:5:DeInit	8	static
+../Core/Src/Loader_Src.c:93:5:Read	16	static
+../Core/Src/Loader_Src.c:118:5:Write	24	static
+../Core/Src/Loader_Src.c:156:5:SectorErase	16	static
+../Core/Src/Loader_Src.c:184:5:MassErase	8	static
+../Core/Src/Loader_Src.c:202:10:CheckSum	32	static
+../Core/Src/Loader_Src.c:229:10:Verify	48	static
+../Core/Src/Loader_Src.c:371:6:SysTick_Handler	8	static
