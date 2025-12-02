@@ -39,7 +39,7 @@
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:2558:19:HAL_OSPI_SetTimeout	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:2569:10:HAL_OSPI_GetError	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:2579:10:HAL_OSPI_GetState	1
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:2612:19:HAL_OSPIM_Config	65
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:2612:19:HAL_OSPIM_Config	54
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:3356:19:HAL_OSPI_DLYB_SetConfig	3
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:3409:19:HAL_OSPI_DLYB_GetConfig	3
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c:3440:19:HAL_OSPI_DLYB_GetClockPeriod	3

@@ -1,5 +1,5 @@
-Core/Src/icache.o: ../Core/Src/icache.c ../Core/Inc/icache.h \
- ../Core/Inc/main.h ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h \
+Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h \
  ../Core/Inc/stm32u5xx_hal_conf.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_def.h \
@@ -15,7 +15,6 @@ Core/Src/icache.o: ../Core/Src/icache.c ../Core/Inc/icache.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h \
- ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h \
@@ -25,8 +24,9 @@ Core/Src/icache.o: ../Core/Src/icache.c ../Core/Inc/icache.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h \
- ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h
-../Core/Inc/icache.h:
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
+ ../Core/Inc/memorymap.h ../Core/Inc/main.h ../Core/Inc/octospi.h \
+ ../Core/Inc/gpio.h
 ../Core/Inc/main.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../Core/Inc/stm32u5xx_hal_conf.h:
@@ -44,7 +44,6 @@ Core/Src/icache.o: ../Core/Src/icache.c ../Core/Inc/icache.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h:
-../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h:
@@ -55,3 +54,7 @@ Core/Src/icache.o: ../Core/Src/icache.c ../Core/Inc/icache.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
+../Core/Inc/memorymap.h:
+../Core/Inc/main.h:
+../Core/Inc/octospi.h:
+../Core/Inc/gpio.h:

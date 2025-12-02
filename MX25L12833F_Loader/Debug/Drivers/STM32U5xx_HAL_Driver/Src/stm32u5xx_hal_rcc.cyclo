@@ -2,9 +2,9 @@
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:360:19:HAL_RCC_DeInit	12
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1657:6:HAL_RCC_MCOConfig	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1710:10:HAL_RCC_GetSysClockFreq	11
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1352:19:HAL_RCC_ClockConfig	49
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1352:19:HAL_RCC_ClockConfig	46
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1812:10:HAL_RCC_GetHCLKFreq	1
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:525:19:HAL_RCC_OscConfig	134
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:525:19:HAL_RCC_OscConfig	131
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1824:10:HAL_RCC_GetPCLK1Freq	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1836:10:HAL_RCC_GetPCLK2Freq	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c:1848:10:HAL_RCC_GetPCLK3Freq	1
