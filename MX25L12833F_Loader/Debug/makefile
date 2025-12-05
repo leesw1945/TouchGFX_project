@@ -35,13 +35,13 @@ $(wildcard ../makefile.targets) \
 
 
 BUILD_ARTIFACT_NAME := MX25L12833F_Loader
-BUILD_ARTIFACT_EXTENSION := elf
+BUILD_ARTIFACT_EXTENSION := stldr
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-MX25L12833F_Loader.elf \
+MX25L12833F_Loader.stldr \
 
 MAP_FILES += \
 MX25L12833F_Loader.map \
@@ -60,11 +60,11 @@ MX25L12833F_Loader.bin \
 all: main-build
 
 # Main-build Target
-main-build: MX25L12833F_Loader.elf secondary-outputs
+main-build: MX25L12833F_Loader.stldr secondary-outputs
 
 # Tool invocations
-MX25L12833F_Loader.elf MX25L12833F_Loader.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "MX25L12833F_Loader.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld" --specs=nosys.specs -Wl,-Map="MX25L12833F_Loader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MX25L12833F_Loader.stldr MX25L12833F_Loader.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "MX25L12833F_Loader.stldr" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld" -Wl,-Map="MX25L12833F_Loader.map" -Wl,--cref -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -85,7 +85,7 @@ MX25L12833F_Loader.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEP
 
 # Other Targets
 clean:
-	-$(RM) MX25L12833F_Loader.bin MX25L12833F_Loader.elf MX25L12833F_Loader.list MX25L12833F_Loader.map default.size.stdout
+	-$(RM) MX25L12833F_Loader.bin MX25L12833F_Loader.list MX25L12833F_Loader.map MX25L12833F_Loader.stldr default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)

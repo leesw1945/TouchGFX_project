@@ -8,7 +8,15 @@
   */
 
 /* Entry Point */
-ENTRY(Reset_Handler)
+/* ENTRY(Reset_Handler) */
+
+/* 2. [핵심] 링커가 이 심볼들을 삭제하지 못하도록 강제함 */
+EXTERN(StorageInfo)
+EXTERN(Init)
+EXTERN(Write)
+EXTERN(SectorErase)
+EXTERN(MassErase)
+EXTERN(Verify)
 
 /* Highest address of the user mode stack */
 _estack = ORIGIN(RAM) + LENGTH(RAM); /* end of RAM */
@@ -26,13 +34,25 @@ MEMORY
 /* Define output sections */
 SECTIONS
 {
+.storage_info :
+  {
+    KEEP(*(.storage_info))
+  } >RAM
   /* The startup code goes first into RAM */
-  . = ALIGN(4);
+  /* . = ALIGN(4); */
   .text :
   {
     . = ALIGN(4);
     *(.text)           /* .text sections (code) */
     *(.text*)          /* .text* sections (code) */
+    
+    /* Init 등 핵심 함수가 .text 섹션 안에서 삭제되지 않도록 보호 */
+    KEEP(*(.text.Init))
+    KEEP(*(.text.Write))
+    KEEP(*(.text.SectorErase))
+    KEEP(*(.text.MassErase))
+    KEEP(*(.text.Verify))
+    
     *(.glue_7)         /* glue arm to thumb code */
     *(.glue_7t)        /* glue thumb to arm code */
     *(.eh_frame)
@@ -67,6 +87,10 @@ SECTIONS
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
   } >RAM
+  
+  /* Provide _init and _fini symbols */
+PROVIDE(_init = 0);
+PROVIDE(_fini = 0);
   
   .init_array :
   {
