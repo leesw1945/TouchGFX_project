@@ -10,6 +10,8 @@
 #include "Loader_Src.h"
 #include "string.h"
 
+#define KeepInCompilation __attribute__((used))
+
 /* Private variables ---------------------------------------------------------*/
 OSPI_HandleTypeDef hospi1;
 
@@ -299,6 +301,69 @@ KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
   }
 
   return (checksum << 32);
+}
+
+/**
+  * @brief  Read data from memory.
+  * @param  Address: Read start address
+  * @param  Size   : Size of data to read
+  * @param  buffer : Pointer to data buffer
+  * @retval  1      : Operation succeeded
+  * @retval  0      : Operation failed
+  */
+KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer)
+{
+  OSPI_RegularCmdTypeDef sCommand = {0};
+
+  /* Exit memory-mapped mode if active */
+  if (HAL_OSPI_Abort(&hospi1) != HAL_OK)
+  {
+    return 0;
+  }
+
+  /* Re-initialize OCTOSPI for command mode */
+  MX_OCTOSPI1_Init();
+
+  /* Configure the command for quad I/O read */
+  sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+  sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+  sCommand.Instruction        = QUAD_INOUT_READ_CMD;
+  sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+  sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+  sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+  sCommand.Address            = Address;
+  sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;
+  sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
+  sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
+  sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
+  sCommand.AlternateBytesSize = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
+  sCommand.AlternateBytes     = 0;
+  sCommand.AlternateBytesDtrMode = HAL_OSPI_ALTERNATE_BYTES_DTR_DISABLE;
+  sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;
+  sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
+  sCommand.NbData             = Size;
+  sCommand.DummyCycles        = DUMMY_CYCLES_READ_QUAD;
+  sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+  sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+  if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+  {
+    return 0;
+  }
+
+  /* Receive the data */
+  if (HAL_OSPI_Receive(&hospi1, buffer, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+  {
+    return 0;
+  }
+
+  /* Restore memory-mapped mode */
+  if (OSPI_MemoryMappedMode(&hospi1) != HAL_OK)
+  {
+    return 0;
+  }
+
+  return 1;
 }
 
 /* Private functions ---------------------------------------------------------*/

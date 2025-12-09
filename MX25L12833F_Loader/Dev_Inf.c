@@ -10,8 +10,11 @@
 #include "Dev_Inf.h"
 
 /* This structure contains information used by ST-LINK Utility to program and erase the device */
-__attribute__((section(".storage_info"), used))
+#if defined (__ICCARM__)
+__root struct StorageInfo const StorageInfo = {
+#else
 struct StorageInfo const StorageInfo = {
+#endif
   "MX25L12833F_STM32U5G9_CustomBoard",  /* Device Name */
   NOR_FLASH,                             /* Device Type */
   0x90000000,                            /* Device Start Address */

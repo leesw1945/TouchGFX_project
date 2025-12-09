@@ -64,7 +64,7 @@ main-build: MX25L12833F_Loader.stldr secondary-outputs
 
 # Tool invocations
 MX25L12833F_Loader.stldr MX25L12833F_Loader.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "MX25L12833F_Loader.stldr" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld" -Wl,-Map="MX25L12833F_Loader.map" -Wl,--cref -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "MX25L12833F_Loader.stldr" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\MX25L12833F_Loader\STM32U5G9xx_flash.ld" -Wl,-Map="MX25L12833F_Loader.map" -Wl,--cref -nostartfiles -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

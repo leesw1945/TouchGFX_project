@@ -81,6 +81,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 KeepInCompilation int Init(void);
+KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer);
 KeepInCompilation int Write(uint32_t Address, uint32_t Size, uint8_t* buffer);
 KeepInCompilation int SectorErase(uint32_t EraseStartAddress, uint32_t EraseEndAddress);
 KeepInCompilation int MassErase(uint32_t Parallelism);

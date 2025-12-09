@@ -28,7 +28,7 @@ _Min_Stack_Size = 0x400;     /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-  RAM (xrw)      : ORIGIN = 0x20000004, LENGTH = 0x3FFC  /* 16KB - 4 bytes */
+  RAM (xrw)      : ORIGIN = 0x20000004, LENGTH = 0x20000  /* 16KB - 4 bytes */
 }
 
 /* Define output sections */
