@@ -3,14 +3,16 @@
   * @file    STM32U5G9xx_flash.ld
   * @brief   Linker script for External Loader on STM32U5G9ZJT6Q
   * 
-  * External loader must fit in RAM and be less than 16KB
+  * CRITICAL: StorageInfo MUST be placed at address 0x00000000 for 
+  *           STM32CubeProgrammer to parse correctly.
+  *           Code goes to RAM starting at 0x20000004.
   ******************************************************************************
   */
 
-/* Entry Point */
+/* Entry Point - not used for external loader */
 /* ENTRY(Reset_Handler) */
 
-/* 2. [핵심] 링커가 이 심볼들을 삭제하지 못하도록 강제함 */
+/* Force linker to keep these symbols */
 EXTERN(StorageInfo)
 EXTERN(Init)
 EXTERN(Write)
@@ -18,79 +20,84 @@ EXTERN(SectorErase)
 EXTERN(MassErase)
 EXTERN(Verify)
 
-/* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM); /* end of RAM */
+/* Stack pointer */
+_estack = ORIGIN(RAM) + LENGTH(RAM);
 
-/* Generate a link error if heap and stack don't fit into RAM */
-_Min_Heap_Size = 0x000;      /* required amount of heap  */
-_Min_Stack_Size = 0x400;     /* required amount of stack */
+/* Heap and stack sizes */
+_Min_Heap_Size = 0x000;
+_Min_Stack_Size = 0x400;
 
-/* Specify the memory areas */
+/* Memory areas */
+/* CRITICAL: INFO region at address 0 for StorageInfo */
 MEMORY
 {
-  RAM (xrw)      : ORIGIN = 0x20000004, LENGTH = 0x20000  /* 16KB - 4 bytes */
+  INFO (r)     : ORIGIN = 0x00000000, LENGTH = 0x200      /* StorageInfo at address 0 */
+  RAM (xrw)    : ORIGIN = 0x20000004, LENGTH = 0x1FFFC   /* Code in RAM */
 }
 
-/* Define output sections */
+/* Output sections */
 SECTIONS
 {
-.storage_info :
+  /* =========================================================================
+   * StorageInfo MUST be at address 0x00000000
+   * STM32CubeProgrammer expects this exact location
+   * ========================================================================= */
+  .storage_info :
   {
     KEEP(*(.storage_info))
-  } >RAM
-  /* The startup code goes first into RAM */
-  /* . = ALIGN(4); */
+    KEEP(*Dev_Inf.o(.rodata*))
+  } >INFO
+
+  /* Code section in RAM */
   .text :
   {
     . = ALIGN(4);
-    *(.text)           /* .text sections (code) */
-    *(.text*)          /* .text* sections (code) */
+    *(.text)
+    *(.text*)
     
-    /* Init 등 핵심 함수가 .text 섹션 안에서 삭제되지 않도록 보호 */
     KEEP(*(.text.Init))
     KEEP(*(.text.Write))
     KEEP(*(.text.SectorErase))
     KEEP(*(.text.MassErase))
     KEEP(*(.text.Verify))
     
-    *(.glue_7)         /* glue arm to thumb code */
-    *(.glue_7t)        /* glue thumb to arm code */
+    *(.glue_7)
+    *(.glue_7t)
     *(.eh_frame)
 
     KEEP (*(.init))
     KEEP (*(.fini))
 
     . = ALIGN(4);
-    _etext = .;        /* define a global symbols at end of code */
+    _etext = .;
   } >RAM
 
-  /* Constant data goes into RAM */
-  . = ALIGN(4);
+  /* Constant data in RAM */
   .rodata :
   {
     . = ALIGN(4);
-    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
-    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    *(.rodata)
+    *(.rodata*)
     . = ALIGN(4);
   } >RAM
 
-  .ARM.extab   : { *(.ARM.extab* .gnu.linkonce.armextab.*) } >RAM
+  .ARM.extab : { *(.ARM.extab* .gnu.linkonce.armextab.*) } >RAM
+  
   .ARM : {
     __exidx_start = .;
     *(.ARM.exidx*)
     __exidx_end = .;
   } >RAM
 
-  .preinit_array     :
+  .preinit_array :
   {
     PROVIDE_HIDDEN (__preinit_array_start = .);
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
   } >RAM
   
-  /* Provide _init and _fini symbols */
-PROVIDE(_init = 0);
-PROVIDE(_fini = 0);
+  PROVIDE(_init = 0);
+  PROVIDE(_fini = 0);
   
   .init_array :
   {
@@ -108,38 +115,34 @@ PROVIDE(_fini = 0);
     PROVIDE_HIDDEN (__fini_array_end = .);
   } >RAM
 
-  /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
 
-  /* Initialized data sections goes into RAM */
+  /* Initialized data */
   .data : 
   {
     . = ALIGN(4);
-    _sdata = .;        /* create a global symbol at data start */
-    *(.data)           /* .data sections */
-    *(.data*)          /* .data* sections */
-
+    _sdata = .;
+    *(.data)
+    *(.data*)
     . = ALIGN(4);
-    _edata = .;        /* define a global symbol at data end */
+    _edata = .;
   } >RAM
 
-  /* Uninitialized data section */
-  . = ALIGN(4);
+  /* Uninitialized data */
   .bss :
   {
-    /* This is used by the startup in order to initialize the .bss secion */
-    _sbss = .;         /* define a global symbol at bss start */
+    . = ALIGN(4);
+    _sbss = .;
     __bss_start__ = _sbss;
     *(.bss)
     *(.bss*)
     *(COMMON)
-
     . = ALIGN(4);
-    _ebss = .;         /* define a global symbol at bss end */
+    _ebss = .;
     __bss_end__ = _ebss;
   } >RAM
 
-  /* User_heap_stack section, used to check that there is enough RAM left */
+  /* Heap and stack */
   ._user_heap_stack :
   {
     . = ALIGN(8);
@@ -150,7 +153,7 @@ PROVIDE(_fini = 0);
     . = ALIGN(8);
   } >RAM
 
-  /* Remove information from the standard libraries */
+  /* Discard unused library sections */
   /DISCARD/ :
   {
     libc.a ( * )

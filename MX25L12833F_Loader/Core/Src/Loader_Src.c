@@ -9,21 +9,23 @@
 
 #include "Loader_Src.h"
 #include "string.h"
+#include "octospi.h"
 
 #define KeepInCompilation __attribute__((used))
 
 /* Private variables ---------------------------------------------------------*/
-OSPI_HandleTypeDef hospi1;
+//OSPI_HandleTypeDef hospi1;
 
 /* Private function prototypes -----------------------------------------------*/
 static void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_OCTOSPI1_Init(void);
+//static void MX_OCTOSPI1_Init(void);
 static HAL_StatusTypeDef OSPI_WriteEnable(OSPI_HandleTypeDef *hospi);
 static HAL_StatusTypeDef OSPI_AutoPollingMemReady(OSPI_HandleTypeDef *hospi, uint32_t Timeout);
 static HAL_StatusTypeDef OSPI_QuadMode(OSPI_HandleTypeDef *hospi, uint8_t enable);
 static HAL_StatusTypeDef OSPI_ResetMemory(OSPI_HandleTypeDef *hospi);
 static HAL_StatusTypeDef OSPI_MemoryMappedMode(OSPI_HandleTypeDef *hospi);
+static uint32_t CheckSum(uint32_t StartAddress, uint32_t Size, uint32_t InitVal);
 
 /**
   * @brief  System initialization.
@@ -271,6 +273,67 @@ KeepInCompilation int MassErase(uint32_t Parallelism)
 }
 
 /**
+  * @brief  Calculate checksum of memory area.
+  * @param  StartAddress: Start address for checksum calculation
+  * @param  Size        : Size in bytes
+  * @param  InitVal     : Initial value
+  * @retval  Checksum value
+  */
+static uint32_t CheckSum(uint32_t StartAddress, uint32_t Size, uint32_t InitVal)
+{
+  uint8_t missalignementAddress = StartAddress % 4;
+  uint8_t missalignementSize = Size;
+  uint32_t cnt;
+  uint32_t Val;
+  uint32_t value = InitVal;
+
+  StartAddress -= StartAddress % 4;
+  Size += (Size % 4 == 0) ? 0 : (4 - (Size % 4));
+
+  for (cnt = 0; cnt < Size; cnt += 4)
+  {
+    Val = *(uint32_t*)StartAddress;
+
+    if (cnt < missalignementAddress)
+    {
+      switch (missalignementAddress - cnt)
+      {
+        case 1:
+          Val &= 0xFFFFFF00;
+          break;
+        case 2:
+          Val &= 0xFFFF0000;
+          break;
+        case 3:
+          Val &= 0xFF000000;
+          break;
+      }
+    }
+
+    if ((Size - missalignementSize) < cnt + 4)
+    {
+      switch (cnt + 4 - Size + missalignementSize)
+      {
+        case 1:
+          Val &= 0x00FFFFFF;
+          break;
+        case 2:
+          Val &= 0x0000FFFF;
+          break;
+        case 3:
+          Val &= 0x000000FF;
+          break;
+      }
+    }
+
+    value += Val;
+    StartAddress += 4;
+  }
+
+  return value;
+}
+
+/**
   * @brief  Verify flash memory.
   * @param  MemoryAddr    : Memory address
   * @param  RAMBufferAddr : RAM buffer address
@@ -444,44 +507,44 @@ static void MX_GPIO_Init(void)
   * @param None
   * @retval None
   */
-static void MX_OCTOSPI1_Init(void)
-{
-  OSPIM_CfgTypeDef sOspiManagerCfg = {0};
-
-  /* OCTOSPI1 parameter configuration*/
-  hospi1.Instance = OCTOSPI1;
-  hospi1.Init.FifoThreshold = 4;
-  hospi1.Init.DualQuad = HAL_OSPI_DUALQUAD_DISABLE;
-  hospi1.Init.MemoryType = HAL_OSPI_MEMTYPE_MACRONIX;
-  hospi1.Init.DeviceSize = 24;  /* 2^24 = 16MB */
-  hospi1.Init.ChipSelectHighTime = 2;
-  hospi1.Init.FreeRunningClock = HAL_OSPI_FREERUNCLK_DISABLE;
-  hospi1.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;
-  hospi1.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
-  hospi1.Init.ClockPrescaler = 2;
-  hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
-  hospi1.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
-  hospi1.Init.ChipSelectBoundary = 0;
-  hospi1.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_BYPASSED;
-  hospi1.Init.MaxTran = 0;
-  hospi1.Init.Refresh = 0;
-
-  if (HAL_OSPI_Init(&hospi1) != HAL_OK)
-  {
-    while(1);
-  }
-
-  sOspiManagerCfg.ClkPort = 1;
-  sOspiManagerCfg.DQSPort = 1;
-  sOspiManagerCfg.NCSPort = 1;
-  sOspiManagerCfg.IOLowPort = HAL_OSPIM_IOPORT_1_LOW;
-  sOspiManagerCfg.IOHighPort = HAL_OSPIM_IOPORT_1_HIGH;
-
-  if (HAL_OSPIM_Config(&hospi1, &sOspiManagerCfg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-  {
-    while(1);
-  }
-}
+//static void MX_OCTOSPI1_Init(void)
+//{
+//  OSPIM_CfgTypeDef sOspiManagerCfg = {0};
+//
+//  /* OCTOSPI1 parameter configuration*/
+//  hospi1.Instance = OCTOSPI1;
+//  hospi1.Init.FifoThreshold = 4;
+//  hospi1.Init.DualQuad = HAL_OSPI_DUALQUAD_DISABLE;
+//  hospi1.Init.MemoryType = HAL_OSPI_MEMTYPE_MACRONIX;
+//  hospi1.Init.DeviceSize = 24;  /* 2^24 = 16MB */
+//  hospi1.Init.ChipSelectHighTime = 2;
+//  hospi1.Init.FreeRunningClock = HAL_OSPI_FREERUNCLK_DISABLE;
+//  hospi1.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;
+//  hospi1.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
+//  hospi1.Init.ClockPrescaler = 2;
+//  hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
+//  hospi1.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
+//  hospi1.Init.ChipSelectBoundary = 0;
+//  hospi1.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_BYPASSED;
+//  hospi1.Init.MaxTran = 0;
+//  hospi1.Init.Refresh = 0;
+//
+//  if (HAL_OSPI_Init(&hospi1) != HAL_OK)
+//  {
+//    while(1);
+//  }
+//
+//  sOspiManagerCfg.ClkPort = 1;
+//  sOspiManagerCfg.DQSPort = 1;
+//  sOspiManagerCfg.NCSPort = 1;
+//  sOspiManagerCfg.IOLowPort = HAL_OSPIM_IOPORT_1_LOW;
+//  sOspiManagerCfg.IOHighPort = HAL_OSPIM_IOPORT_1_HIGH;
+//
+//  if (HAL_OSPIM_Config(&hospi1, &sOspiManagerCfg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+//  {
+//    while(1);
+//  }
+//}
 
 /**
   * @brief  This function sends a Write Enable command
@@ -762,89 +825,72 @@ static HAL_StatusTypeDef OSPI_MemoryMappedMode(OSPI_HandleTypeDef *hospi)
   return HAL_OK;
 }
 
-/**
-  * @brief OCTOSPI MSP Initialization
-  * @param hospi: OSPI handle pointer
-  * @retval None
-  */
-void HAL_OSPI_MspInit(OSPI_HandleTypeDef* hospi)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-
-  if(hospi->Instance == OCTOSPI1)
-  {
-    /* Peripheral clock enable */
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
-    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_SYSCLK;
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-    {
-      while(1);
-    }
-
-    __HAL_RCC_OSPIM_CLK_ENABLE();
-    __HAL_RCC_OSPI1_CLK_ENABLE();
-
-    /**
-     * OCTOSPI1 GPIO Configuration
-     * 
-     * NOTE: These pin assignments are EXAMPLES.
-     * You MUST modify these to match your actual PCB design!
-     * 
-     * Common configurations:
-     * - STM32U5G9ZJT6Q supports multiple pin options for OCTOSPI
-     * - Check your schematic for actual connections
-     */
-    
-    /* Example pin configuration - MODIFY TO MATCH YOUR HARDWARE */
-    
-    /* OCTOSPI1_CLK: PB10 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_10;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF10_OCTOSPI1;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    /* OCTOSPI1_NCS: PB11 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_11;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    /* OCTOSPI1_IO0: PC9 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_9;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-    /* OCTOSPI1_IO1: PC10 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_10;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-    /* OCTOSPI1_IO2: PE2 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_2;
-    HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
-
-    /* OCTOSPI1_IO3: PA1 (AF10) - EXAMPLE, verify your schematic! */
-    GPIO_InitStruct.Pin = GPIO_PIN_1;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  }
-}
-
-/**
-  * @brief OCTOSPI MSP De-Initialization
-  * @param hospi: OSPI handle pointer
-  * @retval None
-  */
-void HAL_OSPI_MspDeInit(OSPI_HandleTypeDef* hospi)
-{
-  if(hospi->Instance == OCTOSPI1)
-  {
-    /* Peripheral clock disable */
-    __HAL_RCC_OSPI1_CLK_DISABLE();
-    __HAL_RCC_OSPIM_CLK_DISABLE();
-
-    /* GPIO de-configuration - MODIFY TO MATCH YOUR HARDWARE */
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10 | GPIO_PIN_11);
-    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_9 | GPIO_PIN_10);
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2);
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1);
-  }
-}
+///**
+//  * @brief OCTOSPI MSP Initialization
+//  * @param hospi: OSPI handle pointer
+//  * @retval None
+//  */
+//void HAL_OSPI_MspInit(OSPI_HandleTypeDef* hospi)
+//{
+//  GPIO_InitTypeDef GPIO_InitStruct = {0};
+//  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+//
+//  if(hospi->Instance == OCTOSPI1)
+//  {
+//    /* Peripheral clock enable */
+//    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
+//    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_SYSCLK;
+//    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+//    {
+//      while(1);
+//    }
+//
+//    __HAL_RCC_OSPIM_CLK_ENABLE();
+//    __HAL_RCC_OSPI1_CLK_ENABLE();
+//    __HAL_RCC_GPIOA_CLK_ENABLE();
+//    __HAL_RCC_GPIOB_CLK_ENABLE();
+//
+//    /**
+//     * OCTOSPI1 GPIO Configuration for SU-6000 Custom Board
+//     *
+//     * PA2  ------> OCTOSPIM_P1_NCS  (Chip Select)
+//     * PA3  ------> OCTOSPIM_P1_CLK  (Clock)
+//     * PA6  ------> OCTOSPIM_P1_IO3  (Data 3)
+//     * PA7  ------> OCTOSPIM_P1_IO2  (Data 2)
+//     * PB0  ------> OCTOSPIM_P1_IO1  (Data 1)
+//     * PB1  ------> OCTOSPIM_P1_IO0  (Data 0)
+//     */
+//
+//    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+//    GPIO_InitStruct.Alternate = GPIO_AF10_OCTOSPI1;
+//
+//    /* Configure PA2, PA3, PA6, PA7 */
+//    GPIO_InitStruct.Pin = GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7;
+//    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+//
+//    /* Configure PB0, PB1 */
+//    GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//  }
+//}
+//
+///**
+//  * @brief OCTOSPI MSP De-Initialization
+//  * @param hospi: OSPI handle pointer
+//  * @retval None
+//  */
+//void HAL_OSPI_MspDeInit(OSPI_HandleTypeDef* hospi)
+//{
+//  if(hospi->Instance == OCTOSPI1)
+//  {
+//    /* Peripheral clock disable */
+//    __HAL_RCC_OSPI1_CLK_DISABLE();
+//    __HAL_RCC_OSPIM_CLK_DISABLE();
+//
+//    /* GPIO de-configuration for SU-6000 Custom Board */
+//    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7);
+//    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0 | GPIO_PIN_1);
+//  }
+//}

@@ -1,0 +1,9 @@
+../Core/Src/Loader_Src.c:554:26:OSPI_WriteEnable.constprop	3
+../Core/Src/Loader_Src.c:609:26:OSPI_AutoPollingMemReady.constprop	2
+../Core/Src/Loader_Src.c:785:26:OSPI_MemoryMappedMode.constprop	2
+../Core/Src/Loader_Src.c:36:23:Init	14
+../Core/Src/Loader_Src.c:79:23:Write	9
+../Core/Src/Loader_Src.c:179:23:SectorErase	5
+../Core/Src/Loader_Src.c:237:23:MassErase	3
+../Core/Src/Loader_Src.c:344:28:Verify	7
+../Core/Src/Loader_Src.c:377:23:Read	4
