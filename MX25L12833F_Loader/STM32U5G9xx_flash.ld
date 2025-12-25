@@ -24,7 +24,7 @@ EXTERN(Verify)
 _estack = ORIGIN(RAM) + LENGTH(RAM);
 
 /* Heap and stack sizes */
-_Min_Heap_Size = 0x000;
+_Min_Heap_Size = 0x200;
 _Min_Stack_Size = 0x400;
 
 /* Memory areas */
