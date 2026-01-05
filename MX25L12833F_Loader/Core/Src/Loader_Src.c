@@ -1,46 +1,70 @@
 /**
   ******************************************************************************
   * @file    Loader_Src.c
-  * @author  MCD Application Team
+  * @author  Fixed Version
   * @brief   External Loader for MX25L12833F Quad-SPI memory
   * 
-  * @version v7.1 - 빌드 에러 수정
+  * @version v9.0 - Complete Rewrite for PLL1Q 40MHz
   * 
-  * [v7 수정사항 - 데이터시트 PM2517 Rev 1.0 기준]
-  * 1. QE 비트 위치 수정: Status Register bit 6 (reg[0], NOT reg[1])
-  * 2. 4READ Dummy Cycles 수정: AlternateBytes(2) + Dummy(4) = 6 total
-  * 3. 4PP Address Mode 수정: 4-lines (NOT 1-line)
-  * 4. Clock 설정 단순화: MSI 48MHz 직접 사용 (PLL 없음)
-  * 5. OSPI Clock Source: SYSCLK 직접 사용
-  * 6. BSS 수동 초기화 추가
+  * [v9 수정사항]
+  * 1. PLL1Q 40MHz 클럭 소스 사용 (HSE 16MHz 기반)
+  * 2. HAL_OSPI_MspInit 충돌 해결 (로컬에서 모두 처리)
+  * 3. 4READ Dummy Cycles 수정 (Mode bits 포함)
+  * 4. Static 함수명 변경으로 main.c와 충돌 방지
+  * 5. External Loader 전용 최적화
   ******************************************************************************
   */
 
-#include "Loader_Src.h"
-#include "octospi.h"
-#include "string.h"
+#include "stm32u5xx_hal.h"
+#include <string.h>
 
 /* ============================================================================
- * 헤더 파일의 정의를 덮어쓰기 (v7 수정)
+ * MX25L12833F Commands (데이터시트 Table 5 기준)
  * ============================================================================ */
-#undef DUMMY_CYCLES_READ_QUAD
-#define DUMMY_CYCLES_READ_QUAD               4   /* v7: 6-2=4 (Mode Bits 제외) */
+#define RESET_ENABLE_CMD                     0x66
+#define RESET_MEMORY_CMD                     0x99
 
-/* Status Register QE 비트 (헤더에 없으면 추가) */
-#ifndef STATUS_REG_QE_MASK
-#define STATUS_REG_QE_MASK                   0x40  /* bit 6: Quad Enable */
-#endif
+#define READ_STATUS_REG_CMD                  0x05
+#define READ_CFG_REG_CMD                     0x15
+#define WRITE_STATUS_CFG_REG_CMD             0x01
+
+#define WRITE_ENABLE_CMD                     0x06
+
+#define QUAD_INOUT_READ_CMD                  0xEB    /* 4READ */
+#define QUAD_PAGE_PROG_CMD                   0x38    /* 4PP */
+
+#define BLOCK_ERASE_64K_CMD                  0xD8    /* BE */
+#define CHIP_ERASE_CMD                       0xC7    /* CE */
+
+/* Status/Configuration Register Masks */
+#define STATUS_REG_WIP_MASK                  0x01    /* Write In Progress */
+#define STATUS_REG_WEL_MASK                  0x02    /* Write Enable Latch */
+#define STATUS_REG_QE_MASK                   0x40    /* Quad Enable (bit 6) */
+
+/* Memory Parameters */
+#define MEMORY_FLASH_SIZE                    0x01000000  /* 16 MB */
+#define MEMORY_BLOCK_SIZE                    0x10000     /* 64KB */
+#define MEMORY_PAGE_SIZE                     0x100       /* 256 bytes */
+
+/*
+ * Dummy Cycles for 4READ (데이터시트 Table 10, Figure 33)
+ * DC[1:0]=00 기본값: Quad IO Fast Read = 6 dummy cycles
+ * 이는 Mode bits 2 cycles + Actual dummy 4 cycles를 포함
+ * HAL_OSPI_MEMTYPE_MACRONIX 사용 시 자동 처리됨
+ */
+#define DUMMY_CYCLES_READ_QUAD               6
 
 /* ============================================================================
- * External Variables (octospi.c에서 정의됨)
+ * OSPI Handle - 로컬 정의 (extern 의존성 제거)
  * ============================================================================ */
-extern OSPI_HandleTypeDef hospi1;
+static OSPI_HandleTypeDef hospi1_local;
 
 /* ============================================================================
  * Private Function Prototypes
  * ============================================================================ */
-static void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
+static void Loader_SystemClock_Config(void);
+static void Loader_GPIO_Init(void);
+static void Loader_OCTOSPI1_Init(void);
 static HAL_StatusTypeDef OSPI_WriteEnable(void);
 static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout);
 static HAL_StatusTypeDef OSPI_QuadMode(uint8_t enable);
@@ -49,33 +73,62 @@ static HAL_StatusTypeDef OSPI_EnterMemoryMappedMode(void);
 static HAL_StatusTypeDef OSPI_ExitMemoryMappedMode(void);
 
 /* ============================================================================
- * BSS Initialization (STM32CubeProgrammer doesn't clear BSS!)
+ * HAL Tick Override (External Loader에서 SysTick 사용 안 함)
+ * uwTick은 stm32u5xx_hal.c에서 extern 선언되어 있으므로 여기서 정의
  * ============================================================================ */
-static void Init_BSS(void)
+volatile uint32_t uwTick_local = 0;
+
+HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
-    /* hospi1 구조체 초기화 - octospi.c의 전역 변수 */
-    memset(&hospi1, 0, sizeof(hospi1));
+    (void)TickPriority;
+    return HAL_OK;
+}
+
+uint32_t HAL_GetTick(void)
+{
+    /* 간단한 증가 방식 - 정확한 타이밍이 아닌 타임아웃 용도 */
+    return uwTick_local++;
+}
+
+void HAL_Delay(uint32_t Delay)
+{
+    uint32_t tickstart = HAL_GetTick();
+    uint32_t wait = Delay;
+
+    /* 약간의 여유를 위해 루프 */
+    while ((HAL_GetTick() - tickstart) < wait)
+    {
+        __NOP();
+    }
+}
+
+/* HAL이 사용하는 uwTick 변수를 우리 로컬 변수로 대체 */
+void HAL_IncTick(void)
+{
+    uwTick_local++;
 }
 
 /* ============================================================================
  * Init - System Initialization
+ * STM32CubeProgrammer가 가장 먼저 호출하는 함수
  * ============================================================================ */
 __attribute__((used)) int Init(void)
 {
-    /* Step 1: BSS 수동 초기화 (필수!) */
-    Init_BSS();
-    
+    /* Step 1: 구조체 초기화 (BSS가 초기화되지 않을 수 있음) */
+    memset(&hospi1_local, 0, sizeof(hospi1_local));
+    uwTick_local = 0;
+
     /* Step 2: HAL 초기화 */
     HAL_Init();
     
-    /* Step 3: 클럭 설정 (MSI 48MHz, PLL 없음) */
-    SystemClock_Config();
+    /* Step 3: 클럭 설정 (HSE 16MHz + PLL1Q 40MHz) */
+    Loader_SystemClock_Config();
     
     /* Step 4: GPIO 초기화 */
-    MX_GPIO_Init();
-    
-    /* Step 5: OSPI 초기화 (CubeMX 생성 함수 사용) */
-    MX_OCTOSPI1_Init();
+    Loader_GPIO_Init();
+
+    /* Step 5: OSPI 초기화 */
+    Loader_OCTOSPI1_Init();
     
     /* Step 6: Flash Reset */
     if (OSPI_ResetMemory() != HAL_OK)
@@ -99,12 +152,13 @@ __attribute__((used)) int Init(void)
 }
 
 /* ============================================================================
- * Write - Page Program (4PP: 0x38)
- * 
- * Datasheet Figure 49: 4PP Sequence
+ * Write - Quad Page Program (4PP: 0x38)
+ *
+ * 데이터시트 Figure 49: 4PP Sequence
  * - Command: 1-line (0x38)
- * - Address: 4-lines (NOT 1-line!)
+ * - Address: 4-lines (6 cycles for 24-bit address)
  * - Data: 4-lines
+ * - Dummy: 없음
  * ============================================================================ */
 __attribute__((used)) int Write(uint32_t Address, uint32_t Size, uint8_t* buffer)
 {
@@ -141,7 +195,7 @@ __attribute__((used)) int Write(uint32_t Address, uint32_t Size, uint8_t* buffer
             return 0;
         }
         
-        /* 4PP Command 설정 (Datasheet Figure 49) */
+        /* 4PP Command 설정 (데이터시트 Figure 49) */
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
         sCommand.Instruction        = QUAD_PAGE_PROG_CMD;           /* 0x38 */
@@ -149,23 +203,23 @@ __attribute__((used)) int Write(uint32_t Address, uint32_t Size, uint8_t* buffer
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
         sCommand.Address            = current_addr;
-        sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;     /* ★ v7: 4-lines! */
+        sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;     /* Address: 4-lines */
         sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
         sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
         sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
         sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;        /* Data: 4-lines */
         sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
         sCommand.NbData             = current_size;
-        sCommand.DummyCycles        = 0;
+        sCommand.DummyCycles        = 0;                            /* 4PP는 dummy 없음 */
         sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
         sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
         
-        if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+        if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
         {
             return 0;
         }
         
-        if (HAL_OSPI_Transmit(&hospi1, buffer, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+        if (HAL_OSPI_Transmit(&hospi1_local, buffer, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
         {
             return 0;
         }
@@ -216,7 +270,7 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
     /* 64KB 경계로 정렬 */
     EraseStartAddress = EraseStartAddress - (EraseStartAddress % MEMORY_BLOCK_SIZE);
     
-    while (EraseStartAddress <= EraseEndAddress)
+    while (EraseStartAddress < EraseEndAddress)
     {
         BlockAddr = EraseStartAddress;
         
@@ -226,15 +280,15 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
             return 0;
         }
         
-        /* Block Erase Command (1-1-0) */
+        /* Block Erase Command (1-1-0) - Standard SPI mode */
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-        sCommand.Instruction        = BLOCK_ERASE_64K_CMD;
+        sCommand.Instruction        = BLOCK_ERASE_64K_CMD;          /* 0xD8 */
         sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
         sCommand.Address            = BlockAddr;
-        sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
+        sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;      /* Standard SPI */
         sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
         sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
         sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
@@ -243,13 +297,13 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
         sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
         sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
         
-        if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+        if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
         {
             return 0;
         }
         
-        /* Erase 완료 대기 */
-        if (OSPI_AutoPollingMemReady(400000) != HAL_OK)
+        /* Erase 완료 대기 (최대 650ms - 데이터시트 참조) */
+        if (OSPI_AutoPollingMemReady(1000) != HAL_OK)
         {
             return 0;
         }
@@ -289,7 +343,7 @@ __attribute__((used)) int MassErase(uint32_t Parallelism)
     /* Chip Erase Command */
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = CHIP_ERASE_CMD;
+    sCommand.Instruction        = CHIP_ERASE_CMD;                   /* 0xC7 */
     sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -300,13 +354,13 @@ __attribute__((used)) int MassErase(uint32_t Parallelism)
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return 0;
     }
     
-    /* Chip Erase 완료 대기 */
-    if (OSPI_AutoPollingMemReady(400000) != HAL_OK)
+    /* Chip Erase 완료 대기 (최대 60초 - 데이터시트 참조) */
+    if (OSPI_AutoPollingMemReady(60000) != HAL_OK)
     {
         return 0;
     }
@@ -338,6 +392,8 @@ __attribute__((used)) uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAdd
     uint32_t VerifiedData = 0;
     uint64_t checksum = 0;
     
+    (void)missalignement;
+
     Size *= 4;
     
     while (Size > VerifiedData)
@@ -354,57 +410,163 @@ __attribute__((used)) uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAdd
 }
 
 /* ============================================================================
- * SystemClock_Config - MSI 48MHz 직접 사용 (PLL 없음, 안정적)
+ * Loader_SystemClock_Config - HSE 16MHz + PLL1Q 40MHz
+ *
+ * ★★★ 핵심: OSPI Clock = PLL1Q = 40MHz ★★★
+ *
+ * HSE = 16MHz
+ * PLL1: M=1, N=10, P=2, Q=4, R=1
+ * - PLLCLK (R) = 16 * 10 / 1 = 160MHz (SYSCLK용)
+ * - PLL1Q = 16 * 10 / 4 = 40MHz (OSPI용)
  * ============================================================================ */
-static void SystemClock_Config(void)
+static void Loader_SystemClock_Config(void)
 {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+    RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
     
     /* PWR 클럭 활성화 */
     __HAL_RCC_PWR_CLK_ENABLE();
     
-    /* Voltage Scaling */
+    /* Voltage Scaling - 고속 동작을 위해 Scale 1 사용 */
     if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
     {
         return;
     }
     
-    /* MSI 48MHz 설정 */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-    RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-    RCC_OscInitStruct.MSICalibrationValue = RCC_MSICALIBRATION_DEFAULT;
-    RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_11;  /* 48 MHz */
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+    /* HSE 16MHz + PLL 설정 */
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLMBOOST = RCC_PLLMBOOST_DIV1;
+    RCC_OscInitStruct.PLL.PLLM = 1;     /* VCO input = 16MHz / 1 = 16MHz */
+    RCC_OscInitStruct.PLL.PLLN = 10;    /* VCO output = 16 * 10 = 160MHz */
+    RCC_OscInitStruct.PLL.PLLP = 2;     /* PLLP = 160 / 2 = 80MHz */
+    RCC_OscInitStruct.PLL.PLLQ = 4;     /* PLLQ = 160 / 4 = 40MHz ← OSPI 클럭 */
+    RCC_OscInitStruct.PLL.PLLR = 1;     /* PLLR = 160 / 1 = 160MHz (SYSCLK) */
+    RCC_OscInitStruct.PLL.PLLRGE = RCC_PLLVCIRANGE_1;
+    RCC_OscInitStruct.PLL.PLLFRACN = 0;
     
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
         return;
     }
     
-    /* 시스템 클럭을 MSI로 직접 설정 */
+    /* 시스템 클럭 설정 - PLL을 SYSCLK 소스로 */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
                                 | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2
                                 | RCC_CLOCKTYPE_PCLK3;
-    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
+    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
     RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
     
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+    {
+        return;
+    }
+
+    /* ★★★ OSPI Clock Source: PLL1Q (40MHz) ★★★ */
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
+    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL1;  /* PLL1Q 사용! */
+
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
     {
         return;
     }
 }
 
 /* ============================================================================
- * MX_GPIO_Init
+ * Loader_GPIO_Init - GPIO 초기화
  * ============================================================================ */
-static void MX_GPIO_Init(void)
+static void Loader_GPIO_Init(void)
 {
+    /* GPIO 클럭 활성화 */
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
+}
+
+/* ============================================================================
+ * Loader_OCTOSPI1_Init - OSPI 초기화 (로컬 버전)
+ *
+ * OSPI Clock = PLL1Q = 40MHz
+ * Flash Clock = 40MHz / 1 = 40MHz (Prescaler=1)
+ * Flash max = 133MHz (4READ 기준) → 40MHz는 안전한 범위
+ * ============================================================================ */
+static void Loader_OCTOSPI1_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    OSPIM_CfgTypeDef sOspiManagerCfg = {0};
+
+    /* OSPI 클럭 활성화 */
+    __HAL_RCC_OSPIM_CLK_ENABLE();
+    __HAL_RCC_OSPI1_CLK_ENABLE();
+
+    /* GPIO 클럭 활성화 */
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+
+    /* GPIO Configuration
+     * PA2  -> OCTOSPIM_P1_NCS
+     * PA3  -> OCTOSPIM_P1_CLK
+     * PA6  -> OCTOSPIM_P1_IO3
+     * PA7  -> OCTOSPIM_P1_IO2
+     * PB0  -> OCTOSPIM_P1_IO1
+     * PB1  -> OCTOSPIM_P1_IO0
+     */
+    GPIO_InitStruct.Pin = GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF10_OCTOSPI1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF10_OCTOSPI1;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    /* OSPI 핸들 초기화 */
+    hospi1_local.Instance = OCTOSPI1;
+    hospi1_local.Init.FifoThreshold = 4;
+    hospi1_local.Init.DualQuad = HAL_OSPI_DUALQUAD_DISABLE;
+//    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MACRONIX;       /* Macronix type */
+    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MICRON;
+    hospi1_local.Init.DeviceSize = 24;                              /* 2^24 = 16MB */
+    hospi1_local.Init.ChipSelectHighTime = 5;                       /* tSHSL >= 30ns */
+    hospi1_local.Init.FreeRunningClock = HAL_OSPI_FREERUNCLK_DISABLE;
+    hospi1_local.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;            /* Mode 0 */
+    hospi1_local.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
+    hospi1_local.Init.ClockPrescaler = 4;                           /* 40MHz / 1 = 40MHz */
+//    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
+    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_HALFCYCLE;
+
+    hospi1_local.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
+    hospi1_local.Init.ChipSelectBoundary = 0;
+    hospi1_local.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_BYPASSED;
+    hospi1_local.Init.MaxTran = 0;
+    hospi1_local.Init.Refresh = 0;
+
+    if (HAL_OSPI_Init(&hospi1_local) != HAL_OK)
+    {
+        return;
+    }
+
+    /* OSPI Manager Configuration */
+    sOspiManagerCfg.ClkPort = 1;
+    sOspiManagerCfg.NCSPort = 1;
+    sOspiManagerCfg.IOLowPort = HAL_OSPIM_IOPORT_1_LOW;
+
+    if (HAL_OSPIM_Config(&hospi1_local, &sOspiManagerCfg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return;
+    }
 }
 
 /* ============================================================================
@@ -418,7 +580,7 @@ static HAL_StatusTypeDef OSPI_WriteEnable(void)
     /* WREN Command */
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = WRITE_ENABLE_CMD;
+    sCommand.Instruction        = WRITE_ENABLE_CMD;                 /* 0x06 */
     sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -429,18 +591,18 @@ static HAL_StatusTypeDef OSPI_WriteEnable(void)
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
     /* WEL 비트 확인 */
-    sCommand.Instruction = READ_STATUS_REG_CMD;
+    sCommand.Instruction = READ_STATUS_REG_CMD;                     /* 0x05 */
     sCommand.DataMode    = HAL_OSPI_DATA_1_LINE;
     sCommand.NbData      = 1;
     sCommand.DataDtrMode = HAL_OSPI_DATA_DTR_DISABLE;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -451,7 +613,7 @@ static HAL_StatusTypeDef OSPI_WriteEnable(void)
     sConfig.Interval      = 0x10;
     sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
     
-    if (HAL_OSPI_AutoPolling(&hospi1, &sConfig, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -470,7 +632,7 @@ static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
     /* RDSR Command */
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = READ_STATUS_REG_CMD;
+    sCommand.Instruction        = READ_STATUS_REG_CMD;              /* 0x05 */
     sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -483,7 +645,7 @@ static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -495,7 +657,7 @@ static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
     sConfig.Interval      = 0x10;
     sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
     
-    if (HAL_OSPI_AutoPolling(&hospi1, &sConfig, Timeout) != HAL_OK)
+    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, Timeout) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -505,17 +667,9 @@ static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
 
 /* ============================================================================
  * OSPI_QuadMode - Quad Enable 비트 설정
- * 
- * ★★★ v7 핵심 수정 ★★★
- * 
+ *
  * 데이터시트 Table 7 (Status Register):
  *   bit 6 = QE (Quad Enable)
- * 
- * 데이터시트 Table 8 (Configuration Register):
- *   bit 6 = DC0 (Dummy Cycle 설정) - QE 아님!
- * 
- * 기존 코드 오류: reg[1] |= 0x40 (Configuration Register의 DC0 설정)
- * 수정: reg[0] |= 0x40 (Status Register의 QE 설정)
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_QuadMode(uint8_t enable)
 {
@@ -538,12 +692,12 @@ static HAL_StatusTypeDef OSPI_QuadMode(uint8_t enable)
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    if (HAL_OSPI_Receive(&hospi1, &reg[0], HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Receive(&hospi1_local, &reg[0], HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -551,27 +705,31 @@ static HAL_StatusTypeDef OSPI_QuadMode(uint8_t enable)
     /* Step 2: Read Configuration Register (0x15) → reg[1] */
     sCommand.Instruction = READ_CFG_REG_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    if (HAL_OSPI_Receive(&hospi1, &reg[1], HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Receive(&hospi1_local, &reg[1], HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    /* Step 3: QE 비트 설정 (★ Status Register bit 6!) */
+    /* QE 비트가 이미 설정되어 있으면 스킵 */
+    if (enable && (reg[0] & STATUS_REG_QE_MASK))
+    {
+        return HAL_OK;
+    }
+
+    /* Step 3: QE 비트 설정 (Status Register bit 6) */
     if (enable)
     {
-        reg[0] |= STATUS_REG_QE_MASK;   /* ★ v7: Status Register bit 6 = QE */
+        reg[0] |= STATUS_REG_QE_MASK;
     }
     else
     {
         reg[0] &= ~STATUS_REG_QE_MASK;
     }
-    
-    /* Configuration Register는 그대로 유지 (DC0, DC1 변경 안함) */
     
     /* Step 4: Write Enable */
     if (OSPI_WriteEnable() != HAL_OK)
@@ -583,12 +741,12 @@ static HAL_StatusTypeDef OSPI_QuadMode(uint8_t enable)
     sCommand.Instruction = WRITE_STATUS_CFG_REG_CMD;
     sCommand.NbData      = 2;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    if (HAL_OSPI_Transmit(&hospi1, reg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Transmit(&hospi1_local, reg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -623,7 +781,7 @@ static HAL_StatusTypeDef OSPI_ResetMemory(void)
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -631,12 +789,12 @@ static HAL_StatusTypeDef OSPI_ResetMemory(void)
     /* Reset Memory (0x99) */
     sCommand.Instruction = RESET_MEMORY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    /* Reset 완료 대기 */
+    /* Reset 완료 대기 (데이터시트: tRST = 35us max) */
     HAL_Delay(1);
     
     return HAL_OK;
@@ -644,18 +802,19 @@ static HAL_StatusTypeDef OSPI_ResetMemory(void)
 
 /* ============================================================================
  * OSPI_EnterMemoryMappedMode - 4READ (0xEB) Memory-Mapped Mode
- * 
- * 데이터시트 Figure 33 - 4READ Sequence:
- * [CMD:1-line] [ADDR:4-line 6cycles] [MODE:4-line 2cycles] [DUMMY:4cycles] [DATA:4-line]
- * 
- * Total Dummy = Mode Bits (2 cycles) + Additional Dummy (4 cycles) = 6 cycles
+ *
+ * 데이터시트 Figure 33 - 4READ Sequence (SPI Mode):
+ * [CMD:1-line 8clk] [ADDR:4-line 6cyc] [Mode:4-line 2cyc] [Dummy:4cyc] [DATA:4-line]
+ *
+ * Dummy Cycles = 6 (DC[1:0] = 00 기본값, 데이터시트 Table 10)
+ * HAL_OSPI_MEMTYPE_MACRONIX 설정 시 Mode bits는 HAL이 자동 처리
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_EnterMemoryMappedMode(void)
 {
     OSPI_RegularCmdTypeDef sCommand = {0};
     OSPI_MemoryMappedTypeDef sMemMappedCfg = {0};
     
-    /* 4READ Command Configuration */
+    /* ========== Read Configuration (4READ: 0xEB) ========== */
     sCommand.OperationType      = HAL_OSPI_OPTYPE_READ_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
     sCommand.Instruction        = QUAD_INOUT_READ_CMD;              /* 0xEB */
@@ -666,29 +825,40 @@ static HAL_StatusTypeDef OSPI_EnterMemoryMappedMode(void)
     sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;
     sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
     sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
-    
-    /* ★ v7: Mode Bits (Performance Enhance Indicator) */
-    sCommand.AlternateBytesMode    = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
-    sCommand.AlternateBytesSize    = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
-    sCommand.AlternateBytes        = 0xFF;  /* Exit enhance mode */
-    sCommand.AlternateBytesDtrMode = HAL_OSPI_ALTERNATE_BYTES_DTR_DISABLE;
-    
+
+//    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;    /* MACRONIX type이 처리 */
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
+    sCommand.AlternateBytesSize = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
+    sCommand.AlternateBytes     = 0x00;
+
     sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;
     sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
     sCommand.NbData             = 0;
-    sCommand.DummyCycles        = DUMMY_CYCLES_READ_QUAD;           /* ★ v7: 4 cycles */
+
+//    sCommand.DummyCycles        = DUMMY_CYCLES_READ_QUAD;
+    sCommand.DummyCycles        = 4;
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
-    if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
-    /* Memory-Mapped Mode 활성화 */
+    /* ========== Write Configuration (4PP: 0x38) ========== */
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_WRITE_CFG;
+    sCommand.Instruction        = QUAD_PAGE_PROG_CMD;               /* 0x38 */
+    sCommand.DummyCycles        = 0;                                /* 4PP는 dummy 없음 */
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    /* ========== Memory-Mapped Mode 활성화 ========== */
     sMemMappedCfg.TimeOutActivation = HAL_OSPI_TIMEOUT_COUNTER_DISABLE;
     
-    if (HAL_OSPI_MemoryMapped(&hospi1, &sMemMappedCfg) != HAL_OK)
+    if (HAL_OSPI_MemoryMapped(&hospi1_local, &sMemMappedCfg) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -702,19 +872,19 @@ static HAL_StatusTypeDef OSPI_EnterMemoryMappedMode(void)
 static HAL_StatusTypeDef OSPI_ExitMemoryMappedMode(void)
 {
     /* Abort */
-    if (HAL_OSPI_Abort(&hospi1) != HAL_OK)
+    if (HAL_OSPI_Abort(&hospi1_local) != HAL_OK)
     {
         return HAL_ERROR;
     }
     
     /* DeInit 및 재초기화 */
-    HAL_OSPI_DeInit(&hospi1);
+    HAL_OSPI_DeInit(&hospi1_local);
+
+    /* 구조체 초기화 */
+    memset(&hospi1_local, 0, sizeof(hospi1_local));
     
-    /* hospi1 초기화 */
-    memset(&hospi1, 0, sizeof(hospi1));
-    
-    /* CubeMX 생성 함수로 재초기화 */
-    MX_OCTOSPI1_Init();
+    /* 재초기화 */
+    Loader_OCTOSPI1_Init();
     
     return HAL_OK;
 }

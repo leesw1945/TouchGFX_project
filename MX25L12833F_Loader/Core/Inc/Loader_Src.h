@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Loader_Src.h
-  * @author  MCD Application Team
+  * @author  Fixed Version
   * @brief   Header file of Loader_Src.c
   ******************************************************************************
   */
@@ -51,8 +51,7 @@
 /* MX25L12833F Registers */
 #define STATUS_REG_WIP_MASK                  0x01  /* Write In Progress */
 #define STATUS_REG_WEL_MASK                  0x02  /* Write Enable Latch */
-
-#define CFG_REG_QUAD_MASK                    0x40  /* Quad Enable */
+#define STATUS_REG_QE_MASK                   0x40  /* Quad Enable */
 
 /* Parameters */
 #define MEMORY_FLASH_SIZE                    0x01000000  /* 16 MB */
@@ -76,11 +75,6 @@
   #define KeepInCompilation __attribute__((used))
 #endif
 
-
-
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 KeepInCompilation int Init(void);
 KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer);

@@ -16,6 +16,7 @@
 EXTERN(StorageInfo)
 EXTERN(Init)
 EXTERN(Write)
+EXTERN(Read)
 EXTERN(SectorErase)
 EXTERN(MassErase)
 EXTERN(Verify)
@@ -31,8 +32,8 @@ _Min_Stack_Size = 0x400;
 /* CRITICAL: INFO region at address 0 for StorageInfo */
 MEMORY
 {
-  INFO (r)     : ORIGIN = 0x00000000, LENGTH = 0x200      /* StorageInfo at address 0 */
-  RAM (xrw)    : ORIGIN = 0x20000004, LENGTH = 0x1FFFC   /* Code in RAM */
+  INFO (r)     : ORIGIN = 0x00000000, LENGTH = 0x400      /* StorageInfo at address 0 */
+  RAM (xrw)    : ORIGIN = 0x20000004, LENGTH = 0x27FFC    /* Code in RAM - STM32U5G9 has 2.5MB SRAM */
 }
 
 /* Output sections */
@@ -42,10 +43,12 @@ SECTIONS
    * StorageInfo MUST be at address 0x00000000
    * STM32CubeProgrammer expects this exact location
    * ========================================================================= */
-  .storage_info :
+  .storage_info 0x00000000 :
   {
+    . = ALIGN(4);
     KEEP(*(.storage_info))
     KEEP(*Dev_Inf.o(.rodata*))
+    . = ALIGN(4);
   } >INFO
 
   /* Code section in RAM */
@@ -55,8 +58,10 @@ SECTIONS
     *(.text)
     *(.text*)
     
+    /* Keep external loader functions */
     KEEP(*(.text.Init))
     KEEP(*(.text.Write))
+    KEEP(*(.text.Read))
     KEEP(*(.text.SectorErase))
     KEEP(*(.text.MassErase))
     KEEP(*(.text.Verify))

@@ -1,4 +1,4 @@
-Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c ../Core/Inc/Loader_Src.h \
+Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h \
  ../Core/Inc/stm32u5xx_hal_conf.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h \
@@ -24,9 +24,7 @@ Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c ../Core/Inc/Loader_Src.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h \
- ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
- ../Core/Inc/octospi.h ../Core/Inc/main.h
-../Core/Inc/Loader_Src.h:
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../Core/Inc/stm32u5xx_hal_conf.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h:
@@ -53,5 +51,3 @@ Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c ../Core/Inc/Loader_Src.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
-../Core/Inc/octospi.h:
-../Core/Inc/main.h:
