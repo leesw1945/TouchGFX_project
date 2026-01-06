@@ -536,16 +536,16 @@ static void Loader_OCTOSPI1_Init(void)
     hospi1_local.Instance = OCTOSPI1;
     hospi1_local.Init.FifoThreshold = 4;
     hospi1_local.Init.DualQuad = HAL_OSPI_DUALQUAD_DISABLE;
-//    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MACRONIX;       /* Macronix type */
-    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MICRON;
+    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MACRONIX;       /* Macronix type */
+//    hospi1_local.Init.MemoryType = HAL_OSPI_MEMTYPE_MICRON;
     hospi1_local.Init.DeviceSize = 24;                              /* 2^24 = 16MB */
     hospi1_local.Init.ChipSelectHighTime = 5;                       /* tSHSL >= 30ns */
     hospi1_local.Init.FreeRunningClock = HAL_OSPI_FREERUNCLK_DISABLE;
     hospi1_local.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;            /* Mode 0 */
     hospi1_local.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
     hospi1_local.Init.ClockPrescaler = 4;                           /* 40MHz / 1 = 40MHz */
-//    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
-    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_HALFCYCLE;
+    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
+//    hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_HALFCYCLE;
 
     hospi1_local.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
     hospi1_local.Init.ChipSelectBoundary = 0;
@@ -826,17 +826,17 @@ static HAL_StatusTypeDef OSPI_EnterMemoryMappedMode(void)
     sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
     sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
 
-//    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;    /* MACRONIX type이 처리 */
-    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
-    sCommand.AlternateBytesSize = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
-    sCommand.AlternateBytes     = 0x00;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;    /* MACRONIX type이 처리 */
+//    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
+//    sCommand.AlternateBytesSize = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
+//    sCommand.AlternateBytes     = 0x00;
 
     sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;
     sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
     sCommand.NbData             = 0;
 
-//    sCommand.DummyCycles        = DUMMY_CYCLES_READ_QUAD;
-    sCommand.DummyCycles        = 4;
+    sCommand.DummyCycles        = DUMMY_CYCLES_READ_QUAD;
+//    sCommand.DummyCycles        = 4;
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
     
