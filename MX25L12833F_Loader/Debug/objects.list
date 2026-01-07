@@ -3,7 +3,6 @@
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"
 "./Core/Src/memorymap.o"
-"./Core/Src/octospi.o"
 "./Core/Src/stm32u5xx_hal_msp.o"
 "./Core/Src/stm32u5xx_it.o"
 "./Core/Src/syscalls.o"
