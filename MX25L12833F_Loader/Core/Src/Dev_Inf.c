@@ -41,7 +41,7 @@ struct StorageInfo const StorageInfo = {
 
     /* Sector Info: 256 sectors of 64KB each = 16MB total */
     {
-        { 0x00000100, 0x00010000 },        /* 256 Sectors, 64KB (0x10000) each */
+        { 0x00001000, 0x00001000 },        /* 256 Sectors, 64KB (0x10000) each */
         { 0x00000000, 0x00000000 },        /* End marker - required! */
         { 0x00000000, 0x00000000 },
         { 0x00000000, 0x00000000 },
