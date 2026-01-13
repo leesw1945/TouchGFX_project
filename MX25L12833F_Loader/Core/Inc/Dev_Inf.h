@@ -47,7 +47,6 @@
 /**
  * @brief  Sector information structure
  */
-//#pragma pack(push, 1)  /* 패킹 시작 - 패딩 없음 */
 
 struct DeviceSectors {
     uint32_t SectorNum;      /* Number of Sectors */
@@ -61,11 +60,8 @@ struct StorageInfo {
     uint32_t      DeviceSize;                   /* Total Size of Device (4 bytes) */
     uint32_t      PageSize;                     /* Programming Page Size (4 bytes) */
     uint8_t       EraseValue;                   /* Content of Erased Memory (1 byte) */
-    //uint8_t       Reserved[3];                  /* Reserved/Padding (3 bytes) - alignment */
     struct DeviceSectors SectorInfo[SECTOR_NUM]; /* Sector Info (80 bytes) */
 };
-
-//#pragma pack(pop)  /* 패킹 종료 */
 
 /* External declaration for StorageInfo */
 extern struct StorageInfo const StorageInfo;

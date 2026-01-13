@@ -3,45 +3,47 @@
   * @file    STM32U5G9xx_flash.ld
   * @brief   Linker script for External Loader on STM32U5G9ZJT6Q
   * 
-  * CRITICAL: StorageInfo MUST be placed at address 0x00000000 for 
-  *           STM32CubeProgrammer to parse correctly.
-  *           Code goes to RAM starting at 0x20000004.
+  * ★★★ CRITICAL ★★★
+  * 1. StorageInfo MUST be at address 0x00000000
+  * 2. StorageInfo size MUST be exactly 0xC8 (200 bytes)
+  * 3. Code section starts at 0x20000000 (RAM)
   ******************************************************************************
   */
 
-/* Entry Point - not used for external loader */
+/* Entry Point - not needed for external loader */
 /* ENTRY(Reset_Handler) */
 
-/* Force linker to keep these symbols */
+/* Force linker to keep these required symbols */
 EXTERN(StorageInfo)
 EXTERN(Init)
+EXTERN(DeInit)
 EXTERN(Write)
 EXTERN(Read)
 EXTERN(SectorErase)
 EXTERN(MassErase)
 EXTERN(Verify)
 
-/* Stack pointer */
+/* Stack and heap configuration */
 _estack = ORIGIN(RAM) + LENGTH(RAM);
-
-/* Heap and stack sizes */
 _Min_Heap_Size = 0x200;
 _Min_Stack_Size = 0x400;
 
-/* Memory areas */
-/* CRITICAL: INFO region at address 0 for StorageInfo */
+/* Memory regions
+ * INFO: StorageInfo structure at address 0x00000000
+ * RAM:  Code and data at 0x20000000 (STM32U5G9 SRAM1)
+ */
 MEMORY
 {
-  INFO (r)     : ORIGIN = 0x00000000, LENGTH = 0x400      /* StorageInfo at address 0 */
-  RAM (xrw)    : ORIGIN = 0x20000004, LENGTH = 0x27FFC    /* Code in RAM - STM32U5G9 has 2.5MB SRAM */
+  INFO (r)     : ORIGIN = 0x00000000, LENGTH = 0x200     /* StorageInfo region */
+  RAM  (xrw)   : ORIGIN = 0x20000000, LENGTH = 0x280000  /* 2.5MB SRAM */
 }
 
 /* Output sections */
 SECTIONS
 {
   /* =========================================================================
-   * StorageInfo MUST be at address 0x00000000
-   * STM32CubeProgrammer expects this exact location
+   * StorageInfo Structure - MUST be at address 0x00000000
+   * STM32CubeProgrammer reads device info from this location
    * ========================================================================= */
   .storage_info 0x00000000 :
   {
@@ -49,17 +51,22 @@ SECTIONS
     KEEP(*(.storage_info))
     KEEP(*Dev_Inf.o(.rodata*))
     . = ALIGN(4);
-  } >INFO
+  } > INFO
 
-  /* Code section in RAM */
+  /* =========================================================================
+   * Code Section - Loaded into RAM at 0x20000000
+   * ========================================================================= */
   .text :
   {
     . = ALIGN(4);
+    _stext = .;
+    
     *(.text)
     *(.text*)
     
-    /* Keep external loader functions */
+    /* Keep external loader entry points */
     KEEP(*(.text.Init))
+    KEEP(*(.text.DeInit))
     KEEP(*(.text.Write))
     KEEP(*(.text.Read))
     KEEP(*(.text.SectorErase))
@@ -70,59 +77,65 @@ SECTIONS
     *(.glue_7t)
     *(.eh_frame)
 
-    KEEP (*(.init))
-    KEEP (*(.fini))
+    KEEP(*(.init))
+    KEEP(*(.fini))
 
     . = ALIGN(4);
     _etext = .;
-  } >RAM
+  } > RAM
 
-  /* Constant data in RAM */
+  /* Read-only data */
   .rodata :
   {
     . = ALIGN(4);
     *(.rodata)
     *(.rodata*)
     . = ALIGN(4);
-  } >RAM
+  } > RAM
 
-  .ARM.extab : { *(.ARM.extab* .gnu.linkonce.armextab.*) } >RAM
+  /* ARM exception handling */
+  .ARM.extab :
+  {
+    *(.ARM.extab* .gnu.linkonce.armextab.*)
+  } > RAM
   
-  .ARM : {
+  .ARM :
+  {
     __exidx_start = .;
     *(.ARM.exidx*)
     __exidx_end = .;
-  } >RAM
+  } > RAM
 
+  /* Initialization arrays */
   .preinit_array :
   {
-    PROVIDE_HIDDEN (__preinit_array_start = .);
-    KEEP (*(.preinit_array*))
-    PROVIDE_HIDDEN (__preinit_array_end = .);
-  } >RAM
+    PROVIDE_HIDDEN(__preinit_array_start = .);
+    KEEP(*(.preinit_array*))
+    PROVIDE_HIDDEN(__preinit_array_end = .);
+  } > RAM
   
   PROVIDE(_init = 0);
   PROVIDE(_fini = 0);
   
   .init_array :
   {
-    PROVIDE_HIDDEN (__init_array_start = .);
-    KEEP (*(SORT(.init_array.*)))
-    KEEP (*(.init_array*))
-    PROVIDE_HIDDEN (__init_array_end = .);
-  } >RAM
+    PROVIDE_HIDDEN(__init_array_start = .);
+    KEEP(*(SORT(.init_array.*)))
+    KEEP(*(.init_array*))
+    PROVIDE_HIDDEN(__init_array_end = .);
+  } > RAM
   
   .fini_array :
   {
-    PROVIDE_HIDDEN (__fini_array_start = .);
-    KEEP (*(SORT(.fini_array.*)))
-    KEEP (*(.fini_array*))
-    PROVIDE_HIDDEN (__fini_array_end = .);
-  } >RAM
+    PROVIDE_HIDDEN(__fini_array_start = .);
+    KEEP(*(SORT(.fini_array.*)))
+    KEEP(*(.fini_array*))
+    PROVIDE_HIDDEN(__fini_array_end = .);
+  } > RAM
 
+  /* Data section */
   _sidata = LOADADDR(.data);
 
-  /* Initialized data */
   .data : 
   {
     . = ALIGN(4);
@@ -131,9 +144,9 @@ SECTIONS
     *(.data*)
     . = ALIGN(4);
     _edata = .;
-  } >RAM
+  } > RAM
 
-  /* Uninitialized data */
+  /* BSS section (uninitialized data) */
   .bss :
   {
     . = ALIGN(4);
@@ -145,25 +158,25 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;
     __bss_end__ = _ebss;
-  } >RAM
+  } > RAM
 
-  /* Heap and stack */
+  /* User heap and stack */
   ._user_heap_stack :
   {
     . = ALIGN(8);
-    PROVIDE ( end = . );
-    PROVIDE ( _end = . );
+    PROVIDE(end = .);
+    PROVIDE(_end = .);
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-  } >RAM
+  } > RAM
 
-  /* Discard unused library sections */
+  /* Discard unused library sections to reduce size */
   /DISCARD/ :
   {
-    libc.a ( * )
-    libm.a ( * )
-    libgcc.a ( * )
+    libc.a(*)
+    libm.a(*)
+    libgcc.a(*)
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
