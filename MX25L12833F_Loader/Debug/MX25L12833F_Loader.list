@@ -1,6 +1,28 @@
-﻿
+
 MX25L12833F_Loader.stldr:     file format elf32-littlearm
 
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .storage_info 000000c8  00000000  00000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         0000a588  20000000  20000000  00002000  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       000000f8  2000a588  2000a588  0000c588  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .isr_vector   00000274  2000a680  2000a680  0000c680  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .data         00000080  2000a8f4  2000a8f4  0000c8f4  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss          000000ec  2000a974  2000a974  0000c974  2**2
+                  ALLOC
+  6 ._user_heap_stack 00000600  2000aa60  2000aa60  0000c974  2**0
+                  ALLOC
+  7 .ARM.attributes 00000038  00000000  00000000  0000c974  2**0
+                  CONTENTS, READONLY
+  8 .comment      00000043  00000000  00000000  0000c9ac  2**0
+                  CONTENTS, READONLY
+  9 .debug_frame  0000006c  00000000  00000000  0000c9f0  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
 

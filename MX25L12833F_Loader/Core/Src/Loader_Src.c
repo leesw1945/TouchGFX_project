@@ -1,13 +1,13 @@
 /**
   ******************************************************************************
   * @file    Loader_Src.c
-  * @author  Fixed Version v17 - 4KB Sector Erase 사용
+  * @author  Fixed Version v17 - 4KB Sector Erase ì‚¬ìš©
   * @brief   MX25L12833F External Loader (SPI 1-Line Mode)
   *
-  * ★★★ 수정 사항 (v17) ★★★
-  * - SectorErase: 4KB Sector Erase (0x20) 명령 사용
-  * - Dev_Inf.c와 일치하도록 MEMORY_SECTOR_SIZE = 4KB 사용
-  * - 디버그 변수 유지
+  * â˜…â˜…â˜… ìˆ˜ì • ì‚¬í•­ (v17) â˜…â˜…â˜…
+  * - SectorErase: 4KB Sector Erase (0x20) ëª…ë ¹ ì‚¬ìš©
+  * - Dev_Inf.cì™€ ì¼ì¹˜í•˜ë„ë¡ MEMORY_SECTOR_SIZE = 4KB ì‚¬ìš©
+  * - ë””ë²„ê·¸ ë³€ìˆ˜ ìœ ì§€
   ******************************************************************************
   */
 
@@ -28,7 +28,7 @@
 #define READ_SECURITY_REG_CMD                0x2B
 #define WRITE_ENABLE_CMD                     0x06
 #define WRITE_DISABLE_CMD                    0x04
-#define SECTOR_ERASE_4K_CMD                  0x20    /* ★ 4KB Sector Erase ★ */
+#define SECTOR_ERASE_4K_CMD                  0x20    /* â˜… 4KB Sector Erase â˜… */
 #define BLOCK_ERASE_32K_CMD                  0x52    /* 32KB Block Erase */
 #define BLOCK_ERASE_64K_CMD                  0xD8    /* 64KB Block Erase */
 #define CHIP_ERASE_CMD                       0xC7
@@ -44,10 +44,10 @@
 #define SECURITY_REG_E_FAIL_MASK             0x40
 #define SECURITY_REG_WPSEL_MASK              0x80
 
-/* Memory Parameters - ★ 4KB Sector 단위 ★ */
+/* Memory Parameters - â˜… 4KB Sector ë‹¨ìœ„ â˜… */
 #define MEMORY_FLASH_SIZE                    0x01000000  /* 16MB */
-#define MEMORY_SECTOR_SIZE                   0x1000      /* ★ 4KB Sector ★ */
-#define MEMORY_BLOCK_SIZE                    0x10000     /* 64KB Block (참고용) */
+#define MEMORY_SECTOR_SIZE                   0x1000      /* â˜… 4KB Sector â˜… */
+#define MEMORY_BLOCK_SIZE                    0x10000     /* 64KB Block (ì°¸ê³ ìš©) */
 #define MEMORY_PAGE_SIZE                     0x100       /* 256 bytes */
 
 /* Expected ID */
@@ -58,12 +58,12 @@
 /* Timeouts */
 #define TIMEOUT_WRITE_STATUS_REG             100
 #define TIMEOUT_PAGE_PROGRAM                 10
-#define TIMEOUT_SECTOR_ERASE_4K              300     /* ★ 4KB Sector: max 120ms, 여유있게 300ms ★ */
+#define TIMEOUT_SECTOR_ERASE_4K              300     /* â˜… 4KB Sector: max 120ms, ì—¬ìœ ìžˆê²Œ 300ms â˜… */
 #define TIMEOUT_BLOCK_ERASE_64K              2000
 #define TIMEOUT_CHIP_ERASE                   120000
 
 /* ============================================================================
- * OSPI Handle & 진단 변수
+ * OSPI Handle & ì§„ë‹¨ ë³€ìˆ˜
  * ============================================================================ */
 static OSPI_HandleTypeDef hospi1_local;
 static uint8_t g_flash_id[3] = {0, 0, 0};
@@ -74,7 +74,7 @@ static uint8_t g_last_erase_status = 0;
 static uint8_t g_debug_status1 = 0;
 static uint8_t g_debug_status2 = 0;
 
-/* v17 디버그 변수 */
+/* v17 ë””ë²„ê·¸ ë³€ìˆ˜ */
 static uint32_t g_erase_input_start = 0;
 static uint32_t g_erase_input_end = 0;
 static uint32_t g_erase_actual_addr = 0;
@@ -82,7 +82,7 @@ static uint8_t g_erase_call_count = 0;
 static uint8_t g_erase_loop_count = 0;
 static uint8_t g_data_before_erase[4] = {0};
 static uint8_t g_data_after_erase[4] = {0};
-static uint8_t g_loader_version = 0x17;  /* ★ v17 마커 ★ */
+static uint8_t g_loader_version = 0x20;  /* â˜… v17 ë§ˆì»¤ â˜… */
 
 /* ============================================================================
  * Private Function Prototypes
@@ -108,31 +108,21 @@ volatile uint32_t uwTick_local = 0;
 
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
-    uwTick_local = 0;
+    (void)TickPriority;
     return HAL_OK;
 }
 
-/* 중요: GetTick은 값을 증가시키지 않고 현재 값만 반환해야 함 */
 uint32_t HAL_GetTick(void)
 {
-    return uwTick_local;
+    return uwTick_local++;
 }
 
-/* 중요: Delay 함수 내에서 루프를 돌며 Tick을 증가시켜야 함 */
 void HAL_Delay(uint32_t Delay)
 {
-    uint32_t i;
-    /* STM32U5 160MHz 기준 1ms 대기 루프 (대략적 값) */
-    /* 최적화 옵션에 따라 삭제될 수 있으므로 volatile 사용 권장하거나 넉넉하게 잡음 */
-    const uint32_t loops_per_ms = 160000 / 4;
-
-    for (uint32_t d = 0; d < Delay; d++)
+    uint32_t tickstart = HAL_GetTick();
+    while ((HAL_GetTick() - tickstart) < Delay)
     {
-        for (i = 0; i < loops_per_ms; i++)
-        {
-            __NOP();
-        }
-        uwTick_local++;
+        __NOP();
     }
 }
 
@@ -142,7 +132,7 @@ void HAL_IncTick(void)
 }
 
 /* ============================================================================
- * OSPI_ReadBytes - 내부 Read 함수
+ * OSPI_ReadBytes - ë‚´ë¶€ Read í•¨ìˆ˜
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t* buffer, uint32_t size)
 {
@@ -420,14 +410,14 @@ __attribute__((used)) int Init(void)
     g_debug_status1 = 0;
     g_debug_status2 = 0;
 
-    g_erase_input_start = 0;
-    g_erase_input_end = 0;
-    g_erase_actual_addr = 0;
-    g_erase_call_count = 0;
-    g_erase_loop_count = 0;
-    memset(g_data_before_erase, 0, 4);
-    memset(g_data_after_erase, 0, 4);
-    g_loader_version = 0x17;
+    // v20: 제거 -     g_erase_input_start = 0;
+    // v20: 제거 -     g_erase_input_end = 0;
+    // v20: 제거 -     g_erase_actual_addr = 0;
+    // v20: 제거 -     g_erase_call_count = 0;
+    // v20: 제거 -     g_erase_loop_count = 0;
+    // v20: 제거 -     memset(g_data_before_erase, 0, 4);
+    // v20: 제거 -     memset(g_data_after_erase, 0, 4);
+    g_loader_version = 0x20;
 
     memset(&hospi1_local, 0, sizeof(hospi1_local));
     uwTick_local = 0;
@@ -707,9 +697,9 @@ static HAL_StatusTypeDef OSPI_ManualWaitReady(uint32_t Timeout)
 }
 
 /* ============================================================================
- * SectorErase - ★★★ 4KB Sector Erase (0x20) ★★★
+ * SectorErase - â˜…â˜…â˜… 4KB Sector Erase (0x20) â˜…â˜…â˜…
  *
- * Dev_Inf.c와 일치: 4096 Sectors × 4KB = 16MB
+ * Dev_Inf.cì™€ ì¼ì¹˜: 4096 Sectors Ã— 4KB = 16MB
  * ============================================================================ */
 __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t EraseEndAddress)
 {
@@ -718,7 +708,7 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
     uint8_t status_before = 0;
     uint8_t status_after = 0;
 
-    /* 디버그: 입력 주소 저장 */
+    /* ë””ë²„ê·¸: ìž…ë ¥ ì£¼ì†Œ ì €ìž¥ */
     g_erase_input_start = EraseStartAddress;
     g_erase_input_end = EraseEndAddress;
     g_erase_call_count++;
@@ -728,25 +718,32 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
     g_debug_status1 = 0;
     g_debug_status2 = 0;
 
-    /* 주소 변환 */
-    if (EraseStartAddress >= 0x90000000) EraseStartAddress -= 0x90000000;
-    if (EraseEndAddress >= 0x90000000)   EraseEndAddress -= 0x90000000;
+    /* ì£¼ì†Œ ë³€í™˜ */
+    if (EraseStartAddress >= 0x90000000)
+    {
+        EraseStartAddress -= 0x90000000;
+    }
+    if (EraseEndAddress >= 0x90000000)
+    {
+        EraseEndAddress -= 0x90000000;
+    }
 
-    if (EraseEndAddress <= EraseStartAddress)
-        {
-            EraseEndAddress = EraseStartAddress + MEMORY_SECTOR_SIZE;
-        }
-    
-    /* ★ 4KB Sector 경계로 정렬 ★ */
+    /* â˜… 4KB Sector ê²½ê³„ë¡œ ì •ë ¬ â˜… */
     EraseStartAddress = EraseStartAddress - (EraseStartAddress % MEMORY_SECTOR_SIZE);
     
+
+    /* v20: Start == End fix - ensure at least one sector is erased */
+    if (EraseEndAddress <= EraseStartAddress)
+    {
+        EraseEndAddress = EraseStartAddress + MEMORY_SECTOR_SIZE;
+    }
     while (EraseStartAddress < EraseEndAddress)
     {
         g_erase_loop_count++;
         SectorAddr = EraseStartAddress;
         g_erase_actual_addr = SectorAddr;
 
-        /* Erase 전 데이터 읽기 */
+        /* Erase ì „ ë°ì´í„° ì½ê¸° */
         OSPI_ReadBytes(SectorAddr, g_data_before_erase, 4);
 
         /* 1. Write Enable */
@@ -787,12 +784,12 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
             return 0;
         }
 
-        /* ★★★ 2. 4KB Sector Erase Command (0x20) ★★★ */
+        /* â˜…â˜…â˜… 2. 4KB Sector Erase Command (0x20) â˜…â˜…â˜… */
         memset(&sCommand, 0, sizeof(OSPI_RegularCmdTypeDef));
 
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-        sCommand.Instruction        = SECTOR_ERASE_4K_CMD;  /* ★ 0x20 ★ */
+        sCommand.Instruction        = SECTOR_ERASE_4K_CMD;  /* â˜… 0x20 â˜… */
         sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -814,11 +811,11 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
             return 0;
         }
 
-        /* 3. Erase 명령 직후 상태 저장 */
+        /* 3. Erase ëª…ë ¹ ì§í›„ ìƒíƒœ ì €ìž¥ */
         HAL_Delay(1);
         OSPI_ReadStatusReg(&g_debug_status1);
 
-        /* 4. Erase 완료 대기 (4KB는 최대 120ms) */
+        /* 4. Erase ì™„ë£Œ ëŒ€ê¸° (4KBëŠ” ìµœëŒ€ 120ms) */
         HAL_Delay(10);
 
         if (OSPI_ManualWaitReady(TIMEOUT_SECTOR_ERASE_4K) != HAL_OK)
@@ -827,7 +824,7 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
             return 0;
         }
         
-        /* 5. 완료 후 상태 확인 */
+        /* 5. ì™„ë£Œ í›„ ìƒíƒœ í™•ì¸ */
         if (OSPI_ReadStatusReg(&status_after) != HAL_OK)
         {
             g_last_erase_status = 0x40;
@@ -846,10 +843,10 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
             return 0;
         }
 
-        /* Erase 후 데이터 읽기 */
+        /* Erase í›„ ë°ì´í„° ì½ê¸° */
         OSPI_ReadBytes(SectorAddr, g_data_after_erase, 4);
 
-        /* ★ 4KB 단위로 증가 ★ */
+        /* â˜… 4KB ë‹¨ìœ„ë¡œ ì¦ê°€ â˜… */
         EraseStartAddress += MEMORY_SECTOR_SIZE;
     }
     
@@ -965,7 +962,7 @@ __attribute__((used)) uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAdd
 
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-        sCommand.Instruction        = FAST_READ_CMD;;
+        sCommand.Instruction        = READ_CMD;
         sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -977,7 +974,7 @@ __attribute__((used)) uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAdd
         sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
         sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
         sCommand.NbData             = 1;
-        sCommand.DummyCycles        = 8;
+        sCommand.DummyCycles        = 0;
         sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
         sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
 
@@ -1084,7 +1081,7 @@ static void Loader_OCTOSPI1_Init(void)
     hospi1_local.Init.FreeRunningClock = HAL_OSPI_FREERUNCLK_DISABLE;
     hospi1_local.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;
     hospi1_local.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
-    hospi1_local.Init.ClockPrescaler = 4;
+    hospi1_local.Init.ClockPrescaler = 8;
     hospi1_local.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_HALFCYCLE;
     hospi1_local.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
     hospi1_local.Init.ChipSelectBoundary = 0;
