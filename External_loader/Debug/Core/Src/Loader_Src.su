@@ -1,0 +1,16 @@
+../Core/Src/Loader_Src.c:217:26:OSPI_ReadStatusReg	96	static
+../Core/Src/Loader_Src.c:1116:26:OSPI_WriteEnable	112	static
+../Core/Src/Loader_Src.c:1166:26:OSPI_AutoPollingMemReady	120	static
+../Core/Src/Loader_Src.c:295:26:OSPI_ReadSecurityReg.constprop	88	static
+../Core/Src/Loader_Src.c:143:26:OSPI_ReadBytes.constprop.isra	96	static
+../Core/Src/Loader_Src.c:119:19:HAL_InitTick	0	static
+../Core/Src/Loader_Src.c:124:10:HAL_GetTick	0	static
+../Core/Src/Loader_Src.c:129:6:HAL_Delay	8	static,ignoring_inline_asm
+../Core/Src/Loader_Src.c:664:26:OSPI_ManualWaitReady	24	static
+../Core/Src/Loader_Src.c:137:6:HAL_IncTick	0	static
+../Core/Src/Loader_Src.c:399:27:Init	144	static
+../Core/Src/Loader_Src.c:484:27:Read	96	static
+../Core/Src/Loader_Src.c:599:27:Write	112	static
+../Core/Src/Loader_Src.c:691:27:SectorErase	128	static
+../Core/Src/Loader_Src.c:875:27:MassErase	104	static
+../Core/Src/Loader_Src.c:953:32:Verify	136	static
