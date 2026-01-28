@@ -1,12 +1,12 @@
 /**
   ******************************************************************************
   * @file    Loader_Src.c
-  * @author  Fixed Version v18 - Init 안정화 + SectorErase 루프 수정
+  * @author  Fixed Version v17 - 4KB Sector Erase 사용
   * @brief   MX25L12833F External Loader (SPI 1-Line Mode)
   *
-  * ★★★ 수정 사항 (v18) ★★★
-  * - Init: 시스템 안정화 딜레이 추가 (2번 실패 문제 해결)
-  * - SectorErase: EraseEndAddress 정렬 + 최소 1섹터 보장
+  * ★★★ 수정 사항 (v17) ★★★
+  * - SectorErase: 4KB Sector Erase (0x20) 명령 사용
+  * - Dev_Inf.c와 일치하도록 MEMORY_SECTOR_SIZE = 4KB 사용
   * - 디버그 변수 유지
   ******************************************************************************
   */
@@ -74,7 +74,7 @@ static uint8_t g_last_erase_status = 0;
 static uint8_t g_debug_status1 = 0;
 static uint8_t g_debug_status2 = 0;
 
-/* v18 디버그 변수 */
+/* v17 디버그 변수 */
 static uint32_t g_erase_input_start = 0;
 static uint32_t g_erase_input_end = 0;
 static uint32_t g_erase_actual_addr = 0;
@@ -82,7 +82,7 @@ static uint8_t g_erase_call_count = 0;
 static uint8_t g_erase_loop_count = 0;
 static uint8_t g_data_before_erase[4] = {0};
 static uint8_t g_data_after_erase[4] = {0};
-static uint8_t g_loader_version = 0x18;  /* ★ v18 마커 ★ */
+static uint8_t g_loader_version = 0x17;  /* ★ v17 마커 ★ */
 
 /* ============================================================================
  * Private Function Prototypes
@@ -240,170 +240,6 @@ static HAL_StatusTypeDef OSPI_ReadStatusReg(uint8_t* status)
 }
 
 /* ============================================================================
- * OSPI_ReadSecurityReg
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_ReadSecurityReg(uint8_t* security)
-{
-    OSPI_RegularCmdTypeDef sCommand = {0};
-
-    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
-    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = READ_SECURITY_REG_CMD;
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
-    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
-    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
-    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
-    sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
-    sCommand.NbData             = 1;
-    sCommand.DummyCycles        = 0;
-    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
-    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    if (HAL_OSPI_Receive(&hospi1_local, security, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    return HAL_OK;
-}
-
-/* ============================================================================
- * OSPI_WriteEnable
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_WriteEnable(void)
-{
-    OSPI_RegularCmdTypeDef sCommand = {0};
-    OSPI_AutoPollingTypeDef sConfig = {0};
-
-    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
-    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = WRITE_ENABLE_CMD;
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
-    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
-    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
-    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_NONE;
-    sCommand.DummyCycles        = 0;
-    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
-    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    sCommand.Instruction = READ_STATUS_REG_CMD;
-    sCommand.DataMode    = HAL_OSPI_DATA_1_LINE;
-    sCommand.NbData      = 1;
-    sCommand.DataDtrMode = HAL_OSPI_DATA_DTR_DISABLE;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    sConfig.Match         = STATUS_REG_WEL_MASK;
-    sConfig.Mask          = STATUS_REG_WEL_MASK;
-    sConfig.MatchMode     = HAL_OSPI_MATCH_MODE_AND;
-    sConfig.Interval      = 0x10;
-    sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
-
-    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    return HAL_OK;
-}
-
-/* ============================================================================
- * OSPI_AutoPollingMemReady
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
-{
-    OSPI_RegularCmdTypeDef sCommand = {0};
-    OSPI_AutoPollingTypeDef sConfig = {0};
-
-    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
-    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = READ_STATUS_REG_CMD;
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
-    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
-    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
-    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
-    sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
-    sCommand.NbData             = 1;
-    sCommand.DummyCycles        = 0;
-    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
-    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    sConfig.Match         = 0x00;
-    sConfig.Mask          = STATUS_REG_WIP_MASK;
-    sConfig.MatchMode     = HAL_OSPI_MATCH_MODE_AND;
-    sConfig.Interval      = 0x10;
-    sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
-
-    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, Timeout) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    return HAL_OK;
-}
-
-/* ============================================================================
- * OSPI_ResetMemory
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_ResetMemory(void)
-{
-    OSPI_RegularCmdTypeDef sCommand = {0};
-
-    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
-    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = RESET_ENABLE_CMD;
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
-    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
-    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
-    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_NONE;
-    sCommand.DummyCycles        = 0;
-    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
-    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    sCommand.Instruction = RESET_MEMORY_CMD;
-
-    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    HAL_Delay(30);
-
-    return HAL_OK;
-}
-
-/* ============================================================================
  * OSPI_WriteStatusReg
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_WriteStatusReg(uint8_t status)
@@ -449,6 +285,79 @@ static HAL_StatusTypeDef OSPI_WriteStatusReg(uint8_t status)
 }
 
 /* ============================================================================
+ * OSPI_ReadSecurityReg
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_ReadSecurityReg(uint8_t* security)
+{
+    OSPI_RegularCmdTypeDef sCommand = {0};
+
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+    sCommand.Instruction        = READ_SECURITY_REG_CMD;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
+    sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
+    sCommand.NbData             = 1;
+    sCommand.DummyCycles        = 0;
+    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if (HAL_OSPI_Receive(&hospi1_local, security, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/* ============================================================================
+ * OSPI_ClearBlockProtection
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_ClearBlockProtection(void)
+{
+    uint8_t status_reg = 0;
+    uint8_t new_status = 0;
+
+    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if ((status_reg & STATUS_REG_BP_MASK) == 0)
+    {
+        return HAL_OK;
+    }
+
+    new_status = status_reg & ~STATUS_REG_BP_MASK;
+
+    if (OSPI_WriteStatusReg(new_status) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if ((status_reg & STATUS_REG_BP_MASK) != 0)
+    {
+        return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/* ============================================================================
  * OSPI_GangBlockUnlock
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_GangBlockUnlock(void)
@@ -478,9 +387,7 @@ static HAL_StatusTypeDef OSPI_GangBlockUnlock(void)
         return HAL_ERROR;
     }
 
-    HAL_Delay(1);
-
-    if (OSPI_AutoPollingMemReady(100) != HAL_OK)
+    if (OSPI_AutoPollingMemReady(TIMEOUT_WRITE_STATUS_REG) != HAL_OK)
     {
         return HAL_ERROR;
     }
@@ -489,158 +396,81 @@ static HAL_StatusTypeDef OSPI_GangBlockUnlock(void)
 }
 
 /* ============================================================================
- * OSPI_ClearBlockProtection
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_ClearBlockProtection(void)
-{
-    uint8_t status = 0;
-
-    if (OSPI_ReadStatusReg(&status) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    if (status & STATUS_REG_BP_MASK)
-    {
-        status &= ~STATUS_REG_BP_MASK;
-
-        if (OSPI_WriteStatusReg(status) != HAL_OK)
-        {
-            return HAL_ERROR;
-        }
-
-        if (OSPI_ReadStatusReg(&status) != HAL_OK)
-        {
-            return HAL_ERROR;
-        }
-
-        if (status & STATUS_REG_BP_MASK)
-        {
-            return HAL_ERROR;
-        }
-    }
-
-    return HAL_OK;
-}
-
-/* ============================================================================
- * OSPI_ManualWaitReady
- * ============================================================================ */
-static HAL_StatusTypeDef OSPI_ManualWaitReady(uint32_t Timeout)
-{
-    uint8_t status = 0;
-    uint32_t tickstart = HAL_GetTick();
-
-    do
-    {
-        if (OSPI_ReadStatusReg(&status) != HAL_OK)
-        {
-            return HAL_ERROR;
-        }
-
-        if ((status & STATUS_REG_WIP_MASK) == 0)
-        {
-            return HAL_OK;
-        }
-
-        HAL_Delay(1);
-
-    } while ((HAL_GetTick() - tickstart) < Timeout);
-
-    return HAL_TIMEOUT;
-}
-
-/* ============================================================================
- * Init - ★★★ v18: 시스템 안정화 딜레이 추가 ★★★
+ * Init
  * ============================================================================ */
 __attribute__((used)) int Init(void)
 {
-    uint8_t status_reg = 0;
-    volatile uint32_t delay_cnt;
-
-    /* ★★★ v18: 시스템 안정화를 위한 초기 딜레이 ★★★
-     * STM32CubeProgrammer가 로더를 RAM에 로드 직후
-     * 클럭/GPIO가 완전히 안정화되지 않은 상태일 수 있음
-     */
-    for (delay_cnt = 0; delay_cnt < 100000; delay_cnt++)
-    {
-        __NOP();
-    }
-
     g_init_error_code = 0;
+    g_flash_id[0] = 0;
+    g_flash_id[1] = 0;
+    g_flash_id[2] = 0;
     g_status_reg = 0;
     g_security_reg = 0;
-    memset(g_flash_id, 0, sizeof(g_flash_id));
+    g_last_erase_status = 0;
+    g_debug_status1 = 0;
+    g_debug_status2 = 0;
 
-    /* 1. System Clock Configuration */
+    g_erase_input_start = 0;
+    g_erase_input_end = 0;
+    g_erase_actual_addr = 0;
+    g_erase_call_count = 0;
+    g_erase_loop_count = 0;
+    memset(g_data_before_erase, 0, 4);
+    memset(g_data_after_erase, 0, 4);
+    g_loader_version = 0x17;
+
+    memset(&hospi1_local, 0, sizeof(hospi1_local));
+    uwTick_local = 0;
+
+    HAL_Init();
     Loader_SystemClock_Config();
-
-    /* 추가 딜레이 - 클럭 안정화 */
-    for (delay_cnt = 0; delay_cnt < 50000; delay_cnt++)
-    {
-        __NOP();
-    }
-
-    /* 2. OCTOSPI1 Initialization */
     Loader_OCTOSPI1_Init();
 
-    /* 추가 딜레이 - OCTOSPI 안정화 */
-    HAL_Delay(10);
+    HAL_Delay(100);
 
-    /* 3. Memory Reset */
     if (OSPI_ResetMemory() != HAL_OK)
     {
         g_init_error_code = 1;
-        OSPI_ReadStatusReg(&g_status_reg);
-        OSPI_ReadSecurityReg(&g_security_reg);
         return 0;
     }
 
-    /* 4. Read and verify JEDEC ID */
+    HAL_Delay(100);
+
     if (OSPI_ReadID(g_flash_id) != HAL_OK)
     {
         g_init_error_code = 2;
-        OSPI_ReadStatusReg(&g_status_reg);
-        OSPI_ReadSecurityReg(&g_security_reg);
         return 0;
     }
 
-    /* ID 검증 */
-    if (g_flash_id[0] != MX25L12833F_MANUFACTURER_ID)
+    if (OSPI_ReadStatusReg(&g_status_reg) != HAL_OK)
     {
         g_init_error_code = 3;
-        OSPI_ReadStatusReg(&g_status_reg);
-        OSPI_ReadSecurityReg(&g_security_reg);
         return 0;
     }
 
-    /* 5. Read Security Register 체크 */
     if (OSPI_ReadSecurityReg(&g_security_reg) != HAL_OK)
     {
-        g_init_error_code = 4;
-        return 0;
+        g_init_error_code = 6;
     }
 
-    /* WPSEL 비트 체크 */
+    if (g_flash_id[0] != MX25L12833F_MANUFACTURER_ID)
+    {
+        g_init_error_code = 4;
+    }
+
     if (g_security_reg & SECURITY_REG_WPSEL_MASK)
     {
-        /* WPSEL=1: Gang Block Unlock 시도 */
         if (OSPI_GangBlockUnlock() != HAL_OK)
         {
-            g_init_error_code = 5;
-            OSPI_ReadStatusReg(&g_status_reg);
-            OSPI_ReadSecurityReg(&g_security_reg);
-            return 1;
+            g_init_error_code = 7;
         }
     }
-
-    /* 6. Clear Block Protection */
-    if (OSPI_ClearBlockProtection() != HAL_OK)
+    else
     {
-        g_init_error_code = 6;
-        OSPI_ReadStatusReg(&g_status_reg);
-        OSPI_ReadSecurityReg(&g_security_reg);
-        return 1;
+        if (OSPI_ClearBlockProtection() != HAL_OK)
+        {
+            g_init_error_code = 5;
+        }
     }
 
     OSPI_ReadStatusReg(&g_status_reg);
@@ -656,9 +486,11 @@ __attribute__((used)) int Read(uint32_t Address, uint32_t Size, uint8_t* buffer)
 {
     OSPI_RegularCmdTypeDef sCommand = {0};
 
-    /* 디버그: 0x90000090 주소로 특별 정보 반환 */
     if (Address == 0x90000090)
     {
+        OSPI_ReadStatusReg(&g_status_reg);
+        OSPI_ReadSecurityReg(&g_security_reg);
+
         if (Size >= 32)
         {
             buffer[0] = g_flash_id[0];
@@ -677,23 +509,57 @@ __attribute__((used)) int Read(uint32_t Address, uint32_t Size, uint8_t* buffer)
             buffer[13] = g_debug_status2;
             buffer[14] = g_erase_call_count;
             buffer[15] = g_erase_loop_count;
-            /* v18 추가 정보 */
-            buffer[16] = (g_erase_input_start >> 0) & 0xFF;
-            buffer[17] = (g_erase_input_start >> 8) & 0xFF;
-            buffer[18] = (g_erase_input_start >> 16) & 0xFF;
-            buffer[19] = (g_erase_input_start >> 24) & 0xFF;
-            buffer[20] = (g_erase_input_end >> 0) & 0xFF;
-            buffer[21] = (g_erase_input_end >> 8) & 0xFF;
-            buffer[22] = (g_erase_input_end >> 16) & 0xFF;
-            buffer[23] = (g_erase_input_end >> 24) & 0xFF;
-            buffer[24] = (g_erase_actual_addr >> 0) & 0xFF;
-            buffer[25] = (g_erase_actual_addr >> 8) & 0xFF;
-            buffer[26] = (g_erase_actual_addr >> 16) & 0xFF;
-            buffer[27] = (g_erase_actual_addr >> 24) & 0xFF;
-            buffer[28] = g_data_before_erase[0];
-            buffer[29] = g_data_before_erase[1];
-            buffer[30] = g_loader_version;
-            buffer[31] = 0x18;  /* v18 마커 */
+
+            buffer[16] = (uint8_t)(g_erase_input_start & 0xFF);
+            buffer[17] = (uint8_t)((g_erase_input_start >> 8) & 0xFF);
+            buffer[18] = (uint8_t)((g_erase_input_start >> 16) & 0xFF);
+            buffer[19] = (uint8_t)((g_erase_input_start >> 24) & 0xFF);
+
+            buffer[20] = (uint8_t)(g_erase_input_end & 0xFF);
+            buffer[21] = (uint8_t)((g_erase_input_end >> 8) & 0xFF);
+            buffer[22] = (uint8_t)((g_erase_input_end >> 16) & 0xFF);
+            buffer[23] = (uint8_t)((g_erase_input_end >> 24) & 0xFF);
+
+            buffer[24] = (uint8_t)(g_erase_actual_addr & 0xFF);
+            buffer[25] = (uint8_t)((g_erase_actual_addr >> 8) & 0xFF);
+            buffer[26] = (uint8_t)((g_erase_actual_addr >> 16) & 0xFF);
+            buffer[27] = (uint8_t)((g_erase_actual_addr >> 24) & 0xFF);
+
+            buffer[28] = g_data_after_erase[0];
+            buffer[29] = g_data_after_erase[1];
+            buffer[30] = g_data_after_erase[2];
+            buffer[31] = g_data_after_erase[3];
+        }
+        else if (Size >= 16)
+        {
+            buffer[0] = g_flash_id[0];
+            buffer[1] = g_flash_id[1];
+            buffer[2] = g_flash_id[2];
+            buffer[3] = g_init_error_code;
+            buffer[4] = g_status_reg;
+            buffer[5] = g_security_reg;
+            buffer[6] = (g_status_reg & STATUS_REG_BP_MASK) >> 2;
+            buffer[7] = g_last_erase_status;
+            buffer[8] = 0xAA;
+            buffer[9] = 0x55;
+            buffer[10] = (g_security_reg & SECURITY_REG_WPSEL_MASK) ? 1 : 0;
+            buffer[11] = (g_security_reg & SECURITY_REG_E_FAIL_MASK) ? 1 : 0;
+            buffer[12] = g_debug_status1;
+            buffer[13] = g_debug_status2;
+            buffer[14] = g_erase_call_count;
+            buffer[15] = g_erase_loop_count;
+        }
+        return 1;
+    }
+
+    if (Address == 0x90000080)
+    {
+        if (Size >= 4)
+        {
+            buffer[0] = g_loader_version;
+            buffer[1] = g_data_before_erase[0];
+            buffer[2] = g_data_before_erase[1];
+            buffer[3] = g_data_before_erase[2];
         }
         return 1;
     }
@@ -804,12 +670,36 @@ __attribute__((used)) int Write(uint32_t Address, uint32_t Size, uint8_t* buffer
 }
 
 /* ============================================================================
- * SectorErase - ★★★ v18: 루프 조건 수정 ★★★
+ * OSPI_ManualWaitReady
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_ManualWaitReady(uint32_t Timeout)
+{
+    uint8_t status = 0;
+    uint32_t tickstart = HAL_GetTick();
+
+    do
+    {
+        if (OSPI_ReadStatusReg(&status) != HAL_OK)
+        {
+            return HAL_ERROR;
+        }
+
+        if ((status & STATUS_REG_WIP_MASK) == 0)
+        {
+            return HAL_OK;
+        }
+
+        HAL_Delay(1);
+
+    } while ((HAL_GetTick() - tickstart) < Timeout);
+
+    return HAL_TIMEOUT;
+}
+
+/* ============================================================================
+ * SectorErase - ★★★ 4KB Sector Erase (0x20) ★★★
  *
- * 문제: STM32CubeProgrammer가 Start==End로 호출할 때 (단일 섹터)
- *       while(Start < End)가 false가 되어 루프 진입 안함
- *
- * 해결: EraseEndAddress를 다음 섹터 경계로 조정하여 최소 1섹터 보장
+ * Dev_Inf.c와 일치: 4096 Sectors × 4KB = 16MB
  * ============================================================================ */
 __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t EraseEndAddress)
 {
@@ -828,7 +718,7 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
     g_debug_status1 = 0;
     g_debug_status2 = 0;
 
-    /* 주소 변환 (0x90000000 오프셋 제거) */
+    /* 주소 변환 */
     if (EraseStartAddress >= 0x90000000)
     {
         EraseStartAddress -= 0x90000000;
@@ -838,23 +728,8 @@ __attribute__((used)) int SectorErase(uint32_t EraseStartAddress, uint32_t Erase
         EraseEndAddress -= 0x90000000;
     }
 
-    /* ★★★ v18 핵심 수정: 섹터 경계 정렬 ★★★
-     *
-     * Start: 현재 섹터의 시작으로 내림 (기존과 동일)
-     * End: 다음 섹터의 시작으로 올림 (최소 1섹터 보장)
-     *
-     * 예: Start=0x0000, End=0x0000 (단일 섹터)
-     *     → Start=0x0000, End=0x1000
-     *     → 1회 루프 실행 (0x0000 섹터 삭제)
-     */
-    EraseStartAddress = EraseStartAddress & ~(MEMORY_SECTOR_SIZE - 1);  /* 섹터 시작으로 내림 */
-    EraseEndAddress = (EraseEndAddress + MEMORY_SECTOR_SIZE) & ~(MEMORY_SECTOR_SIZE - 1);  /* 다음 섹터 시작으로 올림 */
-
-    /* 범위 검증 */
-    if (EraseEndAddress > MEMORY_FLASH_SIZE)
-    {
-        EraseEndAddress = MEMORY_FLASH_SIZE;
-    }
+    /* ★ 4KB Sector 경계로 정렬 ★ */
+    EraseStartAddress = EraseStartAddress - (EraseStartAddress % MEMORY_SECTOR_SIZE);
 
     while (EraseStartAddress < EraseEndAddress)
     {
@@ -1057,23 +932,26 @@ __attribute__((used)) int MassErase(uint32_t Parallelism)
 /* ============================================================================
  * Verify
  * ============================================================================ */
-__attribute__((used)) int Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr, uint32_t Size, uint32_t missalignment)
+__attribute__((used)) uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
+                                       uint32_t Size, uint32_t missalignement)
 {
-    uint32_t i;
-    uint8_t flash_byte;
-    uint8_t* pRAM = (uint8_t*)RAMBufferAddr;
+    uint32_t VerifiedData = 0;
+    uint32_t InitialOffset = (missalignement & 0xF);
+    uint8_t* pFlash = (uint8_t*)(MemoryAddr);
+    uint8_t* pRAM = (uint8_t*)(RAMBufferAddr);
+    uint8_t flashByte;
     OSPI_RegularCmdTypeDef sCommand = {0};
+    uint32_t flashAddr;
 
-    Size -= missalignment;
-    pRAM += missalignment;
-    MemoryAddr += missalignment;
+    pRAM += InitialOffset;
+    pFlash += InitialOffset;
 
-    for (i = 0; i < Size; i++)
+    while (VerifiedData < (Size - InitialOffset))
     {
-        uint32_t addr = MemoryAddr + i;
-        if (addr >= 0x90000000)
+        flashAddr = (uint32_t)pFlash;
+        if (flashAddr >= 0x90000000)
         {
-            addr -= 0x90000000;
+            flashAddr -= 0x90000000;
         }
 
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
@@ -1082,7 +960,7 @@ __attribute__((used)) int Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr, ui
         sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-        sCommand.Address            = addr;
+        sCommand.Address            = flashAddr;
         sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
         sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
         sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
@@ -1096,21 +974,25 @@ __attribute__((used)) int Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr, ui
 
         if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
         {
-            return (MemoryAddr + i);
+            return (uint64_t)((uint32_t)pFlash);
         }
 
-        if (HAL_OSPI_Receive(&hospi1_local, &flash_byte, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+        if (HAL_OSPI_Receive(&hospi1_local, &flashByte, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
         {
-            return (MemoryAddr + i);
+            return (uint64_t)((uint32_t)pFlash);
         }
 
-        if (flash_byte != pRAM[i])
+        if (flashByte != *pRAM)
         {
-            return (MemoryAddr + i);
+            return (uint64_t)((uint32_t)pFlash);
         }
+
+        pFlash++;
+        pRAM++;
+        VerifiedData++;
     }
 
-    return (MemoryAddr + Size);
+    return (uint64_t)(MemoryAddr + Size - InitialOffset);
 }
 
 /* ============================================================================
@@ -1121,17 +1003,20 @@ static void Loader_SystemClock_Config(void)
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-    __HAL_RCC_PWR_CLK_ENABLE();
-    HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
+    HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
 
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-    RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+    if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+    {
+        return;
+    }
+
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLMBOOST = RCC_PLLMBOOST_DIV1;
     RCC_OscInitStruct.PLL.PLLM = 1;
-    RCC_OscInitStruct.PLL.PLLN = 10;
+    RCC_OscInitStruct.PLL.PLLN = 40;
     RCC_OscInitStruct.PLL.PLLP = 2;
     RCC_OscInitStruct.PLL.PLLQ = 2;
     RCC_OscInitStruct.PLL.PLLR = 2;
@@ -1211,4 +1096,133 @@ static void Loader_OCTOSPI1_Init(void)
     {
         return;
     }
+}
+
+/* ============================================================================
+ * OSPI_WriteEnable
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_WriteEnable(void)
+{
+    OSPI_RegularCmdTypeDef sCommand = {0};
+    OSPI_AutoPollingTypeDef sConfig = {0};
+
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+    sCommand.Instruction        = WRITE_ENABLE_CMD;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = HAL_OSPI_DATA_NONE;
+    sCommand.DummyCycles        = 0;
+    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    sCommand.Instruction = READ_STATUS_REG_CMD;
+    sCommand.DataMode    = HAL_OSPI_DATA_1_LINE;
+    sCommand.NbData      = 1;
+    sCommand.DataDtrMode = HAL_OSPI_DATA_DTR_DISABLE;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    sConfig.Match         = STATUS_REG_WEL_MASK;
+    sConfig.Mask          = STATUS_REG_WEL_MASK;
+    sConfig.MatchMode     = HAL_OSPI_MATCH_MODE_AND;
+    sConfig.Interval      = 0x10;
+    sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
+
+    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/* ============================================================================
+ * OSPI_AutoPollingMemReady
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_AutoPollingMemReady(uint32_t Timeout)
+{
+    OSPI_RegularCmdTypeDef sCommand = {0};
+    OSPI_AutoPollingTypeDef sConfig = {0};
+
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+    sCommand.Instruction        = READ_STATUS_REG_CMD;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
+    sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
+    sCommand.NbData             = 1;
+    sCommand.DummyCycles        = 0;
+    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    sConfig.Match         = 0x00;
+    sConfig.Mask          = STATUS_REG_WIP_MASK;
+    sConfig.MatchMode     = HAL_OSPI_MATCH_MODE_AND;
+    sConfig.Interval      = 0x10;
+    sConfig.AutomaticStop = HAL_OSPI_AUTOMATIC_STOP_ENABLE;
+
+    if (HAL_OSPI_AutoPolling(&hospi1_local, &sConfig, Timeout) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/* ============================================================================
+ * OSPI_ResetMemory
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_ResetMemory(void)
+{
+    OSPI_RegularCmdTypeDef sCommand = {0};
+
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+    sCommand.Instruction        = RESET_ENABLE_CMD;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_NONE;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = HAL_OSPI_DATA_NONE;
+    sCommand.DummyCycles        = 0;
+    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    sCommand.Instruction = RESET_MEMORY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    HAL_Delay(30);
+
+    return HAL_OK;
 }

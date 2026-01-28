@@ -86,16 +86,14 @@ void Test_ExternalLoader(void) {
   result = Init();
   if (result != 1) {
     // 초기화 실패
-    while (1)
-      ;
+    while (1);
   }
 
   // 2. Erase Test (4KB Sector 0)
   result = SectorErase(test_addr, test_addr + 0xFFF);
   if (result != 1) {
     // 지우기 실패
-    while (1)
-      ;
+    while (1);
   }
 
   // 3. Erase Verification (모두 0xFF 여야 한다.)
@@ -104,8 +102,7 @@ void Test_ExternalLoader(void) {
   for (int i = 0; i < 16; i++) {
     if (read_data[i] != 0xFF) {
       // 지우기 실패
-      while (1)
-        ;
+      while (1);
     }
   }
 
@@ -113,8 +110,7 @@ void Test_ExternalLoader(void) {
   result = Write(test_addr, 16, write_data);
   if (result != 1) {
     // 쓰기 실패
-    while (1)
-      ;
+    while (1);
   }
 
   // 5. Read Verification (Should match write_data)
@@ -123,8 +119,7 @@ void Test_ExternalLoader(void) {
 
   if (memcmp(write_data, read_data, 16) != 0) {
     // 읽기 실패
-    while (1)
-      ;
+    while (1);
   }
 
   // 모든 시험 성공
@@ -160,7 +155,7 @@ int main(void) {
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_OCTOSPI1_Init();
+  //MX_OCTOSPI1_Init();
   /* USER CODE BEGIN 2 */
 
   // External Loader 테스트 를 살려서 디버깅 좀 해볼래 니가 디버깅 안된다고 해서
@@ -186,6 +181,8 @@ int main(void) {
 void SystemClock_Config(void) {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Configure the main internal regulator output voltage
    */
@@ -225,6 +222,14 @@ void SystemClock_Config(void) {
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK) {
     Error_Handler();
   }
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
+    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL1;
+
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+    {
+      Error_Handler();
+    }
 }
 
 /* USER CODE BEGIN 4 */

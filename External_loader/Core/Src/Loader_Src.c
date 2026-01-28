@@ -8,11 +8,20 @@
  * - SectorErase: 4KB Sector Erase (0x20) 명령 사용
  * - Dev_Inf.c와 일치하도록 MEMORY_SECTOR_SIZE = 4KB 사용
  * - 디버그 변수 유지
+ *
+ * ★★★ 디버깅 모드 ★★★
+ * - DEBUG_MODE 정의 시: HAL 오버라이드 비활성화 (STM32CubeIDE 디버깅용)
+ * - 미정의 시: External Loader 모드 (HAL 오버라이드 활성화)
  ******************************************************************************
  */
 
 #include "stm32u5xx_hal.h"
 #include <string.h>
+
+/* DEBUG_MODE가 정의되지 않으면 External Loader 모드 */
+#ifndef DEBUG_MODE
+#define EXTERNAL_LOADER_MODE
+#endif
 
 /* ============================================================================
  * MX25L12833F Commands
@@ -59,8 +68,7 @@
 /* Timeouts */
 #define TIMEOUT_WRITE_STATUS_REG 100
 #define TIMEOUT_PAGE_PROGRAM 10
-#define TIMEOUT_SECTOR_ERASE_4K                                                \
-  1000 // 4KB Sector: 기존 max 120ms에서  여유있게 1000ms로 시간을 좀 늘렸다.
+#define TIMEOUT_SECTOR_ERASE_4K 1000 // 4KB Sector: 기존 max 120ms에서  여유있게 1000ms로 시간을 좀 늘렸다.
 #define TIMEOUT_BLOCK_ERASE_64K 2000
 #define TIMEOUT_CHIP_ERASE 120000
 
@@ -109,13 +117,11 @@ static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t *buffer,
 static HAL_StatusTypeDef OSPI_QPI_Reset(void); /* QPI Reset Prototype */
 
 /* ============================================================================
- * HAL Tick Override
+ * HAL Tick Override - External Loader 전용
+ * DEBUG_MODE 정의 시 비활성화 (일반 HAL 사용)
  * ============================================================================
  */
-/* ============================================================================
- * HAL Tick Override - Software Delay for External Loader
- * ============================================================================
- */
+#ifdef EXTERNAL_LOADER_MODE
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
   (void)TickPriority;
   return HAL_OK;
@@ -123,18 +129,18 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
 
 uint32_t HAL_GetTick(void) { return 0; }
 
-// HAL_Delay() SysTick을 사용하는데 아마 External Loader 에서는
-// SysTick(인터럽트)을 사용하지 않기 때문에 대체한다. 참고해
-
+// HAL_Delay() SysTick을 사용하는데 External Loader에서는
+// SysTick(인터럽트)을 사용하지 않기 때문에 대체한다.
 void HAL_Delay(uint32_t Delay) {
   volatile uint32_t i;
- 
+
   for (i = 0; i < (Delay * 200000); i++) {
     __NOP();
   }
 }
 
 void HAL_IncTick(void) { /* Not used */ }
+#endif /* EXTERNAL_LOADER_MODE */
 
 /* ============================================================================
  * OSPI_ReadBytes - 내부 Read 함수
@@ -419,9 +425,9 @@ __attribute__((used)) int Init(void) {
   memset(&hospi1_local, 0, sizeof(hospi1_local));
   //uwTick_local = 0;
 
-  if (HAL_OSPI_Init(&hospi1_local) != HAL_OK) {
-    return 0;
-  }
+//  if (HAL_OSPI_Init(&hospi1_local) != HAL_OK) {
+//    return 0;
+//  }
 
   Loader_OCTOSPI1_Init();
 

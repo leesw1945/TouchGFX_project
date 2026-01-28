@@ -130,6 +130,10 @@ SECTIONS
     . = ALIGN(4);
   } >FLASH
 
+  /* Provide dummy _init and _fini for libc */
+  PROVIDE(_init = 0);
+  PROVIDE(_fini = 0);
+
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
 

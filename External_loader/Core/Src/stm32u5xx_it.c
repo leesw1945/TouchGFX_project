@@ -41,7 +41,13 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+/* HardFault 디버깅용 변수 */
+volatile uint32_t g_cfsr;   // Configurable Fault Status Register
+volatile uint32_t g_hfsr;   // HardFault Status Register
+volatile uint32_t g_bfar;   // Bus Fault Address Register
+volatile uint32_t g_mmfar;  // MemManage Fault Address Register
+volatile uint32_t g_lr;     // Link Register (return address)
+volatile uint32_t g_pc;     // Program Counter (fault location)
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -84,7 +90,19 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+  /* Fault 레지스터 읽기 - 디버거에서 이 변수들을 확인하세요 */
+  g_cfsr  = *(volatile uint32_t*)0xE000ED28;  // CFSR
+  g_hfsr  = *(volatile uint32_t*)0xE000ED2C;  // HFSR
+  g_bfar  = *(volatile uint32_t*)0xE000ED38;  // BFAR
+  g_mmfar = *(volatile uint32_t*)0xE000ED34;  // MMFAR
 
+  /* 스택에서 PC, LR 읽기 (MSP 사용 가정) */
+  uint32_t *sp = (uint32_t*)__get_MSP();
+  g_lr = sp[5];  // LR
+  g_pc = sp[6];  // PC (fault 발생 위치)
+
+  /* 여기에 브레이크포인트를 설정하세요! */
+  __BKPT(0);  // 디버거 브레이크
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
