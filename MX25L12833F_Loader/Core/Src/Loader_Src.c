@@ -102,33 +102,64 @@ static HAL_StatusTypeDef OSPI_ManualWaitReady(uint32_t Timeout);
 static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t* buffer, uint32_t size);
 
 /* ============================================================================
- * HAL Tick Override
+ * HAL Tick Override - 호출 카운트 기반 (External Loader용)
+ *
+ * External Loader 환경에서는 SysTick 인터럽트를 사용할 수 없고,
+ * DWT 접근도 제한될 수 있습니다.
+ *
+ * HAL 라이브러리가 HAL_GetTick()을 polling하므로,
+ * 호출 횟수를 기반으로 시간을 추정합니다.
  * ============================================================================ */
-volatile uint32_t uwTick_local = 0;
+static volatile uint32_t g_tick_counter = 0;
+static volatile uint32_t g_call_counter = 0;
+
+/* HAL_GetTick() 호출 N회 = 약 1ms로 추정
+   초기 클럭(MSI 4MHz)에서 HAL이 polling할 때 대략적인 값
+   너무 작으면 타임아웃이 너무 빨리 발생, 너무 크면 무한 대기 */
+#define TICK_CALL_THRESHOLD  800
 
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
     (void)TickPriority;
+    g_tick_counter = 0;
+    g_call_counter = 0;
     return HAL_OK;
 }
 
 uint32_t HAL_GetTick(void)
 {
-    return uwTick_local++;
+    /* 호출될 때마다 카운터 증가 */
+    g_call_counter++;
+
+    /* 일정 횟수 호출되면 1ms 경과로 간주 */
+    if (g_call_counter >= TICK_CALL_THRESHOLD)
+    {
+        g_tick_counter++;
+        g_call_counter = 0;
+    }
+
+    return g_tick_counter;
 }
 
 void HAL_Delay(uint32_t Delay)
 {
-    uint32_t tickstart = HAL_GetTick();
-    while ((HAL_GetTick() - tickstart) < Delay)
+    uint32_t start = g_tick_counter;
+
+    /* Delay ms 동안 대기 */
+    while ((g_tick_counter - start) < Delay)
     {
-        __NOP();
+        /* 약 1ms 대기 루프 (4MHz 기준) */
+        for (volatile uint32_t i = 0; i < 500; i++)
+        {
+            __NOP();
+        }
+        g_tick_counter++;
     }
 }
 
 void HAL_IncTick(void)
 {
-    uwTick_local++;
+    g_tick_counter++;
 }
 
 /* ============================================================================
@@ -420,7 +451,7 @@ __attribute__((used)) int Init(void)
     g_loader_version = 0x17;
 
     memset(&hospi1_local, 0, sizeof(hospi1_local));
-    uwTick_local = 0;
+    /* g_tick_counter는 HAL_InitTick()에서 초기화됨 */
 
     HAL_Init();
     Loader_SystemClock_Config();
@@ -1010,13 +1041,14 @@ static void Loader_SystemClock_Config(void)
         return;
     }
 
+    /* HSE(외부 16MHz) 사용 */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLMBOOST = RCC_PLLMBOOST_DIV1;
     RCC_OscInitStruct.PLL.PLLM = 1;
-    RCC_OscInitStruct.PLL.PLLN = 40;
+    RCC_OscInitStruct.PLL.PLLN = 20;  /* 16MHz * 20 / 2 = 160MHz */
     RCC_OscInitStruct.PLL.PLLP = 2;
     RCC_OscInitStruct.PLL.PLLQ = 2;
     RCC_OscInitStruct.PLL.PLLR = 2;
@@ -1050,6 +1082,15 @@ static void Loader_OCTOSPI1_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
     OSPIM_CfgTypeDef sOspiManagerCfg = {0};
+    RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+    /* ★ OSPI 페리페럴 클럭 소스 설정 - PLL1 사용 ★ */
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
+    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL1;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+    {
+        return;
+    }
 
     __HAL_RCC_OSPIM_CLK_ENABLE();
     __HAL_RCC_OSPI1_CLK_ENABLE();
