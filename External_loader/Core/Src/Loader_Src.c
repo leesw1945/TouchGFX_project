@@ -12,8 +12,20 @@
  * ★★★ 디버깅 모드 ★★★
  * - DEBUG_MODE 정의 시: HAL 오버라이드 비활성화 (STM32CubeIDE 디버깅용)
  * - 미정의 시: External Loader 모드 (HAL 오버라이드 활성화)
+ *
+ * ★★★ STM32CubeIDE에서 디버깅하려면 아래 DEBUG_MODE 정의를 활성화하세요 ★★★
  ******************************************************************************
  */
+
+/* ========================================================================
+ * ★★★ IDE 디버깅 모드 ★★★
+ * STM32CubeIDE에서 이 파일을 디버깅할 때는 아래 주석을 해제하세요.
+ * 실제 External Loader(.stldr) 빌드 시에는 다시 주석 처리하세요.
+ *
+ * 또는 프로젝트 설정에서 전처리기 매크로로 DEBUG_MODE를 추가하세요:
+ * Properties → C/C++ Build → Settings → Preprocessor → Define symbols
+ * ======================================================================== */
+#define DEBUG_MODE
 
 #include "stm32u5xx_hal.h"
 #include <string.h>

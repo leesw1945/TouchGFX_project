@@ -1,8 +1,10 @@
 /**
   ******************************************************************************
   * @file    Loader_Src.h
-  * @author  Fixed Version v13 - Block Protection 해제 추가
+  * @author  MCD Application Team (Modified for MX25L12833F + STM32U5G9)
   * @brief   Header file of Loader_Src.c for MX25L12833F
+  *
+  * 참고: MX25LM51245G_STM32U575I-EVAL 프로젝트 스타일 적용
   ******************************************************************************
   */
 
@@ -15,6 +17,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32u5xx_hal.h"
+#include "stm32u5xx_hal_ospi.h"
 
 /* ============================================================================
  * MX25L12833F Commands
@@ -131,15 +134,21 @@
 #endif
 
 /* ============================================================================
- * Exported Functions
+ * Exported Functions (External Loader API)
  * ============================================================================ */
+/* 필수 함수들 - STM32CubeProgrammer가 호출 */
 KeepInCompilation int Init(void);
-KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer);
 KeepInCompilation int Write(uint32_t Address, uint32_t Size, uint8_t* buffer);
 KeepInCompilation int SectorErase(uint32_t EraseStartAddress, uint32_t EraseEndAddress);
 KeepInCompilation int MassErase(uint32_t Parallelism);
-KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr, 
+KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
                                    uint32_t Size, uint32_t missalignement);
+
+/* 선택적 함수 */
+KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer);
+
+/* HAL Tick Override - External Loader에서 SysTick 사용 안함 */
+KeepInCompilation HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority);
 
 #ifdef __cplusplus
 }

@@ -2,16 +2,21 @@
 /**
  ******************************************************************************
  * @file           : main.c
- * @brief          : Main program body
+ * @brief          : External Loader 디버깅용 Main 프로그램
  ******************************************************************************
  * @attention
  *
  * Copyright (c) 2025 STMicroelectronics.
  * All rights reserved.
  *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
+ * ★★★ External Loader 디버깅 설정 ★★★
+ * loader_src.c의 DEBUG_MODE가 활성화되어 있어야 정상 디버깅 가능
+ *
+ * 확인 사항:
+ * 1. loader_src.c에서 #define DEBUG_MODE 활성화 확인
+ * 2. 또는 프로젝트 설정에서 DEBUG_MODE 매크로 추가
+ * 3. 최적화 레벨: None (-O0)
+ * 4. Debug 레벨: Maximum (-g3)
  *
  ******************************************************************************
  */
@@ -19,8 +24,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "gpio.h"
-#include "memorymap.h"
-#include "octospi.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -48,15 +51,16 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+// 디버깅용 전역 변수
+volatile uint32_t g_test_step = 0;
+volatile int g_test_result = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
-/* External Loader  함수들이다  */
-
+/* External Loader 함수들 */
 extern int Init(void);
 extern int SectorErase(uint32_t EraseStartAddress, uint32_t EraseEndAddress);
 extern int Write(uint32_t Address, uint32_t Size, uint8_t *buffer);
@@ -70,9 +74,10 @@ void Test_ExternalLoader(void);
 
 /* USER CODE END 0 */
 
-// External Loader  디버깅을 위한 함수다. 하나씩 해 보면서 어디서 걸리는지 시험
-// 해봐
-
+/**
+ * @brief  External Loader 기능 테스트
+ * @note   각 단계별로 브레이크포인트를 설정하여 디버깅
+ */
 void Test_ExternalLoader(void) {
   int result;
 
@@ -80,50 +85,99 @@ void Test_ExternalLoader(void) {
                             0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
   uint8_t read_data[16] = {0};
 
-  uint32_t test_addr = 0x000000; // 상태 주소값
+  uint32_t test_addr = 0x000000; // 상대 주소값
 
-  // 1. Init Test
+  /* ========================================================================
+   * 테스트 시작
+   * ======================================================================== */
+  g_test_step = 0;
+
+  /* ========================================================================
+   * Step 1: Init Test
+   * Flash 메모리 초기화
+   * ======================================================================== */
+  g_test_step = 1;
   result = Init();
+  g_test_result = result;
+
   if (result != 1) {
-    // 초기화 실패
-    while (1);
+    // 초기화 실패 - 여기에 브레이크포인트 설정
+    g_test_step = 0xFF;
+    while (1) {
+      __NOP();
+    }
   }
 
-  // 2. Erase Test (4KB Sector 0)
+  /* ========================================================================
+   * Step 2: Erase Test
+   * 4KB Sector 0 지우기 (0x000000 ~ 0x000FFF)
+   * ======================================================================== */
+  g_test_step = 2;
   result = SectorErase(test_addr, test_addr + 0xFFF);
+  g_test_result = result;
+
   if (result != 1) {
-    // 지우기 실패
-    while (1);
+    // 지우기 실패 - 여기에 브레이크포인트 설정
+    g_test_step = 0xFE;
+    while (1) {
+      __NOP();
+    }
   }
 
-  // 3. Erase Verification (모두 0xFF 여야 한다.)
+  /* ========================================================================
+   * Step 3: Erase Verification
+   * 지워진 영역은 모두 0xFF 여야 함
+   * ======================================================================== */
+  g_test_step = 3;
   result = Read(test_addr, 16, read_data);
 
   for (int i = 0; i < 16; i++) {
     if (read_data[i] != 0xFF) {
-      // 지우기 실패
-      while (1);
+      // 지우기 검증 실패 - 여기에 브레이크포인트 설정
+      g_test_step = 0xFD;
+      while (1) {
+        __NOP();
+      }
     }
   }
 
-  // 4. Write Test
+  /* ========================================================================
+   * Step 4: Write Test
+   * 테스트 데이터 16바이트 쓰기
+   * ======================================================================== */
+  g_test_step = 4;
   result = Write(test_addr, 16, write_data);
+  g_test_result = result;
+
   if (result != 1) {
-    // 쓰기 실패
-    while (1);
+    // 쓰기 실패 - 여기에 브레이크포인트 설정
+    g_test_step = 0xFC;
+    while (1) {
+      __NOP();
+    }
   }
 
-  // 5. Read Verification (Should match write_data)
+  /* ========================================================================
+   * Step 5: Read Verification
+   * 쓴 데이터와 읽은 데이터가 일치해야 함
+   * ======================================================================== */
+  g_test_step = 5;
   memset(read_data, 0, 16);
   result = Read(test_addr, 16, read_data);
 
   if (memcmp(write_data, read_data, 16) != 0) {
-    // 읽기 실패
-    while (1);
+    // 읽기/검증 실패 - 여기에 브레이크포인트 설정
+    g_test_step = 0xFB;
+    while (1) {
+      __NOP();
+    }
   }
 
-  // 모든 시험 성공
-  __NOP();
+  /* ========================================================================
+   * 모든 테스트 성공!
+   * ======================================================================== */
+  g_test_step = 0xAA;  // 성공 표시
+  __NOP();  // 여기에 브레이크포인트 설정 - 성공 확인
 }
 
 /**
@@ -138,16 +192,15 @@ int main(void) {
 
   /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick.
-   */
-  HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();  // ← 여기에 브레이크포인트 설정 - HAL 초기화 확인
 
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config();
+  SystemClock_Config();  // ← 여기에 브레이크포인트 설정 - 클럭 설정 확인
 
   /* USER CODE BEGIN SysInit */
 
@@ -155,11 +208,11 @@ int main(void) {
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_OCTOSPI1_Init();
+
   /* USER CODE BEGIN 2 */
 
-  // External Loader 테스트 를 살려서 디버깅 좀 해볼래 니가 디버깅 안된다고 해서
-  // 시험 코드다
+  // External Loader 테스트 시작
+  // main()에 정상 진입했는지 확인하기 위해 여기에 브레이크포인트 설정
   Test_ExternalLoader();
 
   /* USER CODE END 2 */
@@ -170,6 +223,8 @@ int main(void) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    g_test_step++;  // 무한 루프 도달 확인용
+    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -181,17 +236,14 @@ int main(void) {
 void SystemClock_Config(void) {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /** Configure the main internal regulator output voltage
-   */
+  /** Configure the main internal regulator output voltage */
   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK) {
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks
-   */
+  /** Initializes the CPU, AHB and APB buses clocks */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -208,8 +260,7 @@ void SystemClock_Config(void) {
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks
-   */
+  /** Initializes the CPU, AHB and APB buses clocks */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK |
                                 RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 |
                                 RCC_CLOCKTYPE_PCLK3;
@@ -224,12 +275,11 @@ void SystemClock_Config(void) {
   }
 
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_OSPI;
-    PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL1;
+  PeriphClkInit.OspiClockSelection = RCC_OSPICLKSOURCE_PLL1;
 
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-    {
-      Error_Handler();
-    }
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
+    Error_Handler();
+  }
 }
 
 /* USER CODE BEGIN 4 */
@@ -243,11 +293,10 @@ void SystemClock_Config(void) {
 void Error_Handler(void) {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  //  __disable_irq();
-  //  while (1)
-  //  {
-  //  }
-  return;
+  __disable_irq();
+  while (1) {
+    __NOP();
+  }
   /* USER CODE END Error_Handler_Debug */
 }
 

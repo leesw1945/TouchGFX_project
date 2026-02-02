@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
   * @file    Dev_Inf.h
-  * @author  Fixed Version
-  * @brief   This file contains the external memory device information.
+  * @author  MCD Application Team (Modified for MX25L12833F + STM32U5G9)
+  * @brief   Header file of Dev_Inf.c
   *
-  * CRITICAL: 구조체가 packed 되어야 STM32CubeProgrammer와 호환됨
+  * 참고: MX25LM51245G_STM32U575I-EVAL 프로젝트 스타일 적용
   ******************************************************************************
   */
 
@@ -15,10 +15,7 @@
  extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
-#include <stdint.h>
-
-/* Device Type Definitions */
+/* Device Type Definitions ---------------------------------------------------*/
 #define MCU_FLASH       1
 #define NAND_FLASH      2
 #define NOR_FLASH       3
@@ -30,37 +27,35 @@
 #define SDRAM           9
 #define I2C_EEPROM      10
 
-#define SECTOR_NUM      10                  /* Number of sector types */
-
-/* Memory Size Definitions */
-#define PAGE_SIZE       (uint32_t)(256)     /* 256 bytes */
-#define SECTOR_SIZE     (uint32_t)(4096)    /* 4KB sectors */
-#define BLOCK_SIZE      (uint32_t)(65536)   /* 64KB blocks */
+/* Max Number of Sector types */
+#define SECTOR_NUM      10
 
 /* ============================================================================
  * StorageInfo 구조체 정의
  *
  * 주의: STM32CubeProgrammer는 이 구조체의 정확한 바이트 레이아웃을 기대합니다.
- * packed 속성을 사용하여 컴파일러가 패딩을 추가하지 않도록 합니다.
+ * unsigned long/short를 사용하여 호환성 확보 (참고 프로젝트 스타일)
  * ============================================================================ */
 
 /**
  * @brief  Sector information structure
  */
-
 struct DeviceSectors {
-    uint32_t SectorNum;      /* Number of Sectors */
-    uint32_t SectorSize;     /* Sector Size in Bytes */
+    unsigned long SectorNum;     /* Number of Sectors */
+    unsigned long SectorSize;    /* Sector Size in Bytes */
 };
 
+/**
+ * @brief  Storage device information structure
+ */
 struct StorageInfo {
-    char          DeviceName[100];              /* Device Name + Description (100 bytes) */
-    uint16_t      DeviceType;                   /* Device Type (2 bytes) */
-    uint32_t      DeviceStartAddress;           /* Device Start Address (4 bytes) */
-    uint32_t      DeviceSize;                   /* Total Size of Device (4 bytes) */
-    uint32_t      PageSize;                     /* Programming Page Size (4 bytes) */
-    uint8_t       EraseValue;                   /* Content of Erased Memory (1 byte) */
-    struct DeviceSectors SectorInfo[SECTOR_NUM]; /* Sector Info (80 bytes) */
+    char           DeviceName[100];              /* Device Name + Description */
+    unsigned short DeviceType;                   /* Device Type: NOR_FLASH, SPI_FLASH, etc. */
+    unsigned long  DeviceStartAddress;           /* Device Start Address */
+    unsigned long  DeviceSize;                   /* Total Size of Device */
+    unsigned long  PageSize;                     /* Programming Page Size */
+    unsigned char  EraseValue;                   /* Content of Erased Memory */
+    struct DeviceSectors sectors[SECTOR_NUM];    /* Sector Info */
 };
 
 /* External declaration for StorageInfo */
