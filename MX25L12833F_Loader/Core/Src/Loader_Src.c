@@ -13,13 +13,6 @@
  * - Init()에서 SystemInit(), SystemClock_Config() 호출
  * - BSS 섹션 초기화 추가
  * - STM32U5G9 160MHz 지원
- *
- * ★★★ Quad SPI 모드 (v1C) ★★★
- * - IOHighPort 설정 추가 (IO2: PA7, IO3: PA6)
- * - QE 비트 (Status Register bit 6) 활성화
- * - Read: 0x6B (QREAD) - 1-1-4 모드, 8 dummy cycles
- * - Write: 0x02 (PP) - 1-1-1 모드 (안정성 유지)
- * - Erase: 0x20/0xC7 - 1-1-0/1-0-0 모드 (변경 없음)
  ******************************************************************************
  */
 
@@ -46,22 +39,13 @@
 #define CHIP_ERASE_CMD_LOCAL                 0xC7
 #define GANG_BLOCK_UNLOCK_CMD_LOCAL          0x98
 #define EXIT_QPI_MODE_CMD                    0xF5    /* Exit QPI Mode */
-
-/* ============================================================================
- * MX25L12833F Quad SPI Commands (1-1-4 모드)
- * ============================================================================
- * QREAD (0x6B): Quad Output Fast Read
- *   - Instruction: 1-line, Address: 1-line, Data: 4-lines
- *   - Dummy Cycles: 8 (데이터시트 Table 9)
- * ============================================================================ */
-#define QUAD_READ_CMD_LOCAL                  0x6B    /* QREAD: Quad Output Fast Read (1-1-4) */
-#define QREAD_DUMMY_CYCLES                   8       /* 8 dummy cycles */
+#define QUAD_PAGE_PROG_CMD_LOCAL             0x32    /* QPP: Quad Page Program (1-1-4) */
 
 /* Local Status Register Bit Masks */
 #define STATUS_WIP                           0x01
 #define STATUS_WEL                           0x02
-#define STATUS_BP_MASK                       0x3C
 #define STATUS_QE                            0x40    /* Quad Enable bit (bit 6) */
+#define STATUS_BP_MASK                       0x3C
 
 /* Local Security Register Bit Masks */
 #define SECURITY_P_FAIL                      0x20
@@ -106,7 +90,7 @@ static uint8_t g_erase_call_count = 0;
 static uint8_t g_erase_loop_count = 0;
 static uint8_t g_data_before_erase[4] = {0};
 static uint8_t g_data_after_erase[4] = {0};
-static uint8_t g_loader_version = 0x1C;  /* v1C: Quad Read (0x6B, 1-1-4) + IOHighPort 설정 */
+static uint8_t g_loader_version = 0x19;  /* v19: Quad Page Program (1-1-4) 모드 적용 */
 
 /* ============================================================================
  * Private Function Prototypes
@@ -125,7 +109,6 @@ static HAL_StatusTypeDef OSPI_ClearBlockProtection(void);
 static HAL_StatusTypeDef OSPI_GangBlockUnlock(void);
 static HAL_StatusTypeDef OSPI_ManualWaitReady(uint32_t Timeout);
 static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t* buffer, uint32_t size);
-static HAL_StatusTypeDef OSPI_EnableQuadMode(void);  /* QE 비트 설정 */
 
 /* ============================================================================
  * HAL Tick Override - Software Delay for External Loader
@@ -168,11 +151,7 @@ void HAL_Delay(uint32_t Delay)
 }
 
 /* ============================================================================
- * OSPI_ReadBytes - 내부 Read 함수 (Quad Output Fast Read)
- * ============================================================================
- * 명령어: 0x6B (QREAD) - Quad Output Fast Read
- * 모드: 1-1-4 (Instruction: 1-line, Address: 1-line, Data: 4-lines)
- * Dummy Cycles: 8 (데이터시트 Table 9)
+ * OSPI_ReadBytes - 내부 Read 함수
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t* buffer, uint32_t size)
 {
@@ -180,19 +159,19 @@ static HAL_StatusTypeDef OSPI_ReadBytes(uint32_t Address, uint8_t* buffer, uint3
 
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = QUAD_READ_CMD_LOCAL;           /* ★ 0x6B: QREAD */
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;   /* 1-line instruction */
+    sCommand.Instruction        = READ_CMD_LOCAL;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
     sCommand.Address            = Address;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;       /* 1-line address */
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
     sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
     sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
     sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;         /* ★ 4-lines data */
+    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
     sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
     sCommand.NbData             = size;
-    sCommand.DummyCycles        = QREAD_DUMMY_CYCLES;            /* ★ 8 dummy cycles */
+    sCommand.DummyCycles        = 0;
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
 
@@ -398,59 +377,6 @@ static HAL_StatusTypeDef OSPI_ClearBlockProtection(void)
 }
 
 /* ============================================================================
- * OSPI_EnableQuadMode
- * ============================================================================
- * @brief  MX25L12833F Quad Enable (QE) 비트 설정
- *
- *         데이터시트 기준:
- *         - QE 비트는 Status Register의 bit 6 (0x40)
- *         - QE=0: Quad 모드 비활성화, WP#/HOLD# 핀 기능 활성화
- *         - QE=1: Quad 모드 활성화, IO2/IO3 핀으로 사용
- *         - QE 비트는 비휘발성 (Non-volatile)
- *
- * @retval HAL_OK: 성공
- * @retval HAL_ERROR: 실패
- */
-static HAL_StatusTypeDef OSPI_EnableQuadMode(void)
-{
-    uint8_t status_reg = 0;
-
-    /* 1. 현재 Status Register 읽기 */
-    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    /* 2. QE 비트가 이미 설정되어 있으면 성공 리턴 */
-    if (status_reg & STATUS_QE)
-    {
-        return HAL_OK;
-    }
-
-    /* 3. QE 비트 설정 (bit 6 = 0x40) */
-    status_reg |= STATUS_QE;
-
-    /* 4. Status Register 쓰기 (WREN 포함) */
-    if (OSPI_WriteStatusReg(status_reg) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    /* 5. 설정 확인 */
-    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
-
-    if ((status_reg & STATUS_QE) == 0)
-    {
-        return HAL_ERROR;  /* QE 비트 설정 실패 */
-    }
-
-    return HAL_OK;
-}
-
-/* ============================================================================
  * OSPI_GangBlockUnlock
  * ============================================================================ */
 static HAL_StatusTypeDef OSPI_GangBlockUnlock(void)
@@ -483,6 +409,47 @@ static HAL_StatusTypeDef OSPI_GangBlockUnlock(void)
     if (OSPI_AutoPollingMemReady(TIMEOUT_WRITE_REG) != HAL_OK)
     {
         return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/* ============================================================================
+ * OSPI_EnableQuadMode - QE 비트 활성화 (Quad Page Program 사용을 위해 필요)
+ * ============================================================================ */
+static HAL_StatusTypeDef OSPI_EnableQuadMode(void)
+{
+    uint8_t status_reg = 0;
+
+    /* 현재 Status Register 읽기 */
+    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    /* 이미 QE가 활성화되어 있으면 성공 */
+    if (status_reg & STATUS_QE)
+    {
+        return HAL_OK;
+    }
+
+    /* QE 비트 설정 */
+    status_reg |= STATUS_QE;
+
+    if (OSPI_WriteStatusReg(status_reg) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    /* 설정 확인 */
+    if (OSPI_ReadStatusReg(&status_reg) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if ((status_reg & STATUS_QE) == 0)
+    {
+        return HAL_ERROR;  /* QE 설정 실패 */
     }
 
     return HAL_OK;
@@ -592,7 +559,7 @@ KeepInCompilation int Init(void)
     g_erase_loop_count = 0;
     memset(g_data_before_erase, 0, 4);
     memset(g_data_after_erase, 0, 4);
-    g_loader_version = 0x18;  /* v18: MSI 클럭 + 참고 프로젝트 스타일 */
+    g_loader_version = 0x19;  /* v19: Quad Page Program (1-1-4) 모드 적용 */
 
     memset(&hospi1_local, 0, sizeof(hospi1_local));
 
@@ -670,15 +637,10 @@ KeepInCompilation int Init(void)
         }
     }
 
-    /* ========================================================================
-     * ★★★ Quad SPI 모드 활성화 ★★★
-     * MX25L12833F Status Register bit 6 (QE) = 1 설정
-     * QE 비트가 설정되어야 Quad Read (0x6B) 명령어 사용 가능
-     * ======================================================================== */
+    /* Quad Mode 활성화 (Quad Page Program 사용을 위해 필요) */
     if (OSPI_EnableQuadMode() != HAL_OK)
     {
-        g_init_error_code = 8;  /* Quad Enable 실패 */
-        /* Quad 모드 실패해도 계속 진행 */
+        g_init_error_code = 8;  /* QE 활성화 실패 */
     }
 
     /* 최종 상태 확인 */
@@ -780,22 +742,21 @@ KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer)
         Address -= 0x90000000;
     }
 
-    /* ★★★ Quad Output Fast Read (0x6B) - 1-1-4 모드 ★★★ */
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-    sCommand.Instruction        = QUAD_READ_CMD_LOCAL;           /* ★ 0x6B: QREAD */
-    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;   /* 1-line instruction */
+    sCommand.Instruction        = READ_CMD_LOCAL;
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
     sCommand.Address            = Address;
-    sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;       /* 1-line address */
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
     sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
     sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
     sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-    sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;         /* ★ 4-lines data */
+    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
     sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
     sCommand.NbData             = Size;
-    sCommand.DummyCycles        = QREAD_DUMMY_CYCLES;            /* ★ 8 dummy cycles */
+    sCommand.DummyCycles        = 0;
     sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
     sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
 
@@ -813,7 +774,7 @@ KeepInCompilation int Read(uint32_t Address, uint32_t Size, uint8_t* buffer)
 }
 
 /* ============================================================================
- * Write - Standard Page Program (1-1-1 모드 유지)
+ * Write
  * ============================================================================ */
 KeepInCompilation int Write(uint32_t Address, uint32_t Size, uint8_t* buffer)
 {
@@ -841,9 +802,10 @@ KeepInCompilation int Write(uint32_t Address, uint32_t Size, uint8_t* buffer)
             return 0;
         }
 
+        /* ★ Quad Page Program (1-1-4): 0x32 명령어, Data 4-lines ★ */
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-        sCommand.Instruction        = PAGE_PROG_CMD_LOCAL;
+        sCommand.Instruction        = QUAD_PAGE_PROG_CMD_LOCAL;  /* 0x32: QPP (1-1-4) */
         sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
@@ -852,7 +814,7 @@ KeepInCompilation int Write(uint32_t Address, uint32_t Size, uint8_t* buffer)
         sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
         sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
         sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-        sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
+        sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;     /* ★ 4-lines data ★ */
         sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
         sCommand.NbData             = current_size;
         sCommand.DummyCycles        = 0;
@@ -1115,11 +1077,7 @@ KeepInCompilation int MassErase(uint32_t Parallelism)
 }
 
 /* ============================================================================
- * Verify - Quad Output Fast Read (1-1-4 모드)
- * ============================================================================
- * 명령어: 0x6B (QREAD) - Quad Output Fast Read
- * 모드: 1-1-4 (Instruction: 1-line, Address: 1-line, Data: 4-lines)
- * Dummy Cycles: 8
+ * Verify
  * ============================================================================ */
 KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
                                    uint32_t Size, uint32_t missalignement)
@@ -1143,22 +1101,21 @@ KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
             flashAddr -= 0x90000000;
         }
 
-        /* ★★★ Quad Output Fast Read (0x6B) - 1-1-4 모드 ★★★ */
         sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
         sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
-        sCommand.Instruction        = QUAD_READ_CMD_LOCAL;           /* ★ 0x6B: QREAD */
-        sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;   /* 1-line instruction */
+        sCommand.Instruction        = READ_CMD_LOCAL;
+        sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
         sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
         sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
         sCommand.Address            = flashAddr;
-        sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;       /* 1-line address */
+        sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
         sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
         sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
         sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
-        sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;         /* ★ 4-lines data */
+        sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
         sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
         sCommand.NbData             = 1;
-        sCommand.DummyCycles        = QREAD_DUMMY_CYCLES;            /* ★ 8 dummy cycles */
+        sCommand.DummyCycles        = 0;
         sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
         sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
 
@@ -1319,8 +1276,7 @@ static void Loader_OCTOSPI1_Init(void)
 
     sOspiManagerCfg.ClkPort = 1;
     sOspiManagerCfg.NCSPort = 1;
-    sOspiManagerCfg.IOLowPort = HAL_OSPIM_IOPORT_1_LOW;   /* IO0, IO1 (PB1, PB0) */
-    sOspiManagerCfg.IOHighPort = HAL_OSPIM_IOPORT_1_HIGH; /* IO2, IO3 (PA7, PA6) - Quad 모드용 */
+    sOspiManagerCfg.IOLowPort = HAL_OSPIM_IOPORT_1_LOW;
 
     if (HAL_OSPIM_Config(&hospi1_local, &sOspiManagerCfg, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
     {
