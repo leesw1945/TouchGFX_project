@@ -91,7 +91,7 @@ static uint8_t g_erase_call_count = 0;
 static uint8_t g_erase_loop_count = 0;
 static uint8_t g_data_before_erase[4] = {0};
 static uint8_t g_data_after_erase[4] = {0};
-static uint8_t g_loader_version = 0x23;  /* v23: Quad Read (0x6B) 테스트 추가 */
+static uint8_t g_loader_version = 0x24;  /* v24: Quad Read 테스트 개선 (실제 데이터 기반) */
 
 /* Write 디버그 변수 */
 static uint8_t g_write_call_count = 0;
@@ -667,29 +667,81 @@ static HAL_StatusTypeDef OSPI_AutoPollingMemReady_QPI(uint32_t Timeout)
 /* ============================================================================
  * OSPI_QuadReadTest - Quad Read (0x6B) 테스트로 IO2/IO3 확인
  * ============================================================================
- * Fast Read Quad Output (1-1-4 모드):
- * - Instruction: 1-line (0x6B)
- * - Address: 1-line (24-bit)
- * - Dummy: 8 cycles
- * - Data: 4-line (SIO0~SIO3 입력)
- *
  * 테스트 방법:
- * 1. Normal Read (0x03)로 데이터 읽기 → g_normal_read_data
- * 2. Quad Read (0x6B)로 같은 주소 읽기 → g_quad_read_data
- * 3. 두 데이터가 일치하면 IO2/IO3 입력 정상
+ * 1. 테스트 섹터(0x00FFE000) Erase
+ * 2. 1-1-1 모드 (0x02 PP)로 알려진 패턴 Write: {0xA5, 0x5A, 0x12, 0x34}
+ * 3. Normal Read (0x03, 1-1-1)로 읽기 → g_normal_read_data
+ * 4. Quad Read (0x6B, 1-1-4)로 읽기 → g_quad_read_data
+ * 5. 비교: 일치하면 IO2/IO3 입력 정상
  */
+#define QUAD_TEST_ADDR  0x00FFE000  /* 디버그 영역 바로 앞 섹터 */
+
 static HAL_StatusTypeDef OSPI_QuadReadTest(uint32_t Address)
 {
     OSPI_RegularCmdTypeDef sCommand = {0};
+    uint8_t test_pattern[4] = {0xA5, 0x5A, 0x12, 0x34};
 
-    /* 1. Normal Read (0x03, 1-1-1)로 먼저 읽기 */
+    (void)Address;  /* 파라미터 무시, 고정 주소 사용 */
+
+    /* ---- Step 1: 테스트 섹터 Erase ---- */
+    if (OSPI_EraseSector4K(QUAD_TEST_ADDR) != HAL_OK)
+    {
+        g_quad_read_result = 0xD1;  /* Erase 실패 */
+        return HAL_ERROR;
+    }
+
+    /* ---- Step 2: 1-1-1 모드 PP (0x02)로 패턴 Write ---- */
+    if (OSPI_WriteEnable() != HAL_OK)
+    {
+        g_quad_read_result = 0xD2;  /* Write Enable 실패 */
+        return HAL_ERROR;
+    }
+
+    sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
+    sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+    sCommand.Instruction        = PAGE_PROG_CMD_LOCAL;  /* 0x02 */
+    sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+    sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+    sCommand.Address            = QUAD_TEST_ADDR;
+    sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
+    sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
+    sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
+    sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = HAL_OSPI_DATA_1_LINE;
+    sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
+    sCommand.NbData             = 4;
+    sCommand.DummyCycles        = 0;
+    sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+    sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+    if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        g_quad_read_result = 0xD3;  /* PP Command 실패 */
+        return HAL_ERROR;
+    }
+
+    if (HAL_OSPI_Transmit(&hospi1_local, test_pattern, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        g_quad_read_result = 0xD4;  /* PP Transmit 실패 */
+        return HAL_ERROR;
+    }
+
+    if (OSPI_AutoPollingMemReady(TIMEOUT_PAGE_PROG) != HAL_OK)
+    {
+        g_quad_read_result = 0xD5;  /* PP Poll 실패 */
+        return HAL_ERROR;
+    }
+
+    /* ---- Step 3: Normal Read (0x03, 1-1-1) ---- */
+    memset(&sCommand, 0, sizeof(sCommand));
     sCommand.OperationType      = HAL_OSPI_OPTYPE_COMMON_CFG;
     sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
     sCommand.Instruction        = READ_CMD_LOCAL;  /* 0x03 */
     sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
     sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
     sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
-    sCommand.Address            = Address;
+    sCommand.Address            = QUAD_TEST_ADDR;
     sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
     sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
     sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
@@ -713,11 +765,20 @@ static HAL_StatusTypeDef OSPI_QuadReadTest(uint32_t Address)
         return HAL_ERROR;
     }
 
-    /* 2. Quad Read (0x6B, 1-1-4)로 같은 주소 읽기 */
+    /* Normal Read 결과 확인: 0xA5 5A 12 34 이어야 함 */
+    if (g_normal_read_data[0] != 0xA5 || g_normal_read_data[1] != 0x5A)
+    {
+        g_quad_read_result = 0xD6;  /* 1-1-1 Write 자체가 실패 */
+        return HAL_ERROR;
+    }
+
+    /* ---- Step 4: Quad Read (0x6B, 1-1-4) ---- */
     sCommand.Instruction        = 0x6B;  /* Fast Read Quad Output */
     sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+    sCommand.Address            = QUAD_TEST_ADDR;
     sCommand.AddressMode        = HAL_OSPI_ADDRESS_1_LINE;
     sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;  /* ★ Data: 4-line! ★ */
+    sCommand.NbData             = 4;
     sCommand.DummyCycles        = 8;  /* MX25L12833F: 8 dummy cycles */
 
     if (HAL_OSPI_Command(&hospi1_local, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
@@ -732,13 +793,13 @@ static HAL_StatusTypeDef OSPI_QuadReadTest(uint32_t Address)
         return HAL_ERROR;
     }
 
-    /* 3. 데이터 비교 */
+    /* ---- Step 5: 비교 ---- */
     if (g_normal_read_data[0] == g_quad_read_data[0] &&
         g_normal_read_data[1] == g_quad_read_data[1] &&
         g_normal_read_data[2] == g_quad_read_data[2] &&
         g_normal_read_data[3] == g_quad_read_data[3])
     {
-        g_quad_read_result = 0x01;  /* 성공: 데이터 일치 */
+        g_quad_read_result = 0x01;  /* ★ 성공: Quad Read가 실제 데이터와 일치 ★ */
     }
     else
     {
@@ -794,7 +855,7 @@ KeepInCompilation int Init(void)
     g_erase_loop_count = 0;
     memset(g_data_before_erase, 0, 4);
     memset(g_data_after_erase, 0, 4);
-    g_loader_version = 0x23;  /* v23: Quad Read (0x6B) 테스트 추가 */
+    g_loader_version = 0x24;  /* v24: Quad Read 테스트 개선 (실제 데이터 기반) */
 
     /* Write 디버그 변수 초기화 */
     g_write_call_count = 0;
