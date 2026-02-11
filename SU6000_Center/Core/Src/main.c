@@ -179,6 +179,18 @@ int main(void)
     	MX25L12833F_EnableMemoryMappedMode(&hospi1);
     }
 
+    // LTDC 초기화 후, while(1) 전에 추가
+    uint8_t *fb = (uint8_t *)0x201A0000;
+    uint32_t fb_size = 800 * 480 * 3; // RGB888
+
+    // 빨간색으로 채우기
+    for (uint32_t i = 0; i < fb_size; i += 3)
+    {
+        fb[i]     = 0x00; // B
+        fb[i + 1] = 0x00; // G
+        fb[i + 2] = 0xFF; // R
+    }
+
 
   /* USER CODE END 2 */
 
