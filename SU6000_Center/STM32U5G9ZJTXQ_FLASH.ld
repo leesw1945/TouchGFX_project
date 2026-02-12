@@ -44,7 +44,8 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 3008K
+  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 1664K
+  FRAMEBUFFER (xrw) : ORIGIN = 0x201A0000, LENGTH = 1344K    /* SRAM5 */
   FLASH    (rx)    : ORIGIN = 0x08000000,   LENGTH = 4096K
   EXTFLASH (rx) : ORIGIN = 0x90000000, LENGTH = 16384K
 }
@@ -165,6 +166,14 @@ SECTIONS
     __bss_end__ = _ebss;
   } >RAM
   
+  .framebuffer (NOLOAD) :
+  {
+    . = ALIGN(4);
+    *(.framebuffer)
+    *(.framebuffer*)
+    . = ALIGN(4);
+  } >FRAMEBUFFER
+
   /* ExtFlashSection */
   ExtFlashSection :
   {

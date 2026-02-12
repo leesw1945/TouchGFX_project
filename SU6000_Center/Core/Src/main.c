@@ -26,7 +26,6 @@
 #include "memorymap.h"
 #include "octospi.h"
 #include "gpio.h"
-#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -56,9 +55,12 @@
 
 /* USER CODE BEGIN PV */
 
-uint8_t flash_write_buffer[256];
-uint8_t flash_read_buffer[256];
-uint8_t flash_id[3];
+//uint8_t flash_write_buffer[256];
+//uint8_t flash_read_buffer[256];
+//uint8_t flash_id[3];
+
+__attribute__((section(".framebuffer"), aligned(4)))
+uint16_t framebuffer[800 * 480];  // RGB565 16bpp
 
 /* USER CODE END PV */
 
@@ -133,7 +135,6 @@ int main(void)
   MX_OCTOSPI1_Init();
   MX_DCACHE1_Init();
   MX_DCACHE2_Init();
-  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
   // 1. Flash 초기화 (Reset + Quad Mode 활성화)
@@ -142,55 +143,57 @@ int main(void)
       Error_Handler();
     }
 
-    // 2. Flash ID 읽기 (선택사항)
-    MX25L12833F_ReadID(&hospi1, flash_id);
-    // Expected: 0xC2 0x20 0x18
-
-    // 3. 테스트 데이터 준비
-    for (int i = 0; i < 256; i++)
+    // 메모리 매핑 모드 활성화
+    if (MX25L12833F_EnableMemoryMappedMode(&hospi1) != MX25L12833F_OK)
     {
-      flash_write_buffer[i] = i;
+        Error_Handler();
     }
 
-    // 4. Sector Erase (4KB)
-    uint32_t test_address = 0x00000000;
-    if (MX25L12833F_Erase_Sector(&hospi1, test_address) != MX25L12833F_OK)
-    {
-      Error_Handler();
-    }
+    __HAL_RCC_SRAM5_CLK_ENABLE();
+    __HAL_RCC_SRAM6_CLK_ENABLE();
 
-    // 5. 데이터 쓰기
-    if (MX25L12833F_Write(&hospi1, flash_write_buffer, test_address, 256) != MX25L12833F_OK)
-    {
-      Error_Handler();
-    }
+    memset(framebuffer, 0xFF, sizeof(framebuffer));
 
-    // 6. 데이터 읽기
-    if (MX25L12833F_Read(&hospi1, flash_read_buffer, test_address, 256) != MX25L12833F_OK)
-    {
-      Error_Handler();
-    }
+    HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);
 
-    // 7. 데이터 검증
-    if (memcmp(flash_write_buffer, flash_read_buffer, 256) == 0)
-    {
-    	//SCB_CleanInvalidateDCache();
-      // 성공!
-    	MX25L12833F_EnableMemoryMappedMode(&hospi1);
-    }
+    //memset((void *)0x201A0000, 0xFF, 800 * 480 * 3);  // 흰색
 
-    // LTDC 초기화 후, while(1) 전에 추가
-    uint8_t *fb = (uint8_t *)0x201A0000;
-    uint32_t fb_size = 800 * 480 * 3; // RGB888
-
-    // 빨간색으로 채우기
-    for (uint32_t i = 0; i < fb_size; i += 3)
-    {
-        fb[i]     = 0x00; // B
-        fb[i + 1] = 0x00; // G
-        fb[i + 2] = 0xFF; // R
-    }
-
+//    // 2. Flash ID 읽기 (선택사항)
+//    MX25L12833F_ReadID(&hospi1, flash_id);
+//    // Expected: 0xC2 0x20 0x18
+//
+//    // 3. 테스트 데이터 준비
+//    for (int i = 0; i < 256; i++)
+//    {
+//      flash_write_buffer[i] = i;
+//    }
+//
+//    // 4. Sector Erase (4KB)
+//    uint32_t test_address = 0x00000000;
+//    if (MX25L12833F_Erase_Sector(&hospi1, test_address) != MX25L12833F_OK)
+//    {
+//      Error_Handler();
+//    }
+//
+//    // 5. 데이터 쓰기
+//    if (MX25L12833F_Write(&hospi1, flash_write_buffer, test_address, 256) != MX25L12833F_OK)
+//    {
+//      Error_Handler();
+//    }
+//
+//    // 6. 데이터 읽기
+//    if (MX25L12833F_Read(&hospi1, flash_read_buffer, test_address, 256) != MX25L12833F_OK)
+//    {
+//      Error_Handler();
+//    }
+//
+//    // 7. 데이터 검증
+//    if (memcmp(flash_write_buffer, flash_read_buffer, 256) == 0)
+//    {
+//    	//SCB_CleanInvalidateDCache();
+//      // 성공!
+//    	MX25L12833F_EnableMemoryMappedMode(&hospi1);
+//    }
 
   /* USER CODE END 2 */
 
@@ -200,14 +203,28 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
-  HAL_Delay(1000);
+//  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
+//  HAL_Delay(1000);
+//
+//  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
+//  HAL_Delay(1000);
 
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
-  HAL_Delay(1000);
 
+	    // 빨간색
+	    for (uint32_t i = 0; i < 800 * 480; i++)
+	        framebuffer[i] = 0xF800;  // RGB565 Red
+	    HAL_Delay(1000);
+
+	    // 녹색
+	    for (uint32_t i = 0; i < 800 * 480; i++)
+	        framebuffer[i] = 0x07E0;  // RGB565 Green
+	    HAL_Delay(1000);
+
+	    // 파란색
+	    for (uint32_t i = 0; i < 800 * 480; i++)
+	        framebuffer[i] = 0x001F;  // RGB565 Blue
+	    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
