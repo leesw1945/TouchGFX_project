@@ -23,14 +23,14 @@
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
-#include "memorymap.h"
+//#include "memorymap.h"
 #include "octospi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "mx25l12833f.h"
+//#include "mx25l12833f.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -59,8 +59,11 @@
 //uint8_t flash_read_buffer[256];
 //uint8_t flash_id[3];
 
-__attribute__((section(".framebuffer"), aligned(4)))
-uint16_t framebuffer[800 * 480];  // RGB565 16bpp
+//__attribute__((section(".framebuffer"), aligned(4)))
+//uint16_t framebuffer[800 * 480];  // RGB565 16bpp
+
+__attribute__((section(".framebuffer"), aligned(16)))
+uint8_t framebuffer[800 * 480 * 3];
 
 /* USER CODE END PV */
 
@@ -137,17 +140,18 @@ int main(void)
   MX_DCACHE2_Init();
   /* USER CODE BEGIN 2 */
 
-  // 1. Flash 초기화 (Reset + Quad Mode 활성화)
-    if (MX25L12833F_Init(&hospi1) != MX25L12833F_OK)
-    {
-      Error_Handler();
-    }
-
-    // 메모리 매핑 모드 활성화
-    if (MX25L12833F_EnableMemoryMappedMode(&hospi1) != MX25L12833F_OK)
-    {
-        Error_Handler();
-    }
+  memset(framebuffer, 0xFF, sizeof(framebuffer));
+//  // 1. Flash 초기화 (Reset + Quad Mode 활성화)
+//    if (MX25L12833F_Init(&hospi1) != MX25L12833F_OK)
+//    {
+//      Error_Handler();
+//    }
+//
+//    // 메모리 매핑 모드 활성화
+//    if (MX25L12833F_EnableMemoryMappedMode(&hospi1) != MX25L12833F_OK)
+//    {
+//        Error_Handler();
+//    }
 
     __HAL_RCC_SRAM5_CLK_ENABLE();
     __HAL_RCC_SRAM6_CLK_ENABLE();
@@ -204,12 +208,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
-//  HAL_Delay(1000);
-//
-//  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
-//  HAL_Delay(1000);
 
+      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
+      HAL_Delay(1000);
+      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
+      HAL_Delay(1000);
 
 	    // 빨간색
 	    for (uint32_t i = 0; i < 800 * 480; i++)

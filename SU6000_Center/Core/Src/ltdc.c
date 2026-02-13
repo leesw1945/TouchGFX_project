@@ -101,12 +101,12 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
     PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
     PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
     PeriphClkInit.PLL2.PLL2M = 1;
-    PeriphClkInit.PLL2.PLL2N = 8;
+    PeriphClkInit.PLL2.PLL2N = 9;
     PeriphClkInit.PLL2.PLL2P = 2;
     PeriphClkInit.PLL2.PLL2Q = 1;
-    PeriphClkInit.PLL2.PLL2R = 4;
+    PeriphClkInit.PLL2.PLL2R = 5;
     PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_1;
-    PeriphClkInit.PLL2.PLL2FRACN = 0;
+    PeriphClkInit.PLL2.PLL2FRACN = 3072.0;
     PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVR;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
     {

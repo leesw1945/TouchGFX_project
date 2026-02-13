@@ -5,8 +5,6 @@
 "./Core/Src/icache.o"
 "./Core/Src/ltdc.o"
 "./Core/Src/main.o"
-"./Core/Src/memorymap.o"
-"./Core/Src/mx25l12833f.o"
 "./Core/Src/octospi.o"
 "./Core/Src/stm32u5xx_hal_msp.o"
 "./Core/Src/stm32u5xx_it.o"

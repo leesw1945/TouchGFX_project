@@ -36,8 +36,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
  ../Core/Inc/crc.h ../Core/Inc/main.h ../Core/Inc/dcache.h \
  ../Core/Inc/i2c.h ../Core/Inc/icache.h ../Core/Inc/ltdc.h \
- ../Core/Inc/memorymap.h ../Core/Inc/octospi.h ../Core/Inc/gpio.h \
- ../Core/Inc/mx25l12833f.h
+ ../Core/Inc/octospi.h ../Core/Inc/gpio.h
 ../Core/Inc/main.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../Core/Inc/stm32u5xx_hal_conf.h:
@@ -80,7 +79,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/i2c.h:
 ../Core/Inc/icache.h:
 ../Core/Inc/ltdc.h:
-../Core/Inc/memorymap.h:
 ../Core/Inc/octospi.h:
 ../Core/Inc/gpio.h:
-../Core/Inc/mx25l12833f.h:
