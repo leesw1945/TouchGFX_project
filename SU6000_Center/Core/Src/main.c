@@ -23,7 +23,7 @@
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
-//#include "memorymap.h"
+#include "memorymap.h"
 #include "octospi.h"
 #include "gpio.h"
 
@@ -125,7 +125,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  __HAL_RCC_SRAM5_CLK_ENABLE();
+  __HAL_RCC_SRAM6_CLK_ENABLE();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -141,63 +142,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   memset(framebuffer, 0xFF, sizeof(framebuffer));
-//  // 1. Flash 초기화 (Reset + Quad Mode 활성화)
-//    if (MX25L12833F_Init(&hospi1) != MX25L12833F_OK)
-//    {
-//      Error_Handler();
-//    }
-//
-//    // 메모리 매핑 모드 활성화
-//    if (MX25L12833F_EnableMemoryMappedMode(&hospi1) != MX25L12833F_OK)
-//    {
-//        Error_Handler();
-//    }
-
-    __HAL_RCC_SRAM5_CLK_ENABLE();
-    __HAL_RCC_SRAM6_CLK_ENABLE();
-
-    memset(framebuffer, 0xFF, sizeof(framebuffer));
-
-    HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);
-
-    //memset((void *)0x201A0000, 0xFF, 800 * 480 * 3);  // 흰색
-
-//    // 2. Flash ID 읽기 (선택사항)
-//    MX25L12833F_ReadID(&hospi1, flash_id);
-//    // Expected: 0xC2 0x20 0x18
-//
-//    // 3. 테스트 데이터 준비
-//    for (int i = 0; i < 256; i++)
-//    {
-//      flash_write_buffer[i] = i;
-//    }
-//
-//    // 4. Sector Erase (4KB)
-//    uint32_t test_address = 0x00000000;
-//    if (MX25L12833F_Erase_Sector(&hospi1, test_address) != MX25L12833F_OK)
-//    {
-//      Error_Handler();
-//    }
-//
-//    // 5. 데이터 쓰기
-//    if (MX25L12833F_Write(&hospi1, flash_write_buffer, test_address, 256) != MX25L12833F_OK)
-//    {
-//      Error_Handler();
-//    }
-//
-//    // 6. 데이터 읽기
-//    if (MX25L12833F_Read(&hospi1, flash_read_buffer, test_address, 256) != MX25L12833F_OK)
-//    {
-//      Error_Handler();
-//    }
-//
-//    // 7. 데이터 검증
-//    if (memcmp(flash_write_buffer, flash_read_buffer, 256) == 0)
-//    {
-//    	//SCB_CleanInvalidateDCache();
-//      // 성공!
-//    	MX25L12833F_EnableMemoryMappedMode(&hospi1);
-//    }
+  HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);
 
   /* USER CODE END 2 */
 
@@ -209,24 +154,37 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
-      HAL_Delay(1000);
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
-      HAL_Delay(1000);
+//      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
+//      HAL_Delay(1000);
+//      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
+//      HAL_Delay(1000);
 
-	    // 빨간색
-	    for (uint32_t i = 0; i < 800 * 480; i++)
-	        framebuffer[i] = 0xF800;  // RGB565 Red
+//	    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_5);  // LED 토글
+//
+//	    HAL_Delay(500);
+
+	    // 빨간색 (RGB888: R=0xFF, G=0x00, B=0x00)
+	    for (uint32_t i = 0; i < 800 * 480; i++) {
+	        framebuffer[i * 3 + 0] = 0x00;  // B
+	        framebuffer[i * 3 + 1] = 0x00;  // G
+	        framebuffer[i * 3 + 2] = 0xFF;  // R
+	    }
 	    HAL_Delay(1000);
 
-	    // 녹색
-	    for (uint32_t i = 0; i < 800 * 480; i++)
-	        framebuffer[i] = 0x07E0;  // RGB565 Green
+	    // 녹색 (RGB888: R=0x00, G=0xFF, B=0x00)
+	    for (uint32_t i = 0; i < 800 * 480; i++) {
+	        framebuffer[i * 3 + 0] = 0x00;  // B
+	        framebuffer[i * 3 + 1] = 0xFF;  // G
+	        framebuffer[i * 3 + 2] = 0x00;  // R
+	    }
 	    HAL_Delay(1000);
 
-	    // 파란색
-	    for (uint32_t i = 0; i < 800 * 480; i++)
-	        framebuffer[i] = 0x001F;  // RGB565 Blue
+	    // 파란색 (RGB888: R=0x00, G=0x00, B=0xFF)
+	    for (uint32_t i = 0; i < 800 * 480; i++) {
+	        framebuffer[i * 3 + 0] = 0xFF;  // B
+	        framebuffer[i * 3 + 1] = 0x00;  // G
+	        framebuffer[i * 3 + 2] = 0x00;  // R
+	    }
 	    HAL_Delay(1000);
   }
   /* USER CODE END 3 */

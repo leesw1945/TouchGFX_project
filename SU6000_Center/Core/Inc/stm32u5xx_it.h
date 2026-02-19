@@ -57,6 +57,7 @@ void PendSV_Handler(void);
 void SysTick_Handler(void);
 void OCTOSPI1_IRQHandler(void);
 void LTDC_IRQHandler(void);
+void LTDC_ER_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
