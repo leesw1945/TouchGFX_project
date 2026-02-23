@@ -1,12 +1,14 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    stm32u5xx_it.h
-  * @brief   This file contains the headers of the interrupt handlers.
+  * File Name          : app_touchgfx.h
+  ******************************************************************************
+  * This file was created by TouchGFX Generator 4.26.0. This file is only
+  * generated once! Delete this file from your project and re-generate code
+  * using STM32CubeMX or change this file manually to update it.
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2025 STMicroelectronics.
+  * Copyright (c) 2026 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -15,20 +17,15 @@
   *
   ******************************************************************************
   */
-/* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32U5xx_IT_H
-#define __STM32U5xx_IT_H
-
+#ifndef APP_TOUCHGFX_H
+#define APP_TOUCHGFX_H
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
+/* Includes ------------------------------------------------------------------*/
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
@@ -46,19 +43,9 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void MemManage_Handler(void);
-void BusFault_Handler(void);
-void UsageFault_Handler(void);
-void SVC_Handler(void);
-void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
-void RCC_IRQHandler(void);
-void OCTOSPI1_IRQHandler(void);
-void LTDC_IRQHandler(void);
-void LTDC_ER_IRQHandler(void);
+void MX_TouchGFX_Init(void);
+void MX_TouchGFX_Process(void);
+
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
@@ -66,5 +53,6 @@ void LTDC_ER_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif
+#endif /* APP_TOUCHGFX_H */
 
-#endif /* __STM32U5xx_IT_H */
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

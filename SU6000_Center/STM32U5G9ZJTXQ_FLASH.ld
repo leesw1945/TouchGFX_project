@@ -171,6 +171,7 @@ SECTIONS
     . = ALIGN(4);
     *(.framebuffer)
     *(.framebuffer*)
+    *(TouchGFX_Framebuffer TouchGFX_Framebuffer.*)
     . = ALIGN(4);
   } >FRAMEBUFFER
 

@@ -227,7 +227,10 @@
     "ProjectFile": "../SU6000_Center.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
     "OptionalComponents": [],
-    "AdditionalFeatures": []
+    "AdditionalFeatures": [
+      "CWRVector",
+      "VectorFonts"
+    ]
   },
   "Version": "4.26.0"
 }

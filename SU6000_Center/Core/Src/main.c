@@ -26,6 +26,7 @@
 #include "memorymap.h"
 #include "octospi.h"
 #include "gpio.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -55,15 +56,8 @@
 
 /* USER CODE BEGIN PV */
 
-//uint8_t flash_write_buffer[256];
-//uint8_t flash_read_buffer[256];
-//uint8_t flash_id[3];
-
-//__attribute__((section(".framebuffer"), aligned(4)))
-//uint16_t framebuffer[800 * 480];  // RGB565 16bpp
-
-__attribute__((section(".framebuffer"), aligned(16)))
-uint8_t framebuffer[800 * 480 * 3];
+//__attribute__((section(".framebuffer"), aligned(16)))
+//uint8_t framebuffer[800 * 480 * 3];
 
 /* USER CODE END PV */
 
@@ -77,24 +71,119 @@ static void SystemPower_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-// STM32U5 D-Cache 제어 함수 (HAL에 없어서 직접 정의)
-//__STATIC_INLINE void SCB_CleanInvalidateDCache(void)
-//{
-//    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
-//      SCB->DCCIMVAC = 0;                // D-Cache Clean & Invalidate by MVA to PoC
-//      __DSB();
-//      __ISB();
-//    #endif
-//}
-//
-//__STATIC_INLINE void SCB_InvalidateDCache(void)
-//{
-//    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
-//      SCB->DCIMVAC = 0;
-//      __DSB();
-//      __ISB();
-//    #endif
-//}
+static void Run_LED_Flicker(void)
+{
+  static uint32_t last_tick = 0U;
+  static GPIO_PinState led_state = GPIO_PIN_SET;
+  uint32_t now = HAL_GetTick();
+
+  if ((now - last_tick) >= 250U) {
+    last_tick = now;
+    led_state = (led_state == GPIO_PIN_SET) ? GPIO_PIN_RESET : GPIO_PIN_SET;
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, led_state);
+  }
+}
+
+/* MX25L12833F OSPI Memory-Mapped Mode Configuration */
+static uint8_t OSPI_EnableMemoryMappedMode(void)
+{
+  OSPI_RegularCmdTypeDef sCommand = {0};
+  OSPI_MemoryMappedTypeDef sMemMappedCfg = {0};
+
+  /* Enable QPI mode (if required by your external loader/chip state) */
+  /* For standard 1-line to 4-line read (Quad I/O Read - 0xEB), we configure MemoryMappedCfg: */
+
+  sCommand.OperationType      = HAL_OSPI_OPTYPE_READ_CFG;
+  sCommand.FlashId            = HAL_OSPI_FLASH_ID_1;
+  sCommand.Instruction        = 0xEB; /* Quad I/O Read */
+  sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+  sCommand.InstructionSize    = HAL_OSPI_INSTRUCTION_8_BITS;
+  sCommand.InstructionDtrMode = HAL_OSPI_INSTRUCTION_DTR_DISABLE;
+  sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;
+  sCommand.AddressSize        = HAL_OSPI_ADDRESS_24_BITS;
+  sCommand.AddressDtrMode     = HAL_OSPI_ADDRESS_DTR_DISABLE;
+  sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_4_LINES;
+  sCommand.AlternateBytesSize = HAL_OSPI_ALTERNATE_BYTES_8_BITS;
+  sCommand.AlternateBytesDtrMode = HAL_OSPI_ALTERNATE_BYTES_DTR_DISABLE;
+  sCommand.AlternateBytes     = 0x00;
+  sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;
+  sCommand.DataDtrMode        = HAL_OSPI_DATA_DTR_DISABLE;
+  sCommand.DummyCycles        = 6; /* 6 dummy cycles for 0xEB on MX25L128 at standard speeds */
+  sCommand.DQSMode            = HAL_OSPI_DQS_DISABLE;
+  sCommand.SIOOMode           = HAL_OSPI_SIOO_INST_EVERY_CMD;
+
+  if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+  {
+    return 1;
+  }
+
+  sCommand.OperationType      = HAL_OSPI_OPTYPE_WRITE_CFG;
+  sCommand.Instruction        = 0x38; /* Quad Page Program */
+  sCommand.InstructionMode    = HAL_OSPI_INSTRUCTION_1_LINE;
+  sCommand.AddressMode        = HAL_OSPI_ADDRESS_4_LINES;
+  sCommand.DataMode           = HAL_OSPI_DATA_4_LINES;
+  sCommand.DummyCycles        = 0;
+  sCommand.AlternateBytesMode = HAL_OSPI_ALTERNATE_BYTES_NONE;
+
+  if (HAL_OSPI_Command(&hospi1, &sCommand, HAL_OSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+  {
+    return 1;
+  }
+
+  sMemMappedCfg.TimeOutActivation = HAL_OSPI_TIMEOUT_COUNTER_DISABLE;
+  sMemMappedCfg.TimeOutPeriod     = 0;
+
+  if (HAL_OSPI_MemoryMapped(&hospi1, &sMemMappedCfg) != HAL_OK)
+  {
+    return 1;
+  }
+
+  return 0; // Success
+}
+
+static void MPU_Config(void)
+{
+  MPU_Attributes_InitTypeDef   attr;
+  MPU_Region_InitTypeDef       region;
+
+  /* Disable MPU before configuration */
+  HAL_MPU_Disable();
+
+  /* 
+   * Configure Region 0: 0x90000000 (OSPI External Flash)
+   * We need this to NOT cache incorrectly, or at least Write-Through
+   */
+  attr.Number             = MPU_ATTRIBUTES_NUMBER0;
+  attr.Attributes         = MPU_NOT_CACHEABLE;
+  HAL_MPU_ConfigMemoryAttributes(&attr);
+
+  region.Enable           = MPU_REGION_ENABLE;
+  region.Number           = MPU_REGION_NUMBER0;
+  region.BaseAddress      = 0x90000000;
+  region.LimitAddress     = 0x90000000 + 16*1024*1024 - 1; /* 16MB MX25L128 */
+  region.AttributesIndex  = MPU_ATTRIBUTES_NUMBER0;
+  region.AccessPermission = MPU_REGION_ALL_RW;
+  region.DisableExec      = MPU_INSTRUCTION_ACCESS_ENABLE;
+  region.IsShareable      = MPU_ACCESS_NOT_SHAREABLE;
+  HAL_MPU_ConfigRegion(&region);
+
+  /* 
+   * Configure Region 1: 0x201A0000 (SRAM5 - Framebuffer)
+   * The LTDC DMA reads directly from memory, while the CPU (TouchGFX software renderer)
+   * writes to the DCACHE. Must be non-cacheable to prevent visual tearing/artifacts.
+   */
+  region.Number           = MPU_REGION_NUMBER1;
+  region.BaseAddress      = 0x201A0000;
+  region.LimitAddress     = 0x201A0000 + 1344*1024 - 1; /* SRAM5 size */
+  region.AttributesIndex  = MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
+  region.AccessPermission = MPU_REGION_ALL_RW;
+  region.DisableExec      = MPU_INSTRUCTION_ACCESS_DISABLE;
+  region.IsShareable      = MPU_ACCESS_NOT_SHAREABLE;
+  HAL_MPU_ConfigRegion(&region);
+
+  /* Enable the MPU */
+  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
 
 /* USER CODE END 0 */
 
@@ -113,6 +202,9 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+
+  /* Configure the MPU to prevent DCACHE coherency issues on Framebuffer & Assets */
+  MPU_Config();
 
   /* USER CODE BEGIN Init */
 
@@ -137,12 +229,20 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_OCTOSPI1_Init();
+  
+  /* Enable Memory-Mapped mode for MX25L12833F before TouchGFX tries to read it */
+  if(OSPI_EnableMemoryMappedMode() != 0)
+  {
+    Error_Handler();
+  }
+
   MX_DCACHE1_Init();
   MX_DCACHE2_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-  memset(framebuffer, 0xFF, sizeof(framebuffer));
-  HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);
+//  memset(framebuffer, 0xFF, sizeof(framebuffer));
+//  HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);
 
   /* USER CODE END 2 */
 
@@ -152,40 +252,11 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
 
-//      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_SET);
-//      HAL_Delay(1000);
-//      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, GPIO_PIN_RESET);
-//      HAL_Delay(1000);
+	  Run_LED_Flicker();
 
-//	    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_5);  // LED 토글
-//
-//	    HAL_Delay(500);
-
-	    // 빨간색 (RGB888: R=0xFF, G=0x00, B=0x00)
-	    for (uint32_t i = 0; i < 800 * 480; i++) {
-	        framebuffer[i * 3 + 0] = 0x00;  // B
-	        framebuffer[i * 3 + 1] = 0x00;  // G
-	        framebuffer[i * 3 + 2] = 0xFF;  // R
-	    }
-	    HAL_Delay(1000);
-
-	    // 녹색 (RGB888: R=0x00, G=0xFF, B=0x00)
-	    for (uint32_t i = 0; i < 800 * 480; i++) {
-	        framebuffer[i * 3 + 0] = 0x00;  // B
-	        framebuffer[i * 3 + 1] = 0xFF;  // G
-	        framebuffer[i * 3 + 2] = 0x00;  // R
-	    }
-	    HAL_Delay(1000);
-
-	    // 파란색 (RGB888: R=0x00, G=0x00, B=0xFF)
-	    for (uint32_t i = 0; i < 800 * 480; i++) {
-	        framebuffer[i * 3 + 0] = 0xFF;  // B
-	        framebuffer[i * 3 + 1] = 0x00;  // G
-	        framebuffer[i * 3 + 2] = 0x00;  // R
-	    }
-	    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -253,14 +324,6 @@ static void SystemPower_Config(void)
    * Disable the internal Pull-Up in Dead Battery pins of UCPD peripheral
    */
   HAL_PWREx_DisableUCPDDeadBattery();
-
-  /*
-   * Switch to SMPS regulator instead of LDO
-   */
-  if (HAL_PWREx_ConfigSupply(PWR_SMPS_SUPPLY) != HAL_OK)
-  {
-    Error_Handler();
-  }
 /* USER CODE BEGIN PWR */
 /* USER CODE END PWR */
 }

@@ -41,6 +41,7 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32U5xx_HAL_Driver/Src \
+TouchGFX/App \
 TouchGFX/build/MINGW32_NT-6.2/generated/fonts/src \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/bootingintro_screen \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/common \
@@ -69,4 +70,6 @@ TouchGFX/gui/src/bootingintro_screen \
 TouchGFX/gui/src/common \
 TouchGFX/gui/src/main_screen \
 TouchGFX/gui/src/model \
+TouchGFX/target \
+TouchGFX/target/generated \
 

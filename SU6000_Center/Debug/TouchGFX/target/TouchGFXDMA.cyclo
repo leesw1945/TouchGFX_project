@@ -1,0 +1,20 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:78:5:touchgfx::colortype::colortype()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:61:13:touchgfx::DMA_Queue::~DMA_Queue()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:61:13:virtual touchgfx::DMA_Queue::~DMA_Queue()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:138:18:virtual void touchgfx::DMA_Interface::flush()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:234:21:virtual touchgfx::DMAType touchgfx::DMA_Interface::getDMAType()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:240:13:touchgfx::DMA_Interface::~DMA_Interface()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:240:13:virtual touchgfx::DMA_Interface::~DMA_Interface()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:250:5:touchgfx::DMA_Interface::DMA_Interface(touchgfx::DMA_Queue&)	1
+../TouchGFX/target/TouchGFXDMA.hpp:97:18:virtual void TouchGFXDMA::signalDMAInterrupt()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:87:7:touchgfx::LockFreeDMA_Queue::~LockFreeDMA_Queue()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/DMA.hpp:87:7:virtual touchgfx::LockFreeDMA_Queue::~LockFreeDMA_Queue()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/BlitOp.hpp:46:8:touchgfx::BlitOp::BlitOp()	1
+../TouchGFX/target/TouchGFXDMA.cpp:29:1:TouchGFXDMA::TouchGFXDMA()	2
+../TouchGFX/target/TouchGFXDMA.cpp:35:1:TouchGFXDMA::~TouchGFXDMA()	1
+../TouchGFX/target/TouchGFXDMA.cpp:35:1:virtual TouchGFXDMA::~TouchGFXDMA()	1
+../TouchGFX/target/TouchGFXDMA.cpp:40:6:virtual void TouchGFXDMA::initialize()	1
+../TouchGFX/target/TouchGFXDMA.cpp:45:16:virtual touchgfx::BlitOperations TouchGFXDMA::getBlitCaps()	1
+../TouchGFX/target/TouchGFXDMA.cpp:67:6:virtual void TouchGFXDMA::setupDataCopy(const touchgfx::BlitOp&)	1
+../TouchGFX/target/TouchGFXDMA.cpp:77:6:virtual void TouchGFXDMA::setupDataFill(const touchgfx::BlitOp&)	1
+../TouchGFX/target/TouchGFXDMA.cpp:82:6:virtual void TouchGFXDMA::start()	1
