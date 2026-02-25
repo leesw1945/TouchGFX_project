@@ -174,6 +174,92 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "APR_BG.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 90,
+            "Y": 225,
+            "Width": 90,
+            "Height": 180,
+            "RelativeFilename": "number_8_full.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 258,
+            "Y": 69,
+            "Width": 134,
+            "Height": 286,
+            "RelativeFilename": "SENSOR_MODEL.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image4",
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon00.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image5",
+            "X": 36,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon01.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image6",
+            "X": 72,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon02.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image7",
+            "X": 108,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon03.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image8",
+            "X": 144,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon04.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image9",
+            "X": 180,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon05.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image10",
+            "X": 216,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon06.png"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
@@ -183,7 +269,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "Main",
+    "StartupScreenName": "Screen1",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
@@ -191,7 +277,8 @@
       24
     ],
     "AvailableLCDs": {
-      "24": "LCD24bpp"
+      "24": "LCD24bpp",
+      "32": "LCD32bpp"
     },
     "AvailableSections": [
       "ExtFlashSection",
