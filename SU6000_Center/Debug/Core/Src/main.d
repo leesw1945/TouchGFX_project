@@ -32,10 +32,13 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
- ../TouchGFX/App/app_touchgfx.h ../Core/Inc/crc.h ../Core/Inc/main.h \
- ../Core/Inc/gpio.h ../Core/Inc/i2c.h ../Core/Inc/icache.h \
- ../Core/Inc/ltdc.h ../Core/Inc/memorymap.h ../Core/Inc/octospi.h
+ ../Core/Inc/crc.h ../Core/Inc/main.h ../Core/Inc/i2c.h \
+ ../Core/Inc/icache.h ../Core/Inc/ltdc.h ../Core/Inc/memorymap.h \
+ ../Core/Inc/octospi.h ../Core/Inc/usart.h ../Core/Inc/gpio.h \
+ ../TouchGFX/App/app_touchgfx.h
 ../Core/Inc/main.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../Core/Inc/stm32u5xx_hal_conf.h:
@@ -70,13 +73,16 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
-../TouchGFX/App/app_touchgfx.h:
 ../Core/Inc/crc.h:
 ../Core/Inc/main.h:
-../Core/Inc/gpio.h:
 ../Core/Inc/i2c.h:
 ../Core/Inc/icache.h:
 ../Core/Inc/ltdc.h:
 ../Core/Inc/memorymap.h:
 ../Core/Inc/octospi.h:
+../Core/Inc/usart.h:
+../Core/Inc/gpio.h:
+../TouchGFX/App/app_touchgfx.h:

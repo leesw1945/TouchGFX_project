@@ -18,15 +18,15 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "app_touchgfx.h"
 #include "crc.h"
-#include "gpio.h"
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
 #include "memorymap.h"
 #include "octospi.h"
-
+#include "usart.h"
+#include "gpio.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -184,13 +184,30 @@ static void MPU_Config(void) {
   HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
 }
 
+#ifdef __GNUC__
+/* With GCC/RAISON, small printf (option LD Linker->Libraries->Small printf
+   set to 'Yes') calls __io_putchar() */
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART1 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
+
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
-int main(void) {
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
 
   /* USER CODE BEGIN 1 */
 
@@ -198,8 +215,7 @@ int main(void) {
 
   /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick.
-   */
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -225,6 +241,7 @@ int main(void) {
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_OCTOSPI1_Init();
+  MX_USART1_UART_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -241,30 +258,33 @@ int main(void) {
   while (1) {
     /* USER CODE END WHILE */
 
-    MX_TouchGFX_Process();
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
 
     Run_LED_Flicker();
+
   }
   /* USER CODE END 3 */
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
-void SystemClock_Config(void) {
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-   */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK) {
+  */
+  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  {
     Error_Handler();
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -277,38 +297,41 @@ void SystemClock_Config(void) {
   RCC_OscInitStruct.PLL.PLLR = 1;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLLVCIRANGE_1;
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
     Error_Handler();
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK |
-                                RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 |
-                                RCC_CLOCKTYPE_PCLK3;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
+                              |RCC_CLOCKTYPE_PCLK3;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK) {
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  {
     Error_Handler();
   }
 }
 
 /**
- * @brief Power Configuration
- * @retval None
- */
-static void SystemPower_Config(void) {
+  * @brief Power Configuration
+  * @retval None
+  */
+static void SystemPower_Config(void)
+{
 
   /*
    * Disable the internal Pull-Up in Dead Battery pins of UCPD peripheral
    */
   HAL_PWREx_DisableUCPDDeadBattery();
-  /* USER CODE BEGIN PWR */
-  /* USER CODE END PWR */
+/* USER CODE BEGIN PWR */
+/* USER CODE END PWR */
 }
 
 /* USER CODE BEGIN 4 */
@@ -316,10 +339,11 @@ static void SystemPower_Config(void) {
 /* USER CODE END 4 */
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
-void Error_Handler(void) {
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
@@ -328,15 +352,16 @@ void Error_Handler(void) {
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
-void assert_failed(uint8_t *file, uint32_t line) {
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t *file, uint32_t line)
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line
      number, ex: printf("Wrong parameters value: file %s on line %d\r\n", file,

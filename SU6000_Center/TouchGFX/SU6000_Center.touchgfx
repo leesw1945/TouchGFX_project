@@ -171,9 +171,34 @@
             "IndicatorPositionHeight": 30,
             "ProgressRangeMax": 100,
             "ProgressInitialValue": 60
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 234,
+            "Y": 9,
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "North",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
       },
       {
         "Name": "Screen1",
@@ -257,9 +282,34 @@
             "Width": 36,
             "Height": 36,
             "RelativeFilename": "icon06.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 258,
+            "Y": -22,
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
+            "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "North",
+              "ActionComponent": "Main"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],

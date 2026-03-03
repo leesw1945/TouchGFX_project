@@ -1,0 +1,2 @@
+../Core/Src/ak4183.c:7:6:AK4183_Init	4	static
+../Core/Src/ak4183.c:18:9:AK4183_ReadXY	48	static
