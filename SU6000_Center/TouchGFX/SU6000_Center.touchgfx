@@ -310,6 +310,11 @@
             }
           }
         ]
+      },
+      {
+        "Name": "Touch_Calibration",
+        "Components": [],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],

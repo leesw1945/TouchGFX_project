@@ -208,6 +208,18 @@
     <Filter Include="Header Files\generated\gui_generated\screen1_screen">
       <UniqueIdentifier>69B9B3D6-8911-D87F-CA82-6299D9BE1D91</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\touch_calibration_screen">
+      <UniqueIdentifier>ED127FDD-D255-2DA6-543F-50F5237606AD</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\touch_calibration_screen">
+      <UniqueIdentifier>8D4B5169-C45C-FD37-03D4-E78038A2B430</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\touch_calibration_screen">
+      <UniqueIdentifier>47C1DF51-CBB0-DFA2-D3FE-09544B54C60C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\touch_calibration_screen">
+      <UniqueIdentifier>706751E1-2F37-F996-F8E7-9B47BFC65B92</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -266,6 +278,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\touch_calibration_screen\Touch_CalibrationPresenter.cpp">
+      <Filter>Source Files\gui\touch_calibration_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\touch_calibration_screen\Touch_CalibrationView.cpp">
+      <Filter>Source Files\gui\touch_calibration_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\touch_calibration_screen\Touch_CalibrationViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\touch_calibration_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -735,6 +756,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\touch_calibration_screen\Touch_CalibrationPresenter.hpp">
+      <Filter>Header Files\gui\touch_calibration_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\touch_calibration_screen\Touch_CalibrationView.hpp">
+      <Filter>Header Files\gui\touch_calibration_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\touch_calibration_screen\Touch_CalibrationViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\touch_calibration_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

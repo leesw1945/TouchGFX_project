@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\touch_calibration_screen\Touch_CalibrationPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\touch_calibration_screen\Touch_CalibrationView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\touch_calibration_screen\Touch_CalibrationViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,6 +192,9 @@
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\touch_calibration_screen\Touch_CalibrationPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\touch_calibration_screen\Touch_CalibrationView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\touch_calibration_screen\Touch_CalibrationViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>
