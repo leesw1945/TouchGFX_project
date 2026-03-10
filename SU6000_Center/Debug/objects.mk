@@ -5,5 +5,5 @@
 
 USER_OBJS := ../TouchGFX/generated/videos/obj/output3.bin.o
 
-LIBS := -l:libtouchgfx-float-abi-hard.a
+LIBS := -l:libtouchgfx-float-abi-hard.a -l:libnemagfx-float-abi-hard.a -l:libtouchgfxnema-float-abi-hard.a
 

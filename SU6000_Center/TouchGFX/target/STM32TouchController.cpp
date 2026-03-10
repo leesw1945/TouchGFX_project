@@ -69,8 +69,7 @@ bool STM32TouchController::sampleTouch(int32_t &x, int32_t &y) {
       // Y 방향(세로, 0~480)의 변화는 오히려 RAW X값(480~3750)으로 나옴
 
       int raw_x_min = 480; // 화면 위쪽 끝 터치 시 출력되는 raw_x (세로 0축)
-      int raw_x_max =
-          3780;            // 화면 아래쪽 끝 터치 시 출력되는 raw_x (세로 480축)
+      int raw_x_max = 3780; // 화면 아래쪽 끝 터치 시 출력되는 raw_x (세로 480축)
       int raw_y_min = 300; // 화면 오른쪽 끝 터치 시 출력되는 raw_y (가로 800축)
       int raw_y_max = 3800; // 화면 왼쪽 끝 터치 시 출력되는 raw_y (가로 0축)
 

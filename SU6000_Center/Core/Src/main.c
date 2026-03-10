@@ -19,6 +19,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "dcache.h"
+#include "dma2d.h"
+#include "gpu2d.h"
 #include "i2c.h"
 #include "icache.h"
 #include "ltdc.h"
@@ -151,7 +154,7 @@ static void MPU_Config(void) {
    * We need this to NOT cache incorrectly, or at least Write-Through
    */
   attr.Number = MPU_ATTRIBUTES_NUMBER0;
-  attr.Attributes = MPU_NOT_CACHEABLE;
+  attr.Attributes = MPU_WRITE_THROUGH;
   HAL_MPU_ConfigMemoryAttributes(&attr);
 
   region.Enable = MPU_REGION_ENABLE;
@@ -242,6 +245,10 @@ int main(void)
   MX_I2C2_Init();
   MX_OCTOSPI1_Init();
   MX_USART1_UART_Init();
+  MX_DMA2D_Init();
+  MX_GPU2D_Init();
+  MX_DCACHE1_Init();
+  MX_DCACHE2_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 

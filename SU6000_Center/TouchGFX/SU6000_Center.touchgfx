@@ -193,7 +193,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionCover",
               "ScreenTransitionDirection": "North",
               "ActionComponent": "Screen1"
             }
@@ -304,7 +304,7 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionType": "ScreenTransitionCover",
               "ScreenTransitionDirection": "North",
               "ActionComponent": "Main"
             }
@@ -323,17 +323,18 @@
       "Width": 800,
       "Height": 480
     },
-    "SelectedColorDepth": 24,
+    "SelectedColorDepth": 16,
     "StartupScreenName": "Screen1",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [
-      24
+      16
     ],
     "AvailableLCDs": {
-      "24": "LCD24bpp",
-      "32": "LCD32bpp"
+      "24": "LCDGPU2D",
+      "32": "LCD32bpp",
+      "16": "LCDGPU2D"
     },
     "AvailableSections": [
       "ExtFlashSection",
@@ -346,12 +347,6 @@
       }
     ],
     "PhysicalButtons": [],
-    "FrameworkFeatures": {
-      "LCD24bpp": {
-        "Id": "LCD24bpp",
-        "IsEnabled": true
-      }
-    },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
     "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
     "PostGenerateTargetCommand": "touchgfx update_project",
@@ -368,7 +363,9 @@
     "Platform": "m33",
     "ProjectFile": "../SU6000_Center.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
-    "OptionalComponents": [],
+    "OptionalComponents": [
+      "GPU2D"
+    ],
     "AdditionalFeatures": [
       "CWRVector",
       "VectorFonts"

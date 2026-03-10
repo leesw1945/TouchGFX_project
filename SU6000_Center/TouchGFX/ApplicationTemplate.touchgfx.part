@@ -3,10 +3,10 @@
   "Application": {
     "Name": "SU6000_Center",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
-    "AvailableColorDepths": [ 24 ],
+    "AvailableColorDepths": [ 16 ],
     "AvailableLCDs":
     {
-      "24": "LCD24bpp"
+      "16": "LCDGPU2D"
     },
     "AvailableResolutions": [
       {
@@ -22,6 +22,7 @@
     "ProjectFile": "../SU6000_Center.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
     "OptionalComponents": [
+      "GPU2D"
     ],
     "AdditionalFeatures": [
       "CWRVector",

@@ -16,8 +16,10 @@ Core/Src/system_stm32u5xx.o: ../Core/Src/system_stm32u5xx.c \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h \
@@ -34,7 +36,8 @@ Core/Src/system_stm32u5xx.o: ../Core/Src/system_stm32u5xx.c \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h \
- ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h
 ../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h:
 ../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5g9xx.h:
 ../Drivers/CMSIS/Include/core_cm33.h:
@@ -52,8 +55,10 @@ Core/Src/system_stm32u5xx.o: ../Core/Src/system_stm32u5xx.c \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h:
@@ -71,3 +76,4 @@ Core/Src/system_stm32u5xx.o: ../Core/Src/system_stm32u5xx.c \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h:

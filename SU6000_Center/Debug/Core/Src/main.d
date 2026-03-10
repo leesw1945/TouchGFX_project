@@ -16,8 +16,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h \
@@ -35,7 +37,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h \
  ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
- ../Core/Inc/crc.h ../Core/Inc/main.h ../Core/Inc/i2c.h \
+ ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h \
+ ../Core/Inc/crc.h ../Core/Inc/main.h ../Core/Inc/dcache.h \
+ ../Core/Inc/dma2d.h ../Core/Inc/gpu2d.h ../Core/Inc/i2c.h \
  ../Core/Inc/icache.h ../Core/Inc/ltdc.h ../Core/Inc/memorymap.h \
  ../Core/Inc/octospi.h ../Core/Inc/usart.h ../Core/Inc/gpio.h \
  ../TouchGFX/App/app_touchgfx.h
@@ -57,8 +61,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h:
@@ -76,8 +82,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h:
 ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h:
 ../Core/Inc/crc.h:
 ../Core/Inc/main.h:
+../Core/Inc/dcache.h:
+../Core/Inc/dma2d.h:
+../Core/Inc/gpu2d.h:
 ../Core/Inc/i2c.h:
 ../Core/Inc/icache.h:
 ../Core/Inc/ltdc.h:

@@ -1,6 +1,7 @@
 TouchGFX/target/TouchGFXHAL.o: ../TouchGFX/target/TouchGFXHAL.cpp \
  ../TouchGFX/target/TouchGFXHAL.hpp \
  ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp \
+ ../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/HALGPU2D.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/core/MCUInstrumentation.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
@@ -30,9 +31,13 @@ TouchGFX/target/TouchGFXHAL.o: ../TouchGFX/target/TouchGFXHAL.cpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Matrix3x3.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/VGData.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/DebugPrinter.hpp
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/DebugPrinter.hpp \
+ ../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_cmdlist.h \
+ ../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_sys_defs.h \
+ ../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_hal.h
 ../TouchGFX/target/TouchGFXHAL.hpp:
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:
+../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/HALGPU2D.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp:
 ../Middlewares/ST/touchgfx/framework/include/platform/core/MCUInstrumentation.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:
@@ -63,3 +68,6 @@ TouchGFX/target/TouchGFXHAL.o: ../TouchGFX/target/TouchGFXHAL.cpp \
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/VGData.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/DebugPrinter.hpp:
+../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_cmdlist.h:
+../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_sys_defs.h:
+../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include/nema_hal.h:

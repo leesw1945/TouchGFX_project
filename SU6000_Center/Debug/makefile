@@ -124,7 +124,7 @@ main-build: SU6000_Center.elf secondary-outputs
 
 # Tool invocations
 SU6000_Center.elf SU6000_Center.map: $(OBJS) $(USER_OBJS) C:\TouchGFXProjects\SU6000_Center\STM32U5G9ZJTXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "SU6000_Center.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\SU6000_Center\STM32U5G9ZJTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SU6000_Center.map" -Wl,--gc-sections -static -L"C:\TouchGFXProjects\SU6000_Center\Middlewares\ST\touchgfx\lib\core\cortex_m33\gcc" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "SU6000_Center.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\TouchGFXProjects\SU6000_Center\STM32U5G9ZJTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SU6000_Center.map" -Wl,--gc-sections -static -L"C:\TouchGFXProjects\SU6000_Center\Middlewares\ST\touchgfx\lib\core\cortex_m33\gcc" -L"C:\TouchGFXProjects\SU6000_Center\Middlewares\ST\touchgfx_components\gpu2d\NemaGFX\lib\core\cortex_m33\gcc" -L"C:\TouchGFXProjects\SU6000_Center\Middlewares\ST\touchgfx_components\gpu2d\TouchGFXNema\lib\cortex_m33\gcc" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
