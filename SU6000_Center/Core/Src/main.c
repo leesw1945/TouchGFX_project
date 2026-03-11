@@ -174,10 +174,9 @@ static void MPU_Config(void) {
    * tearing/artifacts.
    */
   region.Number = MPU_REGION_NUMBER1;
-  region.BaseAddress = 0x201A0000;
-  region.LimitAddress = 0x201A0000 + 1344 * 1024 - 1; /* SRAM5 size */
-  region.AttributesIndex =
-      MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
+  region.BaseAddress = 0x20160000;
+  region.LimitAddress = 0x20160000 + 1600 * 1024 - 1; /* SRAM5 size */
+  region.AttributesIndex = MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
   region.AccessPermission = MPU_REGION_ALL_RW;
   region.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
   region.IsShareable = MPU_ACCESS_NOT_SHAREABLE;

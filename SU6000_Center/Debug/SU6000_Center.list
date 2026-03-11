@@ -898,9 +898,9 @@ void MX_DMA2D_Init(void)
  8000922:	4b1a      	ldr	r3, [pc, #104]	@ (800098c <MX_DMA2D_Init+0x74>)
  8000924:	2200      	movs	r2, #0
  8000926:	605a      	str	r2, [r3, #4]
-  hdma2d.Init.ColorMode = DMA2D_OUTPUT_RGB888;
+  hdma2d.Init.ColorMode = DMA2D_OUTPUT_RGB565;
  8000928:	4b18      	ldr	r3, [pc, #96]	@ (800098c <MX_DMA2D_Init+0x74>)
- 800092a:	2201      	movs	r2, #1
+ 800092a:	2202      	movs	r2, #2
  800092c:	609a      	str	r2, [r3, #8]
   hdma2d.Init.OutputOffset = 0;
  800092e:	4b17      	ldr	r3, [pc, #92]	@ (800098c <MX_DMA2D_Init+0x74>)
@@ -918,9 +918,9 @@ void MX_DMA2D_Init(void)
  8000940:	4b12      	ldr	r3, [pc, #72]	@ (800098c <MX_DMA2D_Init+0x74>)
  8000942:	2200      	movs	r2, #0
  8000944:	645a      	str	r2, [r3, #68]	@ 0x44
-  hdma2d.LayerCfg[1].InputColorMode = DMA2D_INPUT_RGB888;
+  hdma2d.LayerCfg[1].InputColorMode = DMA2D_INPUT_RGB565;
  8000946:	4b11      	ldr	r3, [pc, #68]	@ (800098c <MX_DMA2D_Init+0x74>)
- 8000948:	2201      	movs	r2, #1
+ 8000948:	2202      	movs	r2, #2
  800094a:	649a      	str	r2, [r3, #72]	@ 0x48
   hdma2d.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
  800094c:	4b0f      	ldr	r3, [pc, #60]	@ (800098c <MX_DMA2D_Init+0x74>)
@@ -1868,7 +1868,7 @@ void MX_LTDC_Init(void)
   pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
  8000f7e:	2305      	movs	r3, #5
  8000f80:	627b      	str	r3, [r7, #36]	@ 0x24
-  pLayerCfg.FBStartAdress = 0x201A0000;
+  pLayerCfg.FBStartAdress = 0x20160000;
  8000f82:	4b12      	ldr	r3, [pc, #72]	@ (8000fcc <MX_LTDC_Init+0x104>)
  8000f84:	62bb      	str	r3, [r7, #40]	@ 0x28
   pLayerCfg.ImageWidth = 800;
@@ -1911,7 +1911,7 @@ void MX_LTDC_Init(void)
  8000fc2:	bf00      	nop
  8000fc4:	20004c90 	.word	0x20004c90
  8000fc8:	40016800 	.word	0x40016800
- 8000fcc:	201a0000 	.word	0x201a0000
+ 8000fcc:	20160000 	.word	0x20160000
 
 08000fd0 <HAL_LTDC_MspInit>:
 
@@ -2497,10 +2497,10 @@ static void MPU_Config(void) {
   region.Number = MPU_REGION_NUMBER1;
  80013dc:	2301      	movs	r3, #1
  80013de:	717b      	strb	r3, [r7, #5]
-  region.BaseAddress = 0x201A0000;
+  region.BaseAddress = 0x20160000;
  80013e0:	4b0b      	ldr	r3, [pc, #44]	@ (8001410 <MPU_Config+0x7c>)
  80013e2:	60bb      	str	r3, [r7, #8]
-  region.LimitAddress = 0x201A0000 + 1344 * 1024 - 1; /* SRAM5 size */
+  region.LimitAddress = 0x20160000 + 1600 * 1024 - 1; /* SRAM5 size */
  80013e4:	4b0b      	ldr	r3, [pc, #44]	@ (8001414 <MPU_Config+0x80>)
  80013e6:	60fb      	str	r3, [r7, #12]
   region.AttributesIndex =
@@ -2531,7 +2531,7 @@ static void MPU_Config(void) {
  800140a:	46bd      	mov	sp, r7
  800140c:	bd80      	pop	{r7, pc}
  800140e:	bf00      	nop
- 8001410:	201a0000 	.word	0x201a0000
+ 8001410:	20160000 	.word	0x20160000
  8001414:	202effff 	.word	0x202effff
 
 08001418 <__io_putchar>:
