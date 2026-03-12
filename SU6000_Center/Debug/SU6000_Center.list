@@ -2503,10 +2503,9 @@ static void MPU_Config(void) {
   region.LimitAddress = 0x20160000 + 1600 * 1024 - 1; /* SRAM5 size */
  80013e4:	4b0b      	ldr	r3, [pc, #44]	@ (8001414 <MPU_Config+0x80>)
  80013e6:	60fb      	str	r3, [r7, #12]
-  region.AttributesIndex =
+  region.AttributesIndex = MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
  80013e8:	2300      	movs	r3, #0
  80013ea:	743b      	strb	r3, [r7, #16]
-      MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
   region.AccessPermission = MPU_REGION_ALL_RW;
  80013ec:	2301      	movs	r3, #1
  80013ee:	747b      	strb	r3, [r7, #17]
@@ -2732,8 +2731,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLP = 10;
  800152c:	230a      	movs	r3, #10
  800152e:	667b      	str	r3, [r7, #100]	@ 0x64
-  RCC_OscInitStruct.PLL.PLLQ = 4;
- 8001530:	2304      	movs	r3, #4
+  RCC_OscInitStruct.PLL.PLLQ = 1;
+ 8001530:	2301      	movs	r3, #1
  8001532:	66bb      	str	r3, [r7, #104]	@ 0x68
   RCC_OscInitStruct.PLL.PLLR = 1;
  8001534:	2301      	movs	r3, #1
@@ -2912,9 +2911,9 @@ void MX_OCTOSPI1_Init(void)
  80015f2:	4b23      	ldr	r3, [pc, #140]	@ (8001680 <MX_OCTOSPI1_Init+0xe0>)
  80015f4:	2200      	movs	r2, #0
  80015f6:	621a      	str	r2, [r3, #32]
-  hospi1.Init.ClockPrescaler = 5;
+  hospi1.Init.ClockPrescaler = 1;
  80015f8:	4b21      	ldr	r3, [pc, #132]	@ (8001680 <MX_OCTOSPI1_Init+0xe0>)
- 80015fa:	2205      	movs	r2, #5
+ 80015fa:	2201      	movs	r2, #1
  80015fc:	625a      	str	r2, [r3, #36]	@ 0x24
   hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
  80015fe:	4b20      	ldr	r3, [pc, #128]	@ (8001680 <MX_OCTOSPI1_Init+0xe0>)
