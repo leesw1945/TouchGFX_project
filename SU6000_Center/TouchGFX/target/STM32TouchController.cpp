@@ -26,8 +26,13 @@
 
 extern "C" {
 #include "ak4183.h"
+#include "touch_calibration.h"
 #include <stdio.h>
 }
+
+// 캘리브레이션 화면에서 raw ADC 값을 읽기 위한 전역 변수
+int g_lastRawX = 0;
+int g_lastRawY = 0;
 
 void STM32TouchController::init() {
   /**
@@ -68,10 +73,25 @@ bool STM32TouchController::sampleTouch(int32_t &x, int32_t &y) {
       // X 방향(가로, 0~800)의 변화는 오히려 RAW Y값(300~3800)으로 나옴
       // Y 방향(세로, 0~480)의 변화는 오히려 RAW X값(480~3750)으로 나옴
 
-      int raw_x_min = 480; // 화면 위쪽 끝 터치 시 출력되는 raw_x (세로 0축)
-      int raw_x_max = 3780; // 화면 아래쪽 끝 터치 시 출력되는 raw_x (세로 480축)
-      int raw_y_min = 300; // 화면 오른쪽 끝 터치 시 출력되는 raw_y (가로 800축)
-      int raw_y_max = 3800; // 화면 왼쪽 끝 터치 시 출력되는 raw_y (가로 0축)
+      int raw_x_min, raw_x_max, raw_y_min, raw_y_max;
+
+      if (g_calibValid) {
+        // Flash에서 읽어온 보정값 사용
+        raw_x_min = g_calibData.raw_x_min;
+        raw_x_max = g_calibData.raw_x_max;
+        raw_y_min = g_calibData.raw_y_min;
+        raw_y_max = g_calibData.raw_y_max;
+      } else {
+        // 보정 전 기본값 (캘리브레이션 화면 터치용)
+        raw_x_min = 480;
+        raw_x_max = 3780;
+        raw_y_min = 300;
+        raw_y_max = 3800;
+      }
+
+      // 캘리브레이션 화면에서 raw 값을 읽을 수 있도록 저장
+      g_lastRawX = raw_x;
+      g_lastRawY = raw_y;
 
       // 측정된 범위를 벗어나는 값이 들어오면 잘라냄(Clamp)
       if (raw_x < raw_x_min)

@@ -313,7 +313,24 @@
       },
       {
         "Name": "Touch_Calibration",
-        "Components": [],
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 800,
+            "Height": 480
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage1",
+            "X": 90,
+            "Y": 79,
+            "Width": 80,
+            "Height": 80,
+            "Filename": "cross_hair.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          }
+        ],
         "Interactions": []
       }
     ],
