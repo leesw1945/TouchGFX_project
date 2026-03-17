@@ -30,6 +30,7 @@
 #include "usart.h"
 #include "gpio.h"
 #include "app_touchgfx.h"
+#include "touch_calibration.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -233,6 +234,7 @@ int main(void)
   /* USER CODE BEGIN SysInit */
   __HAL_RCC_SRAM5_CLK_ENABLE();
   __HAL_RCC_SRAM6_CLK_ENABLE();
+  g_calibValid = Calib_Load(&g_calibData);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

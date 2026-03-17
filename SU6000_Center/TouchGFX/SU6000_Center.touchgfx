@@ -315,20 +315,42 @@
         "Name": "Touch_Calibration",
         "Components": [
           {
-            "Type": "Box",
-            "Name": "box1",
+            "Type": "Image",
+            "Name": "touch_cali_bg",
             "Width": 800,
-            "Height": 480
+            "Height": 480,
+            "RelativeFilename": "__generated\\clay_theme_images_backgrounds_800x480_gradient_light.png"
           },
           {
-            "Type": "ScalableImage",
-            "Name": "scalableImage1",
-            "X": 90,
-            "Y": 79,
-            "Width": 80,
-            "Height": 80,
-            "Filename": "cross_hair.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
+            "Type": "Image",
+            "Name": "touch_cali_crossHair",
+            "X": 18,
+            "Y": 19,
+            "Width": 64,
+            "Height": 63,
+            "RelativeFilename": "touch_cali_crossHair.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "touch_cali_explain_main",
+            "X": 145,
+            "Y": 104,
+            "Width": 511,
+            "Height": 41,
+            "TextId": "__SingleUse_5AH2",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "touch_cali_explain_sub",
+            "X": 159,
+            "Y": 184,
+            "Width": 482,
+            "Height": 24,
+            "TextId": "__SingleUse_9NGB",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": []
