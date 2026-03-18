@@ -234,7 +234,6 @@ int main(void)
   /* USER CODE BEGIN SysInit */
   __HAL_RCC_SRAM5_CLK_ENABLE();
   __HAL_RCC_SRAM6_CLK_ENABLE();
-  g_calibValid = Calib_Load(&g_calibData);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -255,6 +254,9 @@ int main(void)
 
   MPU_Config();
   OSPI_EnableMemoryMappedMode();
+
+  g_calibValid = Calib_Load(&g_calibData);
+  printf("Calib: valid=%d, magic=0x%08lX\r\n", g_calibValid, *(uint32_t*)0x083FE000);
 
   //  memset(framebuffer, 0xFF, sizeof(framebuffer));
   //  HAL_LTDC_SetAddress(&hltdc, (uint32_t)framebuffer, LTDC_LAYER_1);

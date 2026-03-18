@@ -11,7 +11,7 @@
 #include <stdint.h>
 
 #define CALIB_FLASH_ADDR    0x083FE000  // 내부 Flash 마지막 페이지
-#define CALIB_MAGIC         0xCAL1B000  // 유효성 검사 매직넘버
+#define CALIB_MAGIC         0xCA11B000  // 유효성 검사 매직넘버
 
 typedef struct {
     uint32_t magic;         // CALIB_MAGIC이면 유효한 데이터

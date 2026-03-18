@@ -4,9 +4,11 @@
 #include <gui/touch_calibration_screen/Touch_CalibrationView.hpp>
 #include <gui/touch_calibration_screen/Touch_CalibrationPresenter.hpp>
 
+#ifndef SIMULATOR
 extern "C" {
 #include "touch_calibration.h"
 }
+#endif
 
 FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
     : FrontendApplicationBase(m, heap)
@@ -15,11 +17,15 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 
 void FrontendApplication::changeToStartScreen()
 {
+#ifndef SIMULATOR
     if (g_calibValid) {
-        gotoScreen1ScreenNoTransition();  // 보정 완료 → 기존 시작 화면
+        gotoScreen1ScreenNoTransition();
     } else {
-        gotoTouch_CalibrationScreenNoTransition();  // 첫 부팅 → 보정 화면
+        gotoTouch_CalibrationScreenNoTransition();
     }
+#else
+    gotoScreen1ScreenNoTransition();
+#endif
 }
 
 void FrontendApplication::gotoTouch_CalibrationScreenNoTransition()

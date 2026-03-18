@@ -41,7 +41,40 @@ TouchGFX/gui/src/common/FrontendApplication.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/FrameBufferListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
- ../TouchGFX/gui/include/gui/model/Model.hpp
+ ../TouchGFX/gui/include/gui/model/Model.hpp \
+ ../TouchGFX/gui/include/gui/common/FrontendHeap.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendHeapBase.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/common/Meta.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/common/Partition.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/NoTransition.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/CoverTransition.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
+ ../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/bootingintro_screen/BootingIntroViewBase.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
+ ../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp \
+ ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
+ ../TouchGFX/gui/include/gui/main_screen/MainView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp \
+ ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/TextProgress.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/AbstractProgressIndicator.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
+ ../TouchGFX/gui/include/gui/screen1_screen/Screen1View.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/screen1_screen/Screen1ViewBase.hpp \
+ ../TouchGFX/gui/include/gui/screen1_screen/Screen1Presenter.hpp \
+ ../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/touch_calibration_screen/Touch_CalibrationViewBase.hpp \
+ ../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationPresenter.hpp \
+ ../Core/Inc/touch_calibration.h
 ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
@@ -84,3 +117,36 @@ TouchGFX/gui/src/common/FrontendApplication.o: \
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp:
 ../TouchGFX/gui/include/gui/model/Model.hpp:
+../TouchGFX/gui/include/gui/common/FrontendHeap.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendHeapBase.hpp:
+../Middlewares/ST/touchgfx/framework/include/common/Meta.hpp:
+../Middlewares/ST/touchgfx/framework/include/common/Partition.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/NoTransition.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/CoverTransition.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
+../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/bootingintro_screen/BootingIntroViewBase.hpp:
+../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
+../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp:
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
+../TouchGFX/gui/include/gui/main_screen/MainView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp:
+../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/TextProgress.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/AbstractProgressIndicator.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
+../TouchGFX/gui/include/gui/screen1_screen/Screen1View.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/screen1_screen/Screen1ViewBase.hpp:
+../TouchGFX/gui/include/gui/screen1_screen/Screen1Presenter.hpp:
+../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/touch_calibration_screen/Touch_CalibrationViewBase.hpp:
+../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationPresenter.hpp:
+../Core/Inc/touch_calibration.h:

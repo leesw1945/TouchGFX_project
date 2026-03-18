@@ -67,7 +67,7 @@ private:
     FrontendHeap() : FrontendHeapBase(presenters, views, transitions, app),
                      app(model, *this)
     {
-        gotoStartScreen(app);
+        app.changeToStartScreen();
     }
 };
 

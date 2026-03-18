@@ -47,7 +47,12 @@ TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.o: \
  ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
  ../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationPresenter.hpp \
  ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
+ ../Core/Inc/touch_calibration.h
 ../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/touch_calibration_screen/Touch_CalibrationViewBase.hpp:
 ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -96,3 +101,8 @@ TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.o: \
 ../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationPresenter.hpp:
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
+../Core/Inc/touch_calibration.h:

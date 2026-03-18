@@ -1,9 +1,14 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
-../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:11:13:Touch_CalibrationView::~Touch_CalibrationView()	1
-../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:11:13:virtual Touch_CalibrationView::~Touch_CalibrationView()	1
-../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:3:1:Touch_CalibrationView::Touch_CalibrationView()	1
-../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:8:6:virtual void Touch_CalibrationView::setupScreen()	1
-../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:13:6:virtual void Touch_CalibrationView::tearDownScreen()	1
+../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:12:13:Touch_CalibrationView::~Touch_CalibrationView()	1
+../TouchGFX/gui/include/gui/touch_calibration_screen/Touch_CalibrationView.hpp:12:13:virtual Touch_CalibrationView::~Touch_CalibrationView()	1
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:24:1:Touch_CalibrationView::Touch_CalibrationView()	1
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:30:6:virtual void Touch_CalibrationView::setupScreen()	1
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:37:6:virtual void Touch_CalibrationView::tearDownScreen()	1
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:42:6:virtual void Touch_CalibrationView::handleClickEvent(const touchgfx::ClickEvent&)	3
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:60:6:void Touch_CalibrationView::showTarget(int)	1
+../TouchGFX/gui/src/touch_calibration_screen/Touch_CalibrationView.cpp:74:6:void Touch_CalibrationView::calculateAndSave()	1

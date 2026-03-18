@@ -1,0 +1,3 @@
+../Core/Src/touch_calibration.c:15:17:CalcChecksum	16	static
+../Core/Src/touch_calibration.c:21:9:Calib_Load	32	static
+../Core/Src/touch_calibration.c:34:9:Calib_Save	72	static
