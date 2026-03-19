@@ -18,6 +18,7 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 void FrontendApplication::changeToStartScreen()
 {
 #ifndef SIMULATOR
+    g_calibValid = Calib_Load(&g_calibData);
     if (g_calibValid) {
         gotoScreen1ScreenNoTransition();
     } else {

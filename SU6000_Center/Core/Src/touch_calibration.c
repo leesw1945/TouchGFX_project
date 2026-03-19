@@ -25,10 +25,24 @@ uint8_t Calib_Load(TouchCalibData* data) {
     
     TouchCalibData* flash = (TouchCalibData*)CALIB_FLASH_ADDR;
 
-    if (flash->magic != CALIB_MAGIC) return 0;
-    if (flash->checksum != CalcChecksum(flash)) return 0;
+    printf("[Calib_Load] Reading Flash at 0x%08lX... Magic: 0x%08lX, Csum: 0x%08lX\r\n", 
+           (unsigned long)CALIB_FLASH_ADDR, (unsigned long)flash->magic, (unsigned long)flash->checksum);
+
+    if (flash->magic != CALIB_MAGIC) {
+        printf("[Calib_Load] Magic mismatch! Expected 0x%08lX but got 0x%08lX\r\n", 
+               (unsigned long)CALIB_MAGIC, (unsigned long)flash->magic);
+        return 0;
+    }
+    
+    uint32_t calcCsum = CalcChecksum(flash);
+    if (flash->checksum != calcCsum) {
+        printf("[Calib_Load] Checksum mismatch! Expected 0x%08lX but got 0x%08lX\r\n", 
+               (unsigned long)calcCsum, (unsigned long)flash->checksum);
+        return 0;
+    }
 
     *data = *flash;
+    printf("[Calib_Load] Load Success!\r\n");
     return 1;
 }
 
@@ -73,7 +87,8 @@ uint8_t Calib_Save(const TouchCalibData* data) {
         return 0;
     }
 
-    printf("[Calib] Save Success! Magic: 0x%08lX, Csum: 0x%08lX\r\n", temp->magic, temp->checksum);
+    printf("[Calib] Save Success! Magic: 0x%08lX, Csum: 0x%08lX\r\n", 
+           (unsigned long)temp->magic, (unsigned long)temp->checksum);
 
     // 4. 안전하게 DCACHE 동기화 및 Lock
     HAL_DCACHE_CleanInvalidateByAddr(&hdcache1, (const uint32_t*)addr, 16);

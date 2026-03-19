@@ -44,8 +44,8 @@ C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 ../TouchGFX/gui/src/common/FrontendApplication.cpp:18:6:virtual void FrontendApplication::changeToStartScreen()	2
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:175:7:constexpr touchgfx::GenericCallback<void>& touchgfx::GenericCallback<void>::operator=(const touchgfx::GenericCallback<void>&)	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:424:8:constexpr touchgfx::Callback<FrontendApplication>& touchgfx::Callback<FrontendApplication>::operator=(touchgfx::Callback<FrontendApplication>&&)	1
-../TouchGFX/gui/src/common/FrontendApplication.cpp:31:6:void FrontendApplication::gotoTouch_CalibrationScreenNoTransition()	1
-../TouchGFX/gui/src/common/FrontendApplication.cpp:38:6:void FrontendApplication::gotoTouch_CalibrationScreenNoTransitionImpl()	1
+../TouchGFX/gui/src/common/FrontendApplication.cpp:32:6:void FrontendApplication::gotoTouch_CalibrationScreenNoTransition()	1
+../TouchGFX/gui/src/common/FrontendApplication.cpp:39:6:void FrontendApplication::gotoTouch_CalibrationScreenNoTransitionImpl()	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:175:7:constexpr touchgfx::GenericCallback<void>::GenericCallback()	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:427:5:touchgfx::Callback<dest_type, void, void, void>::Callback() [with dest_type = FrontendApplication]	1
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:440:5:touchgfx::Callback<dest_type, void, void, void>::Callback(dest_type*, void (dest_type::*)()) [with dest_type = FrontendApplication]	1

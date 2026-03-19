@@ -1,3 +1,3 @@
-../Core/Src/touch_calibration.c:15:17:CalcChecksum	1
-../Core/Src/touch_calibration.c:21:9:Calib_Load	3
-../Core/Src/touch_calibration.c:34:9:Calib_Save	3
+../Core/Src/touch_calibration.c:16:17:CalcChecksum	1
+../Core/Src/touch_calibration.c:22:9:Calib_Load	3
+../Core/Src/touch_calibration.c:49:9:Calib_Save	3
