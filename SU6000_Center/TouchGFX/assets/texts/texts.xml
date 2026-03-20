@@ -6,6 +6,9 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_E54K" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">New Text</Translation>
+      </Text>
       <Text Id="__SingleUse_9NGB" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">Please touch each point for accurate calibration.</Translation>
       </Text>

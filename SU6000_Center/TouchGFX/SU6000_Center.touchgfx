@@ -286,13 +286,64 @@
           {
             "Type": "Button",
             "Name": "button1",
-            "X": 258,
-            "Y": -22,
+            "X": 357,
+            "Y": 18,
             "Width": 150,
             "Height": 80,
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
             "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1",
+            "X": 135,
+            "Y": 182,
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\glass_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\glass_theme_images_widgets_button_regular_height_36_tiny_rounded_action.png",
+            "TextId": "__SingleUse_E54K",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "glass_theme\\presets\\button\\regular\\height_36\\tiny_rounded_action.json"
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "X": 325,
+            "Y": 335,
+            "Width": 150,
+            "Height": 80,
+            "Pressed": "__generated\\glass_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
+            "Released": "__generated\\glass_theme_images_widgets_button_regular_height_36_tiny_rounded_action.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconX": 50,
+            "IconY": 15,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "glass_theme\\presets\\button\\regular\\height_36\\tiny_rounded_action.json"
+          },
+          {
+            "Type": "ToggleButton",
+            "Name": "toggleButton1",
+            "X": 416,
+            "Y": 202,
+            "Width": 144,
+            "Height": 60,
+            "Pressed": "__generated\\light_theme_images_widgets_togglebutton_large_round_on_active.png",
+            "Released": "__generated\\light_theme_images_widgets_togglebutton_large_round_off_light.png",
+            "Preset": "light_theme\\presets\\togglebutton\\large\\round_active.json"
           }
         ],
         "Interactions": [
@@ -306,6 +357,44 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionCover",
               "ScreenTransitionDirection": "North",
+              "ActionComponent": "Main"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabel1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "Main"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionBlock",
+              "ActionComponent": "Main"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButton1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
               "ActionComponent": "Main"
             }
           }
