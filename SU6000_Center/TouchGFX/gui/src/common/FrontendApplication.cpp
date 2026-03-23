@@ -20,12 +20,12 @@ void FrontendApplication::changeToStartScreen()
 #ifndef SIMULATOR
     g_calibValid = Calib_Load(&g_calibData);
     if (g_calibValid) {
-        gotoScreen1ScreenNoTransition();
+        static_cast<FrontendHeapBase&>(frontendHeap).gotoStartScreen(*this);
     } else {
         gotoTouch_CalibrationScreenNoTransition();
     }
 #else
-    gotoScreen1ScreenNoTransition();
+    static_cast<FrontendHeapBase&>(frontendHeap).gotoStartScreen(*this);
 #endif
 }
 

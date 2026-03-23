@@ -47,7 +47,9 @@ TouchGFX/gui/src/bootingintro_screen/BootingIntroView.o: \
  ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
  ../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp \
  ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/VideoWidget.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/VideoController.hpp
 ../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/bootingintro_screen/BootingIntroViewBase.hpp:
 ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -96,3 +98,5 @@ TouchGFX/gui/src/bootingintro_screen/BootingIntroView.o: \
 ../TouchGFX/gui/include/gui/bootingintro_screen/BootingIntroPresenter.hpp:
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/VideoWidget.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/VideoController.hpp:

@@ -3,12 +3,23 @@
     "Screens": [
       {
         "Name": "BootingIntro",
-        "Components": [],
+        "Components": [
+          {
+            "Type": "Video",
+            "Name": "video1",
+            "Width": 800,
+            "Height": 480,
+            "VideoFileName": "output3.avi",
+            "AutoPlay": true,
+            "Loop": true
+          }
+        ],
         "Interactions": [
           {
             "InteractionName": "Interaction1",
             "Trigger": {
-              "Type": "TriggerNone"
+              "Type": "TriggerVideoEnded",
+              "TriggerComponent": "video1"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -112,7 +123,7 @@
             "X": 91,
             "Y": 29,
             "Width": 37,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_X68P",
             "TextRotation": "0",
             "AutoSize": true
@@ -123,7 +134,7 @@
             "X": 455,
             "Y": 29,
             "Width": 79,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_5EOY",
             "TextRotation": "0",
             "AutoSize": true
@@ -134,7 +145,7 @@
             "X": 87,
             "Y": 269,
             "Width": 45,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_YC7Q",
             "TextRotation": "0",
             "AutoSize": true
@@ -145,7 +156,7 @@
             "X": 440,
             "Y": 269,
             "Width": 108,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_EIMQ",
             "TextRotation": "0",
             "AutoSize": true
@@ -452,7 +463,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "BootingIntro",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
