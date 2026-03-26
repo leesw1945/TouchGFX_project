@@ -18,19 +18,21 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "jpeg_utils_conf.h"
 #include "crc.h"
 #include "dcache.h"
 #include "dma2d.h"
+#include "gpdma.h"
 #include "gpu2d.h"
 #include "i2c.h"
 #include "icache.h"
+#include "jpeg.h"
 #include "ltdc.h"
 #include "memorymap.h"
 #include "octospi.h"
 #include "usart.h"
 #include "gpio.h"
 #include "app_touchgfx.h"
-#include "touch_calibration.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -238,6 +240,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_GPDMA1_Init();
   MX_CRC_Init();
   MX_ICACHE_Init();
   MX_LTDC_Init();
@@ -249,6 +252,7 @@ int main(void)
   MX_GPU2D_Init();
   MX_DCACHE1_Init();
   MX_DCACHE2_Init();
+  MX_JPEG_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -347,6 +351,28 @@ static void SystemPower_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM6 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM6)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

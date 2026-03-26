@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "jpeg_utils_conf.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
