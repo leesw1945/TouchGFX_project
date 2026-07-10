@@ -166,12 +166,27 @@ SECTIONS
     __bss_end__ = _ebss;
   } >RAM
   
+  /* JPEG MCU output buffers in SRAM1 (low RAM) — a separate AHB bank from the
+     framebuffer, so GPDMA CH1 (JPEG output) writes do not contend with the
+     constant LTDC scanout reads on SRAM5. Matches the official
+     STM32U5G9J-DK2 demo linker layout (VideobufferSection >RAM). */
+  .videobuffers (NOLOAD) :
+  {
+    . = ALIGN(8);
+    *(TouchGFX_MCU_Data_OutBuffer*)
+    . = ALIGN(8);
+  } >RAM
+
   .framebuffer (NOLOAD) :
   {
     . = ALIGN(4);
     *(.framebuffer)
     *(.framebuffer*)
     *(TouchGFX_Framebuffer TouchGFX_Framebuffer.*)
+    . = ALIGN(32);
+    /* Quarantine area: DMA crop-buffer target isolated from .bss globals so
+       oversized DMA writes cannot corrupt semaphore handles / indices. */
+    *(CroppingQuarantine)
     . = ALIGN(4);
   } >FRAMEBUFFER
 

@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "jpeg_utils_conf.h"
+#include "cmsis_os2.h"
 #include "crc.h"
 #include "dcache.h"
 #include "dma2d.h"
@@ -28,7 +29,6 @@
 #include "icache.h"
 #include "jpeg.h"
 #include "ltdc.h"
-#include "memorymap.h"
 #include "octospi.h"
 #include "usart.h"
 #include "gpio.h"
@@ -40,6 +40,7 @@
 // #include "mx25l12833f.h"
 #include <stdio.h>
 #include <string.h>
+#include "touch_calibration.h"
 
 /* USER CODE END Includes */
 
@@ -65,11 +66,17 @@
 //__attribute__((section(".framebuffer"), aligned(16)))
 // uint8_t framebuffer[800 * 480 * 3];
 
+/* JPEG/GPDMA debug counters — increment in ISRs to verify IRQ delivery */
+volatile uint32_t dbg_jpeg_irq = 0;
+volatile uint32_t dbg_gpdma_ch0_irq = 0;
+volatile uint32_t dbg_gpdma_ch1_irq = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void SystemPower_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -113,7 +120,7 @@ static uint8_t OSPI_EnableMemoryMappedMode(void) {
   sCommand.AlternateBytes = 0x00;
   sCommand.DataMode = HAL_OSPI_DATA_4_LINES;
   sCommand.DataDtrMode = HAL_OSPI_DATA_DTR_DISABLE;
-  sCommand.DummyCycles = 4; /* 6 dummy cycles for 0xEB on MX25L128 at standard speeds */
+  sCommand.DummyCycles = 4;
   sCommand.DQSMode = HAL_OSPI_DQS_DISABLE;
   sCommand.SIOOMode = HAL_OSPI_SIOO_INST_EVERY_CMD;
 
@@ -153,11 +160,17 @@ static void MPU_Config(void) {
   HAL_MPU_Disable();
 
   /*
-   * Configure Region 0: 0x90000000 (OSPI External Flash)
-   * We need this to NOT cache incorrectly, or at least Write-Through
+   * Configure Attribute 0: Write-Through (for OSPI External Flash)
    */
   attr.Number = MPU_ATTRIBUTES_NUMBER0;
   attr.Attributes = MPU_WRITE_THROUGH;
+  HAL_MPU_ConfigMemoryAttributes(&attr);
+
+  /*
+   * Configure Attribute 1: Non-Cacheable (for SRAM5 Framebuffer)
+   */
+  attr.Number = MPU_ATTRIBUTES_NUMBER1;
+  attr.Attributes = MPU_NOT_CACHEABLE;
   HAL_MPU_ConfigMemoryAttributes(&attr);
 
   region.Enable = MPU_REGION_ENABLE;
@@ -171,15 +184,14 @@ static void MPU_Config(void) {
   HAL_MPU_ConfigRegion(&region);
 
   /*
-   * Configure Region 1: 0x201A0000 (SRAM5 - Framebuffer)
-   * The LTDC DMA reads directly from memory, while the CPU (TouchGFX software
-   * renderer) writes to the DCACHE. Must be non-cacheable to prevent visual
-   * tearing/artifacts.
+   * Configure Region 1: 0x20160000 (SRAM5 - Framebuffer)
+   * Must be explicitly non-cacheable to prevent visual tearing/noise
+   * during GPU2D and DMA2D access.
    */
   region.Number = MPU_REGION_NUMBER1;
   region.BaseAddress = 0x20160000;
   region.LimitAddress = 0x20160000 + 1600 * 1024 - 1; /* SRAM5 size */
-  region.AttributesIndex = MPU_ATTRIBUTES_NUMBER0; /* Use same Non-cacheable attr */
+  region.AttributesIndex = MPU_ATTRIBUTES_NUMBER1; /* Use Non-cacheable attr */
   region.AccessPermission = MPU_REGION_ALL_RW;
   region.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
   region.IsShareable = MPU_ACCESS_NOT_SHAREABLE;
@@ -234,8 +246,13 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  __HAL_RCC_SRAM5_CLK_ENABLE();
-  __HAL_RCC_SRAM6_CLK_ENABLE();
+  //__HAL_RCC_SRAM5_CLK_ENABLE();
+  //__HAL_RCC_SRAM6_CLK_ENABLE();
+  
+  /* STM32CubeMX BUG FIX: Initialize the FreeRTOS CMSIS-V2 Kernel exceptionally early. 
+     This allows the auto-generated MX_TouchGFX_Init() to legitimately allocate its 
+     message queues (vsync_queue) without dropping into configASSERT() and causing gray noise. */
+  //osKernelInitialize();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -254,6 +271,8 @@ int main(void)
   MX_DCACHE2_Init();
   MX_JPEG_Init();
   MX_TouchGFX_Init();
+  /* Call PreOsInit function */
+  MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
 
   MPU_Config();
@@ -267,12 +286,21 @@ int main(void)
 
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+  /* Call init function for freertos objects (in app_freertos.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
 
     Run_LED_Flicker();
@@ -387,8 +415,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

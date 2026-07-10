@@ -9,9 +9,9 @@
             "Name": "video1",
             "Width": 800,
             "Height": 480,
-            "VideoFileName": "output3.avi",
-            "AutoPlay": true,
-            "Loop": true
+            "Preset": "video_theme\\presets\\video1_800x480.json",
+            "VideoFileName": "__generated\\video1_800x480.avi",
+            "AutoPlay": true
           }
         ],
         "Interactions": [
@@ -193,6 +193,17 @@
             "Pressed": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_pressed.png",
             "Released": "__generated\\clay_theme_images_widgets_button_regular_height_36_tiny_rounded_normal.png",
             "Preset": "clay_theme\\presets\\button\\regular\\height_36\\tiny_rounded_normal.json"
+          },
+          {
+            "Type": "Button",
+            "Name": "button2",
+            "X": 264,
+            "Y": 362,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
           }
         ],
         "Interactions": [
@@ -207,6 +218,18 @@
               "ScreenTransitionType": "ScreenTransitionCover",
               "ScreenTransitionDirection": "North",
               "ActionComponent": "Screen1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button2"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "BootingIntro"
             }
           }
         ]
@@ -463,7 +486,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "BootingIntro",
+    "StartupScreenName": "Main",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
@@ -507,7 +530,8 @@
     ],
     "AdditionalFeatures": [
       "CWRVector",
-      "VectorFonts"
+      "VectorFonts",
+      "Video"
     ]
   },
   "Version": "4.26.0"

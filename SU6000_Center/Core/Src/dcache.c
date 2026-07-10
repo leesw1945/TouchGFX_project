@@ -39,7 +39,7 @@ void MX_DCACHE1_Init(void)
 
   /* USER CODE END DCACHE1_Init 1 */
   hdcache1.Instance = DCACHE1;
-  hdcache1.Init.ReadBurstType = DCACHE_READ_BURST_WRAP;
+  hdcache1.Init.ReadBurstType = DCACHE_READ_BURST_INCR;
   if (HAL_DCACHE_Init(&hdcache1) != HAL_OK)
   {
     Error_Handler();
@@ -61,13 +61,17 @@ void MX_DCACHE2_Init(void)
 
   /* USER CODE END DCACHE2_Init 1 */
   hdcache2.Instance = DCACHE2;
-  hdcache2.Init.ReadBurstType = DCACHE_READ_BURST_WRAP;
+  hdcache2.Init.ReadBurstType = DCACHE_READ_BURST_INCR;
   if (HAL_DCACHE_Init(&hdcache2) != HAL_OK)
   {
     Error_Handler();
   }
   /* USER CODE BEGIN DCACHE2_Init 2 */
-
+  /* Disable SRAM caching for GPU2D/DMA/GPDMA coherency (must run before TouchGFX init) */
+  __HAL_RCC_SYSCFG_CLK_ENABLE();
+  HAL_SYSCFG_DisableSRAMCached();
+  /* Invalidate GPU2D texture cache to flush any stale data */
+  HAL_DCACHE_Invalidate(&hdcache2);
   /* USER CODE END DCACHE2_Init 2 */
 
 }
@@ -129,3 +133,4 @@ void HAL_DCACHE_MspDeInit(DCACHE_HandleTypeDef* dcacheHandle)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+

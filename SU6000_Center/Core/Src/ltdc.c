@@ -190,9 +190,9 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /* LTDC interrupt Init */
-    HAL_NVIC_SetPriority(LTDC_IRQn, 7, 0);
+    HAL_NVIC_SetPriority(LTDC_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(LTDC_IRQn);
-    HAL_NVIC_SetPriority(LTDC_ER_IRQn, 7, 0);
+    HAL_NVIC_SetPriority(LTDC_ER_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(LTDC_ER_IRQn);
   /* USER CODE BEGIN LTDC_MspInit 1 */
 
@@ -265,3 +265,4 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+

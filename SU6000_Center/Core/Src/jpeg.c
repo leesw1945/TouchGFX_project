@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    jpeg.c
-  * @brief   This file provides code for the configuration
-  *          of the JPEG instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2026 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    jpeg.c
+ * @brief   This file provides code for the configuration
+ *          of the JPEG instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2026 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "jpeg.h"
@@ -53,6 +53,7 @@ void MX_JPEG_Init(void)
 void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
 {
 
+  DMA_DataHandlingConfTypeDef DataHandlingConfig= {0};
   if(jpegHandle->Instance==JPEG)
   {
   /* USER CODE BEGIN JPEG_MspInit 0 */
@@ -68,13 +69,13 @@ void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
     handle_GPDMA1_Channel1.Init.BlkHWRequest = DMA_BREQ_SINGLE_BURST;
     handle_GPDMA1_Channel1.Init.Direction = DMA_PERIPH_TO_MEMORY;
     handle_GPDMA1_Channel1.Init.SrcInc = DMA_SINC_FIXED;
-    handle_GPDMA1_Channel1.Init.DestInc = DMA_DINC_FIXED;
-    handle_GPDMA1_Channel1.Init.SrcDataWidth = DMA_SRC_DATAWIDTH_BYTE;
-    handle_GPDMA1_Channel1.Init.DestDataWidth = DMA_DEST_DATAWIDTH_BYTE;
-    handle_GPDMA1_Channel1.Init.Priority = DMA_LOW_PRIORITY_LOW_WEIGHT;
-    handle_GPDMA1_Channel1.Init.SrcBurstLength = 1;
-    handle_GPDMA1_Channel1.Init.DestBurstLength = 1;
-    handle_GPDMA1_Channel1.Init.TransferAllocatedPort = DMA_SRC_ALLOCATED_PORT0|DMA_DEST_ALLOCATED_PORT0;
+    handle_GPDMA1_Channel1.Init.DestInc = DMA_DINC_INCREMENTED;
+    handle_GPDMA1_Channel1.Init.SrcDataWidth = DMA_SRC_DATAWIDTH_WORD;
+    handle_GPDMA1_Channel1.Init.DestDataWidth = DMA_DEST_DATAWIDTH_WORD;
+    handle_GPDMA1_Channel1.Init.Priority = DMA_HIGH_PRIORITY;
+    handle_GPDMA1_Channel1.Init.SrcBurstLength = 8;
+    handle_GPDMA1_Channel1.Init.DestBurstLength = 8;
+    handle_GPDMA1_Channel1.Init.TransferAllocatedPort = DMA_SRC_ALLOCATED_PORT0|DMA_DEST_ALLOCATED_PORT1;
     handle_GPDMA1_Channel1.Init.TransferEventMode = DMA_TCEM_BLOCK_TRANSFER;
     handle_GPDMA1_Channel1.Init.Mode = DMA_NORMAL;
     if (HAL_DMA_Init(&handle_GPDMA1_Channel1) != HAL_OK)
@@ -93,18 +94,25 @@ void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
     handle_GPDMA1_Channel0.Instance = GPDMA1_Channel0;
     handle_GPDMA1_Channel0.Init.Request = GPDMA1_REQUEST_JPEG_RX;
     handle_GPDMA1_Channel0.Init.BlkHWRequest = DMA_BREQ_SINGLE_BURST;
-    handle_GPDMA1_Channel0.Init.Direction = DMA_PERIPH_TO_MEMORY;
-    handle_GPDMA1_Channel0.Init.SrcInc = DMA_SINC_FIXED;
+    handle_GPDMA1_Channel0.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    handle_GPDMA1_Channel0.Init.SrcInc = DMA_SINC_INCREMENTED;
     handle_GPDMA1_Channel0.Init.DestInc = DMA_DINC_FIXED;
     handle_GPDMA1_Channel0.Init.SrcDataWidth = DMA_SRC_DATAWIDTH_BYTE;
-    handle_GPDMA1_Channel0.Init.DestDataWidth = DMA_DEST_DATAWIDTH_BYTE;
-    handle_GPDMA1_Channel0.Init.Priority = DMA_LOW_PRIORITY_LOW_WEIGHT;
-    handle_GPDMA1_Channel0.Init.SrcBurstLength = 1;
-    handle_GPDMA1_Channel0.Init.DestBurstLength = 1;
-    handle_GPDMA1_Channel0.Init.TransferAllocatedPort = DMA_SRC_ALLOCATED_PORT0|DMA_DEST_ALLOCATED_PORT0;
+    handle_GPDMA1_Channel0.Init.DestDataWidth = DMA_DEST_DATAWIDTH_WORD;
+    handle_GPDMA1_Channel0.Init.Priority = DMA_HIGH_PRIORITY;
+    handle_GPDMA1_Channel0.Init.SrcBurstLength = 8;
+    handle_GPDMA1_Channel0.Init.DestBurstLength = 8;
+    handle_GPDMA1_Channel0.Init.TransferAllocatedPort = DMA_SRC_ALLOCATED_PORT1|DMA_DEST_ALLOCATED_PORT0;
     handle_GPDMA1_Channel0.Init.TransferEventMode = DMA_TCEM_BLOCK_TRANSFER;
     handle_GPDMA1_Channel0.Init.Mode = DMA_NORMAL;
     if (HAL_DMA_Init(&handle_GPDMA1_Channel0) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    DataHandlingConfig.DataExchange = DMA_EXCHANGE_NONE;
+    DataHandlingConfig.DataAlignment = DMA_DATA_PACK;
+    if (HAL_DMAEx_ConfigDataHandling(&handle_GPDMA1_Channel0, &DataHandlingConfig) != HAL_OK)
     {
       Error_Handler();
     }
@@ -117,7 +125,7 @@ void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
     }
 
     /* JPEG interrupt Init */
-    HAL_NVIC_SetPriority(JPEG_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(JPEG_IRQn, 7, 0);
     HAL_NVIC_EnableIRQ(JPEG_IRQn);
   /* USER CODE BEGIN JPEG_MspInit 1 */
 
@@ -151,3 +159,4 @@ void HAL_JPEG_MspDeInit(JPEG_HandleTypeDef* jpegHandle)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+

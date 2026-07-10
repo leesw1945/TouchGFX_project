@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (13.3.rel1)
+# Toolchain: GNU Tools for STM32 (14.3.rel1)
 ################################################################################
 
 C++M_SRCS := 
@@ -25,6 +25,7 @@ S_DEPS :=
 CXXM_DEPS := 
 C_DEPS := 
 CC_DEPS := 
+OBJCOPY_HEX := 
 SIZE_OUTPUT := 
 C++_DEPS := 
 SU_FILES := 
@@ -41,12 +42,17 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32U5xx_HAL_Driver/Src \
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
+Middlewares/Third_Party/FreeRTOS/Source \
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure \
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
 TouchGFX/App \
 TouchGFX/build/MINGW32_NT-6.2/generated/fonts/src \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/bootingintro_screen \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/common \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/main_screen \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/screen1_screen \
+TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/test_video_screen \
 TouchGFX/build/MINGW32_NT-6.2/generated/gui_generated/src/touch_calibration_screen \
 TouchGFX/build/MINGW32_NT-6.2/generated/images/src \
 TouchGFX/build/MINGW32_NT-6.2/generated/images/src/__generated \
@@ -58,6 +64,7 @@ TouchGFX/build/MINGW32_NT-6.2/gui/src/common \
 TouchGFX/build/MINGW32_NT-6.2/gui/src/main_screen \
 TouchGFX/build/MINGW32_NT-6.2/gui/src/model \
 TouchGFX/build/MINGW32_NT-6.2/gui/src/screen1_screen \
+TouchGFX/build/MINGW32_NT-6.2/gui/src/test_video_screen \
 TouchGFX/build/MINGW32_NT-6.2/gui/src/touch_calibration_screen \
 TouchGFX/build/MINGW32_NT-6.2/simulator \
 TouchGFX/build/MINGW32_NT-6.2/touchgfx/framework/source/platform/driver/touch \

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.26.0">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Menu">
+      <Text Id="MENU_INFO" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">INFO</Translation>
+      </Text>
+      <Text Id="MENU_GUAGE" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">GAUGE</Translation>
+      </Text>
+      <Text Id="MENU_LIGHT" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">LIGHT</Translation>
+      </Text>
+      <Text Id="MENU_TEMPERATURE" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">HEAT</Translation>
+      </Text>
+      <Text Id="MENU_VOLUME" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">SOUND</Translation>
+      </Text>
+      <Text Id="MENU_BATTERY" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">CHARGE</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="Unsorted">
+      <Text Id="default_2digits" Alignment="Left" TypographyId="BigNumbers">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="one_wildcard" Alignment="Center" TypographyId="BigNumbers">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="default_3digits" Alignment="Left" TypographyId="BigNumbers">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_WHZU" Alignment="Center" TypographyId="MenuTitles">
+        <Translation Language="GB">Usage of this&#10;demo on STM32C091:</Translation>
+      </Text>
+      <Text Id="__SingleUse_11UD" Alignment="Right" TypographyId="MenuTitles">
+        <Translation Language="GB">18 / 36 KB&#10;131 / 256 KB&#10;1.4 / 8 MB</Translation>
+      </Text>
+      <Text Id="__SingleUse_5JHD" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">RAM:&#10;Flash:&#10;SPI Flash:</Translation>
+      </Text>
+      <Text Id="__SingleUse_IOKJ" Alignment="Center" TypographyId="MenuTitles">
+        <Translation Language="GB">This Entry-level&#10;GFX demo targets&#10;SPI displays run by&#10;e.g. STM32C0 using&#10;partial framebuffer</Translation>
+      </Text>
+      <Text Id="__SingleUse_UBXU" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">Web page</Translation>
+      </Text>
+      <Text Id="__SingleUse_XJ9G" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">Memory</Translation>
+      </Text>
+      <Text Id="__SingleUse_30F3" Alignment="Left" TypographyId="MenuTitles">
+        <Translation Language="GB">Demo info</Translation>
+      </Text>
+      <Text Id="__SingleUse_6RMJ" Alignment="Left" TypographyId="Units">
+        <Translation Language="GB">bar</Translation>
+      </Text>
+      <Text Id="__SingleUse_H3V4" Alignment="Left" TypographyId="Units">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="__SingleUse_9W0B" Alignment="Left" TypographyId="Units">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="TemperatureTitleText" Alignment="Center" TypographyId="BigNumbers">
+        <Translation Language="GB">Temperature</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="MenuTitles" Font="SairaSemiCondensed-Bold.ttf" Size="24" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="BigNumbers" Font="ShareTechMono-Regular.ttf" Size="100" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Units" Font="SairaSemiCondensed-Bold.ttf" Size="36" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+  </Typographies>
+</TextDatabase>

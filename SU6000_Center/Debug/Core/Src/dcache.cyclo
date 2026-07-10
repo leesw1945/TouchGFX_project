@@ -1,4 +1,4 @@
 ../Core/Src/dcache.c:31:6:MX_DCACHE1_Init	2
 ../Core/Src/dcache.c:53:6:MX_DCACHE2_Init	2
-../Core/Src/dcache.c:75:6:HAL_DCACHE_MspInit	3
-../Core/Src/dcache.c:102:6:HAL_DCACHE_MspDeInit	3
+../Core/Src/dcache.c:79:6:HAL_DCACHE_MspInit	3
+../Core/Src/dcache.c:106:6:HAL_DCACHE_MspDeInit	3

@@ -13,4 +13,4 @@
 ../Core/Src/Loader_Src.c:777:23:Write	120	static
 ../Core/Src/Loader_Src.c:860:23:SectorErase	96	static
 ../Core/Src/Loader_Src.c:928:23:MassErase	88	static
-../Core/Src/Loader_Src.c:975:28:Verify	136	static
+../Core/Src/Loader_Src.c:975:28:Verify	128	static

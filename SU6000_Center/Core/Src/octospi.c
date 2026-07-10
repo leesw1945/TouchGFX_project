@@ -50,10 +50,10 @@ void MX_OCTOSPI1_Init(void)
   hospi1.Init.ClockMode = HAL_OSPI_CLOCK_MODE_0;
   hospi1.Init.WrapSize = HAL_OSPI_WRAP_NOT_SUPPORTED;
   hospi1.Init.ClockPrescaler = 1;
-  hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_HALFCYCLE;
-  hospi1.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_ENABLE;
+  hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
+  hospi1.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
   hospi1.Init.ChipSelectBoundary = 0;
-  hospi1.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_BYPASSED;
+  hospi1.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_USED;
   hospi1.Init.MaxTran = 0;
   hospi1.Init.Refresh = 0;
   if (HAL_OSPI_Init(&hospi1) != HAL_OK)
@@ -67,8 +67,8 @@ void MX_OCTOSPI1_Init(void)
   {
     Error_Handler();
   }
-  HAL_OSPI_DLYB_Cfg_Struct.Units = 0;
-  HAL_OSPI_DLYB_Cfg_Struct.PhaseSel = 0;
+  HAL_OSPI_DLYB_Cfg_Struct.Units = 16;
+  HAL_OSPI_DLYB_Cfg_Struct.PhaseSel = 4;
   if (HAL_OSPI_DLYB_SetConfig(&hospi1, &HAL_OSPI_DLYB_Cfg_Struct) != HAL_OK)
   {
     Error_Handler();
@@ -128,7 +128,7 @@ void HAL_OSPI_MspInit(OSPI_HandleTypeDef* ospiHandle)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* OCTOSPI1 interrupt Init */
-    HAL_NVIC_SetPriority(OCTOSPI1_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(OCTOSPI1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(OCTOSPI1_IRQn);
   /* USER CODE BEGIN OCTOSPI1_MspInit 1 */
 
@@ -171,3 +171,4 @@ void HAL_OSPI_MspDeInit(OSPI_HandleTypeDef* ospiHandle)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+

@@ -26,7 +26,8 @@
     ],
     "AdditionalFeatures": [
       "CWRVector",
-      "VectorFonts"
+      "VectorFonts",
+      "Video"
     ]
   },
   "Version": "4.26.0"

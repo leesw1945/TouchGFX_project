@@ -21,6 +21,7 @@
 ../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/HALGPU2D.hpp:10:7:touchgfx::HALGPU2D::~HALGPU2D()	1
 ../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/HALGPU2D.hpp:10:7:virtual touchgfx::HALGPU2D::~HALGPU2D()	1
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:106:18:virtual void TouchGFXGeneratedHAL::flushFrameBuffer()	1
+../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:119:18:virtual void TouchGFXGeneratedHAL::unlockFrameBuffer()	1
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:30:7:TouchGFXGeneratedHAL::~TouchGFXGeneratedHAL()	1
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:30:7:virtual TouchGFXGeneratedHAL::~TouchGFXGeneratedHAL()	1
 ../TouchGFX/target/TouchGFXHAL.hpp:108:18:virtual void TouchGFXHAL::flushFrameBuffer()	1

@@ -147,19 +147,6 @@ void UsageFault_Handler(void)
 }
 
 /**
-  * @brief This function handles System service call via SWI instruction.
-  */
-void SVC_Handler(void)
-{
-  /* USER CODE BEGIN SVCall_IRQn 0 */
-
-  /* USER CODE END SVCall_IRQn 0 */
-  /* USER CODE BEGIN SVCall_IRQn 1 */
-
-  /* USER CODE END SVCall_IRQn 1 */
-}
-
-/**
   * @brief This function handles Debug monitor.
   */
 void DebugMon_Handler(void)
@@ -170,33 +157,6 @@ void DebugMon_Handler(void)
   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
 
   /* USER CODE END DebugMonitor_IRQn 1 */
-}
-
-/**
-  * @brief This function handles Pendable request for system service.
-  */
-void PendSV_Handler(void)
-{
-  /* USER CODE BEGIN PendSV_IRQn 0 */
-
-  /* USER CODE END PendSV_IRQn 0 */
-  /* USER CODE BEGIN PendSV_IRQn 1 */
-
-  /* USER CODE END PendSV_IRQn 1 */
-}
-
-/**
-  * @brief This function handles System tick timer.
-  */
-void SysTick_Handler(void)
-{
-  /* USER CODE BEGIN SysTick_IRQn 0 */
-
-  /* USER CODE END SysTick_IRQn 0 */
-
-  /* USER CODE BEGIN SysTick_IRQn 1 */
-
-  /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/
@@ -225,7 +185,8 @@ void RCC_IRQHandler(void)
 void GPDMA1_Channel0_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 0 */
-
+  extern volatile uint32_t dbg_gpdma_ch0_irq;
+  dbg_gpdma_ch0_irq++;
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
   HAL_DMA_IRQHandler(&handle_GPDMA1_Channel0);
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 1 */
@@ -239,7 +200,8 @@ void GPDMA1_Channel0_IRQHandler(void)
 void GPDMA1_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel1_IRQn 0 */
-
+  extern volatile uint32_t dbg_gpdma_ch1_irq;
+  dbg_gpdma_ch1_irq++;
   /* USER CODE END GPDMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&handle_GPDMA1_Channel1);
   /* USER CODE BEGIN GPDMA1_Channel1_IRQn 1 */
@@ -351,7 +313,8 @@ void LTDC_ER_IRQHandler(void)
 void JPEG_IRQHandler(void)
 {
   /* USER CODE BEGIN JPEG_IRQn 0 */
-
+  extern volatile uint32_t dbg_jpeg_irq;
+  dbg_jpeg_irq++;
   /* USER CODE END JPEG_IRQn 0 */
   HAL_JPEG_IRQHandler(&hjpeg);
   /* USER CODE BEGIN JPEG_IRQn 1 */

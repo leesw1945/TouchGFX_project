@@ -33,7 +33,7 @@
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:3773:6:HAL_RCCEx_CRSConfig	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:3815:6:HAL_RCCEx_CRSSoftwareSynchronizationGenerate	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:3825:6:HAL_RCCEx_CRSGetSynchronizationInfo	1
-../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:3858:10:HAL_RCCEx_CRSWaitSynchronization	10
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:3858:10:HAL_RCCEx_CRSWaitSynchronization	9
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:4006:13:HAL_RCCEx_CRS_SyncOkCallback	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:4017:13:HAL_RCCEx_CRS_SyncWarnCallback	1
 ../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c:4028:13:HAL_RCCEx_CRS_ExpectedSyncCallback	1

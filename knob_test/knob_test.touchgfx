@@ -1,0 +1,1957 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "MenuScreen",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "backgroundBox",
+            "Width": 240,
+            "Height": 240
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "menuScrollWheel",
+            "Width": 240,
+            "Height": 240,
+            "SelectedItemOffset": 70,
+            "ItemTemplateName": "MenuIconCustomContainer",
+            "NumberofItems": 6,
+            "InitialElement": 1,
+            "ItemMargin": 10,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
+          },
+          {
+            "Type": "Image",
+            "Name": "gradientImage",
+            "X": 184,
+            "Width": 56,
+            "Height": 240,
+            "RelativeFilename": "menu_gradient_battery.png",
+            "Moveable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleTextArea",
+            "X": 116,
+            "Y": 104,
+            "Width": 82,
+            "Height": 24,
+            "TextId": "MENU_BATTERY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Fadeable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "scrollDown"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "scrollUp"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "enter"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "scrollDown"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "scrollUp"
+            }
+          },
+          {
+            "InteractionName": "Open_Battery_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToBattery"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "BatteryScreen"
+            }
+          },
+          {
+            "InteractionName": "Open_Volume_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToVolume"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "VolumeScreen"
+            }
+          },
+          {
+            "InteractionName": "Open_Light_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToLight"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "LightScreen"
+            }
+          },
+          {
+            "InteractionName": "Open_Temperature_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToTemperature"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "TemperatureScreen"
+            }
+          },
+          {
+            "InteractionName": "Open_Gauge_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToGauge"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "GaugeScreen"
+            }
+          },
+          {
+            "InteractionName": "Open_Info_Screen",
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call MenuScreen goToInfo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen1"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "goToVolume"
+          },
+          {
+            "Name": "goToLight"
+          },
+          {
+            "Name": "goToTemperature"
+          },
+          {
+            "Name": "goToGauge"
+          },
+          {
+            "Name": "goToBattery"
+          },
+          {
+            "Name": "goToInfo"
+          }
+        ]
+      },
+      {
+        "Name": "GaugeScreen",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "backgroundImage",
+            "Width": 240,
+            "Height": 240,
+            "RelativeFilename": "gauge_background.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "needleImage",
+            "X": 28,
+            "Y": 150,
+            "Width": 60,
+            "Height": 56,
+            "RelativeFilename": "gauge_needle\\gauge_needle_00.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 95,
+            "Y": 183,
+            "Width": 50,
+            "Height": 36,
+            "TextId": "__SingleUse_6RMJ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Container",
+            "Name": "numberContainer",
+            "X": 75,
+            "Y": 85,
+            "Width": 90,
+            "Height": 70,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "valueTextArea",
+                "Y": -30,
+                "Width": 90,
+                "Height": 100,
+                "TextId": "one_wildcard",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "TextId": "default_2digits",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right.png",
+                "IconPressed": "navigate_right.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left.png",
+                "IconPressed": "navigate_left.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home.png",
+                "IconPressed": "navigate_home.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreasePressure"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreasePressure"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increasePressure"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increasePressure"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreasePressure"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increasePressure"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "BatteryScreen",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "fillBox",
+            "Width": 240,
+            "Height": 240,
+            "Color": {
+              "Red": 17,
+              "Green": 141,
+              "Blue": 53
+            }
+          },
+          {
+            "Type": "AnimatedImage",
+            "Name": "waveAnimatedImage",
+            "Y": 108,
+            "Width": 240,
+            "Height": 24,
+            "FileNameFirst": "battery_animation\\battery_wave_00.png",
+            "FileNameLast": "battery_animation\\battery_wave_39.png",
+            "UpdateTicksInterval": 50,
+            "StartOnLoad": true,
+            "LoopEnabled": true
+          },
+          {
+            "Type": "TiledImage",
+            "Name": "backgroundTiledImage",
+            "Width": 240,
+            "Height": 108,
+            "FileName": "battery_background.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "percentTextArea",
+            "X": 106,
+            "Y": 176,
+            "Width": 29,
+            "Height": 36,
+            "TextId": "__SingleUse_H3V4",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Container",
+            "Name": "numberContainer",
+            "X": 48,
+            "Y": 85,
+            "Width": 144,
+            "Height": 70,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "chargeTextArea",
+                "Y": -30,
+                "Width": 144,
+                "Height": 100,
+                "TextId": "one_wildcard",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "TextId": "default_3digits",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Image",
+            "Name": "chargeIconImage",
+            "X": 111,
+            "Y": 26,
+            "Width": 19,
+            "Height": 29,
+            "RelativeFilename": "battery_icon.png"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home.png",
+                "IconPressed": "navigate_home.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "VolumeScreen",
+        "CanvasBufferSize": 3600,
+        "Components": [
+          {
+            "Type": "CircleProgress",
+            "Name": "circleProgress",
+            "Width": 240,
+            "Height": 240,
+            "Color": {
+              "Green": 199,
+              "Blue": 255
+            },
+            "CenterX": 120.0,
+            "CenterY": 120.0,
+            "Radius": 110.0,
+            "LineWidth": 20.0,
+            "StartAngle": -141.0,
+            "EndAngle": 141.0,
+            "CapPrecision": "Round",
+            "FileNameBackground": "sound_background.png",
+            "ProgressRangeMax": 30,
+            "ProgressInitialValue": 21
+          },
+          {
+            "Type": "Container",
+            "Name": "numberContainer",
+            "X": 75,
+            "Y": 85,
+            "Width": 90,
+            "Height": 70,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "volumeTextArea",
+                "Y": -30,
+                "Width": 90,
+                "Height": 100,
+                "TextId": "one_wildcard",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "TextId": "default_2digits",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right.png",
+                "IconPressed": "navigate_right.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left.png",
+                "IconPressed": "navigate_left.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home.png",
+                "IconPressed": "navigate_home.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseVolume"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseVolume"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseVolume"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseVolume"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseVolume"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseVolume"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "LightScreen",
+        "Components": [
+          {
+            "Type": "ImageProgress",
+            "Name": "lightImageProgress",
+            "Width": 240,
+            "Height": 240,
+            "FileNameProgress": "light_fill.png",
+            "AnchorAtZero": true,
+            "Direction": "Up",
+            "FileNameBackground": "light_background.png",
+            "IndicatorPositionX": 28,
+            "IndicatorPositionY": 28,
+            "IndicatorPositionWidth": 184,
+            "IndicatorPositionHeight": 177,
+            "ProgressRangeMax": 100,
+            "ProgressInitialValue": 100
+          },
+          {
+            "Type": "TextArea",
+            "Name": "percentTextArea",
+            "X": 106,
+            "Y": 161,
+            "Width": 29,
+            "Height": 36,
+            "TextId": "__SingleUse_9W0B",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Container",
+            "Name": "numberContainer",
+            "X": 48,
+            "Y": 85,
+            "Width": 144,
+            "Height": 70,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "lightTextArea",
+                "Y": -30,
+                "Width": 144,
+                "Height": 100,
+                "TextId": "one_wildcard",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "TextId": "default_3digits",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right.png",
+                "IconPressed": "navigate_right.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left.png",
+                "IconPressed": "navigate_left.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home.png",
+                "IconPressed": "navigate_home.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseBrightness"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseBrightness"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseBrightness"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseBrightness"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseBrightness"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseBrightness"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "TemperatureScreen",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "Width": 240,
+            "Height": 240,
+            "RelativeFilename": "heat_fill.png"
+          },
+          {
+            "Type": "Container",
+            "Name": "alternativeNumberContainer",
+            "X": 75,
+            "Y": 85,
+            "Width": 90,
+            "Height": 70,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "alternativeTemperatureTextArea",
+                "Y": -30,
+                "Width": 90,
+                "Height": 100,
+                "TextId": "one_wildcard",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "TextId": "default_2digits",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "fillContainer",
+            "Width": 240,
+            "Height": 120,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "Width": 240,
+                "Height": 240,
+                "RelativeFilename": "heat_background.png"
+              },
+              {
+                "Type": "Container",
+                "Name": "numberContainer",
+                "X": 75,
+                "Y": 85,
+                "Width": 90,
+                "Height": 70,
+                "Components": [
+                  {
+                    "Type": "TextArea",
+                    "Name": "temperatureTextArea",
+                    "Y": -30,
+                    "Width": 90,
+                    "Height": 100,
+                    "TextId": "one_wildcard",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 229,
+                      "Green": 36,
+                      "Blue": 62
+                    },
+                    "Wildcard1": {
+                      "TextId": "default_2digits",
+                      "UseBuffer": true,
+                      "BufferSize": 10
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right.png",
+                "IconPressed": "navigate_right.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left.png",
+                "IconPressed": "navigate_left.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home.png",
+                "IconPressed": "navigate_home.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseTemperature"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseTemperature"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseTemperature"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseTemperature"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseTemperature"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseTemperature"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "InfoScreen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "backGroundBox",
+            "Width": 240,
+            "Height": 240
+          },
+          {
+            "Type": "Box",
+            "Name": "bottomBox",
+            "Y": 200,
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 132,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 114,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 96,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator_active.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "contentTextArea",
+            "X": 18,
+            "Y": 46,
+            "Width": 204,
+            "Height": 148,
+            "TextId": "__SingleUse_IOKJ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "topBox",
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleTextArea",
+            "X": 69,
+            "Y": 6,
+            "Width": 102,
+            "Height": 29,
+            "TextId": "__SingleUse_30F3",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right_dark.png",
+                "IconPressed": "navigate_right_dark.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home_dark.png",
+                "IconPressed": "navigate_home_dark.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "InfoScreen2",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "backGroundBox",
+            "Width": 240,
+            "Height": 240
+          },
+          {
+            "Type": "Box",
+            "Name": "bottomBox",
+            "Y": 200,
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 132,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 114,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator_active.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 96,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "Box",
+            "Name": "topBox",
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleTextArea",
+            "X": 78,
+            "Y": 6,
+            "Width": 84,
+            "Height": 29,
+            "TextId": "__SingleUse_XJ9G",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "NumbersTextArea",
+            "X": 105,
+            "Y": 98,
+            "Width": 123,
+            "Height": 87,
+            "TextId": "__SingleUse_11UD",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "regionsTextArea",
+            "X": 13,
+            "Y": 98,
+            "Width": 100,
+            "Height": 87,
+            "TextId": "__SingleUse_5JHD",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea",
+            "X": 13,
+            "Y": 40,
+            "Width": 214,
+            "Height": 58,
+            "TextId": "__SingleUse_WHZU",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "rightButton",
+            "X": 160,
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 50,
+                "Y": 50,
+                "IconReleased": "navigate_right_dark.png",
+                "IconPressed": "navigate_right_dark.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left_dark.png",
+                "IconPressed": "navigate_left_dark.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home_dark.png",
+                "IconPressed": "navigate_home_dark.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Down",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 50
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen3"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen1"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Right",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 54
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen3"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen1"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen1"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Right",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rightButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen3"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "InfoScreen3",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "backGroundBox",
+            "Width": 240,
+            "Height": 240
+          },
+          {
+            "Type": "Box",
+            "Name": "bottomBox",
+            "Y": 200,
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 132,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator_active.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 114,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 96,
+            "Y": 214,
+            "Width": 12,
+            "Height": 12,
+            "RelativeFilename": "content_indicator.png"
+          },
+          {
+            "Type": "QRCode",
+            "Name": "qrCode1",
+            "X": 58,
+            "Y": 58,
+            "Width": 125,
+            "Height": 125,
+            "QRVersion": 2,
+            "Scale": 5,
+            "Text": "st.com/STM32-entry-level-GUI",
+            "BackgroundColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "topBox",
+            "Width": 240,
+            "Height": 40,
+            "Color": {
+              "Red": 217,
+              "Green": 217,
+              "Blue": 217
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleTextArea",
+            "X": 72,
+            "Y": 6,
+            "Width": 97,
+            "Height": 29,
+            "TextId": "__SingleUse_UBXU",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Container",
+            "Name": "buttonContainer",
+            "Width": 240,
+            "Height": 240,
+            "Components": []
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "leftButton",
+            "Y": 160,
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "RepeatButtonTrigger",
+              "Delay": 200,
+              "Interval": 50
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 50,
+                "IconReleased": "navigate_left_dark.png",
+                "IconPressed": "navigate_left_dark.png"
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "homeButton",
+            "Width": 80,
+            "Height": 80,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "IconButtonStyle",
+                "X": 10,
+                "Y": 10,
+                "IconReleased": "navigate_home_dark.png",
+                "IconPressed": "navigate_home_dark.png"
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Hardware_Button_Left",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 52
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Enter",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 53
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Hardware_Button_Up",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 56
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Home",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "homeButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MenuScreen"
+            }
+          },
+          {
+            "InteractionName": "Touch_Button_Left",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "leftButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "InfoScreen2"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "MenuIconCustomContainer",
+        "Width": 240,
+        "Height": 80,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "iconImage",
+            "X": 20,
+            "Width": 80,
+            "Height": 80,
+            "RelativeFilename": "menu_icon_battery.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ]
+      }
+    ],
+    "Name": "knob_test",
+    "Resolution": {
+      "Width": 240,
+      "Height": 240
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "MenuScreen",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "touchgfx",
+    "UIPath": ".",
+    "ApplicationTemplateName": "Simulator",
+    "ApplicationTemplateVersion": "2.0.0",
+    "ApplicationTemplateDescription": "Simulator Application Template",
+    "AvailableColorDepths": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+    ],
+    "AvailableLCDs": {
+      "1": "LCD1bpp",
+      "2": "LCD2bpp",
+      "4": "LCD4bpp",
+      "8": "LCD8bpp_ARGB2222",
+      "16": "LCD16bpp",
+      "24": "LCD24bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD24bpp": {
+        "Id": "LCD24bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommand": "",
+    "FlashTargetCommand": "",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "AdditionalFeatures": [
+      "VectorFonts"
+    ]
+  },
+  "Version": "4.26.0",
+  "CreatedBy": "4.26.0"
+}
