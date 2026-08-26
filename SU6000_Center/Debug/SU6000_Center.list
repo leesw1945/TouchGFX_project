@@ -15,11 +15,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   5 TextFlashSection 00000114  08048d54  08048d54  00049d54  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  6 .ARM.extab    00000000  08048e68  08048e68  00a49394  2**0
+  6 .ARM.extab    00000000  08048e68  08048e68  009c5770  2**0
                   CONTENTS, READONLY
   7 .ARM          00000008  08048e68  08048e68  00049e68  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .preinit_array 00000000  08048e70  08048e70  00a49394  2**0
+  8 .preinit_array 00000000  08048e70  08048e70  009c5770  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   9 .init_array   00000018  08048e70  08048e70  00049e70  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
@@ -39,31 +39,31 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  17 .framebuffer  00177000  20160000  20160000  0004f000  2**2
                   ALLOC
- 18 ExtFlashSection 009fa394  90000000  90000000  0004f000  2**5
+ 18 ExtFlashSection 00976770  90000000  90000000  0004f000  2**5
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
  19 ._user_heap_stack 00000600  20031a80  20031a80  0004fa80  2**0
                   ALLOC
- 20 .ARM.attributes 00000036  00000000  00000000  00a49394  2**0
+ 20 .ARM.attributes 00000036  00000000  00000000  009c5770  2**0
                   CONTENTS, READONLY
- 21 .debug_info   000f1992  00000000  00000000  00a493ca  2**0
+ 21 .debug_info   000f1992  00000000  00000000  009c57a6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_abbrev 0001afe8  00000000  00000000  00b3ad5c  2**0
+ 22 .debug_abbrev 0001afe8  00000000  00000000  00ab7138  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_aranges 00005b30  00000000  00000000  00b55d48  2**3
+ 23 .debug_aranges 00005b30  00000000  00000000  00ad2120  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_rnglists 000042e4  00000000  00000000  00b5b878  2**0
+ 24 .debug_rnglists 000042e4  00000000  00000000  00ad7c50  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .debug_macro  0005704e  00000000  00000000  00b5fb5c  2**0
+ 25 .debug_macro  0005704e  00000000  00000000  00adbf34  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 26 .debug_line   00070893  00000000  00000000  00bb6baa  2**0
+ 26 .debug_line   00070893  00000000  00000000  00b32f82  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_str    001d565d  00000000  00000000  00c2743d  2**0
+ 27 .debug_str    001d564f  00000000  00000000  00ba3815  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 28 .comment      00000088  00000000  00000000  00dfca9a  2**0
+ 28 .comment      00000088  00000000  00000000  00d78e64  2**0
                   CONTENTS, READONLY
- 29 .debug_frame  000173b8  00000000  00000000  00dfcb24  2**2
+ 29 .debug_frame  000173b8  00000000  00000000  00d78eec  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 30 .debug_line_str 00000051  00000000  00000000  00e13edc  2**0
+ 30 .debug_line_str 00000051  00000000  00000000  00d902a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -52450,17 +52450,17 @@ BootingIntroViewBase::BootingIntroViewBase() :
  80133c4:	2200      	movs	r2, #0
  80133c6:	2100      	movs	r1, #0
  80133c8:	f7ff fcda 	bl	8012d80 <_ZN8touchgfx8Drawable11setPositionEssss>
-    video1.setVideoData(video_video1_800x480_bin_start, video_video1_800x480_bin_length);
+    video1.setVideoData(video_output3_bin_start, video_output3_bin_length);
  80133cc:	687b      	ldr	r3, [r7, #4]
  80133ce:	336c      	adds	r3, #108	@ 0x6c
  80133d0:	4a14      	ldr	r2, [pc, #80]	@ (8013424 <_ZN20BootingIntroViewBaseC1Ev+0x114>)
  80133d2:	4915      	ldr	r1, [pc, #84]	@ (8013428 <_ZN20BootingIntroViewBaseC1Ev+0x118>)
  80133d4:	4618      	mov	r0, r3
  80133d6:	f00f fd60 	bl	8022e9a <_ZN8touchgfx11VideoWidget12setVideoDataEPKhm>
-    video1.setRepeat(false);
+    video1.setRepeat(true);
  80133da:	687b      	ldr	r3, [r7, #4]
  80133dc:	336c      	adds	r3, #108	@ 0x6c
- 80133de:	2100      	movs	r1, #0
+ 80133de:	2101      	movs	r1, #1
  80133e0:	4618      	mov	r0, r3
  80133e2:	f00f fd24 	bl	8022e2e <_ZNK8touchgfx11VideoWidget9setRepeatEb>
     video1.play();
@@ -52492,7 +52492,7 @@ BootingIntroViewBase::BootingIntroViewBase() :
  801341a:	bf00      	nop
  801341c:	08044778 	.word	0x08044778
  8013420:	080134a5 	.word	0x080134a5
- 8013424:	00543854 	.word	0x00543854
+ 8013424:	004bfc2e 	.word	0x004bfc2e
  8013428:	904b6b40 	.word	0x904b6b40
 
 0801342c <_ZN20BootingIntroViewBaseD1Ev>:

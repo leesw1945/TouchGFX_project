@@ -9,9 +9,9 @@
             "Name": "video1",
             "Width": 800,
             "Height": 480,
-            "Preset": "video_theme\\presets\\video1_800x480.json",
-            "VideoFileName": "__generated\\video1_800x480.avi",
-            "AutoPlay": true
+            "VideoFileName": "output3.avi",
+            "AutoPlay": true,
+            "Loop": true
           }
         ],
         "Interactions": [

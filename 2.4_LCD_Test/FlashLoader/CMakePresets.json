@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "Nucleo",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/Nucleo",
+            "toolchainFile": "${sourceDir}/gcc-arm-loader.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "LOADER_PINMAP": "1"
+            }
+        },
+        {
+            "name": "Custom",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/Custom",
+            "toolchainFile": "${sourceDir}/gcc-arm-loader.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "LOADER_PINMAP": "2"
+            }
+        }
+    ],
+    "buildPresets": [
+        { "name": "Nucleo", "configurePreset": "Nucleo" },
+        { "name": "Custom", "configurePreset": "Custom" }
+    ]
+}
