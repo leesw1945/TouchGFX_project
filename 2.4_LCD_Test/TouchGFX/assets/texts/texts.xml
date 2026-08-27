@@ -5,6 +5,44 @@
   </Languages>
   <Texts>
     <TextGroup Id="Group1" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_PV3B" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_S214" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_GTKI" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_3WZD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_MZQ8" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;° </Translation>
+      </Text>
+      <Text Id="__SingleUse_W3RD" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;° </Translation>
+      </Text>
+      <Text Id="__SingleUse_YVQA" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      </Text>
+      <Text Id="__SingleUse_X4XG" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      </Text>
+      <Text Id="__SingleUse_XQ6Z" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ARM HEIGHT</Translation>
+      </Text>
+      <Text Id="__SingleUse_4AY2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">DETECTOR DEG</Translation>
+      </Text>
+      <Text Id="__SingleUse_E4J6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ARM DEG</Translation>
+      </Text>
+      <Text Id="__SingleUse_RZYY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">SID</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />

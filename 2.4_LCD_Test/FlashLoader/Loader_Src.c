@@ -78,8 +78,6 @@
 static SPI_HandleTypeDef hspi_ldr;
 static uint8_t g_id[3];
 
-/* Debug breadcrumbs inside the loader image (.data), read back over SWD
- * after a failure: [0]=magic, [1]=stage, [2]=JEDEC id, [3]=status, [4]=extra */
 /* Diagnostics: ONLY active in the standalone self-test build. Under
  * STM32CubeProgrammer any RAM we scribble on can be the tool's own data
  * buffer (observed at 0x20008000) and corrupts the flashed data. */
@@ -593,7 +591,7 @@ KeepInCompilation uint64_t Verify(uint32_t MemoryAddr, uint32_t RAMBufferAddr,
 
 #ifdef LOADER_SELFTEST
 /* Self-test firmware: runs the loader logic as a normal application and
- * leaves results at 0x20020000 for SWD readout:
+ * leaves results at LDR_DBG (0x20008000) for SWD readout:
  *   [0]=magic [1]=last stage [2]=JEDEC [3]=status [4]=extra
  *   [5]=Init result [6]=SectorErase result [7]=Write result
  *   [8]=readback word0 (expect 0x03020100) [9]=0xC0FFEE end marker */
@@ -604,7 +602,7 @@ int main(void)
 
     LDR_DBG[5] = (uint32_t)Init();
 
-    /* fill AFTER Init() - Init clears .bss and would wipe the pattern */
+    /* incrementing byte pattern 00 01 02 ... FF */
     for (uint32_t i = 0; i < sizeof(pattern); i++)
     {
         pattern[i] = (uint8_t)i;
