@@ -66,6 +66,10 @@ extern void touchgfxSignalVSync(void);
 static volatile int transmitting = 0;   /* a pixel block is on the SPI bus  */
 static volatile int lcd_ready    = 0;   /* init done, TE pulses are valid   */
 
+/* diagnostics (SWD로 읽는 카운터): 값이 증가하는지가 곧 그 경로의 생사 확인 */
+volatile uint32_t diag_te_count     = 0; /* TE 인터럽트 발생 횟수            */
+volatile uint32_t diag_blocks_sent  = 0; /* LCD로 전송된 픽셀 블록 수        */
+
 /* Low level helpers ----------------------------------------------------------*/
 
 /* Send one command byte (DCX low) followed by n parameter bytes (DCX high).
@@ -172,6 +176,7 @@ void touchgfxDisplayDriverTransmitBlock(const uint8_t *pixels,
                                         uint16_t w, uint16_t h)
 {
     transmitting = 1;
+    diag_blocks_sent++;
 
     LCD_SetWindow(x, y, w, h);
 
@@ -208,6 +213,7 @@ void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin)
 {
     if ((GPIO_Pin == DISP_TE_Pin) && lcd_ready)
     {
+        diag_te_count++;
         touchgfxSignalVSync();
     }
 }

@@ -44,8 +44,8 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/screen_screen/screenViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/BitmapDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_clay_theme_images_backgrounds_272x480_shattered_rain.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_clay_theme_images_bars_272x480_bottom_floating_base.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bar_163x31.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bg_240x320.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/LanguageGb.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/Texts.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/TypedTextDatabase.cpp

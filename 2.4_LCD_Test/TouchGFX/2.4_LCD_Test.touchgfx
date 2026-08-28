@@ -5,12 +5,47 @@
         "Name": "screen",
         "Components": [
           {
-            "Type": "ScalableImage",
-            "Name": "scalableImage1",
+            "Type": "Image",
+            "Name": "image1",
             "Width": 240,
             "Height": 320,
-            "Filename": "__generated\\clay_theme_images_backgrounds_272x480_shattered_rain.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
+            "RelativeFilename": "bg_240x320.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 38,
+            "Y": 51,
+            "Width": 163,
+            "Height": 31,
+            "RelativeFilename": "bar_163x31.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 38,
+            "Y": 122,
+            "Width": 163,
+            "Height": 31,
+            "RelativeFilename": "bar_163x31.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image4",
+            "X": 38,
+            "Y": 195,
+            "Width": 163,
+            "Height": 31,
+            "RelativeFilename": "bar_163x31.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image5",
+            "X": 38,
+            "Y": 267,
+            "Width": 163,
+            "Height": 31,
+            "RelativeFilename": "bar_163x31.png"
           },
           {
             "Type": "TextArea",
@@ -18,7 +53,7 @@
             "X": 38,
             "Y": 21,
             "Width": 37,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_RZYY",
             "TextRotation": "0",
             "AutoSize": true
@@ -29,7 +64,7 @@
             "X": 38,
             "Y": 93,
             "Width": 131,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_XQ6Z",
             "TextRotation": "0",
             "AutoSize": true
@@ -40,7 +75,7 @@
             "X": 38,
             "Y": 165,
             "Width": 96,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_E4J6",
             "TextRotation": "0",
             "AutoSize": true
@@ -51,50 +86,10 @@
             "X": 37,
             "Y": 237,
             "Width": 160,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_4AY2",
             "TextRotation": "0",
             "AutoSize": true
-          },
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage2",
-            "X": 37,
-            "Y": 51,
-            "Width": 163,
-            "Height": 31,
-            "Filename": "__generated\\clay_theme_images_bars_272x480_bottom_floating_base.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
-          },
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage2_1",
-            "X": 38,
-            "Y": 122,
-            "Width": 163,
-            "Height": 31,
-            "Filename": "__generated\\clay_theme_images_bars_272x480_bottom_floating_base.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
-          },
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage2_2",
-            "X": 37,
-            "Y": 195,
-            "Width": 163,
-            "Height": 31,
-            "Filename": "__generated\\clay_theme_images_bars_272x480_bottom_floating_base.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
-          },
-          {
-            "Type": "ScalableImage",
-            "Name": "scalableImage2_3",
-            "X": 38,
-            "Y": 267,
-            "Width": 163,
-            "Height": 31,
-            "Filename": "__generated\\clay_theme_images_bars_272x480_bottom_floating_base.png",
-            "ScalingAlgorithm": "Nearest-neighbor"
           },
           {
             "Type": "TextArea",
@@ -102,7 +97,7 @@
             "X": 123,
             "Y": 56,
             "Width": 42,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_X4XG",
             "TextRotation": "0",
             "AutoSize": true,
@@ -118,7 +113,7 @@
             "X": 123,
             "Y": 127,
             "Width": 42,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_YVQA",
             "TextRotation": "0",
             "AutoSize": true,
@@ -134,7 +129,7 @@
             "X": 123,
             "Y": 200,
             "Width": 31,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_W3RD",
             "TextRotation": "0",
             "AutoSize": true,
@@ -150,7 +145,7 @@
             "X": 123,
             "Y": 272,
             "Width": 31,
-            "Height": 20,
+            "Height": 24,
             "TextId": "__SingleUse_MZQ8",
             "TextRotation": "0",
             "AutoSize": true,
@@ -159,6 +154,74 @@
               "UseBuffer": true,
               "BufferSize": 360
             }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 9,
+            "Width": 222,
+            "Height": 10,
+            "Color": {
+              "Red": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box4",
+            "X": 9,
+            "Y": 310,
+            "Width": 222,
+            "Height": 10,
+            "Color": {
+              "Red": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 10,
+            "Height": 320,
+            "Color": {
+              "Red": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box3",
+            "X": 230,
+            "Width": 10,
+            "Height": 320,
+            "Color": {
+              "Red": 255
+            }
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "X": 50,
+            "Y": 136,
+            "Width": 146,
+            "Height": 48,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 255
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea9",
+            "X": 67,
+            "Y": 148,
+            "Width": 112,
+            "Height": 24,
+            "TextId": "__SingleUse_TN51",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": []

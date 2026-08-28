@@ -86,7 +86,17 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-
+  /* diagnostics: MSP와 스택 40워드를 0x20020000에 덤프 (호출 경로 복원용) */
+  {
+    uint32_t *sp = (uint32_t *)__get_MSP();
+    volatile uint32_t *out = (volatile uint32_t *)0x20020000UL;
+    out[0] = 0xDEADDEADUL;
+    out[1] = (uint32_t)sp;
+    for (int i = 0; i < 40; i++)
+    {
+      out[2 + i] = sp[i];
+    }
+  }
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
