@@ -37,6 +37,12 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# Add TouchGFX engine/assets (created by TouchGFX Designer "Generate Code";
+# until then the guard keeps CMake configure working)
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/cmake/touchgfx/CMakeLists.txt)
+    add_subdirectory(cmake/touchgfx)
+endif()
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -45,6 +51,12 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
+    Core/Src/dbg_console.c
+    Core/Src/display_driver.c
+    Core/Src/flash_driver.c
+    Core/Src/key_scan.c
+    Core/Src/can_app.c
+    Core/Src/app_main.c
 )
 
 # Add include paths

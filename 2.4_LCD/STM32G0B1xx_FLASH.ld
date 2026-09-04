@@ -57,6 +57,7 @@ MEMORY
 {
 RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 144K
 FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 128K
+SPI_FLASH (r)   : ORIGIN = 0x90000000, LENGTH = 8M   /* MX25L6433F, virtual address for TouchGFX assets */
 }
 
 /* Highest address of the user mode stack */
@@ -64,7 +65,7 @@ _estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of RAM */
 _sstack = _estack - _Min_Stack_Size;
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x200;      /* required amount of heap  */
-_Min_Stack_Size = 0x400; /* required amount of stack */
+_Min_Stack_Size = 0x800; /* required amount of stack */
 
 /* Define output sections */
 SECTIONS
@@ -102,6 +103,43 @@ SECTIONS
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
   } >FLASH
+
+  /* TouchGFX: sections that MUST stay in internal flash (CPU dereferences
+   * them directly: unicode lookup tables and text/translation data) */
+  FontSearchFlashSection :
+  {
+    . = ALIGN(4);
+    *(FontSearchFlashSection)
+    *(FontSearchFlashSection*)
+    . = ALIGN(4);
+  } >FLASH
+
+  TextFlashSection :
+  {
+    . = ALIGN(4);
+    *(TextFlashSection)
+    *(TextFlashSection*)
+    . = ALIGN(4);
+  } >FLASH
+
+  /* TouchGFX: image and font glyph data in the external SPI NOR flash.
+   * 0x90000000 is a virtual address - only the flash loader (.stldr) and
+   * the DataReader (flash_driver.c) know how to reach it. */
+  ExtFlashSection :
+  {
+    . = ALIGN(4);
+    *(ExtFlashSection)
+    *(ExtFlashSection*)
+    . = ALIGN(4);
+  } >SPI_FLASH
+
+  FontFlashSection :
+  {
+    . = ALIGN(4);
+    *(FontFlashSection)
+    *(FontFlashSection*)
+    . = ALIGN(4);
+  } >SPI_FLASH
 
   .ARM.extab (READONLY) : /* The "READONLY" keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {

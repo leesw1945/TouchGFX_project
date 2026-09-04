@@ -1,0 +1,30 @@
+
+{
+  "Application": {
+    "Name": "2.4_LCD",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "AvailableColorDepths": [ 16 ],
+    "AvailableLCDs":
+    {
+      "16": "LCD16bppSerialFlash"
+    },
+    "AvailableResolutions": [
+      {
+        "Width": 240,
+        "Height": 320
+      }
+    ],
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "Family": "STM32G0",
+    "SubFamily": "STM32G0x1",
+    "Platform": "m0+",
+    "Toolchain": "CMake",
+    "ProjectFile": "../2.4_LCD.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+    ],
+    "AdditionalFeatures": [
+    ]
+  },
+  "Version": "4.26.1"
+}

@@ -18,12 +18,21 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "crc.h"
+#include "dma.h"
 #include "fdcan.h"
+#include "spi.h"
+#include "usb_device.h"
 #include "gpio.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include "dbg_console.h"
+#include "display_driver.h"
+#include "flash_driver.h"
+#include "app_main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,9 +96,27 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_FDCAN1_Init();
+  MX_SPI1_Init();
+  MX_SPI2_Init();
+  MX_CRC_Init();
+  MX_USB_Device_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+  dbg_console_init();
+  printf("\r\n[2.4_LCD] boot. SYSCLK=%luHz\r\n", SystemCoreClock);
 
+  if (FLASH_DRIVER_Init() == 0)
+  {
+    /* MX25L6433F 무응답 (JEDEC ID 불일치) - 배선/전원 확인 필요.
+     * UI 에셋이 이 플래시에 있으므로 더 진행해도 의미가 없다. */
+    printf("[2.4_LCD] SPI flash JEDEC=0x%06lX (expected 0xC22017)\r\n",
+           (unsigned long)FLASH_DRIVER_ReadJEDEC());
+    Error_Handler();
+  }
+  LCD_Init();
+  AppMain_Init();   /* CAN 시작 + 키 백라이트 ON (주기 처리는 Model::tick에서) */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,6 +125,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -119,17 +147,15 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
-  RCC_OscInitStruct.PLL.PLLN = 8;
+  RCC_OscInitStruct.PLL.PLLN = 24;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV4;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV3;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();

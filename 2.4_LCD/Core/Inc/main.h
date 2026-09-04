@@ -57,6 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define CAN_TX_LED_Pin GPIO_PIN_13
+#define CAN_TX_LED_GPIO_Port GPIOC
+#define LCD_BL_Pin GPIO_PIN_1
+#define LCD_BL_GPIO_Port GPIOA
+#define DISP_RESET_Pin GPIO_PIN_2
+#define DISP_RESET_GPIO_Port GPIOA
+#define DISP_DCX_Pin GPIO_PIN_3
+#define DISP_DCX_GPIO_Port GPIOA
+#define SPI1_NCS_Pin GPIO_PIN_4
+#define SPI1_NCS_GPIO_Port GPIOA
 #define cKEY0_Pin GPIO_PIN_0
 #define cKEY0_GPIO_Port GPIOB
 #define cKEY1_Pin GPIO_PIN_1
@@ -67,10 +77,19 @@ void Error_Handler(void);
 #define cKEY10_GPIO_Port GPIOB
 #define cKEY11_Pin GPIO_PIN_11
 #define cKEY11_GPIO_Port GPIOB
+#define SPI2_NCS_Pin GPIO_PIN_12
+#define SPI2_NCS_GPIO_Port GPIOB
 #define DISP_TE_Pin GPIO_PIN_8
 #define DISP_TE_GPIO_Port GPIOA
-#define LED1_Pin GPIO_PIN_2
-#define LED1_GPIO_Port GPIOD
+#define DISP_TE_EXTI_IRQn EXTI4_15_IRQn
+#define CAN_RX_LED_Pin GPIO_PIN_6
+#define CAN_RX_LED_GPIO_Port GPIOC
+#define CAN_ERR_LED_Pin GPIO_PIN_7
+#define CAN_ERR_LED_GPIO_Port GPIOC
+#define KEY_BL_Pin GPIO_PIN_15
+#define KEY_BL_GPIO_Port GPIOA
+#define RUN_LED_Pin GPIO_PIN_2
+#define RUN_LED_GPIO_Port GPIOD
 #define cKEY3_Pin GPIO_PIN_3
 #define cKEY3_GPIO_Port GPIOB
 #define cKEY4_Pin GPIO_PIN_4
