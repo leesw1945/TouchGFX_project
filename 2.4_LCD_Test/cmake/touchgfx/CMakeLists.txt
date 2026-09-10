@@ -28,13 +28,22 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedFontCache.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedUnmappedFontCache.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/FontCache.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_Medium_10_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_Medium_15_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_30_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_40_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/GeneratedFont.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_Medium_10_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_Medium_15_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_Medium_10_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_Medium_15_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp
@@ -46,6 +55,19 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bar_163x31.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bg_240x320.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_normal.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_pressed.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_down.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_up.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_colli.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_move.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_rotate_ccw.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_rotate_cw.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_left.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_right.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_spinner.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_warning.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_panel_toast.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/LanguageGb.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/Texts.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/TypedTextDatabase.cpp

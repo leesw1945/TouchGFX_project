@@ -4,45 +4,58 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1" />
+    <TextGroup Id="Group1">
+      <Text Id="ResourceId2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New Text</Translation>
+      </Text>
+      <Text Id="ResourceId1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New Text</Translation>
+      </Text>
+    </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_TN51" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Emergency</Translation>
+      <Text Id="__SingleUse_DWSE" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">ARM UP</Translation>
       </Text>
-      <Text Id="__SingleUse_PV3B" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="__SingleUse_AOZ6" Alignment="Left" TypographyId="Barlow_Medium_10">
+        <Translation Language="GB">FW v1.0</Translation>
       </Text>
-      <Text Id="__SingleUse_S214" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="__SingleUse_WTKK" Alignment="Left" TypographyId="Barlow_Medium_10">
+        <Translation Language="GB">SU-4100</Translation>
       </Text>
-      <Text Id="__SingleUse_GTKI" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="__SingleUse_CRTY" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">°</Translation>
       </Text>
-      <Text Id="__SingleUse_3WZD" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="__SingleUse_J30E" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">°</Translation>
       </Text>
-      <Text Id="__SingleUse_MZQ8" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;° </Translation>
+      <Text Id="__SingleUse_OE9F" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">cm</Translation>
       </Text>
-      <Text Id="__SingleUse_W3RD" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;° </Translation>
+      <Text Id="__SingleUse_617X" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">cm</Translation>
       </Text>
-      <Text Id="__SingleUse_YVQA" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      <Text Id="__SingleUse_8NB3" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">-45</Translation>
       </Text>
-      <Text Id="__SingleUse_X4XG" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      <Text Id="__SingleUse_ZVJ8" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">+12</Translation>
       </Text>
-      <Text Id="__SingleUse_XQ6Z" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">ARM HEIGHT</Translation>
+      <Text Id="__SingleUse_97SW" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">148</Translation>
       </Text>
-      <Text Id="__SingleUse_4AY2" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_HP3N" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">87</Translation>
+      </Text>
+      <Text Id="__SingleUse_SS6U" Alignment="Left" TypographyId="Barlow_Medium_15">
         <Translation Language="GB">DETECTOR DEG</Translation>
       </Text>
-      <Text Id="__SingleUse_E4J6" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_LHS1" Alignment="Left" TypographyId="Barlow_Medium_15">
         <Translation Language="GB">ARM DEG</Translation>
       </Text>
-      <Text Id="__SingleUse_RZYY" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_NUGH" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">ARM HEIGHT</Translation>
+      </Text>
+      <Text Id="__SingleUse_G90E" Alignment="Left" TypographyId="Barlow_Medium_15">
         <Translation Language="GB">SID</Translation>
       </Text>
     </TextGroup>
@@ -51,5 +64,8 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_Medium_15" Font="Barlow-Medium.ttf" Size="15" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_SemiBold_30" Font="Barlow-SemiBold.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_Medium_10" Font="Barlow-Medium.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>
