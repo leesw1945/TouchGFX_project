@@ -20,10 +20,23 @@
     <ClCompile Include="..\..\gui\src\common\FrontendApplication.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Connecting.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ConnectingBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Emergency.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\EmergencyBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\a_option_screen\A_optionPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\a_option_screen\A_optionView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\a_option_screen\A_optionViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\b_option_screen\B_optionPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\b_option_screen\B_optionView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\b_option_screen\B_optionViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\c_option_screen\C_optionPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\c_option_screen\C_optionView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\c_option_screen\C_optionViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\d_option_screen\D_optionPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\d_option_screen\D_optionView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\d_option_screen\D_optionViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -172,11 +185,24 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\MJPEGDecoder.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Connecting.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ConnectingBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Emergency.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\EmergencyBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\a_option_screen\A_optionPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\a_option_screen\A_optionView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\a_option_screen\A_optionViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\b_option_screen\B_optionPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\b_option_screen\B_optionView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\b_option_screen\B_optionViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\c_option_screen\C_optionPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\c_option_screen\C_optionView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\c_option_screen\C_optionViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\d_option_screen\D_optionPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\d_option_screen\D_optionView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\d_option_screen\D_optionViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

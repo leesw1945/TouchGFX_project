@@ -13,6 +13,12 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_8ZQ5" Alignment="Left" TypographyId="Barlow_Medium_20">
+        <Translation Language="GB">EMERGENCY</Translation>
+      </Text>
+      <Text Id="__SingleUse_SZ2H" Alignment="Left" TypographyId="Barlow_Medium_20">
+        <Translation Language="GB">CONNECTING</Translation>
+      </Text>
       <Text Id="__SingleUse_DWSE" Alignment="Left" TypographyId="Barlow_SemiBold_30">
         <Translation Language="GB">ARM UP</Translation>
       </Text>
@@ -59,6 +65,105 @@
         <Translation Language="GB">SID</Translation>
       </Text>
     </TextGroup>
+    <TextGroup Id="B_option">
+      <Text Id="B_READY" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">READY</Translation>
+      </Text>
+      <Text Id="B_SYSOK" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">SYSTEM OK</Translation>
+      </Text>
+      <Text Id="B_SID_LBL" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">SID</Translation>
+      </Text>
+      <Text Id="B_SID_VAL" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+        <Translation Language="GB">180</Translation>
+      </Text>
+      <Text Id="B_CM10" Alignment="Left" TypographyId="Barlow_Medium_10">
+        <Translation Language="GB">cm</Translation>
+      </Text>
+      <Text Id="B_SEC_LINEAR" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">LINEAR MOTION</Translation>
+      </Text>
+      <Text Id="B_SEC_ROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">ROTATION</Translation>
+      </Text>
+      <Text Id="B_SWIVEL" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">SWIVEL</Translation>
+      </Text>
+      <Text Id="B_UPDOWN" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">UP / DOWN</Translation>
+      </Text>
+      <Text Id="B_DETARM" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">DET ARM</Translation>
+      </Text>
+      <Text Id="B_TUBEARM" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">TUBE ARM</Translation>
+      </Text>
+      <Text Id="B_LR" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">L / R</Translation>
+      </Text>
+      <Text Id="B_VAL_120" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+        <Translation Language="GB">120</Translation>
+      </Text>
+      <Text Id="B_VAL_0" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="B_CM8" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">cm</Translation>
+      </Text>
+      <Text Id="B_SWROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">SWIVEL ROT</Translation>
+      </Text>
+      <Text Id="B_DETROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+        <Translation Language="GB">DETECTOR ROT</Translation>
+      </Text>
+      <Text Id="B_VAL_P45" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+        <Translation Language="GB">+45</Translation>
+      </Text>
+      <Text Id="B_DEG10" Alignment="Left" TypographyId="Barlow_Medium_10">
+        <Translation Language="GB">°</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="C_option">
+      <Text Id="C_ARMDEG" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">ARM DEG</Translation>
+      </Text>
+      <Text Id="C_ARMHEIGHT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">ARM HEIGHT</Translation>
+      </Text>
+      <Text Id="C_TUBEARM" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">TUBE ARM</Translation>
+      </Text>
+      <Text Id="C_DETARM" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">DETECTOR ARM</Translation>
+      </Text>
+      <Text Id="C_DETDEG" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">DETECTOR DEG</Translation>
+      </Text>
+      <Text Id="C_VAL_P45" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+        <Translation Language="GB">+45</Translation>
+      </Text>
+      <Text Id="C_VAL_120" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+        <Translation Language="GB">120</Translation>
+      </Text>
+      <Text Id="C_VAL_0" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+        <Translation Language="GB">0</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="D_option">
+      <Text Id="D_SEC_LINEAR" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">LINEAR MOTION</Translation>
+      </Text>
+      <Text Id="D_SEC_ROT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">ROTATION</Translation>
+      </Text>
+      <Text Id="D_SWUD" Alignment="Left" TypographyId="Barlow_Medium_8">
+        <Translation Language="GB">SWIVEL UP / DOWN</Translation>
+      </Text>
+      <Text Id="D_VAL_00" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+        <Translation Language="GB">20</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
@@ -67,5 +172,11 @@
     <Typography Id="Barlow_Medium_15" Font="Barlow-Medium.ttf" Size="15" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Barlow_SemiBold_30" Font="Barlow-SemiBold.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Barlow_Medium_10" Font="Barlow-Medium.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_Medium_20" Font="Barlow-Medium.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_Medium_8" Font="Barlow-Medium.ttf" Size="8" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_SemiBold_9" Font="Barlow-SemiBold.ttf" Size="9" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_SemiBold_13" Font="Barlow-SemiBold.ttf" Size="13" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_SemiBold_16" Font="Barlow-SemiBold.ttf" Size="16" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Barlow_SemiBold_23" Font="Barlow-SemiBold.ttf" Size="23" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

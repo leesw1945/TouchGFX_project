@@ -62,12 +62,22 @@ void Error_Handler(void);
 #define DISP_TE_EXTI_IRQn EXTI0_1_IRQn
 #define DISP_NRESET_Pin GPIO_PIN_1
 #define DISP_NRESET_GPIO_Port GPIOA
+#define LEFT_Pin GPIO_PIN_0
+#define LEFT_GPIO_Port GPIOB
+#define RIGHT_Pin GPIO_PIN_1
+#define RIGHT_GPIO_Port GPIOB
+#define UP_Pin GPIO_PIN_12
+#define UP_GPIO_Port GPIOB
 #define SPI1_DCX_Pin GPIO_PIN_14
 #define SPI1_DCX_GPIO_Port GPIOB
 #define SPI2_NCS_Pin GPIO_PIN_8
 #define SPI2_NCS_GPIO_Port GPIOA
 #define SPI1_NCS_Pin GPIO_PIN_9
 #define SPI1_NCS_GPIO_Port GPIOA
+#define CENTER_Pin GPIO_PIN_7
+#define CENTER_GPIO_Port GPIOC
+#define DOWN_Pin GPIO_PIN_4
+#define DOWN_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

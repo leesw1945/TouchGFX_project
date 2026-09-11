@@ -55,6 +55,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     Core/Src/display_driver.c
     Core/Src/flash_driver.c
+    Core/Src/joystick_buttons.cpp
 )
 
 # Add include paths

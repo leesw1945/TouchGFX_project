@@ -23,8 +23,12 @@
 #include <TouchGFXHAL.hpp>
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
+#include <joystick_buttons.hpp>
 
 using namespace touchgfx;
+
+/* GFX01M2 조이스틱 → TouchGFX 하드웨어 버튼 (키 0=CENTER, 1=UP, 2=DOWN, 3=LEFT, 4=RIGHT) */
+static JoystickButtonController joystickButtons;
 
 /* ******************************************************
  * Functions required by Partial Frame Buffer Strategy
@@ -51,6 +55,10 @@ void TouchGFXHAL::initialize()
     // Please note, HAL::initialize() must be called to initialize the framework.
 
     TouchGFXGeneratedHAL::initialize();
+
+    /* 매 프레임 joystickButtons.sample()이 호출되어 눌린 키를
+     * 활성 스크린의 handleKeyEvent()로 전달한다 */
+    setButtonController(&joystickButtons);
 }
 
 /**

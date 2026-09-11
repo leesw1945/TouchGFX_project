@@ -2,7 +2,7 @@
   "Application": {
     "Screens": [
       {
-        "Name": "screen",
+        "Name": "A_option",
         "CanvasBufferSize": 3600,
         "Components": [
           {
@@ -11,8 +11,20 @@
             "Width": 240,
             "Height": 320,
             "Color": {
+              "Red": 6,
+              "Green": 8,
+              "Blue": 12
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "HeaderLine",
+            "Y": 25,
+            "Width": 240,
+            "Height": 1,
+            "Color": {
               "Red": 22,
-              "Green": 30,
+              "Green": 32,
               "Blue": 43
             }
           },
@@ -24,9 +36,9 @@
             "Width": 200,
             "Height": 15,
             "Color": {
-              "Red": 145,
-              "Green": 145,
-              "Blue": 145
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
             },
             "EndX": 200.0,
             "LineWidth": 0.3,
@@ -40,9 +52,9 @@
             "Width": 200,
             "Height": 15,
             "Color": {
-              "Red": 145,
-              "Green": 145,
-              "Blue": 145
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
             },
             "EndX": 200.0,
             "LineWidth": 0.3,
@@ -56,9 +68,9 @@
             "Width": 200,
             "Height": 15,
             "Color": {
-              "Red": 145,
-              "Green": 145,
-              "Blue": 145
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
             },
             "EndX": 200.0,
             "LineWidth": 0.3,
@@ -71,12 +83,12 @@
             "Width": 240,
             "Height": 15,
             "Color": {
-              "Red": 145,
-              "Green": 145,
-              "Blue": 145
+              "Red": 47,
+              "Green": 134,
+              "Blue": 214
             },
             "EndX": 240.0,
-            "LineWidth": 0.8,
+            "LineWidth": 1.0,
             "LineEndingStyle": "Round"
           },
           {
@@ -89,9 +101,9 @@
             "TextId": "__SingleUse_G90E",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -105,9 +117,9 @@
             "TextId": "__SingleUse_NUGH",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -121,9 +133,9 @@
             "TextId": "__SingleUse_LHS1",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -137,9 +149,9 @@
             "TextId": "__SingleUse_SS6U",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -169,9 +181,9 @@
             "TextId": "__SingleUse_97SW",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
             },
             "AutoSize": true
           },
@@ -185,9 +197,9 @@
             "TextId": "__SingleUse_ZVJ8",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
             },
             "AutoSize": true
           },
@@ -201,9 +213,9 @@
             "TextId": "__SingleUse_8NB3",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
             },
             "AutoSize": true
           },
@@ -217,9 +229,9 @@
             "TextId": "__SingleUse_617X",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -233,9 +245,9 @@
             "TextId": "__SingleUse_OE9F",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -249,9 +261,9 @@
             "TextId": "__SingleUse_J30E",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -265,9 +277,9 @@
             "TextId": "__SingleUse_CRTY",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
             },
             "AutoSize": true
           },
@@ -281,9 +293,9 @@
             "TextId": "__SingleUse_WTKK",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 122,
+              "Green": 135,
+              "Blue": 148
             },
             "AutoSize": true
           },
@@ -297,9 +309,9 @@
             "TextId": "__SingleUse_AOZ6",
             "TextRotation": "0",
             "Color": {
-              "Red": 207,
-              "Green": 207,
-              "Blue": 207
+              "Red": 122,
+              "Green": 135,
+              "Blue": 148
             },
             "AutoSize": true
           },
@@ -311,13 +323,13 @@
             "Height": 65,
             "Color": {
               "Red": 15,
-              "Green": 38,
-              "Blue": 56
+              "Green": 34,
+              "Blue": 51
             }
           },
           {
             "Type": "Image",
-            "Name": "image1",
+            "Name": "ARM_UP",
             "X": 47,
             "Y": 270,
             "Width": 32,
@@ -326,7 +338,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
+            "Name": "ARM_UP_txt",
             "X": 83,
             "Y": 269,
             "Width": 101,
@@ -334,9 +346,1606 @@
             "TextId": "__SingleUse_DWSE",
             "TextRotation": "0",
             "Color": {
+              "Red": 234,
+              "Green": 246,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "Connecting_cnt",
+            "X": 42,
+            "Y": 97,
+            "Width": 156,
+            "Height": 76,
+            "Visible": false,
+            "CustomContainerDefinitionName": "Connecting"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "Emergency_cnt",
+            "X": 42,
+            "Y": 90,
+            "Width": 156,
+            "Height": 100,
+            "Visible": false,
+            "CustomContainerDefinitionName": "Emergency"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "B_option"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 4
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "Emergency_cnt"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 3
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "Emergency_cnt"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "Connecting_cnt"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "Connecting_cnt"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "B_option",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "BG",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 6,
+              "Green": 8,
+              "Blue": 12
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "TopbarLine",
+            "Y": 39,
+            "Width": 240,
+            "Height": 1,
+            "Color": {
+              "Red": 22,
+              "Green": 32,
+              "Blue": 43
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "StatusDot",
+            "X": 10,
+            "Y": 16,
+            "Width": 8,
+            "Height": 8,
+            "RelativeFilename": "b_dot_green.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ReadyTxt",
+            "X": 26,
+            "Y": 9,
+            "Width": 40,
+            "Height": 13,
+            "TextId": "B_READY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 46,
+              "Green": 230,
+              "Blue": 168
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SysOkTxt",
+            "X": 26,
+            "Y": 24,
+            "Width": 43,
+            "Height": 8,
+            "TextId": "B_SYSOK",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 122,
+              "Green": 135,
+              "Blue": 148
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Box",
+            "Name": "VDivider",
+            "X": 78,
+            "Y": 8,
+            "Width": 1,
+            "Height": 24,
+            "Color": {
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidLbl",
+            "X": 150,
+            "Y": 21,
+            "Width": 12,
+            "Height": 8,
+            "TextId": "B_SID_LBL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidVal",
+            "X": 170,
+            "Y": 8,
+            "Width": 33,
+            "Height": 23,
+            "TextId": "B_SID_VAL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidUnit",
+            "X": 213,
+            "Y": 19,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SecLinear",
+            "X": 12,
+            "Y": 52,
+            "Width": 63,
+            "Height": 9,
+            "TextId": "B_SEC_LINEAR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 94,
+              "Green": 147,
+              "Blue": 184
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardSel",
+            "X": 4,
+            "Y": 62,
+            "Width": 82,
+            "Height": 122,
+            "RelativeFilename": "b_card_sel.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "CardNrm1",
+            "X": 85,
+            "Y": 68,
+            "Width": 70,
+            "Height": 110,
+            "RelativeFilename": "b_card_nrm.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "CardNrm2",
+            "X": 160,
+            "Y": 68,
+            "Width": 70,
+            "Height": 110,
+            "RelativeFilename": "b_card_nrm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwivelTitle",
+            "X": 26,
+            "Y": 81,
+            "Width": 30,
+            "Height": 9,
+            "TextId": "B_SWIVEL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 234,
+              "Green": 246,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwivelSub",
+            "X": 25,
+            "Y": 93,
+            "Width": 39,
+            "Height": 8,
+            "TextId": "B_UPDOWN",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 159,
+              "Green": 196,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "ArrowUd",
+            "X": 34,
+            "Y": 109,
+            "Width": 22,
+            "Height": 24,
+            "RelativeFilename": "b_arrow_ud.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwivelVal",
+            "X": 26,
+            "Y": 142,
+            "Width": 24,
+            "Height": 16,
+            "TextId": "B_VAL_120",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwivelUnit",
+            "X": 56,
+            "Y": 150,
+            "Width": 11,
+            "Height": 8,
+            "TextId": "B_CM8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 159,
+              "Green": 196,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetArmTitle",
+            "X": 100,
+            "Y": 81,
+            "Width": 36,
+            "Height": 9,
+            "TextId": "B_DETARM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetArmSub",
+            "X": 112,
+            "Y": 93,
+            "Width": 17,
+            "Height": 8,
+            "TextId": "B_LR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "ArrowLr1",
+            "X": 108,
+            "Y": 110,
+            "Width": 24,
+            "Height": 22,
+            "RelativeFilename": "b_arrow_lr.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetArmVal",
+            "X": 116,
+            "Y": 142,
+            "Width": 9,
+            "Height": 16,
+            "TextId": "B_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetArmUnit",
+            "X": 128,
+            "Y": 150,
+            "Width": 11,
+            "Height": 8,
+            "TextId": "B_CM8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TubeArmTitle",
+            "X": 172,
+            "Y": 81,
+            "Width": 42,
+            "Height": 9,
+            "TextId": "B_TUBEARM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TubeArmSub",
+            "X": 187,
+            "Y": 93,
+            "Width": 17,
+            "Height": 8,
+            "TextId": "B_LR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "ArrowLr2",
+            "X": 183,
+            "Y": 110,
+            "Width": 24,
+            "Height": 22,
+            "RelativeFilename": "b_arrow_lr.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TubeArmVal",
+            "X": 191,
+            "Y": 142,
+            "Width": 9,
+            "Height": 16,
+            "TextId": "B_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TubeArmUnit",
+            "X": 203,
+            "Y": 150,
+            "Width": 11,
+            "Height": 8,
+            "TextId": "B_CM8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SecRot",
+            "X": 12,
+            "Y": 191,
+            "Width": 41,
+            "Height": 9,
+            "TextId": "B_SEC_ROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 94,
+              "Green": 147,
+              "Blue": 184
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardRot1",
+            "X": 10,
+            "Y": 207,
+            "Width": 107,
+            "Height": 96,
+            "RelativeFilename": "b_card_rot.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "CardRot2",
+            "X": 123,
+            "Y": 207,
+            "Width": 107,
+            "Height": 96,
+            "RelativeFilename": "b_card_rot.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwRotTitle",
+            "X": 37,
+            "Y": 221,
+            "Width": 49,
+            "Height": 9,
+            "TextId": "B_SWROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "GaugeSw",
+            "X": 27,
+            "Y": 238,
+            "Width": 74,
+            "Height": 46,
+            "RelativeFilename": "b_gauge_track.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwRotVal",
+            "X": 49,
+            "Y": 272,
+            "Width": 25,
+            "Height": 16,
+            "TextId": "B_VAL_P45",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SwRotDeg",
+            "X": 78,
+            "Y": 273,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetRotTitle",
+            "X": 145,
+            "Y": 221,
+            "Width": 62,
+            "Height": 9,
+            "TextId": "B_DETROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "GaugeDet",
+            "X": 140,
+            "Y": 238,
+            "Width": 74,
+            "Height": 46,
+            "RelativeFilename": "b_gauge_track.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetRotVal",
+            "X": 174,
+            "Y": 272,
+            "Width": 9,
+            "Height": 16,
+            "TextId": "B_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DetRotDeg",
+            "X": 188,
+            "Y": 273,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "C_option"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "C_option",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "BG",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 6,
+              "Green": 8,
+              "Blue": 12
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "TopbarLine",
+            "Y": 39,
+            "Width": 240,
+            "Height": 1,
+            "Color": {
+              "Red": 22,
+              "Green": 32,
+              "Blue": 43
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "StatusDot",
+            "X": 10,
+            "Y": 16,
+            "Width": 8,
+            "Height": 8,
+            "RelativeFilename": "b_dot_green.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ReadyTxt",
+            "X": 26,
+            "Y": 9,
+            "Width": 40,
+            "Height": 13,
+            "TextId": "B_READY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 46,
+              "Green": 230,
+              "Blue": 168
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SysOkTxt",
+            "X": 26,
+            "Y": 24,
+            "Width": 43,
+            "Height": 8,
+            "TextId": "B_SYSOK",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 122,
+              "Green": 135,
+              "Blue": 148
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Box",
+            "Name": "VDivider",
+            "X": 78,
+            "Y": 8,
+            "Width": 1,
+            "Height": 24,
+            "Color": {
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidLbl",
+            "X": 150,
+            "Y": 21,
+            "Width": 12,
+            "Height": 8,
+            "TextId": "B_SID_LBL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidVal",
+            "X": 170,
+            "Y": 8,
+            "Width": 33,
+            "Height": 23,
+            "TextId": "B_SID_VAL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidUnit",
+            "X": 213,
+            "Y": 19,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardArmDeg",
+            "X": 4,
+            "Y": 42,
+            "Width": 232,
+            "Height": 60,
+            "RelativeFilename": "b_cardw_sel.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblArmDeg",
+            "X": 22,
+            "Y": 64,
+            "Width": 52,
+            "Height": 13,
+            "TextId": "C_ARMDEG",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 234,
+              "Green": 246,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValArmDeg",
+            "X": 152,
+            "Y": 59,
+            "Width": 36,
+            "Height": 23,
+            "TextId": "C_VAL_P45",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitArmDeg",
+            "X": 196,
+            "Y": 71,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardArmHeight",
+            "X": 10,
+            "Y": 102,
+            "Width": 220,
+            "Height": 48,
+            "RelativeFilename": "b_cardw_nrm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblArmHeight",
+            "X": 22,
+            "Y": 118,
+            "Width": 71,
+            "Height": 13,
+            "TextId": "C_ARMHEIGHT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValArmHeight",
+            "X": 152,
+            "Y": 113,
+            "Width": 34,
+            "Height": 23,
+            "TextId": "C_VAL_120",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitArmHeight",
+            "X": 196,
+            "Y": 125,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardTubeArm",
+            "X": 10,
+            "Y": 156,
+            "Width": 220,
+            "Height": 48,
+            "RelativeFilename": "b_cardw_nrm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblTubeArm",
+            "X": 22,
+            "Y": 172,
+            "Width": 60,
+            "Height": 13,
+            "TextId": "C_TUBEARM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValTubeArm",
+            "X": 178,
+            "Y": 167,
+            "Width": 13,
+            "Height": 23,
+            "TextId": "C_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitTubeArm",
+            "X": 196,
+            "Y": 179,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardDetArm",
+            "X": 10,
+            "Y": 210,
+            "Width": 220,
+            "Height": 48,
+            "RelativeFilename": "b_cardw_nrm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblDetArm",
+            "X": 22,
+            "Y": 226,
+            "Width": 92,
+            "Height": 13,
+            "TextId": "C_DETARM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValDetArm",
+            "X": 178,
+            "Y": 221,
+            "Width": 13,
+            "Height": 23,
+            "TextId": "C_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitDetArm",
+            "X": 196,
+            "Y": 233,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardDetDeg",
+            "X": 10,
+            "Y": 264,
+            "Width": 220,
+            "Height": 48,
+            "RelativeFilename": "b_cardw_nrm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblDetDeg",
+            "X": 22,
+            "Y": 280,
+            "Width": 91,
+            "Height": 13,
+            "TextId": "C_DETDEG",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValDetDeg",
+            "X": 178,
+            "Y": 275,
+            "Width": 13,
+            "Height": 23,
+            "TextId": "C_VAL_0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitDetDeg",
+            "X": 196,
+            "Y": 287,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "D_option"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "D_option",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "BG",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 6,
+              "Green": 8,
+              "Blue": 12
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "TopbarLine",
+            "Y": 39,
+            "Width": 240,
+            "Height": 1,
+            "Color": {
+              "Red": 22,
+              "Green": 32,
+              "Blue": 43
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "StatusDot",
+            "X": 10,
+            "Y": 16,
+            "Width": 8,
+            "Height": 8,
+            "RelativeFilename": "b_dot_green.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ReadyTxt",
+            "X": 26,
+            "Y": 9,
+            "Width": 40,
+            "Height": 13,
+            "TextId": "B_READY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 46,
+              "Green": 230,
+              "Blue": 168
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SysOkTxt",
+            "X": 26,
+            "Y": 24,
+            "Width": 43,
+            "Height": 8,
+            "TextId": "B_SYSOK",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 122,
+              "Green": 135,
+              "Blue": 148
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Box",
+            "Name": "VDivider",
+            "X": 78,
+            "Y": 8,
+            "Width": 1,
+            "Height": 24,
+            "Color": {
+              "Red": 34,
+              "Green": 48,
+              "Blue": 66
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidTopLbl",
+            "X": 150,
+            "Y": 21,
+            "Width": 12,
+            "Height": 8,
+            "TextId": "B_SID_LBL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidTopVal",
+            "X": 170,
+            "Y": 8,
+            "Width": 33,
+            "Height": 23,
+            "TextId": "B_SID_VAL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SidTopUnit",
+            "X": 213,
+            "Y": 19,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SecLinear",
+            "X": 12,
+            "Y": 50,
+            "Width": 91,
+            "Height": 13,
+            "TextId": "D_SEC_LINEAR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 94,
+              "Green": 147,
+              "Blue": 184
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardSid",
+            "X": 4,
+            "Y": 64,
+            "Width": 119,
+            "Height": 122,
+            "RelativeFilename": "d_card_sel.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "CardSwud",
+            "X": 117,
+            "Y": 64,
+            "Width": 119,
+            "Height": 122,
+            "RelativeFilename": "d_card_sel.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "IconSid",
+            "X": 51,
+            "Y": 84,
+            "Width": 24,
+            "Height": 22,
+            "RelativeFilename": "b_arrow_lr.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "IconSwud",
+            "X": 165,
+            "Y": 83,
+            "Width": 22,
+            "Height": 24,
+            "RelativeFilename": "b_arrow_ud.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblSid",
+            "X": 56,
+            "Y": 112,
+            "Width": 12,
+            "Height": 8,
+            "TextId": "B_SID_LBL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LblSwud",
+            "X": 139,
+            "Y": 112,
+            "Width": 70,
+            "Height": 8,
+            "TextId": "D_SWUD",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValSid",
+            "X": 34,
+            "Y": 130,
+            "Width": 33,
+            "Height": 23,
+            "TextId": "B_SID_VAL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitSid",
+            "X": 78,
+            "Y": 141,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValSwud",
+            "X": 147,
+            "Y": 130,
+            "Width": 34,
+            "Height": 23,
+            "TextId": "C_VAL_120",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 211,
+              "Blue": 77
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "UnitSwud",
+            "X": 191,
+            "Y": 141,
+            "Width": 13,
+            "Height": 10,
+            "TextId": "B_CM10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "SecRot",
+            "X": 12,
+            "Y": 194,
+            "Width": 59,
+            "Height": 13,
+            "TextId": "D_SEC_ROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 94,
+              "Green": 147,
+              "Blue": 184
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "CardRotL",
+            "X": 10,
+            "Y": 212,
+            "Width": 107,
+            "Height": 96,
+            "RelativeFilename": "b_card_rot.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "CardRotR",
+            "X": 123,
+            "Y": 212,
+            "Width": 107,
+            "Height": 96,
+            "RelativeFilename": "b_card_rot.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TitleRotL",
+            "X": 37,
+            "Y": 220,
+            "Width": 49,
+            "Height": 9,
+            "TextId": "B_SWROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TitleRotR",
+            "X": 145,
+            "Y": 220,
+            "Width": 62,
+            "Height": 9,
+            "TextId": "B_DETROT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 201,
+              "Green": 212,
+              "Blue": 222
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "TrackL",
+            "X": 27,
+            "Y": 234,
+            "Width": 74,
+            "Height": 46,
+            "RelativeFilename": "b_gauge_track.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "TrackR",
+            "X": 140,
+            "Y": 234,
+            "Width": 74,
+            "Height": 46,
+            "RelativeFilename": "b_gauge_track.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValRotL",
+            "X": 51,
+            "Y": 272,
+            "Width": 26,
+            "Height": 23,
+            "TextId": "D_VAL_00",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DegL",
+            "X": 80,
+            "Y": 278,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ValRotR",
+            "X": 164,
+            "Y": 272,
+            "Width": 26,
+            "Height": 23,
+            "TextId": "D_VAL_00",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 240,
+              "Blue": 247
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DegR",
+            "X": 193,
+            "Y": 278,
+            "Width": 4,
+            "Height": 10,
+            "TextId": "B_DEG10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 139,
+              "Green": 152,
+              "Blue": 165
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "A_option"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "Connecting",
+        "X": 42,
+        "Y": 97,
+        "Width": 156,
+        "Height": 76,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "Width": 156,
+            "Height": 76,
+            "Color": {
+              "Red": 20,
+              "Green": 38,
+              "Blue": 66
+            },
+            "BorderColor": {
+              "Red": 145,
+              "Green": 145,
+              "Blue": 145
+            },
+            "BorderSize": 1
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 21,
+            "Y": 43,
+            "Width": 115,
+            "Height": 20,
+            "TextId": "__SingleUse_SZ2H",
+            "TextRotation": "0",
+            "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "spinnerImg",
+            "X": 62,
+            "Y": 7,
+            "Width": 32,
+            "Height": 32,
+            "RelativeFilename": "spinner_f00.png"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "Emergency",
+        "X": 42,
+        "Y": 90,
+        "Width": 156,
+        "Height": 100,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "Width": 156,
+            "Height": 100,
+            "BorderColor": {
+              "Red": 145,
+              "Green": 145,
+              "Blue": 145
+            },
+            "BorderSize": 1,
+            "Alpha": 180
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 38,
+            "Width": 80,
+            "Height": 80,
+            "RelativeFilename": "icon_warning.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 23,
+            "Y": 75,
+            "Width": 111,
+            "Height": 20,
+            "TextId": "__SingleUse_8ZQ5",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 87,
+              "Blue": 87
             },
             "AutoSize": true
           }
@@ -344,14 +1953,13 @@
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
     "Name": "2.4_LCD_Test",
     "Resolution": {
       "Width": 240,
       "Height": 320
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "screen",
+    "StartupScreenName": "A_option",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
