@@ -72,23 +72,23 @@
       <Text Id="B_SYSOK" Alignment="Left" TypographyId="Barlow_Medium_8">
         <Translation Language="GB">SYSTEM OK</Translation>
       </Text>
-      <Text Id="B_SID_LBL" Alignment="Left" TypographyId="Barlow_Medium_8">
+      <Text Id="B_SID_LBL" Alignment="Left" TypographyId="Barlow_Medium_10">
         <Translation Language="GB">SID</Translation>
       </Text>
-      <Text Id="B_SID_VAL" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+      <Text Id="B_SID_VAL" Alignment="Left" TypographyId="Barlow_SemiBold_30">
         <Translation Language="GB">180</Translation>
       </Text>
       <Text Id="B_CM10" Alignment="Left" TypographyId="Barlow_Medium_10">
         <Translation Language="GB">cm</Translation>
       </Text>
-      <Text Id="B_SEC_LINEAR" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+      <Text Id="B_SEC_LINEAR" Alignment="Left" TypographyId="Barlow_SemiBold_13">
         <Translation Language="GB">LINEAR MOTION</Translation>
       </Text>
-      <Text Id="B_SEC_ROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
+      <Text Id="B_SEC_ROT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
         <Translation Language="GB">ROTATION</Translation>
       </Text>
       <Text Id="B_SWIVEL" Alignment="Left" TypographyId="Barlow_SemiBold_9">
-        <Translation Language="GB">SWIVEL</Translation>
+        <Translation Language="GB">ARM</Translation>
       </Text>
       <Text Id="B_UPDOWN" Alignment="Left" TypographyId="Barlow_Medium_8">
         <Translation Language="GB">UP / DOWN</Translation>
@@ -102,22 +102,22 @@
       <Text Id="B_LR" Alignment="Left" TypographyId="Barlow_Medium_8">
         <Translation Language="GB">L / R</Translation>
       </Text>
-      <Text Id="B_VAL_120" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+      <Text Id="B_VAL_120" Alignment="Left" TypographyId="Barlow_SemiBold_23">
         <Translation Language="GB">120</Translation>
       </Text>
-      <Text Id="B_VAL_0" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+      <Text Id="B_VAL_0" Alignment="Left" TypographyId="Barlow_SemiBold_23">
         <Translation Language="GB">0</Translation>
       </Text>
-      <Text Id="B_CM8" Alignment="Left" TypographyId="Barlow_Medium_8">
+      <Text Id="B_CM8" Alignment="Left" TypographyId="Barlow_Medium_10">
         <Translation Language="GB">cm</Translation>
       </Text>
       <Text Id="B_SWROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
-        <Translation Language="GB">SWIVEL ROT</Translation>
+        <Translation Language="GB">ARM DEG</Translation>
       </Text>
       <Text Id="B_DETROT" Alignment="Left" TypographyId="Barlow_SemiBold_9">
-        <Translation Language="GB">DETECTOR ROT</Translation>
+        <Translation Language="GB">DETECTOR DEG</Translation>
       </Text>
-      <Text Id="B_VAL_P45" Alignment="Left" TypographyId="Barlow_SemiBold_16">
+      <Text Id="B_VAL_P45" Alignment="Left" TypographyId="Barlow_SemiBold_23">
         <Translation Language="GB">+45</Translation>
       </Text>
       <Text Id="B_DEG10" Alignment="Left" TypographyId="Barlow_Medium_10">
@@ -157,11 +157,35 @@
       <Text Id="D_SEC_ROT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
         <Translation Language="GB">ROTATION</Translation>
       </Text>
-      <Text Id="D_SWUD" Alignment="Left" TypographyId="Barlow_Medium_8">
-        <Translation Language="GB">SWIVEL UP / DOWN</Translation>
+      <Text Id="D_LBL_SID" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">SID</Translation>
       </Text>
-      <Text Id="D_VAL_00" Alignment="Left" TypographyId="Barlow_SemiBold_23">
+      <Text Id="D_SWUD" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">ARM UP / DOWN</Translation>
+      </Text>
+      <Text Id="D_VAL_SID" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">180</Translation>
+      </Text>
+      <Text Id="D_VAL_SWUD" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">120</Translation>
+      </Text>
+      <Text Id="D_CM" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">cm</Translation>
+      </Text>
+      <Text Id="D_DEG" Alignment="Left" TypographyId="Barlow_Medium_15">
+        <Translation Language="GB">°</Translation>
+      </Text>
+      <Text Id="D_SWROT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">ARM DEG</Translation>
+      </Text>
+      <Text Id="D_DETROT" Alignment="Left" TypographyId="Barlow_SemiBold_13">
+        <Translation Language="GB">DETECTOR DEG</Translation>
+      </Text>
+      <Text Id="D_VAL_SWROT" Alignment="Left" TypographyId="Barlow_SemiBold_30">
         <Translation Language="GB">20</Translation>
+      </Text>
+      <Text Id="D_VAL_DETROT" Alignment="Left" TypographyId="Barlow_SemiBold_30">
+        <Translation Language="GB">40</Translation>
       </Text>
     </TextGroup>
   </Texts>

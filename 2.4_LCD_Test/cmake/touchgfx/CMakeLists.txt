@@ -99,7 +99,9 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bg_240x320.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_normal.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_pressed.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_card_rot.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_card_sel.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_gauge_track.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_down.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_up.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_colli.cpp

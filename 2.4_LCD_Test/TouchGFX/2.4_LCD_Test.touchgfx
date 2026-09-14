@@ -514,10 +514,10 @@
           {
             "Type": "TextArea",
             "Name": "SidLbl",
-            "X": 150,
-            "Y": 21,
-            "Width": 12,
-            "Height": 8,
+            "X": 148,
+            "Y": 22,
+            "Width": 15,
+            "Height": 10,
             "TextId": "B_SID_LBL",
             "TextRotation": "0",
             "Color": {
@@ -530,10 +530,10 @@
           {
             "Type": "TextArea",
             "Name": "SidVal",
-            "X": 170,
-            "Y": 8,
-            "Width": 33,
-            "Height": 23,
+            "X": 168,
+            "Y": 4,
+            "Width": 44,
+            "Height": 30,
             "TextId": "B_SID_VAL",
             "TextRotation": "0",
             "Color": {
@@ -546,8 +546,8 @@
           {
             "Type": "TextArea",
             "Name": "SidUnit",
-            "X": 213,
-            "Y": 19,
+            "X": 215,
+            "Y": 23,
             "Width": 13,
             "Height": 10,
             "TextId": "B_CM10",
@@ -563,9 +563,9 @@
             "Type": "TextArea",
             "Name": "SecLinear",
             "X": 12,
-            "Y": 52,
-            "Width": 63,
-            "Height": 9,
+            "Y": 49,
+            "Width": 91,
+            "Height": 13,
             "TextId": "B_SEC_LINEAR",
             "TextRotation": "0",
             "Color": {
@@ -605,9 +605,9 @@
           {
             "Type": "TextArea",
             "Name": "SwivelTitle",
-            "X": 26,
+            "X": 36,
             "Y": 81,
-            "Width": 30,
+            "Width": 18,
             "Height": 9,
             "TextId": "B_SWIVEL",
             "TextRotation": "0",
@@ -648,8 +648,8 @@
             "Name": "SwivelVal",
             "X": 26,
             "Y": 142,
-            "Width": 24,
-            "Height": 16,
+            "Width": 34,
+            "Height": 23,
             "TextId": "B_VAL_120",
             "TextRotation": "0",
             "Color": {
@@ -662,10 +662,10 @@
           {
             "Type": "TextArea",
             "Name": "SwivelUnit",
-            "X": 56,
-            "Y": 150,
-            "Width": 11,
-            "Height": 8,
+            "X": 62,
+            "Y": 157,
+            "Width": 13,
+            "Height": 10,
             "TextId": "B_CM8",
             "TextRotation": "0",
             "Color": {
@@ -721,8 +721,8 @@
             "Name": "DetArmVal",
             "X": 116,
             "Y": 142,
-            "Width": 9,
-            "Height": 16,
+            "Width": 13,
+            "Height": 23,
             "TextId": "B_VAL_0",
             "TextRotation": "0",
             "Color": {
@@ -735,10 +735,10 @@
           {
             "Type": "TextArea",
             "Name": "DetArmUnit",
-            "X": 128,
-            "Y": 150,
-            "Width": 11,
-            "Height": 8,
+            "X": 135,
+            "Y": 157,
+            "Width": 13,
+            "Height": 10,
             "TextId": "B_CM8",
             "TextRotation": "0",
             "Color": {
@@ -751,7 +751,7 @@
           {
             "Type": "TextArea",
             "Name": "TubeArmTitle",
-            "X": 172,
+            "X": 174,
             "Y": 81,
             "Width": 42,
             "Height": 9,
@@ -794,8 +794,8 @@
             "Name": "TubeArmVal",
             "X": 191,
             "Y": 142,
-            "Width": 9,
-            "Height": 16,
+            "Width": 13,
+            "Height": 23,
             "TextId": "B_VAL_0",
             "TextRotation": "0",
             "Color": {
@@ -808,10 +808,10 @@
           {
             "Type": "TextArea",
             "Name": "TubeArmUnit",
-            "X": 203,
-            "Y": 150,
-            "Width": 11,
-            "Height": 8,
+            "X": 209,
+            "Y": 157,
+            "Width": 13,
+            "Height": 10,
             "TextId": "B_CM8",
             "TextRotation": "0",
             "Color": {
@@ -825,9 +825,9 @@
             "Type": "TextArea",
             "Name": "SecRot",
             "X": 12,
-            "Y": 191,
-            "Width": 41,
-            "Height": 9,
+            "Y": 189,
+            "Width": 59,
+            "Height": 13,
             "TextId": "B_SEC_ROT",
             "TextRotation": "0",
             "Color": {
@@ -858,9 +858,9 @@
           {
             "Type": "TextArea",
             "Name": "SwRotTitle",
-            "X": 37,
+            "X": 46,
             "Y": 221,
-            "Width": 49,
+            "Width": 37,
             "Height": 9,
             "TextId": "B_SWROT",
             "TextRotation": "0",
@@ -883,10 +883,10 @@
           {
             "Type": "TextArea",
             "Name": "SwRotVal",
-            "X": 49,
+            "X": 41,
             "Y": 272,
-            "Width": 25,
-            "Height": 16,
+            "Width": 36,
+            "Height": 23,
             "TextId": "B_VAL_P45",
             "TextRotation": "0",
             "Color": {
@@ -915,7 +915,7 @@
           {
             "Type": "TextArea",
             "Name": "DetRotTitle",
-            "X": 145,
+            "X": 146,
             "Y": 221,
             "Width": 62,
             "Height": 9,
@@ -940,10 +940,10 @@
           {
             "Type": "TextArea",
             "Name": "DetRotVal",
-            "X": 174,
+            "X": 171,
             "Y": 272,
-            "Width": 9,
-            "Height": 16,
+            "Width": 13,
+            "Height": 23,
             "TextId": "B_VAL_0",
             "TextRotation": "0",
             "Color": {
@@ -1067,10 +1067,10 @@
           {
             "Type": "TextArea",
             "Name": "SidLbl",
-            "X": 150,
-            "Y": 21,
-            "Width": 12,
-            "Height": 8,
+            "X": 148,
+            "Y": 22,
+            "Width": 15,
+            "Height": 10,
             "TextId": "B_SID_LBL",
             "TextRotation": "0",
             "Color": {
@@ -1083,10 +1083,10 @@
           {
             "Type": "TextArea",
             "Name": "SidVal",
-            "X": 170,
-            "Y": 8,
-            "Width": 33,
-            "Height": 23,
+            "X": 168,
+            "Y": 4,
+            "Width": 44,
+            "Height": 30,
             "TextId": "B_SID_VAL",
             "TextRotation": "0",
             "Color": {
@@ -1099,8 +1099,8 @@
           {
             "Type": "TextArea",
             "Name": "SidUnit",
-            "X": 213,
-            "Y": 19,
+            "X": 216,
+            "Y": 23,
             "Width": 13,
             "Height": 10,
             "TextId": "B_CM10",
@@ -1427,124 +1427,10 @@
             }
           },
           {
-            "Type": "Box",
-            "Name": "TopbarLine",
-            "Y": 39,
-            "Width": 240,
-            "Height": 1,
-            "Color": {
-              "Red": 22,
-              "Green": 32,
-              "Blue": 43
-            }
-          },
-          {
-            "Type": "Image",
-            "Name": "StatusDot",
-            "X": 10,
-            "Y": 16,
-            "Width": 8,
-            "Height": 8,
-            "RelativeFilename": "b_dot_green.png"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "ReadyTxt",
-            "X": 26,
-            "Y": 9,
-            "Width": 40,
-            "Height": 13,
-            "TextId": "B_READY",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 46,
-              "Green": 230,
-              "Blue": 168
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "SysOkTxt",
-            "X": 26,
-            "Y": 24,
-            "Width": 43,
-            "Height": 8,
-            "TextId": "B_SYSOK",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 122,
-              "Green": 135,
-              "Blue": 148
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "Box",
-            "Name": "VDivider",
-            "X": 78,
-            "Y": 8,
-            "Width": 1,
-            "Height": 24,
-            "Color": {
-              "Red": 34,
-              "Green": 48,
-              "Blue": 66
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "SidTopLbl",
-            "X": 150,
-            "Y": 21,
-            "Width": 12,
-            "Height": 8,
-            "TextId": "B_SID_LBL",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 139,
-              "Green": 152,
-              "Blue": 165
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "SidTopVal",
-            "X": 170,
-            "Y": 8,
-            "Width": 33,
-            "Height": 23,
-            "TextId": "B_SID_VAL",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 211,
-              "Blue": 77
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "SidTopUnit",
-            "X": 213,
-            "Y": 19,
-            "Width": 13,
-            "Height": 10,
-            "TextId": "B_CM10",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 139,
-              "Green": 152,
-              "Blue": 165
-            },
-            "AutoSize": true
-          },
-          {
             "Type": "TextArea",
             "Name": "SecLinear",
             "X": 12,
-            "Y": 50,
+            "Y": 10,
             "Width": 91,
             "Height": 13,
             "TextId": "D_SEC_LINEAR",
@@ -1560,25 +1446,25 @@
             "Type": "Image",
             "Name": "CardSid",
             "X": 4,
-            "Y": 64,
+            "Y": 22,
             "Width": 119,
-            "Height": 122,
+            "Height": 124,
             "RelativeFilename": "d_card_sel.png"
           },
           {
             "Type": "Image",
             "Name": "CardSwud",
             "X": 117,
-            "Y": 64,
+            "Y": 22,
             "Width": 119,
-            "Height": 122,
+            "Height": 124,
             "RelativeFilename": "d_card_sel.png"
           },
           {
             "Type": "Image",
             "Name": "IconSid",
             "X": 51,
-            "Y": 84,
+            "Y": 68,
             "Width": 24,
             "Height": 22,
             "RelativeFilename": "b_arrow_lr.png"
@@ -1587,7 +1473,7 @@
             "Type": "Image",
             "Name": "IconSwud",
             "X": 165,
-            "Y": 83,
+            "Y": 66,
             "Width": 22,
             "Height": 24,
             "RelativeFilename": "b_arrow_ud.png"
@@ -1595,11 +1481,11 @@
           {
             "Type": "TextArea",
             "Name": "LblSid",
-            "X": 56,
-            "Y": 112,
-            "Width": 12,
-            "Height": 8,
-            "TextId": "B_SID_LBL",
+            "X": 54,
+            "Y": 44,
+            "Width": 19,
+            "Height": 13,
+            "TextId": "D_LBL_SID",
             "TextRotation": "0",
             "Color": {
               "Red": 139,
@@ -1611,10 +1497,10 @@
           {
             "Type": "TextArea",
             "Name": "LblSwud",
-            "X": 139,
-            "Y": 112,
-            "Width": 70,
-            "Height": 8,
+            "X": 130,
+            "Y": 44,
+            "Width": 92,
+            "Height": 13,
             "TextId": "D_SWUD",
             "TextRotation": "0",
             "Color": {
@@ -1627,11 +1513,11 @@
           {
             "Type": "TextArea",
             "Name": "ValSid",
-            "X": 34,
-            "Y": 130,
-            "Width": 33,
-            "Height": 23,
-            "TextId": "B_SID_VAL",
+            "X": 26,
+            "Y": 94,
+            "Width": 44,
+            "Height": 30,
+            "TextId": "D_VAL_SID",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -1644,10 +1530,10 @@
             "Type": "TextArea",
             "Name": "UnitSid",
             "X": 78,
-            "Y": 141,
-            "Width": 13,
-            "Height": 10,
-            "TextId": "B_CM10",
+            "Y": 109,
+            "Width": 20,
+            "Height": 15,
+            "TextId": "D_CM",
             "TextRotation": "0",
             "Color": {
               "Red": 139,
@@ -1659,11 +1545,11 @@
           {
             "Type": "TextArea",
             "Name": "ValSwud",
-            "X": 147,
-            "Y": 130,
-            "Width": 34,
-            "Height": 23,
-            "TextId": "C_VAL_120",
+            "X": 139,
+            "Y": 94,
+            "Width": 45,
+            "Height": 30,
+            "TextId": "D_VAL_SWUD",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -1676,10 +1562,10 @@
             "Type": "TextArea",
             "Name": "UnitSwud",
             "X": 191,
-            "Y": 141,
-            "Width": 13,
-            "Height": 10,
-            "TextId": "B_CM10",
+            "Y": 109,
+            "Width": 20,
+            "Height": 15,
+            "TextId": "D_CM",
             "TextRotation": "0",
             "Color": {
               "Red": 139,
@@ -1692,7 +1578,7 @@
             "Type": "TextArea",
             "Name": "SecRot",
             "X": 12,
-            "Y": 194,
+            "Y": 152,
             "Width": 59,
             "Height": 13,
             "TextId": "D_SEC_ROT",
@@ -1708,28 +1594,28 @@
             "Type": "Image",
             "Name": "CardRotL",
             "X": 10,
-            "Y": 212,
+            "Y": 170,
             "Width": 107,
-            "Height": 96,
-            "RelativeFilename": "b_card_rot.png"
+            "Height": 136,
+            "RelativeFilename": "d_card_rot.png"
           },
           {
             "Type": "Image",
             "Name": "CardRotR",
             "X": 123,
-            "Y": 212,
+            "Y": 170,
             "Width": 107,
-            "Height": 96,
-            "RelativeFilename": "b_card_rot.png"
+            "Height": 136,
+            "RelativeFilename": "d_card_rot.png"
           },
           {
             "Type": "TextArea",
             "Name": "TitleRotL",
             "X": 37,
-            "Y": 220,
-            "Width": 49,
-            "Height": 9,
-            "TextId": "B_SWROT",
+            "Y": 188,
+            "Width": 52,
+            "Height": 13,
+            "TextId": "D_SWROT",
             "TextRotation": "0",
             "Color": {
               "Red": 201,
@@ -1741,11 +1627,11 @@
           {
             "Type": "TextArea",
             "Name": "TitleRotR",
-            "X": 145,
-            "Y": 220,
-            "Width": 62,
-            "Height": 9,
-            "TextId": "B_DETROT",
+            "X": 132,
+            "Y": 188,
+            "Width": 91,
+            "Height": 13,
+            "TextId": "D_DETROT",
             "TextRotation": "0",
             "Color": {
               "Red": 201,
@@ -1757,29 +1643,29 @@
           {
             "Type": "Image",
             "Name": "TrackL",
-            "X": 27,
-            "Y": 234,
-            "Width": 74,
-            "Height": 46,
-            "RelativeFilename": "b_gauge_track.png"
+            "X": 18,
+            "Y": 215,
+            "Width": 90,
+            "Height": 90,
+            "RelativeFilename": "d_gauge_track.png"
           },
           {
             "Type": "Image",
             "Name": "TrackR",
-            "X": 140,
-            "Y": 234,
-            "Width": 74,
-            "Height": 46,
-            "RelativeFilename": "b_gauge_track.png"
+            "X": 131,
+            "Y": 215,
+            "Width": 90,
+            "Height": 90,
+            "RelativeFilename": "d_gauge_track.png"
           },
           {
             "Type": "TextArea",
             "Name": "ValRotL",
-            "X": 51,
-            "Y": 272,
-            "Width": 26,
-            "Height": 23,
-            "TextId": "D_VAL_00",
+            "X": 46,
+            "Y": 241,
+            "Width": 34,
+            "Height": 30,
+            "TextId": "D_VAL_SWROT",
             "TextRotation": "0",
             "Color": {
               "Red": 232,
@@ -1791,11 +1677,11 @@
           {
             "Type": "TextArea",
             "Name": "DegL",
-            "X": 80,
-            "Y": 278,
-            "Width": 4,
-            "Height": 10,
-            "TextId": "B_DEG10",
+            "X": 82,
+            "Y": 244,
+            "Width": 6,
+            "Height": 15,
+            "TextId": "D_DEG",
             "TextRotation": "0",
             "Color": {
               "Red": 139,
@@ -1807,11 +1693,11 @@
           {
             "Type": "TextArea",
             "Name": "ValRotR",
-            "X": 164,
-            "Y": 272,
-            "Width": 26,
-            "Height": 23,
-            "TextId": "D_VAL_00",
+            "X": 158,
+            "Y": 241,
+            "Width": 35,
+            "Height": 30,
+            "TextId": "D_VAL_DETROT",
             "TextRotation": "0",
             "Color": {
               "Red": 232,
@@ -1823,11 +1709,11 @@
           {
             "Type": "TextArea",
             "Name": "DegR",
-            "X": 193,
-            "Y": 278,
-            "Width": 4,
-            "Height": 10,
-            "TextId": "B_DEG10",
+            "X": 196,
+            "Y": 244,
+            "Width": 6,
+            "Height": 15,
+            "TextId": "D_DEG",
             "TextRotation": "0",
             "Color": {
               "Red": 139,
@@ -1835,6 +1721,26 @@
               "Blue": 165
             },
             "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "connecting1",
+            "X": 42,
+            "Y": 97,
+            "Width": 156,
+            "Height": 76,
+            "Visible": false,
+            "CustomContainerDefinitionName": "Connecting"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "emergency1",
+            "X": 42,
+            "Y": 90,
+            "Width": 156,
+            "Height": 100,
+            "Visible": false,
+            "CustomContainerDefinitionName": "Emergency"
           }
         ],
         "Interactions": [
@@ -1847,6 +1753,50 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "A_option"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 4
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "emergency1"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 3
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "emergency1"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "connecting1"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "connecting1"
             }
           }
         ]

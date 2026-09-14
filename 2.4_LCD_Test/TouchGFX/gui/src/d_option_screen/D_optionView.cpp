@@ -5,14 +5,15 @@
 #include <math.h>
 
 /* 캔버스 위젯(Circle) 렌더링 작업 버퍼 - 이 화면 전용으로 공급 */
-static uint8_t canvasBuffer[3600];
+static uint8_t canvasBuffer[7200];   /* 90px 원 두 개 - 여유 있게 */
 
-/* 트랙 이미지(b_gauge_track.png) 내부의 원 중심/반지름 (B안과 동일 에셋).
+/* 트랙 이미지(d_gauge_track.png, 90x90) 내부의 원 중심/반지름/선 굵기.
  * 게이지의 화면 위치는 하드코딩하지 않고 TrackL/TrackR 위젯(Designer 배치)에서
  * 런타임에 읽어온다 → Designer에서 위치를 옮겨도 항상 트랙과 정확히 일치. */
-static const float ARC_CX = 37.0f;
-static const float ARC_CY = 23.95f;
-static const float ARC_R  = 17.0f;
+static const float ARC_CX = 45.0f;
+static const float ARC_CY = 45.0f;
+static const float ARC_R  = 38.0f;
+static const float ARC_LW = 6.0f;
 
 D_optionView::D_optionView()
     : animTick(0)
@@ -48,7 +49,7 @@ void D_optionView::initGauge(touchgfx::Circle &arc, touchgfx::PainterRGB565 &pai
 {
     arc.setPosition(track.getX(), track.getY(), track.getWidth(), track.getHeight());
     arc.setCircle(ARC_CX, ARC_CY, ARC_R);
-    arc.setLineWidth(4.5f);
+    arc.setLineWidth(ARC_LW);
     arc.setCapPrecision(10);                /* 라운드 캡 */
     arc.setPainter(painter);
     arc.setArc(ARC_START, ARC_START);       /* 빈 상태로 시작 */
@@ -60,6 +61,12 @@ void D_optionView::initGauge(touchgfx::Circle &arc, touchgfx::PainterRGB565 &pai
 
 void D_optionView::handleTickEvent()
 {
+    /* Designer에 배치된 Connecting/Emergency 컨테이너에 틱 전달.
+     * 각 컨테이너가 내부에서 isVisible()을 확인하므로 항상 호출해도 안전하다.
+     * (컨테이너는 스스로 틱을 받지 못하므로 화면(View)이 넘겨줘야 애니메이션이 돈다) */
+    connecting1.tick();
+    emergency1.tick();
+
     animTick++;
 
     /* 왕복 위치 0..1 (삼각파) → smoothstep 이징으로 양 끝에서 자연스럽게 감속 */
