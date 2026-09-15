@@ -5,10 +5,9 @@
   *
   *          사용자 파일 — CubeMX / TouchGFX Designer 재생성 시 덮어쓰지 않음.
   *
-  *          MX_TouchGFX_Process()가 내부 무한 루프라서 main()의 while(1)
-  *          아래 코드는 실행되지 않는다. 그래서 주기 작업은
-  *          TouchGFX Model::tick()(매 프레임, 약 76Hz, 메인 컨텍스트)에서
-  *          AppMain_Poll()을 불러 처리한다.
+  *          main()의 while(1)에서 MX_TouchGFX_Process()(VSYNC 없으면 즉시
+  *          리턴하는 폴링 함수)와 함께 AppMain_Poll()을 매회 호출한다.
+  *          인터럽트 → 큐 → 메인 루프 소비 구조의 최상단 함수.
   ******************************************************************************
   */
 #ifndef APP_MAIN_H
@@ -21,7 +20,7 @@ extern "C" {
 /* main()의 USER CODE 2에서 1회 호출 (CAN 시작 + 키 백라이트 ON) */
 void AppMain_Init(void);
 
-/* Model::tick()에서 매 프레임 호출:
+/* main()의 while 루프에서 매회 호출:
  * RUN LED 하트비트 + 키 이벤트 소비/CAN 송신 + CAN 수신 처리 */
 void AppMain_Poll(void);
 

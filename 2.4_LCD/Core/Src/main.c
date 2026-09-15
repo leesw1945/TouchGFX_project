@@ -116,7 +116,7 @@ int main(void)
     Error_Handler();
   }
   LCD_Init();
-  AppMain_Init();   /* CAN 시작 + 키 백라이트 ON (주기 처리는 Model::tick에서) */
+  AppMain_Init();   /* CAN 시작 + 키 백라이트 ON (주기 처리는 아래 while 루프의 AppMain_Poll) */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,6 +127,10 @@ int main(void)
 
   MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
+    /* MX_TouchGFX_Process()는 VSYNC가 없으면 즉시 리턴하는 폴링 함수라
+     * 이 루프는 계속 돈다. 인터럽트가 큐에 넣은 키/CAN 데이터를 여기서
+     * 꺼내 처리한다 (최상단 애플리케이션 함수). */
+    AppMain_Poll();
   }
   /* USER CODE END 3 */
 }
