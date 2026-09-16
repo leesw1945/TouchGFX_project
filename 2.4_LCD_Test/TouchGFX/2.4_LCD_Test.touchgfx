@@ -1644,7 +1644,7 @@
             "Type": "Image",
             "Name": "TrackL",
             "X": 18,
-            "Y": 215,
+            "Y": 214,
             "Width": 90,
             "Height": 90,
             "RelativeFilename": "d_gauge_track.png"
@@ -1661,9 +1661,9 @@
           {
             "Type": "TextArea",
             "Name": "ValRotL",
-            "X": 46,
+            "X": 40,
             "Y": 241,
-            "Width": 34,
+            "Width": 45,
             "Height": 30,
             "TextId": "D_VAL_SWROT",
             "TextRotation": "0",
@@ -1677,8 +1677,8 @@
           {
             "Type": "TextArea",
             "Name": "DegL",
-            "X": 82,
-            "Y": 244,
+            "X": 84,
+            "Y": 241,
             "Width": 6,
             "Height": 15,
             "TextId": "D_DEG",
@@ -1693,9 +1693,9 @@
           {
             "Type": "TextArea",
             "Name": "ValRotR",
-            "X": 158,
+            "X": 153,
             "Y": 241,
-            "Width": 35,
+            "Width": 46,
             "Height": 30,
             "TextId": "D_VAL_DETROT",
             "TextRotation": "0",
@@ -1709,8 +1709,8 @@
           {
             "Type": "TextArea",
             "Name": "DegR",
-            "X": 196,
-            "Y": 244,
+            "X": 197,
+            "Y": 241,
             "Width": 6,
             "Height": 15,
             "TextId": "D_DEG",
@@ -1909,7 +1909,7 @@
       "Height": 320
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "A_option",
+    "StartupScreenName": "D_option",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

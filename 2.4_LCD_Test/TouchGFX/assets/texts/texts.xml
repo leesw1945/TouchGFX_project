@@ -182,10 +182,10 @@
         <Translation Language="GB">DETECTOR DEG</Translation>
       </Text>
       <Text Id="D_VAL_SWROT" Alignment="Left" TypographyId="Barlow_SemiBold_30">
-        <Translation Language="GB">20</Translation>
+        <Translation Language="GB">120</Translation>
       </Text>
       <Text Id="D_VAL_DETROT" Alignment="Left" TypographyId="Barlow_SemiBold_30">
-        <Translation Language="GB">40</Translation>
+        <Translation Language="GB">140</Translation>
       </Text>
     </TextGroup>
   </Texts>
