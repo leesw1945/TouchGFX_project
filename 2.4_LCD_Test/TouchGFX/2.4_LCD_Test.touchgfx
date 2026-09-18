@@ -1800,6 +1800,338 @@
             }
           }
         ]
+      },
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 240,
+            "Height": 320,
+            "RelativeFilename": "SU-4100_1.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen2",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 240,
+            "Height": 320,
+            "RelativeFilename": "SU-4100_2.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Main",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "bg",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 238,
+              "Green": 238,
+              "Blue": 238
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "topBar",
+            "Width": 240,
+            "Height": 34,
+            "Color": {
+              "Red": 54,
+              "Green": 210,
+              "Blue": 96
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "stateDot",
+            "X": 145,
+            "Y": 15,
+            "Width": 8,
+            "Height": 8,
+            "RelativeFilename": "dot_white.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "stateText",
+            "X": 101,
+            "Y": 6,
+            "Width": 130,
+            "Height": 25,
+            "TextId": "MAIN_READY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "cardSid",
+            "X": 7,
+            "Y": 41,
+            "Width": 110,
+            "Height": 132,
+            "RelativeFilename": "card_nrm.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "cardArmUd",
+            "X": 123,
+            "Y": 41,
+            "Width": 110,
+            "Height": 132,
+            "RelativeFilename": "card_act.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "cardArmDeg",
+            "X": 7,
+            "Y": 179,
+            "Width": 110,
+            "Height": 132,
+            "RelativeFilename": "card_act.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "cardDetDeg",
+            "X": 123,
+            "Y": 179,
+            "Width": 110,
+            "Height": 132,
+            "RelativeFilename": "card_nrm.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "badgeSid",
+            "X": 44,
+            "Y": 62,
+            "Width": 35,
+            "Height": 34,
+            "RelativeFilename": "badge_sid.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "badgeArmUd",
+            "X": 160,
+            "Y": 62,
+            "Width": 35,
+            "Height": 34,
+            "RelativeFilename": "badge_arm.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "valSid",
+            "X": 8,
+            "Y": 102,
+            "Width": 107,
+            "Height": 44,
+            "TextId": "MAIN_VALUE_36",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            },
+            "Wildcard1": {
+              "TextId": "MAIN_INIT_SID",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "markInchSid",
+            "X": 97,
+            "Y": 107,
+            "Width": 10,
+            "Height": 8,
+            "Visible": false,
+            "RelativeFilename": "mark_inch.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitSid",
+            "X": 8,
+            "Y": 143,
+            "Width": 107,
+            "Height": 15,
+            "TextId": "MAIN_CM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "valArmUd",
+            "X": 124,
+            "Y": 102,
+            "Width": 107,
+            "Height": 44,
+            "TextId": "MAIN_VALUE_36",
+            "TextRotation": "0",
+            "Color": {
+              "Green": 119,
+              "Blue": 192
+            },
+            "Wildcard1": {
+              "TextId": "MAIN_INIT_ARMUD",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "markInchArmUd",
+            "X": 213,
+            "Y": 107,
+            "Width": 10,
+            "Height": 8,
+            "RelativeFilename": "mark_inch.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitArmUd",
+            "X": 124,
+            "Y": 143,
+            "Width": 107,
+            "Height": 15,
+            "TextId": "MAIN_INCH",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleArm",
+            "X": 8,
+            "Y": 197,
+            "Width": 107,
+            "Height": 15,
+            "TextId": "MAIN_ARM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "titleDet",
+            "X": 124,
+            "Y": 197,
+            "Width": 107,
+            "Height": 15,
+            "TextId": "MAIN_DETECTOR",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "valArmDeg",
+            "X": 8,
+            "Y": 245,
+            "Width": 107,
+            "Height": 37,
+            "TextId": "MAIN_VALUE_30",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            },
+            "Wildcard1": {
+              "TextId": "MAIN_INIT_ARMDEG",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "markDegArm",
+            "X": 86,
+            "Y": 247,
+            "Width": 8,
+            "Height": 7,
+            "RelativeFilename": "mark_deg.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "valDetDeg",
+            "X": 124,
+            "Y": 245,
+            "Width": 107,
+            "Height": 37,
+            "TextId": "MAIN_VALUE_30",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            },
+            "Wildcard1": {
+              "TextId": "MAIN_INIT_DETDEG",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "markDegDet",
+            "X": 197,
+            "Y": 247,
+            "Width": 8,
+            "Height": 7,
+            "RelativeFilename": "mark_deg.png"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [
@@ -1909,7 +2241,7 @@
       "Height": 320
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "D_option",
+    "StartupScreenName": "Main",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

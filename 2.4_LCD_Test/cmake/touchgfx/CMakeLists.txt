@@ -30,7 +30,13 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/Emergency.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/d_option_screen/D_optionPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/d_option_screen/D_optionView.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainPresenter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/model/Model.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen1_screen/Screen1Presenter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen1_screen/Screen1View.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen2_screen/Screen2View.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/ApplicationFontProvider.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CachedFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedFontCache.cpp
@@ -45,6 +51,11 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_23_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_30_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_9_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_20_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_30_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_36_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_MediumItalic_12_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Medium_12_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_40_4bpp_0.cpp
@@ -58,6 +69,11 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_23_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_9_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_20_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_30_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_36_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_MediumItalic_12_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Medium_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp
@@ -70,6 +86,11 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_23_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_9_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_20_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_30_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_36_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_MediumItalic_12_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Medium_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp
@@ -82,8 +103,13 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/ConnectingBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/EmergencyBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/d_option_screen/D_optionViewBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/screen2_screen/Screen2ViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/BitmapDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_SU-4100_1.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_SU-4100_2.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_arrow_lr.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_arrow_ud.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_card_nrm.cpp
@@ -95,13 +121,18 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_gauge_track.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_knob_blue.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_b_knob_orange.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_badge_arm.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_badge_sid.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bar_163x31.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bg_240x320.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_card_act.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_card_nrm.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_normal.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_card_rot.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_card_sel.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_d_gauge_track.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_dot_white.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_down.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_up.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_colli.cpp
@@ -112,6 +143,9 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_right.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_spinner.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_warning.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_deg.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_inch.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_inch_blue.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_panel_toast.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_spinner_f00.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_spinner_f01.cpp
