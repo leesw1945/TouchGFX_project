@@ -26,6 +26,7 @@ static const uint32_t  GRAD_GRAY_FROM = 0x8C8C8C;
 static const uint32_t  GRAD_GRAY_TO   = 0xBDBDBD;
 
 MainView::MainView()
+    : state(STATE_READY), demoTick(0), demoLastDeg(-1)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -73,9 +74,38 @@ void MainView::tearDownScreen()
     MainViewBase::tearDownScreen();
 }
 
+/* [2.4_LCD_Test 전용] 조이스틱 CENTER(키 0) -> READY/EMERGENCY 토글 */
+void MainView::handleKeyEvent(uint8_t key)
+{
+    /* 보드: ButtonController가 CENTER를 키 0으로 전달. 시뮬레이터: 키보드 '0'은 SDL 키코드 48('0')로 들어온다 */
+    if (key == 0 || key == '0')
+    {
+        setState(state == STATE_READY ? STATE_EMERGENCY : STATE_READY);
+    }
+}
+
+/* [2.4_LCD_Test 전용] ARM 게이지 데모: 0 -> GAUGE_VALUE_MAX -> 0 왕복, 양끝에서 감속(smoothstep).
+ * 값이 실제로 바뀌는 틱에만 setArmDeg()를 호출해 불필요한 재전송을 피한다. */
+void MainView::handleTickEvent()
+{
+    demoTick++;
+    const uint16_t phase = demoTick % (2 * DEMO_HALF_PERIOD_TICKS);
+    float p = (phase < DEMO_HALF_PERIOD_TICKS)
+                  ? (float)phase / DEMO_HALF_PERIOD_TICKS
+                  : (float)(2 * DEMO_HALF_PERIOD_TICKS - phase) / DEMO_HALF_PERIOD_TICKS;
+    p = p * p * (3.0f - 2.0f * p);
+    const int16_t deg = (int16_t)(GAUGE_VALUE_MAX * p + 0.5f);
+    if (deg != demoLastDeg)
+    {
+        demoLastDeg = deg;
+        setArmDeg(deg);
+    }
+}
+
 /* ---------------------------------------------------------------- 상태바 */
 void MainView::setState(State s)
 {
+    state = s;
     topBar.setColor(s == STATE_READY ? COLOR_READY_GREEN : COLOR_EMERGENCY);
     topBar.invalidate();
 
@@ -109,7 +139,7 @@ void MainView::setArmUpDownInch(uint16_t inch10)
 }
 
 void MainView::setLinearValue(TextAreaWithOneWildcard& val, Unicode::UnicodeChar* buf, uint16_t bufSize,
-                              Image& mark, TextArea& unit, int16_t cardX, uint16_t value, bool inch)
+                              TextArea& mark, TextArea& unit, int16_t cardX, uint16_t value, bool inch)
 {
     val.invalidate();
     mark.invalidate();
@@ -151,7 +181,7 @@ void MainView::setDetectorDeg(int16_t deg)
 }
 
 void MainView::setAngleValue(TextAreaWithOneWildcard& val, Unicode::UnicodeChar* buf, uint16_t bufSize,
-                             Image& mark, Circle& prog, int16_t cardX, int16_t deg)
+                             TextArea& mark, Circle& prog, int16_t cardX, int16_t deg)
 {
     val.invalidate();
     mark.invalidate();
@@ -188,7 +218,6 @@ void MainView::setActive(Card card, bool active)
     cardActive[card] = active;
     const Bitmap frame(active ? BITMAP_CARD_ACT_ID : BITMAP_CARD_NRM_ID);
     const colortype valueColor = active ? COLOR_VALUE_BLUE : COLOR_VALUE_NAVY;
-    const Bitmap inchMark(active ? BITMAP_MARK_INCH_BLUE_ID : BITMAP_MARK_INCH_ID);
     AbstractPainter& gaugePainter = active ? static_cast<AbstractPainter&>(bluePainter)
                                            : static_cast<AbstractPainter&>(grayPainter);
 
@@ -199,7 +228,7 @@ void MainView::setActive(Card card, bool active)
         cardSid.invalidate();
         valSid.setColor(valueColor);
         valSid.invalidate();
-        markInchSid.setBitmap(inchMark);      /* 인치 기호도 값 색을 따라간다 */
+        markInchSid.setColor(valueColor);     /* 인치 기호(텍스트)도 값 색을 따라간다 */
         markInchSid.invalidate();
         break;
     case CARD_ARM_UD:
@@ -207,7 +236,7 @@ void MainView::setActive(Card card, bool active)
         cardArmUd.invalidate();
         valArmUd.setColor(valueColor);
         valArmUd.invalidate();
-        markInchArmUd.setBitmap(inchMark);
+        markInchArmUd.setColor(valueColor);
         markInchArmUd.invalidate();
         break;
     case CARD_ARM_DEG:

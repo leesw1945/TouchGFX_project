@@ -225,6 +225,15 @@
       <Text Id="MAIN_DETECTOR" Alignment="Center" TypographyId="Montserrat_MediumItalic_12">
         <Translation Language="GB">Detector</Translation>
       </Text>
+      <Text Id="MAIN_MARK_DEG" Alignment="Left" TypographyId="Montserrat_Bold_16">
+        <Translation Language="GB">°</Translation>
+      </Text>
+      <Text Id="MAIN_MARK_INCH" Alignment="Left" TypographyId="Montserrat_Bold_22">
+        <Translation Language="GB">″</Translation>
+      </Text>
+      <Text Id="MAIN_SID" Alignment="Center" TypographyId="Montserrat_ExtraBold_14">
+        <Translation Language="GB">SID</Translation>
+      </Text>
     </TextGroup>
   </Texts>
   <Typographies>
@@ -245,5 +254,8 @@
     <Typography Id="Montserrat_Bold_20" Font="Montserrat-Bold.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Montserrat_Medium_12" Font="Montserrat-Medium.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Montserrat_MediumItalic_12" Font="Montserrat-MediumItalic.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_16" Font="Montserrat-Bold.ttf" Size="16" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_22" Font="Montserrat-Bold.ttf" Size="22" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_ExtraBold_14" Font="Montserrat-ExtraBold.ttf" Size="14" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

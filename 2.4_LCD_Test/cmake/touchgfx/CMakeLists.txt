@@ -51,9 +51,13 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_23_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_30_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Barlow_SemiBold_9_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_16_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_20_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_22_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_22_4bpp_4.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_30_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_36_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_ExtraBold_14_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_MediumItalic_12_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Medium_12_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp
@@ -69,9 +73,12 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_23_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Barlow_SemiBold_9_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_16_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_20_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_22_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_36_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_ExtraBold_14_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_MediumItalic_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Medium_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp
@@ -86,9 +93,12 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_23_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Barlow_SemiBold_9_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_16_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_20_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_22_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_30_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_36_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_ExtraBold_14_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_MediumItalic_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Medium_12_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp
@@ -143,9 +153,6 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_right.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_spinner.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_warning.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_deg.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_inch.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_mark_inch_blue.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_panel_toast.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_spinner_f00.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_spinner_f01.cpp

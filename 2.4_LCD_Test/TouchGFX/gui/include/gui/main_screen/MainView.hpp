@@ -31,6 +31,13 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
+    /* [2.4_LCD_Test 전용] 조이스틱 CENTER(키 0)로 READY/EMERGENCY 토글.
+     * 실제 프로젝트에서는 CAN으로 받은 Emergency 값으로 Presenter가 setState()를 호출한다. */
+    virtual void handleKeyEvent(uint8_t key);
+
+    /* [2.4_LCD_Test 전용] ARM 게이지 왕복 데모 애니메이션. 실제 프로젝트에서는 수신 값으로 setArmDeg()만 호출. */
+    virtual void handleTickEvent();
+
     void setState(State s);
     void setSidCm(uint16_t cm);
     void setSidInch(uint16_t inch10);
@@ -46,10 +53,11 @@ protected:
     static const int16_t CARD_LEFT_X   = 8;
     static const int16_t CARD_RIGHT_X  = 124;
     static const int16_t GAUGE_ROW_Y   = 180;   /* 아래 카드 행의 카드 상단 y */
-    static const int16_t MARK_INCH_DX  = 3;     /* 숫자 오른끝 -> 인치 기호 이미지 왼쪽 */
-    static const int16_t MARK_INCH_DY  = 5;     /* 값 TextArea Y -> 인치 기호 이미지 Y */
-    static const int16_t MARK_DEG_DX   = 1;     /* 숫자 오른끝 -> 도 기호 이미지 왼쪽 */
-    static const int16_t MARK_DEG_DY   = 2;     /* 값 TextArea Y -> 도 기호 이미지 Y */
+    /* 기호(인치 = Montserrat Bold 22의 U+2033, 도 = Bold 16의 U+00B0)는 이미지가 아닌 텍스트. 숫자 오른끝 기준 오프셋 */
+    static const int16_t MARK_INCH_DX  = -1;     /* 숫자 오른끝 -> 인치 기호 TextArea X */
+    static const int16_t MARK_INCH_DY  = -1;     /* 값 TextArea Y -> 인치 기호 TextArea Y */
+    static const int16_t MARK_DEG_DX   = 0;     /* 숫자 오른끝 -> 도 기호 TextArea X */
+    static const int16_t MARK_DEG_DY   = -2;    /* 값 TextArea Y -> 도 기호 TextArea Y */
     static const int16_t DOT_GAP       = 15;    /* 상태 텍스트 왼끝(advance 기준) -> 점 이미지 X. 시뮬레이터 계측으로 보정 */
 
     /* 게이지: 카드 좌표계 기준 중심 (53.5, 84), 선 중심 반지름 40, 선 굵기 8.
@@ -68,12 +76,18 @@ protected:
     touchgfx::PainterRGB565LinearGradient grayPainter;    /* 정지: 아래 #8C8C8C -> 위 #BDBDBD (트랙과 구분) */
 
     bool cardActive[4];
+    State state;
+
+    /* 데모 애니메이션 상태 (테스트 전용) */
+    static const uint16_t DEMO_HALF_PERIOD_TICKS = 240;   /* 편도 240틱 (60Hz 시뮬 기준 4초) */
+    uint16_t demoTick;
+    int16_t  demoLastDeg;
 
     void initGauge(touchgfx::Circle& track, touchgfx::Circle& prog, int16_t cardX);
     void setLinearValue(touchgfx::TextAreaWithOneWildcard& val, touchgfx::Unicode::UnicodeChar* buf, uint16_t bufSize,
-                        touchgfx::Image& mark, touchgfx::TextArea& unit, int16_t cardX, uint16_t value, bool inch);
+                        touchgfx::TextArea& mark, touchgfx::TextArea& unit, int16_t cardX, uint16_t value, bool inch);
     void setAngleValue(touchgfx::TextAreaWithOneWildcard& val, touchgfx::Unicode::UnicodeChar* buf, uint16_t bufSize,
-                       touchgfx::Image& mark, touchgfx::Circle& prog, int16_t cardX, int16_t deg);
+                       touchgfx::TextArea& mark, touchgfx::Circle& prog, int16_t cardX, int16_t deg);
     static void buildGradient(uint32_t* tex, uint32_t fromRGB, uint32_t toRGB);
 };
 

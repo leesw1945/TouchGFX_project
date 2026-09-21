@@ -1946,6 +1946,21 @@
             "RelativeFilename": "badge_sid.png"
           },
           {
+            "Type": "TextArea",
+            "Name": "badgeSidText",
+            "X": 46,
+            "Y": 70,
+            "Width": 35,
+            "Height": 17,
+            "TextId": "MAIN_SID",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 60,
+              "Green": 104,
+              "Blue": 170
+            }
+          },
+          {
             "Type": "Image",
             "Name": "badgeArmUd",
             "X": 160,
@@ -1975,14 +1990,20 @@
             }
           },
           {
-            "Type": "Image",
+            "Type": "TextArea",
             "Name": "markInchSid",
             "X": 97,
-            "Y": 107,
-            "Width": 10,
-            "Height": 8,
+            "Y": 102,
+            "Width": 12,
+            "Height": 27,
             "Visible": false,
-            "RelativeFilename": "mark_inch.png"
+            "TextId": "MAIN_MARK_INCH",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            }
           },
           {
             "Type": "TextArea",
@@ -2019,13 +2040,18 @@
             }
           },
           {
-            "Type": "Image",
+            "Type": "TextArea",
             "Name": "markInchArmUd",
             "X": 213,
-            "Y": 107,
-            "Width": 10,
-            "Height": 8,
-            "RelativeFilename": "mark_inch.png"
+            "Y": 102,
+            "Width": 12,
+            "Height": 27,
+            "TextId": "MAIN_MARK_INCH",
+            "TextRotation": "0",
+            "Color": {
+              "Green": 119,
+              "Blue": 192
+            }
           },
           {
             "Type": "TextArea",
@@ -2093,13 +2119,19 @@
             }
           },
           {
-            "Type": "Image",
+            "Type": "TextArea",
             "Name": "markDegArm",
             "X": 86,
-            "Y": 247,
-            "Width": 8,
-            "Height": 7,
-            "RelativeFilename": "mark_deg.png"
+            "Y": 243,
+            "Width": 10,
+            "Height": 20,
+            "TextId": "MAIN_MARK_DEG",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            }
           },
           {
             "Type": "TextArea",
@@ -2122,13 +2154,19 @@
             }
           },
           {
-            "Type": "Image",
+            "Type": "TextArea",
             "Name": "markDegDet",
             "X": 197,
-            "Y": 247,
-            "Width": 8,
-            "Height": 7,
-            "RelativeFilename": "mark_deg.png"
+            "Y": 243,
+            "Width": 10,
+            "Height": 20,
+            "TextId": "MAIN_MARK_DEG",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            }
           }
         ],
         "Interactions": []
