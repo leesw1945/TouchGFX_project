@@ -5,51 +5,63 @@
   </Languages>
   <Texts>
     <TextGroup Id="Group1" />
-    <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_TN51" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Emergency</Translation>
+    <TextGroup Id="Main">
+      <Text Id="MAIN_READY" Alignment="Right" TypographyId="Montserrat_Bold_20">
+        <Translation Language="GB">READY</Translation>
       </Text>
-      <Text Id="__SingleUse_PV3B" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="MAIN_EMERGENCY" Alignment="Right" TypographyId="Montserrat_Bold_20">
+        <Translation Language="GB">EMERGENCY</Translation>
       </Text>
-      <Text Id="__SingleUse_S214" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="MAIN_VALUE_36" Alignment="Center" TypographyId="Montserrat_Bold_36">
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_GTKI" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="MAIN_VALUE_30" Alignment="Center" TypographyId="Montserrat_Bold_30">
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_3WZD" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
+      <Text Id="MAIN_INIT_SID" Alignment="Center" TypographyId="Montserrat_Bold_36">
+        <Translation Language="GB">180</Translation>
       </Text>
-      <Text Id="__SingleUse_MZQ8" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;° </Translation>
+      <Text Id="MAIN_INIT_ARMUD" Alignment="Center" TypographyId="Montserrat_Bold_36">
+        <Translation Language="GB">47.2</Translation>
       </Text>
-      <Text Id="__SingleUse_W3RD" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;° </Translation>
+      <Text Id="MAIN_INIT_ARMDEG" Alignment="Center" TypographyId="Montserrat_Bold_30">
+        <Translation Language="GB">140</Translation>
       </Text>
-      <Text Id="__SingleUse_YVQA" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      <Text Id="MAIN_INIT_DETDEG" Alignment="Center" TypographyId="Montserrat_Bold_30">
+        <Translation Language="GB">68</Translation>
       </Text>
-      <Text Id="__SingleUse_X4XG" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;cm</Translation>
+      <Text Id="MAIN_CM" Alignment="Center" TypographyId="Montserrat_Medium_12">
+        <Translation Language="GB">cm</Translation>
       </Text>
-      <Text Id="__SingleUse_XQ6Z" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">ARM HEIGHT</Translation>
+      <Text Id="MAIN_INCH" Alignment="Center" TypographyId="Montserrat_Medium_12">
+        <Translation Language="GB">inch</Translation>
       </Text>
-      <Text Id="__SingleUse_4AY2" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">DETECTOR DEG</Translation>
+      <Text Id="MAIN_ARM" Alignment="Center" TypographyId="Montserrat_Medium_12">
+        <Translation Language="GB">ARM</Translation>
       </Text>
-      <Text Id="__SingleUse_E4J6" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">ARM DEG</Translation>
+      <Text Id="MAIN_DETECTOR" Alignment="Center" TypographyId="Montserrat_Medium_12">
+        <Translation Language="GB">Detector</Translation>
       </Text>
-      <Text Id="__SingleUse_RZYY" Alignment="Left" TypographyId="Default">
+      <Text Id="MAIN_MARK_DEG" Alignment="Left" TypographyId="Montserrat_Bold_16">
+        <Translation Language="GB">°</Translation>
+      </Text>
+      <Text Id="MAIN_MARK_INCH" Alignment="Left" TypographyId="Montserrat_Bold_22">
+        <Translation Language="GB">″</Translation>
+      </Text>
+      <Text Id="MAIN_SID" Alignment="Center" TypographyId="Montserrat_ExtraBold_14">
         <Translation Language="GB">SID</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_36" Font="Montserrat-Bold.ttf" Size="36" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789.-" />
+    <Typography Id="Montserrat_Bold_30" Font="Montserrat-Bold.ttf" Size="30" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789-" />
+    <Typography Id="Montserrat_Bold_20" Font="Montserrat-Bold.ttf" Size="20" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Medium_12" Font="Montserrat-Medium.ttf" Size="12" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_MediumItalic_12" Font="Montserrat-MediumItalic.ttf" Size="12" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_16" Font="Montserrat-Bold.ttf" Size="16" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_22" Font="Montserrat-Bold.ttf" Size="22" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_ExtraBold_14" Font="Montserrat-ExtraBold.ttf" Size="14" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

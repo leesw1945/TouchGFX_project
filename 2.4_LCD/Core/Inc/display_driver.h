@@ -54,6 +54,23 @@ void LCD_Init(void);
 /* LCD 백라이트 켜기/끄기 (PA1 → BSS138이 LEDK를 로우사이드 스위칭). */
 void LCD_SetBacklight(uint8_t on);
 
+/* ---- VSYNC 폴백 (안전장치) ---------------------------------------------------
+ * TE 인터럽트가 LCD_VSYNC_TIMEOUT_MS 동안 없으면 SysTick 기반 60Hz 가짜 VSYNC로
+ * 자동 전환해 TE 없이도 TouchGFX가 화면을 그리게 한다. TE가 다시 들어오면 해제.
+ * (TE 배선/패널 문제가 있어도 화면이 멈추지 않도록 남겨둔다) */
+#define LCD_VSYNC_TIMEOUT_MS   1000U
+#define LCD_VSYNC_FAKE_PERIOD  16U      /* ms, 약 60Hz */
+
+/* SysTick_Handler(1ms)에서 호출 (ISR 컨텍스트) */
+void LCD_VsyncFallbackTick1ms(void);
+/* 1 = 현재 가짜 VSYNC로 동작 중 */
+uint8_t LCD_IsVsyncFallbackActive(void);
+
+/* SWD 라이브 워치로 읽는 진단 카운터 (TE 정상 = te_count 증가, fake_vsync 0) */
+extern volatile uint32_t diag_te_count;      /* TE 인터럽트 발생 횟수      */
+extern volatile uint32_t diag_blocks_sent;   /* LCD로 전송된 픽셀 블록 수  */
+extern volatile uint32_t diag_fake_vsync;    /* 가짜 VSYNC 발생 횟수       */
+
 #ifdef __cplusplus
 }
 #endif

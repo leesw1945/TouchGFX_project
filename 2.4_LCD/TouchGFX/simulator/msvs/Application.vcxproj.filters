@@ -142,29 +142,17 @@
     <Filter Include="Source Files\gui\model">
       <UniqueIdentifier>0F2A2066-1384-09BC-87E0-A15C521A5D51</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen_screen">
-      <UniqueIdentifier>82BD8614-CAE3-9DFA-7BDF-8E2BDF336687</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated">
       <UniqueIdentifier>4388A91E-A522-582A-F38E-AEE88CA22FAA</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\common">
       <UniqueIdentifier>1EA00C83-C99A-03D9-C693-9462B6F72AB6</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\screen_screen">
-      <UniqueIdentifier>1E3C06D7-5A33-9598-12C5-BE6D29FD6A1F</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\generated\gui_generated">
       <UniqueIdentifier>425188EA-1059-EED2-4B01-81D2D132F3A1</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\common">
       <UniqueIdentifier>AAC17AD6-D269-E6AA-5E90-B0C176F3A41B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen_screen">
-      <UniqueIdentifier>6F52F807-8806-8733-F55C-C973A91E1A6A</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen_screen">
-      <UniqueIdentifier>B976144C-32CF-C2F8-2752-B5F2D5E42FA4</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\simulator\include">
       <UniqueIdentifier>01F3E3E7-ABD0-BFAE-D679-47B224B6E687</UniqueIdentifier>
@@ -183,6 +171,18 @@
     </Filter>
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>6B43A848-4CAC-3FDB-7E65-4A65B9A784AB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\main_screen">
+      <UniqueIdentifier>24E050C8-7630-6DC7-8734-7930CEE36B9E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\main_screen">
+      <UniqueIdentifier>BF81E1BD-21CA-76F9-8B71-DB7ECF3D0186</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\main_screen">
+      <UniqueIdentifier>91DD5C30-42FC-E3A4-CDB9-BC9F036A9FD2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\main_screen">
+      <UniqueIdentifier>49306F5E-3CBD-04F5-B943-F2E5C4F9FD7C</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -213,17 +213,17 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenPresenter.cpp">
-      <Filter>Source Files\gui\screen_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenView.cpp">
-      <Filter>Source Files\gui\screen_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
+      <Filter>Source Files\gui\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
+      <Filter>Source Files\gui\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -661,20 +661,20 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenPresenter.hpp">
-      <Filter>Header Files\gui\screen_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenView.hpp">
-      <Filter>Header Files\gui\screen_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
+      <Filter>Header Files\gui\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
+      <Filter>Header Files\gui\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "key_scan.h"
+#include "display_driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -135,6 +136,7 @@ void SysTick_Handler(void)
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   KEY_Scan_Tick1ms();   /* 12키 디바운스 샘플링 (1ms) */
+  LCD_VsyncFallbackTick1ms();   /* TE 부재 시 가짜 VSYNC (진단/폴백) */
   /* USER CODE END SysTick_IRQn 1 */
 }
 

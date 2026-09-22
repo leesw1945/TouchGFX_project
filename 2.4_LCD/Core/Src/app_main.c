@@ -22,6 +22,7 @@
 #include "main.h"
 #include "key_scan.h"
 #include "can_app.h"
+#include "display_driver.h"
 #include <stdio.h>
 
 #define HEARTBEAT_PERIOD_MS   500U
@@ -75,6 +76,7 @@ void AppMain_Poll(void)
 
     /* ---- CAN 주기 처리 (수신 해석, LED 소등, 버스오프 복구) ---- */
     CAN_App_Process();
+
 
     /* ---- 표시 데이터 변화 로그 (브링업용, 최대 1초에 1회) ----
      * TODO: UI 연결 시 이 로그 대신 Model이 CAN_App_GetDisplayData()를 읽어

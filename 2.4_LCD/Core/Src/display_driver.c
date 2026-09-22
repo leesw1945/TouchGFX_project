@@ -33,6 +33,7 @@ extern void touchgfxSignalVSync(void);
 #define DCS_SWRESET   0x01U
 #define DCS_SLPOUT    0x11U
 #define DCS_NORON     0x13U
+#define DCS_INVOFF    0x20U
 #define DCS_INVON     0x21U
 #define DCS_DISPON    0x29U
 #define DCS_CASET     0x2AU
@@ -79,6 +80,14 @@ static volatile int lcd_ready    = 0;   /* init 완료, TE 펄스가 유효함  
 /* 진단용 (SWD로 읽는 카운터): 값이 증가하는지가 곧 그 경로의 생사 확인 */
 volatile uint32_t diag_te_count     = 0; /* TE 인터럽트 발생 횟수            */
 volatile uint32_t diag_blocks_sent  = 0; /* LCD로 전송된 픽셀 블록 수        */
+volatile uint32_t diag_fake_vsync   = 0; /* 가짜 VSYNC 발생 횟수             */
+
+static volatile uint32_t te_last_ms      = 0; /* 마지막 TE 시각 (HAL_GetTick)   */
+static volatile uint8_t  vsync_fallback  = 0; /* 1 = 가짜 VSYNC 모드            */
+static uint16_t          fake_ms         = 0;
+
+/* 부팅 시 GRAM 초기 클리어 색 (검정) */
+#define LCD_CLEAR_COLOR        0x0000U
 
 /* 저수준 헬퍼 -----------------------------------------------------------------*/
 
@@ -125,12 +134,17 @@ static void LCD_SetWindow(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
     LCD_WriteCmd(DCS_RASET, row, 4);
 }
 
-/* GRAM 전체를 검정으로 채워서 TouchGFX가 첫 프레임을 그리기 전까지 화면에
- * 아무것도 안 보이게 한다. 블로킹(16Mbit/s에서 약 75ms), 부팅 시 1회만. */
+/* GRAM 전체를 LCD_CLEAR_COLOR(검정)로 채워서 TouchGFX가 첫 프레임을 그리기 전까지
+ * 화면에 아무것도 안 보이게 한다. 블로킹(16Mbit/s에서 약 75ms), 부팅 시 1회만. */
 static void LCD_ClearScreen(void)
 {
-    static const uint16_t zeros[LCD_WIDTH] = { 0 };
+    static uint16_t zeros[LCD_WIDTH];
     uint8_t ramwr = DCS_RAMWR;
+
+    for (uint16_t i = 0; i < LCD_WIDTH; i++)
+    {
+        zeros[i] = LCD_CLEAR_COLOR;
+    }
 
     LCD_SetWindow(0, 0, LCD_WIDTH, LCD_HEIGHT);
 
@@ -199,7 +213,10 @@ void LCD_Init(void)
     LCD_WriteCmd(ST7789_FRCTRL2, (const uint8_t[]){ 0x0F }, 1);
     LCD_WriteCmd(ST7789_PWCTRL1, (const uint8_t[]){ 0xA4, 0xA1 }, 2);
     LCD_WriteCmd(ST7789_D6,      (const uint8_t[]){ 0xA1 }, 1);
-    LCD_WriteCmd(DCS_INVON,   NULL, 0);                            /* IPS(Normally Black) 필수 */
+    /* 벤더 예제 코드는 INVON(0x21)을 켰지만, 입고된 패널은 그 상태에서 색이 반전되어
+     * 보였다(2026-09-22 실보드 확인) → 반전 끔(INVOFF). 패널 로트가 바뀌어 색이
+     * 반전되면 이 한 줄만 INVON으로 되돌리면 된다. */
+    LCD_WriteCmd(DCS_INVOFF,  NULL, 0);
     LCD_WriteCmd(ST7789_PVGAMCTRL,
                  (const uint8_t[]){ 0xD0, 0x08, 0x10, 0x0D, 0x0C, 0x07, 0x37,
                                     0x53, 0x4C, 0x39, 0x15, 0x15, 0x2A, 0x2D }, 14);
@@ -217,7 +234,39 @@ void LCD_Init(void)
     HAL_Delay(20);
     LCD_SetBacklight(1);
 
+    te_last_ms = HAL_GetTick();              /* 지금부터 1초 동안 TE를 기다려 본다 */
     lcd_ready = 1;
+}
+
+/* ---- VSYNC 폴백 (SysTick 1ms ISR에서 호출) ---------------------------------*/
+void LCD_VsyncFallbackTick1ms(void)
+{
+    if (!lcd_ready)
+    {
+        return;
+    }
+
+    if ((HAL_GetTick() - te_last_ms) > LCD_VSYNC_TIMEOUT_MS)
+    {
+        /* TE가 끊겼다(또는 애초에 없다) → 16ms마다 직접 프레임 틱을 만든다 */
+        vsync_fallback = 1;
+        if (++fake_ms >= LCD_VSYNC_FAKE_PERIOD)
+        {
+            fake_ms = 0;
+            diag_fake_vsync++;
+            touchgfxSignalVSync();
+        }
+    }
+    else
+    {
+        vsync_fallback = 0;
+        fake_ms = 0;
+    }
+}
+
+uint8_t LCD_IsVsyncFallbackActive(void)
+{
+    return vsync_fallback;
 }
 
 /* TouchGFX Partial Framebuffer 인터페이스 -------------------------------------*/
@@ -270,6 +319,10 @@ void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin)
     if ((GPIO_Pin == DISP_TE_Pin) && lcd_ready)
     {
         diag_te_count++;
-        touchgfxSignalVSync();
+        te_last_ms = HAL_GetTick();
+        if (!vsync_fallback)                 /* 가짜 VSYNC 중이면 중복 틱 방지 */
+        {
+            touchgfxSignalVSync();
+        }
     }
 }

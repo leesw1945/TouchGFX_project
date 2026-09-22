@@ -20,32 +20,69 @@ set(TouchGFX_Include_Dirs
 # TouchGFX generated application sources
 set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/common/FrontendApplication.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainPresenter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/model/Model.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen_screen/screenPresenter.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/screen_screen/screenView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/ApplicationFontProvider.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CachedFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedFontCache.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedUnmappedFontCache.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/FontCache.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_16_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_20_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_22_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_22_8bpp_4.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_30_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Bold_36_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_ExtraBold_14_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_MediumItalic_12_8bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_Montserrat_Medium_12_8bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_verdana_40_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/GeneratedFont.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_16_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_20_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_22_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_30_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Bold_36_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_ExtraBold_14_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_MediumItalic_12_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_Montserrat_Medium_12_8bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_16_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_20_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_22_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_30_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Bold_36_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_ExtraBold_14_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_MediumItalic_12_8bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_Montserrat_Medium_12_8bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_20_4bpp.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/UnmappedDataFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/screen_screen/screenViewBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/BitmapDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_badge_arm.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_badge_sid.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bar_163x31.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_bg_240x320.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_card_act.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_card_nrm.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_normal.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_cell_key_pressed.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_dot_white.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_down.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_arrow_up.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_colli.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_move.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_rotate_ccw.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_rotate_cw.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_left.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_slide_right.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_spinner.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_icon_warning.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_panel_toast.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/LanguageGb.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/Texts.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/texts/src/TypedTextDatabase.cpp
