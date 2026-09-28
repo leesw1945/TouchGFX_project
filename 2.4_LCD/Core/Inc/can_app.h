@@ -54,7 +54,8 @@ typedef struct
 int CAN_App_Init(void);
 
 /* 키 상태 송신 (CMD_BUCK_KEY_VALUE).
- * pressed_mask: bit0~11, 1 = 눌림 (key_scan의 KEY_GetStableMask() 그대로).
+ * pressed_mask: 물리 키 bit0~11 (cKEY0~11), 1 = 눌림 (key_scan의 KEY_GetStableMask() 그대로).
+ * 물리 키 → 프로토콜 비트 변환(좌우 열 맞바꿈, can_app.c의 key_to_proto_bit 표)과
  * 와이어 규칙(0 = 눌림, 액티브 로우)으로의 반전은 이 함수가 처리한다.
  * 성공 시 1, TX FIFO가 가득이면 0. */
 int CAN_App_SendKeyValue(uint16_t pressed_mask);

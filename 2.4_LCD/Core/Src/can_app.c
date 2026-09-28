@@ -13,6 +13,7 @@
 #include "can_app.h"
 #include "main.h"
 #include "fdcan.h"
+#include "key_scan.h"   /* KEY_COUNT */
 #include <stdio.h>
 
 #define CAN_RX_QLEN        16U    /* 수신 링버퍼 크기 */
@@ -127,12 +128,46 @@ int CAN_App_Init(void)
 
 /* ==== 프로토콜 송신 ==========================================================*/
 
+/* 물리 키 번호(cKEY0~11) → 프로토콜 비트 번호 변환표.
+ *
+ * 실측(2026-09-28, LCD를 마주본 기준):
+ *   cKEY0~5  = 왼쪽 열 위→아래 (SW2, SW4, SW6, SW8, SW10, SW12)
+ *   cKEY6~11 = 오른쪽 열 위→아래 (SW3, SW5, SW7, SW9, SW11, SW13)
+ *
+ * 메인(SU-6000 Buck_Key.c BuckKeyCodeMap)의 해석:
+ *   bit0~5  = 오른쪽 열: ARM_DOWN, ARM_RIGHT_ROT, TUBE_LEFT_SLIDE,
+ *                        DET_LEFT_SLIDE, DET_RIGHT_ROT, COLLIMATOR
+ *   bit6~11 = 왼쪽 열:   ARM_UP, ARM_LEFT_ROT, TUBE_RIGHT_SLIDE,
+ *                        DET_RIGHT_SLIDE, DET_LEFT_ROT, MOV
+ *
+ * 키캡 배치를 구보드와 같게(왼쪽 열 = ARM_UP ... MOV) 쓰기로 했으므로
+ * 왼쪽 열을 bit6~11, 오른쪽 열을 bit0~5로 맞바꿔 보낸다.
+ * 키캡 배치가 바뀌면 이 표만 고치면 된다. */
+static const uint8_t key_to_proto_bit[KEY_COUNT] = {
+    6, 7, 8, 9, 10, 11,     /* cKEY0~5  (왼쪽 열)   → bit6~11 */
+    0, 1, 2, 3,  4,  5      /* cKEY6~11 (오른쪽 열) → bit0~5  */
+};
+
+static uint16_t key_mask_to_proto(uint16_t key_mask)
+{
+    uint16_t proto = 0;
+    for (uint8_t k = 0; k < KEY_COUNT; k++)
+    {
+        if (key_mask & (1U << k))
+        {
+            proto |= (uint16_t)(1U << key_to_proto_bit[k]);
+        }
+    }
+    return proto;
+}
+
 int CAN_App_SendKeyValue(uint16_t pressed_mask)
 {
-    /* 와이어 규칙: 0 = 눌림 (구보드가 풀업 포트 원시값을 그대로 보냈고,
-     * 메인이 ~(값|0xF000)으로 해석한다) → 반전해서 보낸다.
-     * 미사용 bit12~15는 반전으로 1이 되어 "안 눌림"으로 읽힌다. */
-    uint16_t wire = (uint16_t)~pressed_mask;
+    /* 1) 물리 키 비트 → 프로토콜 비트 (좌우 열 변환표 적용)
+     * 2) 와이어 규칙: 0 = 눌림 (구보드가 풀업 포트 원시값을 그대로 보냈고,
+     *    메인이 ~(값|0xF000)으로 해석한다) → 반전해서 보낸다.
+     *    미사용 bit12~15는 반전으로 1이 되어 "안 눌림"으로 읽힌다. */
+    uint16_t wire = (uint16_t)~key_mask_to_proto(pressed_mask);
 
     uint8_t d[3];
     d[0] = CMD_BUCK_KEY_VALUE;
