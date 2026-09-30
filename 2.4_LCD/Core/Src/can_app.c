@@ -4,9 +4,13 @@
   * @brief   버키 키보드 CAN 프로토콜 구현
   *
   *          - 수신: ID 103만 필터 통과 → FIFO0 → 인터럽트에서 링버퍼로
-  *          - 해석(메인 컨텍스트): 0x02 표시 데이터 저장 / 0x06 버전 질의 응답
-  *          - LED: 송신 = CAN_TX_LED, 수신 = CAN_RX_LED 30ms 펄스(액티브 로우),
-  *                 버스오프 = CAN_ERR_LED 점등(복구되면 소등)
+  *          - 해석(메인 컨텍스트): 0x02 표시 / 0x03 높이 / 0x04 상태 저장, 0x06 버전 질의 응답
+  *          - 송신 견고성: 앞선 프레임이 ACK를 못 받아 TX 큐에 묵어 있으면(50ms 이상)
+  *                 전부 취소하고 호출자가 최신 값으로 다시 넣게 한다.
+  *                 → 메인이 늦게 켜지거나 잠깐 끊겼다 붙어도 "지금 키 상태"가 먼저 나간다.
+  *          - LED: CAN_TX_LED = 프레임이 실제로 ACK를 받아 송신 완료됐을 때 30ms 펄스
+  *                 (큐에 넣기만 한 것은 켜지지 않는다 → 상대가 없으면 안 깜빡임)
+  *                 CAN_RX_LED = 수신 30ms 펄스, CAN_ERR_LED = 버스오프 동안 점등
   *          - 버스오프: RM0444 절차대로 CCCR.INIT을 클리어해 자동 복구
   ******************************************************************************
   */
@@ -18,6 +22,8 @@
 
 #define CAN_RX_QLEN        16U    /* 수신 링버퍼 크기 */
 #define CAN_LED_PULSE_MS   30U    /* 활동 LED 점등 시간 */
+#define CAN_TX_STALE_MS    50U    /* 큐에 넣은 뒤 이 시간이 지나도 안 나갔으면 "묵은 프레임" */
+#define CAN_TX_ALL_BUFFERS (FDCAN_TX_BUFFER0 | FDCAN_TX_BUFFER1 | FDCAN_TX_BUFFER2)
 
 typedef struct
 {
@@ -56,16 +62,40 @@ static volatile uint32_t tx_led_t0 = 0;
 static volatile uint32_t rx_led_t0 = 0;
 static volatile uint8_t  bus_off   = 0;
 
-/* 메인에서 받은 LCD 표시 데이터 */
-static BuckyDisplayData  disp_data;
+/* 송신 큐 관리 */
+static uint32_t          tx_last_add_tick = 0;   /* 마지막으로 큐에 넣은 시각 */
+static volatile uint32_t diag_tx_abort    = 0;   /* 묵은 프레임 취소 횟수 (디버거 워치용) */
+
+/* 메인에서 받은 데이터 */
+static BuckDisplayData   disp_data;
+static BuckHeightData    height_data;
+static BuckStateData     state_data;
 
 /* ==== 저수준 송신 ============================================================*/
 
 static int can_send(uint32_t std_id, const uint8_t *data, uint8_t len)
 {
+    const uint32_t now  = HAL_GetTick();
+    const uint32_t free = HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan1);
+
     if (len > 8U)
     {
         len = 8U;
+    }
+
+    /* 큐에 아직 안 나간 프레임이 있고, 넣은 지 CAN_TX_STALE_MS가 지났다
+     * = 상대가 ACK를 안 해서 재송신만 반복 중. 정상 버스에서는 1ms 안에 나간다.
+     * 묵은 프레임을 전부 취소하고 이번 호출은 실패로 돌려, 호출자가 다음 폴에서
+     * 최신 값으로 다시 넣게 한다 (취소는 진행 중인 송신 시도가 끝난 뒤 완료됨). */
+    if (free < 3U && (now - tx_last_add_tick) > CAN_TX_STALE_MS)
+    {
+        (void)HAL_FDCAN_AbortTxRequest(&hfdcan1, CAN_TX_ALL_BUFFERS);
+        diag_tx_abort++;
+        return 0;
+    }
+    if (free == 0U)
+    {
+        return 0;   /* 가득 찼지만 아직 신선함(50ms 이내) — 다음 폴에서 재시도 */
     }
 
     FDCAN_TxHeaderTypeDef h = { 0 };
@@ -80,12 +110,10 @@ static int can_send(uint32_t std_id, const uint8_t *data, uint8_t len)
 
     if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &h, (uint8_t *)data) != HAL_OK)
     {
-        return 0;   /* TX FIFO 가득 참 (버스에 상대 노드가 없을 때 등) */
+        return 0;
     }
 
-    /* 송신 활동 LED 펄스 시작 (액티브 로우 = RESET이 점등) */
-    HAL_GPIO_WritePin(CAN_TX_LED_GPIO_Port, CAN_TX_LED_Pin, GPIO_PIN_RESET);
-    tx_led_t0 = HAL_GetTick();
+    tx_last_add_tick = now;
     return 1;
 }
 
@@ -94,7 +122,8 @@ static int can_send(uint32_t std_id, const uint8_t *data, uint8_t len)
 int CAN_App_Init(void)
 {
     /* 필터: ID 103만 정확히 통과 → FIFO0
-     * (메인이 보내는 표시 데이터/버전 질의 모두 ID 103으로 온다) */
+     * (메인이 보내는 표시 데이터/버전 질의 모두 ID 103으로 온다)
+     * ※ CubeMX FDCAN1 "Std Filters Nbr"가 1 이상이어야 이 필터가 동작한다. */
     FDCAN_FilterTypeDef f = { 0 };
     f.IdType       = FDCAN_STANDARD_ID;
     f.FilterIndex  = 0;
@@ -116,9 +145,11 @@ int CAN_App_Init(void)
         return 0;
     }
 
-    /* 수신 + 버스오프 인터럽트 활성화 (NVIC의 TIM16_FDCAN_IT0로 들어옴) */
+    /* 수신 + 버스오프 + 송신완료 인터럽트 (NVIC의 TIM16_FDCAN_IT0로 들어옴)
+     * 송신완료는 TX LED용: 프레임이 실제로 ACK를 받았을 때만 켠다 */
     if (HAL_FDCAN_ActivateNotification(&hfdcan1,
-            FDCAN_IT_RX_FIFO0_NEW_MESSAGE | FDCAN_IT_BUS_OFF, 0) != HAL_OK)
+            FDCAN_IT_RX_FIFO0_NEW_MESSAGE | FDCAN_IT_BUS_OFF | FDCAN_IT_TX_COMPLETE,
+            CAN_TX_ALL_BUFFERS) != HAL_OK)
     {
         return 0;
     }
@@ -186,13 +217,19 @@ static void send_version_info(void)
     d[2] = BUCKY_HW_VERSION;
     d[3] = BUCKY_SW_VERSION;
 
-    (void)can_send(CAN_ID_OP_COMMAND, d, sizeof(d));
+    if (!can_send(CAN_ID_OP_COMMAND, d, sizeof(d)))
+    {
+        /* 큐가 묵어 있어 실패 — 메인이 다시 질의하면 그때 응답한다 */
+        printf("[CAN] version info dropped (tx queue stale)\r\n");
+    }
 }
 
 /* ==== 수신 해석 (메인 컨텍스트 — printf 사용 가능) ===========================*/
 
 static void process_rx_message(const CanRxMsg *m)
 {
+    const uint32_t now = HAL_GetTick();
+
     switch (m->data[0])
     {
     case CMD_BUCK_DISPLAY:           /* 메인 → 보드: LCD 표시 데이터 (300ms) */
@@ -202,7 +239,7 @@ static void process_rx_message(const CanRxMsg *m)
             disp_data.sid_mm        = (uint16_t)((m->data[2] << 8) | m->data[3]);
             disp_data.arm_angle_deg = (int16_t)((m->data[4] << 8) | m->data[5]);
             disp_data.det_angle_deg = (int16_t)((m->data[6] << 8) | m->data[7]);
-            disp_data.last_rx_tick  = HAL_GetTick();
+            disp_data.last_rx_tick  = now;
 
             if (!disp_data.valid)
             {
@@ -210,6 +247,33 @@ static void process_rx_message(const CanRxMsg *m)
                 printf("[CAN] display data 수신 시작 (unit=%u sid=%umm)\r\n",
                        disp_data.unit, disp_data.sid_mm);
             }
+        }
+        break;
+
+    case CMD_BUCK_HEIGHT:            /* 메인 → 보드: ARM 높이 (300ms) */
+        if (m->dlc >= 3U)
+        {
+            height_data.height_mm    = (uint16_t)((m->data[1] << 8) | m->data[2]);
+            height_data.last_rx_tick = now;
+            if (!height_data.valid)
+            {
+                height_data.valid = 1;
+                printf("[CAN] height 수신 시작 (%umm)\r\n", height_data.height_mm);
+            }
+        }
+        break;
+
+    case CMD_BUCK_STATE:             /* 메인 → 보드: 시스템 상태 (변화 시 + 1s) */
+        if (m->dlc >= 2U)
+        {
+            const uint8_t emg = (m->data[1] == BUCK_STATE_EMERGENCY) ? 1U : 0U;
+            if (!state_data.valid || state_data.emergency != emg)
+            {
+                printf("[CAN] state=%s\r\n", emg ? "EMERGENCY" : "READY");
+            }
+            state_data.emergency    = emg;
+            state_data.valid        = 1;
+            state_data.last_rx_tick = now;
         }
         break;
 
@@ -225,6 +289,26 @@ static void process_rx_message(const CanRxMsg *m)
     }
 }
 
+void CAN_App_InjectRx(const uint8_t *data, uint8_t dlc)
+{
+    CanRxMsg m;
+    if (dlc == 0U)
+    {
+        return;
+    }
+    if (dlc > 8U)
+    {
+        dlc = 8U;
+    }
+    m.id  = CAN_ID_BUCKY_KEY;
+    m.dlc = dlc;
+    for (uint8_t i = 0; i < 8U; i++)
+    {
+        m.data[i] = (i < dlc) ? data[i] : 0U;
+    }
+    process_rx_message(&m);
+}
+
 void CAN_App_Process(void)
 {
     uint32_t now = HAL_GetTick();
@@ -236,6 +320,18 @@ void CAN_App_Process(void)
         m = rx_q[rx_tail];
         rx_tail = (uint8_t)((rx_tail + 1U) % CAN_RX_QLEN);
         process_rx_message(&m);
+    }
+
+    /* 상태 프레임 타임아웃: 1초 주기 갱신이 끊기면 상태 미상 → READY 취급
+     * (구버전 메인처럼 0x04를 아예 안 보내는 경우 EMERGENCY에 갇히지 않게) */
+    if (state_data.valid && (now - state_data.last_rx_tick) > CAN_STATE_TIMEOUT_MS)
+    {
+        state_data.valid = 0;
+        if (state_data.emergency)
+        {
+            printf("[CAN] state frame timeout -> READY\r\n");
+        }
+        state_data.emergency = 0;
     }
 
     /* 활동 LED 펄스 종료 */
@@ -269,9 +365,28 @@ void CAN_App_Process(void)
     }
 }
 
-const BuckyDisplayData *CAN_App_GetDisplayData(void)
+const BuckDisplayData *CAN_App_GetDisplayData(void)
 {
     return &disp_data;
+}
+
+const BuckHeightData *CAN_App_GetHeightData(void)
+{
+    return &height_data;
+}
+
+const BuckStateData *CAN_App_GetStateData(void)
+{
+    return &state_data;
+}
+
+uint8_t CAN_App_IsEmergency(void)
+{
+    if (!state_data.valid || !state_data.emergency)
+    {
+        return 0;
+    }
+    return ((HAL_GetTick() - state_data.last_rx_tick) <= CAN_STATE_TIMEOUT_MS) ? 1U : 0U;
 }
 
 /* ==== HAL 콜백 (ISR 컨텍스트 — printf 금지) ==================================*/
@@ -311,6 +426,15 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
     /* 수신 활동 LED 펄스 시작 */
     HAL_GPIO_WritePin(CAN_RX_LED_GPIO_Port, CAN_RX_LED_Pin, GPIO_PIN_RESET);
     rx_led_t0 = HAL_GetTick();
+}
+
+void HAL_FDCAN_TxBufferCompleteCallback(FDCAN_HandleTypeDef *hfdcan, uint32_t BufferIndexes)
+{
+    (void)hfdcan;
+    (void)BufferIndexes;
+    /* 프레임이 실제로 ACK를 받아 송신 완료 — TX LED 펄스 (액티브 로우) */
+    HAL_GPIO_WritePin(CAN_TX_LED_GPIO_Port, CAN_TX_LED_Pin, GPIO_PIN_RESET);
+    tx_led_t0 = HAL_GetTick();
 }
 
 void HAL_FDCAN_ErrorStatusCallback(FDCAN_HandleTypeDef *hfdcan, uint32_t ErrorStatusITs)

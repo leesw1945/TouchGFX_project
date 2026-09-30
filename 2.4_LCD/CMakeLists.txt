@@ -57,6 +57,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/key_scan.c
     Core/Src/can_app.c
     Core/Src/app_main.c
+    Core/Src/dbg_cmd.c
 )
 
 # Add include paths
