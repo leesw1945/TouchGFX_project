@@ -9,6 +9,8 @@
   *            height <mm>                              0x03 ARM 높이 1회 주입
   *            state <0|1|off>                          0x04 상태를 1초마다 반복 주입 (0 READY, 1 EMERGENCY)
   *            unit <0|1>                               sim 시나리오가 쓰는 단위
+  *            diag                                     초당 TE 인터럽트 수, 가짜 VSYNC 수, 폴백 여부,
+  *                                                     전송 블록 수, 송신 취소 횟수, SYSCLK
   *            sim <on|key|off>                         on = 자동 시나리오 (SID→높이→ARM각→DET각 순서로
   *                                                     움직이고 1.5초 쉼, 300ms 주기로 0x02+0x03 주입)
   *                                                     key = 보드의 물리 키를 누르고 있는 동안 해당 값이

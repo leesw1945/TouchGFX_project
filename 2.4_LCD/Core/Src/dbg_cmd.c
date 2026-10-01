@@ -8,6 +8,7 @@
 #include "dbg_console.h"
 #include "can_app.h"
 #include "key_scan.h"
+#include "display_driver.h"   /* diag_te_count 등 */
 #include "main.h"
 #include <stdio.h>
 #include <string.h>
@@ -64,6 +65,19 @@ static void sim_key_step(void)
     sim_val[1] = clamp16(height, sim_min[1], sim_max[1]);
     sim_val[2] = clamp16(arm,    sim_min[2], sim_max[2]);
     sim_val[3] = clamp16(det,    sim_min[3], sim_max[3]);
+}
+
+/* ---- diag: 1초마다 카운터 변화량을 재 둔다 (TE 인터럽트 속도 확인용) ---- */
+static uint32_t diag_t0;
+static uint32_t te_prev,   te_per_sec;
+static uint32_t fake_prev, fake_per_sec;
+
+static void print_diag(void)
+{
+    printf("TE/s=%lu fake/s=%lu fallback=%u blocks=%lu txabort=%lu SYSCLK=%luHz\r\n",
+           (unsigned long)te_per_sec, (unsigned long)fake_per_sec,
+           (unsigned)LCD_IsVsyncFallbackActive(), (unsigned long)diag_blocks_sent,
+           (unsigned long)CAN_App_GetTxAbortCount(), (unsigned long)SystemCoreClock);
 }
 
 /* ---- state 반복 주입: -1 꺼짐, 0 READY, 1 EMERGENCY ---- */
@@ -166,6 +180,7 @@ static void print_help(void)
            "  height <mm>                              0x03 주입\r\n"
            "  state <0|1|off>                          0x04 반복 주입 (0 READY 1 EMERGENCY)\r\n"
            "  unit <0|1>                               sim 단위\r\n"
+           "  diag                                     TE/s, 폴백, 송신취소 등 진단값\r\n"
            "  sim <on|key|off>                         on=자동 시나리오, key=보드 키로 값 이동 (300ms)\r\n"
            "  예) disp 0 1800 140 30 / height 1200 / state 1 / sim key\r\n");
 }
@@ -187,6 +202,10 @@ static void run_line(const char *s)
     if (strcmp(cmd, "help") == 0)
     {
         print_help();
+    }
+    else if (strcmp(cmd, "diag") == 0)
+    {
+        print_diag();
     }
     else if (strcmp(cmd, "disp") == 0)
     {
@@ -316,6 +335,16 @@ void DbgCmd_Poll(void)
     }
 
     const uint32_t now = HAL_GetTick();
+
+    /* 1초마다 TE/가짜 VSYNC 카운터의 초당 증가량 갱신 */
+    if ((now - diag_t0) >= 1000U)
+    {
+        diag_t0      = now;
+        te_per_sec   = diag_te_count - te_prev;
+        te_prev      = diag_te_count;
+        fake_per_sec = diag_fake_vsync - fake_prev;
+        fake_prev    = diag_fake_vsync;
+    }
 
     if ((sim_on || sim_key) && (now - sim_t0) >= SIM_PERIOD_MS)
     {

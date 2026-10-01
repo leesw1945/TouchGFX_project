@@ -111,6 +111,9 @@ const BuckStateData   *CAN_App_GetStateData(void);
 /* EMERGENCY 여부 (0x04 수신값 + CAN_STATE_TIMEOUT_MS 반영). 1 = 비상 */
 uint8_t CAN_App_IsEmergency(void);
 
+/* 진단: 묵은 송신 프레임을 취소한 누적 횟수 (정상 버스에서는 0에 머문다) */
+uint32_t CAN_App_GetTxAbortCount(void);
+
 /* 테스트용: 콘솔 등에서 "수신 프레임"을 주입한다. CAN으로 받은 것과 같은 해석 코드를 탄다.
  * data[0] = 커맨드 바이트, dlc = 바이트 수(1~8). 메인 컨텍스트에서만 호출. */
 void CAN_App_InjectRx(const uint8_t *data, uint8_t dlc);

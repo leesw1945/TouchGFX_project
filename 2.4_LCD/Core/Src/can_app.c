@@ -380,6 +380,11 @@ const BuckStateData *CAN_App_GetStateData(void)
     return &state_data;
 }
 
+uint32_t CAN_App_GetTxAbortCount(void)
+{
+    return diag_tx_abort;
+}
+
 uint8_t CAN_App_IsEmergency(void)
 {
     if (!state_data.valid || !state_data.emergency)
