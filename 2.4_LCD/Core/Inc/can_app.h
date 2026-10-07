@@ -54,7 +54,7 @@ extern "C" {
 
 /* ==== 이 보드의 버전 (버전 응답에 실림 — 릴리스 시 갱신할 것) ==== */
 #define BUCKY_HW_VERSION     1U      /* REV01 */
-#define BUCKY_SW_VERSION     1U
+#define BUCKY_SW_VERSION     2U      /* 2: 화면 연결·0x03/0x04·송신 견고성·콘솔 명령 (2026-10) */
 
 /* ==== 수신 데이터 유효 기준 ==== */
 #define CAN_DISPLAY_TIMEOUT_MS  1500U  /* 0x02/0x03이 이보다 오래 없으면 통신 두절 → 화면 대시 */
