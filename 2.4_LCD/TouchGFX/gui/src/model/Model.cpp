@@ -180,8 +180,8 @@ void Model::tick()
  * DET 단계의 정지 구간에서는 EMERGENCY 표시를 확인할 수 있게 상태를 켠다. */
 void Model::simulate(uint32_t now)
 {
-    static const int16_t vmin[4]  = {  500,  800, -30, -45 };
-    static const int16_t vmax[4]  = { 1800, 1500, 120,  45 };
+    static const int16_t vmin[4]  = {  500,  400, -30, -45 };
+    static const int16_t vmax[4]  = { 1800, 1700, 120,  45 };
     static const int16_t vstep[4] = {   50,   50,  10,   6 };
 
     if (now < simNext)

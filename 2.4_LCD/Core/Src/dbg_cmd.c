@@ -30,8 +30,8 @@ static uint8_t  sim_phase;
 static uint8_t  sim_pause;
 static uint8_t  sim_toward_max[4];
 static int16_t  sim_val[4]        = { 1000,  800, -30, -45 };
-static const int16_t sim_min[4]   = {  500,  800, -30, -45 };   /* SID는 100cm 미만도 가능 */
-static const int16_t sim_max[4]   = { 1800, 1500, 120,  45 };
+static const int16_t sim_min[4]   = {  500,  400, -30, -45 };   /* SID는 100cm 미만도 가능, 높이 40~170cm */
+static const int16_t sim_max[4]   = { 1800, 1700, 120,  45 };
 static const int16_t sim_step[4]  = {   50,   50,  10,   6 };
 
 /* ---- sim key: 보드의 물리 키로 값을 직접 움직인다 (메인 없이 키→화면 반응 확인용) ----

@@ -67,7 +67,8 @@ protected:
     static const int16_t ARC_START     = -122;
     static const int16_t ARC_END       = 122;
 
-    /* 회전 각도 표시 범위 (장비 사양). 이 범위를 원호 0~100%에 선형 대응 */
+    /* 회전 각도의 게이지 기준 범위 (장비 사양: ARM -30~120도, Detector -45~45도).
+     * 원호 채움 비율에만 쓰이고, 숫자는 캘리브레이션에 따라 범위를 조금 벗어나도 받은 값 그대로 표시한다 */
     static const int16_t ARM_DEG_MIN   = -30;
     static const int16_t ARM_DEG_MAX   = 120;
     static const int16_t DET_DEG_MIN   = -45;
