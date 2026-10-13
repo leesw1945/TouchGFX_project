@@ -33,6 +33,7 @@
 #include "display_driver.h"
 #include "flash_driver.h"
 #include "app_main.h"
+#include "boot_option.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,7 +92,9 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  /* 옵션 바이트 nBOOT_SEL이 1(공장 기본)이면 0으로 바꾸고 리셋한다 — 보드당 1회.
+   * JP1 쇼트 + 리셋으로 USB DFU에 들어가기 위한 전제. 주변장치 초기화 전에 둔다. */
+  BootOption_EnsureBoot0Pin();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

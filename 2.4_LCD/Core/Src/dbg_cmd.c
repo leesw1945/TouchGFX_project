@@ -9,6 +9,7 @@
 #include "can_app.h"
 #include "key_scan.h"
 #include "display_driver.h"   /* diag_te_count 등 */
+#include "boot_option.h"
 #include "main.h"
 #include <stdio.h>
 #include <string.h>
@@ -74,10 +75,11 @@ static uint32_t fake_prev, fake_per_sec;
 
 static void print_diag(void)
 {
-    printf("TE/s=%lu fake/s=%lu fallback=%u blocks=%lu txabort=%lu SYSCLK=%luHz\r\n",
+    printf("TE/s=%lu fake/s=%lu fallback=%u blocks=%lu txabort=%lu SYSCLK=%luHz nBOOT_SEL=%u\r\n",
            (unsigned long)te_per_sec, (unsigned long)fake_per_sec,
            (unsigned)LCD_IsVsyncFallbackActive(), (unsigned long)diag_blocks_sent,
-           (unsigned long)CAN_App_GetTxAbortCount(), (unsigned long)SystemCoreClock);
+           (unsigned long)CAN_App_GetTxAbortCount(), (unsigned long)SystemCoreClock,
+           (unsigned)BootOption_GetNBootSel());
 }
 
 /* ---- state 반복 주입: -1 꺼짐, 0 READY, 1 EMERGENCY ---- */
