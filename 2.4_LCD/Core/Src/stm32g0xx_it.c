@@ -135,7 +135,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-  KEY_Scan_Tick1ms();   /* 12키 디바운스 샘플링 (1ms) */
+  KEY_Scan_Tick1ms();   /* 12키 스캔 (내부에서 10ms마다 읽음, 디바운스 없음) */
   LCD_VsyncFallbackTick1ms();   /* TE 부재 시 가짜 VSYNC (진단/폴백) */
   /* USER CODE END SysTick_IRQn 1 */
 }

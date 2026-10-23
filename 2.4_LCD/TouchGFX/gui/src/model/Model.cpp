@@ -7,6 +7,8 @@ extern "C" {
 #include "can_app.h"
 #include "key_scan.h"
 }
+/* OP 보드 0x0A 페이로드가 C++ 쪽에서도 4바이트로 잡히는지 확인 (can_app.c의 C 쪽 검사와 쌍) */
+static_assert(sizeof(OP_To_Bucky_Key_Payload_t) == 4, "OP_To_Bucky_Key_Payload_t must be 4 bytes");
 #endif
 
 /* 동작 키 → 카드 대응 (물리 cKEY 번호. LCD를 마주본 기준 왼쪽 열 = 0~5, 오른쪽 열 = 6~11)
@@ -25,7 +27,7 @@ Model::Model()
     : modelListener(0),
       refresh(true),
       lastDispValid(false), lastUnit(0), lastSid(0), lastArm(0), lastDet(0),
-      lastHeightValid(false), lastHeight(0),
+      lastHeightValid(false), lastHeightUnit(0), lastHeight(0),
       lastEmergency(false),
       lastActive(0)
 {
@@ -78,9 +80,15 @@ void Model::readSource(uint32_t now, Snapshot& s)
     s.armDeg    = d->arm_angle_deg;
     s.detDeg    = d->det_angle_deg;
 
-    const BuckHeightData* h = CAN_App_GetHeightData();
-    s.heightValid = (h->valid != 0) && ((now - h->last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS);
-    s.heightMm    = h->height_mm;
+    /* 0x0A (OP 보드 정의 페이로드): 단위 + Emergency + ARM 높이 */
+    const BuckPayloadData* p = CAN_App_GetPayloadData();
+    const bool payloadValid = (p->valid != 0) && ((now - p->last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS);
+    s.heightValid = payloadValid;
+    s.heightMm    = p->payload.Swivel_Height;
+    if (payloadValid)
+    {
+        s.unit = (uint8_t)p->payload.Unit;   /* 0x0A가 살아 있으면 그 단위 우선, 아니면 0x02의 단위 */
+    }
 
     s.emergency = (CAN_App_IsEmergency() != 0);
     s.keys      = KEY_GetStableMask();
@@ -131,12 +139,13 @@ void Model::tick()
     }
 
     const bool heightChanged = (s.heightValid != lastHeightValid) ||
-                               (s.heightValid && s.heightMm != lastHeight);
+                               (s.heightValid && (s.heightMm != lastHeight || s.unit != lastHeightUnit));
     if (refresh || heightChanged)
     {
-        modelListener->onHeightData(s.heightValid, s.heightMm);
+        modelListener->onHeightData(s.heightValid, s.unit, s.heightMm);
         lastHeightValid = s.heightValid;
-        lastHeight = s.heightMm;
+        lastHeightUnit  = s.unit;
+        lastHeight      = s.heightMm;
     }
 
     if (refresh || s.emergency != lastEmergency)

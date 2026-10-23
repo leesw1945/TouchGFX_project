@@ -25,13 +25,14 @@ public:
         (void)valid; (void)unit; (void)sidMm; (void)armDeg; (void)detDeg;
     }
 
-    /* 0x03 ARM 높이. valid=false면 두절 또는 미수신(구버전 메인) → 대시 */
-    virtual void onHeightData(bool valid, uint16_t heightMm)
+    /* 0x0A ARM 높이(Swivel_Height). valid=false면 두절 또는 미수신 → 대시.
+     * unit은 Model이 고른 현재 단위(0x0A의 Unit 우선) — 0x02가 없어도 높이를 올바른 단위로 표시 */
+    virtual void onHeightData(bool valid, uint8_t unit, uint16_t heightMm)
     {
-        (void)valid; (void)heightMm;
+        (void)valid; (void)unit; (void)heightMm;
     }
 
-    /* 0x04 상태. true = EMERGENCY (상태바 빨강) */
+    /* 0x0A Emergency. true = EMG_ON 수신 중 (상태바 빨강) */
     virtual void onEmergency(bool emergency)
     {
         (void)emergency;

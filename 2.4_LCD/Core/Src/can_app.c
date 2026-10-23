@@ -4,7 +4,7 @@
   * @brief   버키 키보드 CAN 프로토콜 구현
   *
   *          - 수신: ID 103만 필터 통과 → FIFO0 → 인터럽트에서 링버퍼로
-  *          - 해석(메인 컨텍스트): 0x02 표시 / 0x03 높이 / 0x04 상태 저장, 0x06 버전 질의 응답
+  *          - 해석(메인 컨텍스트): 0x02 표시 / 0x0A 단위·Emergency·높이 저장, 0x06 버전 질의 응답
   *          - 송신 견고성: 앞선 프레임이 ACK를 못 받아 TX 큐에 묵어 있으면(50ms 이상)
   *                 전부 취소하고 호출자가 최신 값으로 다시 넣게 한다.
   *                 → 메인이 늦게 켜지거나 잠깐 끊겼다 붙어도 "지금 키 상태"가 먼저 나간다.
@@ -19,6 +19,7 @@
 #include "fdcan.h"
 #include "key_scan.h"   /* KEY_COUNT */
 #include <stdio.h>
+#include <string.h>     /* memcpy (0x0A 페이로드 복사) */
 
 #define CAN_RX_QLEN        16U    /* 수신 링버퍼 크기 */
 #define CAN_LED_PULSE_MS   30U    /* 활동 LED 점등 시간 */
@@ -67,9 +68,13 @@ static uint32_t          tx_last_add_tick = 0;   /* 마지막으로 큐에 넣�
 static volatile uint32_t diag_tx_abort    = 0;   /* 묵은 프레임 취소 횟수 (디버거 워치용) */
 
 /* 메인에서 받은 데이터 */
-static BuckDisplayData   disp_data;
-static BuckHeightData    height_data;
-static BuckStateData     state_data;
+static BuckDisplayData   disp_data;      /* 0x02 */
+static BuckPayloadData   payload_data;   /* 0x0A (참고 코드의 OP_Rx_Payload) */
+
+/* OP 구조체와 바이트 배치가 같아야 한다: Unit(1) + Emergency(1) + Swivel_Height(2) = 4바이트.
+ * enum을 4바이트로 잡는 컴파일러 옵션(-fno-short-enums)이 켜지면 여기서 빌드가 멈춘다. */
+_Static_assert(sizeof(OP_To_Bucky_Key_Payload_t) == 4U, "OP_To_Bucky_Key_Payload_t must be 4 bytes");
+_Static_assert(CMD_BUCK_KEY_PAYLOAD_DLC == 1U + sizeof(OP_To_Bucky_Key_Payload_t), "0x0A DLC must be 1 + payload");
 
 /* ==== 저수준 송신 ============================================================*/
 
@@ -197,8 +202,9 @@ int CAN_App_SendKeyValue(uint16_t pressed_mask)
     /* 1) 물리 키 비트 → 프로토콜 비트 (좌우 열 변환표 적용)
      * 2) 와이어 규칙: 0 = 눌림 (구보드가 풀업 포트 원시값을 그대로 보냈고,
      *    메인이 ~(값|0xF000)으로 해석한다) → 반전해서 보낸다.
-     *    미사용 bit12~15는 반전으로 1이 되어 "안 눌림"으로 읽힌다. */
-    uint16_t wire = (uint16_t)~key_mask_to_proto(pressed_mask);
+     * 3) OP 요구사항 "Key_Data = Reading_Key_Value | 0xF000": 키는 12개뿐이므로
+     *    미사용 bit12~15를 1로 고정한다(메인 쪽에서 "안 눌림"으로 읽힘). */
+    uint16_t wire = (uint16_t)((~key_mask_to_proto(pressed_mask)) | 0xF000U);
 
     uint8_t d[3];
     d[0] = CMD_BUCK_KEY_VALUE;
@@ -226,6 +232,66 @@ static void send_version_info(void)
 
 /* ==== 수신 해석 (메인 컨텍스트 — printf 사용 가능) ===========================*/
 
+/* 0x0A 해석 — OP 보드 담당이 준 참고 코드(Recv_From_OP)를 검사 순서·복사 방식 그대로 옮겼다.
+ *   1) 명령 바이트가 0x0A가 아니면 무시
+ *   2) DLC가 5(CMD 1 + 페이로드 4)가 아니면 무시
+ *   3) Data[1..4]를 공용체 Bytes[]에 복사 → Payload 구조체로 읽는다 (Unit / Emergency / Swivel_Height)
+ * 참고 코드는 "수신 인터럽트에서 호출"이지만 이 보드는 ISR이 링버퍼에 넣고 메인 루프에서
+ * 해석하므로 process_rx_message()에서 호출한다 (결과는 같고 printf를 쓸 수 있다).
+ * ※ Emergency는 SDK 정의대로 EMG_ON = 0 이 비상이다 (1이 아님) — OP 담당 확인 완료(2026-10-23). */
+static void Recv_From_OP(const CanRxMsg *Message, uint32_t now)
+{
+    OP_To_Bucky_Key_Union_t rx;
+    static uint32_t         bad_dlc_log_t0 = 0;
+    static uint8_t          unit_mismatch  = 0;
+
+    if (Message->data[0] != CMD_BUCK_KEY_PAYLOAD)            /* 명령이 다르면 무시 */
+    {
+        return;
+    }
+    if (Message->dlc != CMD_BUCK_KEY_PAYLOAD_DLC)             /* 크기가 다르면 무시 (로그는 1초에 1회) */
+    {
+        if ((now - bad_dlc_log_t0) >= 1000U)
+        {
+            bad_dlc_log_t0 = now;
+            printf("[CAN] 0x0A dlc=%u (5 아님) 무시\r\n", (unsigned)Message->dlc);
+        }
+        return;
+    }
+
+    /* 명령 바이트를 뺀 4바이트를 구조체에 복사한다 — 바이트 배치는 OP 쪽과 동일 */
+    memcpy(rx.Bytes, &Message->data[1], sizeof(OP_To_Bucky_Key_Payload_t));
+
+    /* 로그: 첫 수신, EMERGENCY 변화, 0x02와 단위 불일치 */
+    const uint8_t emg_now  = (rx.Payload.Emergency == EMG_ON) ? 1U : 0U;
+    const uint8_t emg_prev = (payload_data.valid && payload_data.payload.Emergency == EMG_ON) ? 1U : 0U;
+    if (!payload_data.valid)
+    {
+        printf("[CAN] 0x0A 수신 시작 (unit=%u emg=%u height=%umm)\r\n",
+               (unsigned)rx.Payload.Unit, (unsigned)rx.Payload.Emergency,
+               (unsigned)rx.Payload.Swivel_Height);
+    }
+    if (emg_now != emg_prev)
+    {
+        printf("[CAN] state=%s (Emergency=%u)\r\n",
+               emg_now ? "EMERGENCY" : "READY", (unsigned)rx.Payload.Emergency);
+    }
+    const uint8_t mismatch = (disp_data.valid && disp_data.unit != (uint8_t)rx.Payload.Unit) ? 1U : 0U;
+    if (mismatch != unit_mismatch)
+    {
+        unit_mismatch = mismatch;
+        if (mismatch)
+        {
+            printf("[CAN] 단위 불일치: 0x02 unit=%u, 0x0A unit=%u (화면은 0x0A 우선)\r\n",
+                   (unsigned)disp_data.unit, (unsigned)rx.Payload.Unit);
+        }
+    }
+
+    payload_data.payload      = rx.Payload;                   /* 최종 구조체에 파싱 (OP_Rx_Payload) */
+    payload_data.valid        = 1;
+    payload_data.last_rx_tick = now;
+}
+
 static void process_rx_message(const CanRxMsg *m)
 {
     const uint32_t now = HAL_GetTick();
@@ -250,31 +316,8 @@ static void process_rx_message(const CanRxMsg *m)
         }
         break;
 
-    case CMD_BUCK_HEIGHT:            /* 메인 → 보드: ARM 높이 (300ms) */
-        if (m->dlc >= 3U)
-        {
-            height_data.height_mm    = (uint16_t)((m->data[1] << 8) | m->data[2]);
-            height_data.last_rx_tick = now;
-            if (!height_data.valid)
-            {
-                height_data.valid = 1;
-                printf("[CAN] height 수신 시작 (%umm)\r\n", height_data.height_mm);
-            }
-        }
-        break;
-
-    case CMD_BUCK_STATE:             /* 메인 → 보드: 시스템 상태 (변화 시 + 1s) */
-        if (m->dlc >= 2U)
-        {
-            const uint8_t emg = (m->data[1] == BUCK_STATE_EMERGENCY) ? 1U : 0U;
-            if (!state_data.valid || state_data.emergency != emg)
-            {
-                printf("[CAN] state=%s\r\n", emg ? "EMERGENCY" : "READY");
-            }
-            state_data.emergency    = emg;
-            state_data.valid        = 1;
-            state_data.last_rx_tick = now;
-        }
+    case CMD_BUCK_KEY_PAYLOAD:       /* 메인 → 보드: 단위 + Emergency + ARM 높이 (OP 보드 정의) */
+        Recv_From_OP(m, now);
         break;
 
     case CMD_QUERY_VERSION:          /* 메인 → 보드: 버전 질의 */
@@ -322,16 +365,16 @@ void CAN_App_Process(void)
         process_rx_message(&m);
     }
 
-    /* 상태 프레임 타임아웃: 1초 주기 갱신이 끊기면 상태 미상 → READY 취급
-     * (구버전 메인처럼 0x04를 아예 안 보내는 경우 EMERGENCY에 갇히지 않게) */
-    if (state_data.valid && (now - state_data.last_rx_tick) > CAN_STATE_TIMEOUT_MS)
+    /* 0x0A 타임아웃: 수신이 끊기면 상태 미상 → READY 취급, 높이는 화면에서 대시
+     * (OP가 0x0A를 안 보내는 경우 EMERGENCY에 갇히지 않게. 다시 받으면 "수신 시작" 로그가 또 찍힌다) */
+    if (payload_data.valid && (now - payload_data.last_rx_tick) > CAN_DISPLAY_TIMEOUT_MS)
     {
-        state_data.valid = 0;
-        if (state_data.emergency)
+        payload_data.valid = 0;
+        if (payload_data.payload.Emergency == EMG_ON)
         {
-            printf("[CAN] state frame timeout -> READY\r\n");
+            printf("[CAN] 0x0A timeout -> READY\r\n");
         }
-        state_data.emergency = 0;
+        payload_data.payload.Emergency = EMG_OFF;
     }
 
     /* 활동 LED 펄스 종료 */
@@ -370,14 +413,9 @@ const BuckDisplayData *CAN_App_GetDisplayData(void)
     return &disp_data;
 }
 
-const BuckHeightData *CAN_App_GetHeightData(void)
+const BuckPayloadData *CAN_App_GetPayloadData(void)
 {
-    return &height_data;
-}
-
-const BuckStateData *CAN_App_GetStateData(void)
-{
-    return &state_data;
+    return &payload_data;
 }
 
 uint32_t CAN_App_GetTxAbortCount(void)
@@ -387,11 +425,12 @@ uint32_t CAN_App_GetTxAbortCount(void)
 
 uint8_t CAN_App_IsEmergency(void)
 {
-    if (!state_data.valid || !state_data.emergency)
+    /* 0x0A의 Emergency가 EMG_ON(0)이고, 그 프레임이 타임아웃 안에 수신됐을 때만 비상 */
+    if (!payload_data.valid || payload_data.payload.Emergency != EMG_ON)
     {
         return 0;
     }
-    return ((HAL_GetTick() - state_data.last_rx_tick) <= CAN_STATE_TIMEOUT_MS) ? 1U : 0U;
+    return ((HAL_GetTick() - payload_data.last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS) ? 1U : 0U;
 }
 
 /* ==== HAL 콜백 (ISR 컨텍스트 — printf 금지) ==================================*/

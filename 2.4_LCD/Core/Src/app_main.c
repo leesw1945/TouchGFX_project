@@ -8,10 +8,11 @@
   *          인터럽트(SysTick 키 스캔, FDCAN 수신)가 큐에 넣어둔 데이터를
   *          여기서 꺼내 처리하는 것이 이 파일의 역할이다.
   *
-  *          키 보고 정책 (SU-6000 프로토콜):
-  *          - 키가 변하면 즉시 CMD_BUCK_KEY_VALUE 송신
-  *          - 변화가 없어도 300ms마다 재송신
-  *            (메인이 ID 103 수신 1.5초 두절 시 통신 에러로 처리하므로)
+  *          키 보고 정책 (OP 보드 요구사항, 2026-10-23):
+  *          - 키 포트는 10ms 주기로 읽는다(key_scan.c, 디바운스 없음 — 채터링은 OP가 처리)
+  *          - 읽은 키 상태가 직전에 보낸 값과 다르면 즉시 CMD_BUCK_KEY_VALUE 송신
+  *          - 같으면 500ms 주기로 재송신
+  *            (메인이 ID 103 수신 1.5초 두절 시 통신 에러로 처리하므로 얼라이브 겸용)
   *          - 송신이 실패하면(앞선 프레임이 ACK를 못 받아 큐가 묵음 → 취소됨)
   *            다음 폴에서 최신 키 상태로 다시 시도한다
   *          - EMERGENCY 수신 중에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
@@ -30,7 +31,7 @@
 #include <stdio.h>
 
 #define HEARTBEAT_PERIOD_MS   500U
-#define KEY_REPORT_PERIOD_MS  300U   /* 키 값 주기 재송신 (얼라이브 겸용) */
+#define KEY_REPORT_PERIOD_MS  500U   /* 키 상태가 같을 때의 재송신 주기 (OP 요구사항, 얼라이브 겸용) */
 
 void AppMain_Init(void)
 {
@@ -58,32 +59,37 @@ void AppMain_Poll(void)
         HAL_GPIO_TogglePin(RUN_LED_GPIO_Port, RUN_LED_Pin);
     }
 
-    /* ---- 키 보고: 변화 즉시 + 300ms 주기 재송신, 실패 시 다음 폴에서 재시도 ---- */
+    /* ---- 키 보고: 직전 송신값과 다르면 즉시, 같으면 500ms 주기. 실패 시 다음 폴에서 재시도 ---- */
     static uint32_t key_tx_t0      = 0;
+    static uint16_t key_tx_last    = 0xFFFFU;   /* 마지막으로 보낸 마스크. 0xFFFF = 아직 없음(12비트 값과 겹치지 않음) */
     static uint8_t  key_tx_pending = 0;
     KeyEvent ke;
 
-    while (KEY_PopEvent(&ke))
+    while (KEY_PopEvent(&ke))                   /* 로그만 — 송신 판단은 아래 마스크 비교로 */
     {
         printf("[KEY] %u %s (mask=0x%03X)\r\n",
                ke.key, ke.pressed ? "DOWN" : "UP", KEY_GetStableMask());
-        key_tx_pending = 1;
     }
 
-    if ((now - key_tx_t0) >= KEY_REPORT_PERIOD_MS)
+    /* EMERGENCY 중에는 어떤 키를 눌러도 메인이 움직이면 안 되므로
+     * 물리 키 상태 대신 "모두 안 눌림"을 보낸다. 주기 송신(얼라이브)은 유지. */
+    const uint16_t key_mask = CAN_App_IsEmergency() ? 0U : KEY_GetStableMask();
+
+    if (key_mask != key_tx_last)                /* 이전 상태와 다르면 즉시 */
+    {
+        key_tx_pending = 1;
+    }
+    if ((now - key_tx_t0) >= KEY_REPORT_PERIOD_MS)   /* 같으면 500ms 주기 */
     {
         key_tx_pending = 1;
     }
 
     if (key_tx_pending)
     {
-        /* EMERGENCY 중에는 어떤 키를 눌러도 메인이 움직이면 안 되므로
-         * 물리 키 상태 대신 "모두 안 눌림"을 보낸다. 주기 송신(얼라이브)은 유지. */
-        const uint16_t mask = CAN_App_IsEmergency() ? 0U : KEY_GetStableMask();
-
-        if (CAN_App_SendKeyValue(mask))
+        if (CAN_App_SendKeyValue(key_mask))
         {
             key_tx_pending = 0;
+            key_tx_last    = key_mask;
             key_tx_t0      = now;
         }
         /* 실패 = 묵은 프레임 취소 중. pending을 유지해 다음 폴에서 최신 값으로 재시도 */

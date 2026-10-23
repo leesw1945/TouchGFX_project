@@ -14,8 +14,7 @@
 #include <string.h>
 
 #define LINE_MAX          48U
-#define SIM_PERIOD_MS     300U    /* 메인의 0x02/0x03 주기와 동일 */
-#define STATE_PERIOD_MS   1000U   /* 메인의 0x04 갱신 주기와 동일 */
+#define SIM_PERIOD_MS     300U    /* OP의 0x02/0x0A 송신 주기와 동일 (OP 담당 확인: 300ms) */
 #define SIM_PAUSE_TICKS   5U      /* 단계 사이 정지 = 5 x 300ms = 1.5초 */
 
 static char     line[LINE_MAX];
@@ -35,7 +34,7 @@ static const int16_t sim_max[4]   = { 1800, 1700, 120,  45 };
 static const int16_t sim_step[4]  = {   50,   50,  10,   6 };
 
 /* ---- sim key: 보드의 물리 키로 값을 직접 움직인다 (메인 없이 키→화면 반응 확인용) ----
- * 300ms마다 누르고 있는 키에 따라 값을 한 칸씩 바꿔 0x02+0x03으로 주입한다.
+ * 300ms마다 누르고 있는 키에 따라 값을 한 칸씩 바꿔 0x02+0x0A로 주입한다.
  * 키 번호는 물리 cKEY 번호(LCD 마주본 기준 왼쪽 열 0~5, 오른쪽 열 6~11). EMERGENCY 중에는 무시. */
 static uint8_t  sim_key;
 #define KSIM_SID_STEP     10   /* mm / 300ms → 화면 1cm씩  */
@@ -80,7 +79,8 @@ static void print_diag(void)
            (unsigned long)CAN_App_GetTxAbortCount(), (unsigned long)SystemCoreClock);
 }
 
-/* ---- state 반복 주입: -1 꺼짐, 0 READY, 1 EMERGENCY ---- */
+/* ---- state 명령값: -1 꺼짐(0x0A 반복 안 함), 0 READY, 1 EMERGENCY ----
+ * 0 또는 1이면 실제 OP처럼 0x0A를 300ms마다 반복 주입한다 (sim이 켜져 있으면 sim이 대신 보낸다) */
 static int8_t   state_hold = -1;
 static uint32_t state_t0;
 
@@ -100,16 +100,26 @@ static void inject_display(uint8_t unit, uint16_t sid_mm, int16_t arm_deg, int16
     CAN_App_InjectRx(d, 8U);
 }
 
-static void inject_height(uint16_t mm)
+/* 0x0A 주입: OP 보드 구조체(공용체)로 프레임을 만들어 CAN 수신과 같은 해석 경로를 탄다.
+ * emergency 인수는 사람 기준(1 = 비상)이고 와이어 값은 SDK 정의대로 EMG_ON(0)/EMG_OFF(1)로 넣는다. */
+static void inject_payload(uint8_t unit, uint8_t emergency, uint16_t height_mm)
 {
-    uint8_t d[8] = { CMD_BUCK_HEIGHT, (uint8_t)(mm >> 8), (uint8_t)mm, 0, 0, 0, 0, 0 };
-    CAN_App_InjectRx(d, 8U);
+    OP_To_Bucky_Key_Union_t tx;
+    uint8_t d[8] = { 0 };
+
+    tx.Payload.Unit          = unit ? UNIT_Inch : UNIT_Cm;
+    tx.Payload.Emergency     = emergency ? EMG_ON : EMG_OFF;
+    tx.Payload.Swivel_Height = height_mm;        /* Cortex-M0+는 리틀엔디안 → OP 배치와 동일 */
+
+    d[0] = CMD_BUCK_KEY_PAYLOAD;
+    memcpy(&d[1], tx.Bytes, sizeof(tx.Bytes));   /* [1] Unit [2] Emergency [3] LSB [4] MSB */
+    CAN_App_InjectRx(d, CMD_BUCK_KEY_PAYLOAD_DLC);
 }
 
-static void inject_state(uint8_t state)
+/* 현재 콘솔 상태(unit 명령의 단위, state 명령값, 높이값 sim_val[1])로 0x0A를 한 번 주입 */
+static void inject_payload_now(void)
 {
-    uint8_t d[8] = { CMD_BUCK_STATE, state, 0, 0, 0, 0, 0, 0 };
-    CAN_App_InjectRx(d, 8U);
+    inject_payload(sim_unit, (state_hold > 0) ? 1U : 0U, (uint16_t)sim_val[1]);
 }
 
 /* ==== sim 한 스텝 (300ms마다) =================================================*/
@@ -177,11 +187,11 @@ static void print_help(void)
 {
     printf("명령 (Enter로 확정):\r\n"
            "  disp <unit> <sid_mm> <arm_deg> <det_deg>  0x02 주입 (unit 0=cm 1=inch)\r\n"
-           "  height <mm>                              0x03 주입\r\n"
-           "  state <0|1|off>                          0x04 반복 주입 (0 READY 1 EMERGENCY)\r\n"
+           "  height <mm>                              0x0A 1회 주입 (단위=unit, 비상=state 값)\r\n"
+           "  state <0|1|off>                          0x0A 300ms 반복 주입 (0 READY 1 EMERGENCY, off=중지)\r\n"
            "  unit <0|1>                               sim 단위\r\n"
            "  diag                                     TE/s, 폴백, 송신취소 등 진단값\r\n"
-           "  sim <on|key|off>                         on=자동 시나리오, key=보드 키로 값 이동 (300ms)\r\n"
+           "  sim <on|key|off>                         on=자동 시나리오, key=보드 키로 값 이동 (300ms, 0x02+0x0A)\r\n"
            "  예) disp 0 1800 140 30 / height 1200 / state 1 / sim key\r\n");
 }
 
@@ -223,8 +233,9 @@ static void run_line(const char *s)
     {
         if (next_int(&s, &a))
         {
-            inject_height((uint16_t)a);
-            printf("ok height %dmm\r\n", a);
+            sim_val[1] = (int16_t)a;             /* sim key의 시작값도 함께 맞춘다 */
+            inject_payload_now();
+            printf("ok height %dmm (0x0A 1회, %s)\r\n", a, (state_hold > 0) ? "EMERGENCY" : "READY");
         }
         else
         {
@@ -237,14 +248,15 @@ static void run_line(const char *s)
         if (strncmp(s, "off", 3) == 0)
         {
             state_hold = -1;
-            printf("ok state off (3초 뒤 READY로 복귀)\r\n");
+            printf("ok state off (0x0A 반복 중지 -> 1.5초 뒤 READY, 높이 대시)\r\n");
         }
         else if (next_int(&s, &a) && (a == 0 || a == 1))
         {
             state_hold = (int8_t)a;
             state_t0   = HAL_GetTick();
-            inject_state((uint8_t)a);
-            printf("ok state %s (1초마다 반복)\r\n", a ? "EMERGENCY" : "READY");
+            inject_payload_now();
+            printf("ok state %s (0x0A 300ms 반복, Emergency 바이트=%u)\r\n",
+                   a ? "EMERGENCY" : "READY", a ? (unsigned)EMG_ON : (unsigned)EMG_OFF);
         }
         else
         {
@@ -358,12 +370,13 @@ void DbgCmd_Poll(void)
             sim_key_step();
         }
         inject_display(sim_unit, (uint16_t)sim_val[0], sim_val[2], sim_val[3]);
-        inject_height((uint16_t)sim_val[1]);
+        inject_payload_now();                     /* 0x0A: 단위 + state 값 + 높이 */
     }
 
-    if (state_hold >= 0 && (now - state_t0) >= STATE_PERIOD_MS)
+    /* state 0/1이면 실제 OP처럼 0x0A를 주기적으로 반복 (sim 중에는 위에서 이미 보냈으므로 생략) */
+    if (state_hold >= 0 && !sim_on && !sim_key && (now - state_t0) >= SIM_PERIOD_MS)
     {
         state_t0 = now;
-        inject_state((uint8_t)state_hold);
+        inject_payload_now();
     }
 }

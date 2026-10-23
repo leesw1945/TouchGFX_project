@@ -7,7 +7,8 @@ class ModelListener;
 
 /* CAN 수신 데이터(can_app.c)를 매 프레임 읽어, 변화가 있을 때만 Presenter에 알린다.
  *
- * - 통신 두절: 0x02/0x03이 CAN_DISPLAY_TIMEOUT_MS(1.5초) 동안 없으면 valid=false로 통지
+ * - 통신 두절: 0x02/0x0A가 CAN_DISPLAY_TIMEOUT_MS(1.5초) 동안 없으면 valid=false로 통지
+ *   (단위는 0x0A가 살아 있으면 0x0A의 Unit, 아니면 0x02의 단위)
  * - 동작 중 판단(카드 파란 강조): 값이 바뀐 뒤 ACTIVE_HOLD_MS 동안, 또는 그 동작에
  *   해당하는 키를 누르고 있는 동안 (EMERGENCY 중에는 키 강조 없음)
  * - 시뮬레이터(PC) 빌드에서는 CAN 대신 내장 시나리오로 값을 만들어 화면을 검증한다 */
@@ -65,6 +66,7 @@ protected:
     int16_t  lastArm;
     int16_t  lastDet;
     bool     lastHeightValid;
+    uint8_t  lastHeightUnit;
     uint16_t lastHeight;
     bool     lastEmergency;
     uint8_t  lastActive;

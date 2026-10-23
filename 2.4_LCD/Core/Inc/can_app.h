@@ -7,24 +7,26 @@
   *
   *          프로토콜 출처: SU-6000 SDK Rev14 메인 OP 펌웨어 분석
   *          (Buck_Key.c / Sensor_Collect.c / CAN_Driver.h / Version.c)
-  *          0x03, 0x04는 SU-4100에서 새로 제안한 커맨드 (메인 담당과 협의 중).
+  *          0x0A(10)는 OP 보드 담당이 정의한 신규 커맨드 (2026-10-23 참고 코드 기준).
+  *          이전에 제안했던 0x03(높이)/0x04(상태)는 0x0A 하나로 대체되어 삭제했다.
   *
   *          규칙 요약:
   *          - 클래식 CAN 500 kbit/s, 11비트 표준 ID, 데이터 최대 8바이트
   *          - ID 103(0x67) 하나를 메인↔보드 양방향 공용, Data[0] 커맨드 바이트로 구분
-  *          - 두 바이트 숫자는 상위 바이트 먼저(빅엔디안), 각도는 부호 있는 16비트
-  *          - 메인은 ID 103 수신이 1.5초 없으면 통신 에러 처리
-  *            → 보드는 키 변화가 없어도 300ms마다 키 값을 재송신(얼라이브 겸용)
-  *          - 보드는 0x02/0x03이 1.5초 없으면 통신 두절로 보고 화면을 대시로 바꾼다
-  *          - 0x04 EMERGENCY 수신 중에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
+  *          - 0x01/0x02의 두 바이트 숫자는 상위 바이트 먼저(빅엔디안), 각도는 부호 있는 16비트
+  *            ※ 0x0A의 높이는 OP 구조체 그대로 리틀엔디안(LSB 먼저) — 커맨드마다 다르니 주의
+  *          - 키 포트는 10ms 주기로 읽고 디바운스 없이 보낸다(채터링 판정은 OP 담당)
+  *          - 키 상태가 직전 송신값과 다르면 즉시, 같으면 500ms 주기로 송신
+  *            (메인은 ID 103 수신이 1.5초 없으면 통신 에러 처리 → 얼라이브 겸용)
+  *          - 보드는 0x02/0x0A가 1.5초 없으면 통신 두절로 보고 화면을 대시로 바꾼다
+  *          - 0x0A의 Emergency가 EMG_ON인 동안에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
   *
   *          ID 103 커맨드 목록 (Data[0]):
-  *            0x01 CMD_BUCK_KEY_VALUE  보드→메인  DLC3  [1..2] 키 16비트(0=눌림)
-  *            0x02 CMD_BUCK_DISPLAY    메인→보드  DLC8  [1] 단위 [2..3] SID mm [4..5] ARM각 [6..7] DET각 (300ms)
-  *            0x03 CMD_BUCK_HEIGHT     메인→보드  DLC8  [1..2] ARM 높이 mm, [3..7] 예약 0            (300ms)
-  *            0x04 CMD_BUCK_STATE      메인→보드  DLC8  [1] 0 READY / 1 EMERGENCY, [2..7] 예약 0    (변화 시 + 1s)
-  *            0x06 CMD_QUERY_VERSION   메인→보드  DLC1
-  *            0x07 CMD_VERSION_INFO    보드→메인  DLC4  [1] 103 [2] HW [3] SW  ※ 이것만 ID 104로 송신
+  *            0x01 CMD_BUCK_KEY_VALUE    보드→메인  DLC3  [1..2] 키 16비트(0=눌림, bit12~15=1)
+  *            0x02 CMD_BUCK_DISPLAY      메인→보드  DLC8  [1] 단위 [2..3] SID mm [4..5] ARM각 [6..7] DET각 (300ms)
+  *            0x0A CMD_BUCK_KEY_PAYLOAD  메인→보드  DLC5  [1] 단위 [2] Emergency [3..4] ARM 높이 mm(LSB, MSB) (300ms)
+  *            0x06 CMD_QUERY_VERSION     메인→보드  DLC1
+  *            0x07 CMD_VERSION_INFO      보드→메인  DLC4  [1] 103 [2] HW [3] SW  ※ 이것만 ID 104로 송신
   ******************************************************************************
   */
 #ifndef CAN_APP_H
@@ -41,24 +43,57 @@ extern "C" {
 #define CAN_ID_OP_COMMAND    0x68U   /* 104: 버전 응답을 이 ID로 송신     */
 
 /* ==== 커맨드 바이트 (Data[0]) ==== */
-#define CMD_BUCK_KEY_VALUE   0x01U   /* 보드→메인: 키 상태 16비트                    */
-#define CMD_BUCK_DISPLAY     0x02U   /* 메인→보드: LCD 표시 데이터(300ms)            */
-#define CMD_BUCK_HEIGHT      0x03U   /* 메인→보드: ARM 높이 mm(300ms)     [신규 제안] */
-#define CMD_BUCK_STATE       0x04U   /* 메인→보드: 시스템 상태(변화 시+1s) [신규 제안] */
-#define CMD_QUERY_VERSION    0x06U   /* 메인→보드: 버전 질의                         */
-#define CMD_VERSION_INFO     0x07U   /* 보드→메인: 버전 응답 (ID 104로)              */
-
-/* 0x04 상태 값 */
-#define BUCK_STATE_READY     0U
-#define BUCK_STATE_EMERGENCY 1U
+#define CMD_BUCK_KEY_VALUE    0x01U  /* 보드→메인: 키 상태 16비트                          */
+#define CMD_BUCK_DISPLAY      0x02U  /* 메인→보드: LCD 표시 데이터(300ms)                  */
+#define CMD_QUERY_VERSION     0x06U  /* 메인→보드: 버전 질의                               */
+#define CMD_VERSION_INFO      0x07U  /* 보드→메인: 버전 응답 (ID 104로)                    */
+#define CMD_BUCK_KEY_PAYLOAD  10U    /* 0x0A 메인→보드: 단위 + Emergency + ARM 높이 (OP 보드 정의) */
 
 /* ==== 이 보드의 버전 (버전 응답에 실림 — 릴리스 시 갱신할 것) ==== */
 #define BUCKY_HW_VERSION     1U      /* REV01 */
-#define BUCKY_SW_VERSION     2U      /* 2: 화면 연결·0x03/0x04·송신 견고성·콘솔 명령 (2026-10) */
+#define BUCKY_SW_VERSION     3U      /* 3: 0x03/0x04 → OP 정의 0x0A 페이로드로 교체 (2026-10-23) */
 
-/* ==== 수신 데이터 유효 기준 ==== */
-#define CAN_DISPLAY_TIMEOUT_MS  1500U  /* 0x02/0x03이 이보다 오래 없으면 통신 두절 → 화면 대시 */
-#define CAN_STATE_TIMEOUT_MS    3000U  /* 0x04(1초 주기)가 3초 없으면 상태 미상 → READY 취급    */
+/* ==== 수신 데이터 유효 기준 ====
+ * 0x02, 0x0A 모두 OP가 300ms 주기로 송신한다(OP 담당 확인 2026-10-23) → 5회 연속 놓치면 두절로 본다. */
+#define CAN_DISPLAY_TIMEOUT_MS  1500U  /* 0x02/0x0A가 이보다 오래 없으면 통신 두절 → 화면 대시, EMERGENCY 해제 */
+
+/* ==== OP 보드와 공유하는 열거형 — SU-6000 SDK 정의 그대로, 값을 바꾸면 안 됨 ==== */
+
+/* UART_Protocol.h: typedef enum { UNIT_Cm, UNIT_Inch } UNIT_Type; */
+typedef enum
+{
+    UNIT_Cm   = 0,
+    UNIT_Inch = 1
+} UNIT_Type;
+
+/* USER_Type_Define.H 79행: typedef enum { EMG_ON, EMG_OFF } EMERGENCY_STATE;
+ * ※ 주의: EMG_ON이 0, EMG_OFF가 1이다 (직관과 반대). 와이어 바이트 0 = 비상, 1 = 정상.
+ *    OP 담당 확인 완료(2026-10-23): 0 = 비상이 맞다. */
+typedef enum
+{
+    EMG_ON  = 0,
+    EMG_OFF = 1
+} EMERGENCY_STATE;
+
+/* ==== 0x0A 수신 페이로드 — OP 보드 담당이 준 참고 코드와 바이트 배치가 1:1 (2026-10-23) ====
+ * 필드 순서·크기·엔디안을 OP 쪽과 똑같이 유지해야 한다. 바꾸면 안 됨.
+ * 이 툴체인(arm-none-eabi-gcc 13.3, 기본 -fshort-enums)에서 enum 멤버는 1바이트 → 총 4바이트.
+ * can_app.c / Model.cpp에서 4바이트인지 빌드 시 검사한다. */
+typedef struct __attribute__((packed))
+{
+    UNIT_Type       Unit;           /* 1바이트: UNIT_Cm(0) / UNIT_Inch(1)              */
+    EMERGENCY_STATE Emergency;      /* 1바이트: EMG_ON(0) = 비상 / EMG_OFF(1) = 정상    */
+    uint16_t        Swivel_Height;  /* 2바이트: ARM 높이 mm, 리틀엔디안(LSB, MSB 순)    */
+} OP_To_Bucky_Key_Payload_t;
+
+typedef union
+{
+    uint8_t                   Bytes[sizeof(OP_To_Bucky_Key_Payload_t)];
+    OP_To_Bucky_Key_Payload_t Payload;
+} OP_To_Bucky_Key_Union_t;
+
+/* 0x0A 프레임 길이 = 커맨드(1) + 페이로드(4). 다르면 참고 코드와 같이 무시한다 */
+#define CMD_BUCK_KEY_PAYLOAD_DLC  5U
 
 /* 메인이 300ms마다 보내주는 LCD 표시 데이터 (CMD_BUCK_DISPLAY 파싱 결과) */
 typedef struct
@@ -71,21 +106,13 @@ typedef struct
     uint32_t last_rx_tick;   /* 마지막 수신 시각(HAL_GetTick) — 두절 판단용 */
 } BuckDisplayData;
 
-/* ARM 높이 (CMD_BUCK_HEIGHT 파싱 결과) */
+/* OP 보드에서 받은 0x0A 페이로드 (참고 코드의 OP_Rx_Payload에 해당) */
 typedef struct
 {
-    uint8_t  valid;
-    uint16_t height_mm;      /* ARM UP/DOWN 높이 [mm] */
-    uint32_t last_rx_tick;
-} BuckHeightData;
-
-/* 시스템 상태 (CMD_BUCK_STATE 파싱 결과) */
-typedef struct
-{
-    uint8_t  valid;
-    uint8_t  emergency;      /* 1 = EMERGENCY */
-    uint32_t last_rx_tick;
-} BuckStateData;
+    uint8_t                   valid;         /* 1 = 수신 중 (타임아웃이면 0으로 돌아감)                 */
+    OP_To_Bucky_Key_Payload_t payload;       /* 마지막 수신값 그대로 (Unit / Emergency / Swivel_Height) */
+    uint32_t                  last_rx_tick;  /* 마지막 수신 시각 — 두절 판단용                           */
+} BuckPayloadData;
 
 /* 필터/알림 설정 + FDCAN 시작. 성공 시 1, 실패 시 0. */
 int CAN_App_Init(void);
@@ -98,17 +125,16 @@ int CAN_App_Init(void);
  * 호출자는 다음 폴에서 최신 값으로 다시 호출해야 한다. */
 int CAN_App_SendKeyValue(uint16_t pressed_mask);
 
-/* 주기 처리: 수신 메시지 해석(표시/높이/상태 저장, 버전 질의 응답) +
- * 상태 타임아웃 + 활동 LED 소등 + 버스오프 자동 복구. 메인 루프에서 호출. */
+/* 주기 처리: 수신 메시지 해석(표시/페이로드 저장, 버전 질의 응답) +
+ * 0x0A 타임아웃 + 활동 LED 소등 + 버스오프 자동 복구. 메인 루프에서 호출. */
 void CAN_App_Process(void);
 
-/* 마지막으로 수신한 데이터 (UI에서 읽어감. valid==0이면 아직 미수신.
+/* 마지막으로 수신한 데이터 (UI에서 읽어감. valid==0이면 미수신.
  * 두절 판단은 last_rx_tick과 CAN_DISPLAY_TIMEOUT_MS로 읽는 쪽에서 한다) */
 const BuckDisplayData *CAN_App_GetDisplayData(void);
-const BuckHeightData  *CAN_App_GetHeightData(void);
-const BuckStateData   *CAN_App_GetStateData(void);
+const BuckPayloadData *CAN_App_GetPayloadData(void);
 
-/* EMERGENCY 여부 (0x04 수신값 + CAN_STATE_TIMEOUT_MS 반영). 1 = 비상 */
+/* EMERGENCY 여부: 0x0A의 Emergency == EMG_ON 이고 CAN_DISPLAY_TIMEOUT_MS 안에 수신됐을 때 1 */
 uint8_t CAN_App_IsEmergency(void);
 
 /* 진단: 묵은 송신 프레임을 취소한 누적 횟수 (정상 버스에서는 0에 머문다) */

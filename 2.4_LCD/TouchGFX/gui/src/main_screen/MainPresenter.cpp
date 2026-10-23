@@ -60,8 +60,9 @@ void MainPresenter::onDisplayData(bool valid, uint8_t u, uint16_t sidMm, int16_t
     }
 }
 
-void MainPresenter::onHeightData(bool valid, uint16_t mm)
+void MainPresenter::onHeightData(bool valid, uint8_t u, uint16_t mm)
 {
+    unit        = u;      /* 0x0A의 단위 — onDisplayData로 오는 값과 같은 단위다 */
     heightValid = valid;
     heightMm    = mm;
     showHeight();
