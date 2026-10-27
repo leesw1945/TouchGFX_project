@@ -238,7 +238,7 @@ static void send_version_info(void)
  *   3) Data[1..4]를 공용체 Bytes[]에 복사 → Payload 구조체로 읽는다 (Unit / Emergency / Swivel_Height)
  * 참고 코드는 "수신 인터럽트에서 호출"이지만 이 보드는 ISR이 링버퍼에 넣고 메인 루프에서
  * 해석하므로 process_rx_message()에서 호출한다 (결과는 같고 printf를 쓸 수 있다).
- * ※ Emergency는 SDK 정의대로 EMG_ON = 0 이 비상이다 (1이 아님) — OP 담당 확인 완료(2026-10-23). */
+ * ※ Emergency 바이트: 0 = READY, 1 = EMERGENCY (2026-10-26 확정. SDK의 EMG_ON = 0과는 반대). */
 static void Recv_From_OP(const CanRxMsg *Message, uint32_t now)
 {
     OP_To_Bucky_Key_Union_t rx;
@@ -263,8 +263,8 @@ static void Recv_From_OP(const CanRxMsg *Message, uint32_t now)
     memcpy(rx.Bytes, &Message->data[1], sizeof(OP_To_Bucky_Key_Payload_t));
 
     /* 로그: 첫 수신, EMERGENCY 변화, 0x02와 단위 불일치 */
-    const uint8_t emg_now  = (rx.Payload.Emergency == EMG_ON) ? 1U : 0U;
-    const uint8_t emg_prev = (payload_data.valid && payload_data.payload.Emergency == EMG_ON) ? 1U : 0U;
+    const uint8_t emg_now  = (rx.Payload.Emergency == EMG_EMERGENCY) ? 1U : 0U;
+    const uint8_t emg_prev = (payload_data.valid && payload_data.payload.Emergency == EMG_EMERGENCY) ? 1U : 0U;
     if (!payload_data.valid)
     {
         printf("[CAN] 0x0A 수신 시작 (unit=%u emg=%u height=%umm)\r\n",
@@ -370,11 +370,11 @@ void CAN_App_Process(void)
     if (payload_data.valid && (now - payload_data.last_rx_tick) > CAN_DISPLAY_TIMEOUT_MS)
     {
         payload_data.valid = 0;
-        if (payload_data.payload.Emergency == EMG_ON)
+        if (payload_data.payload.Emergency == EMG_EMERGENCY)
         {
             printf("[CAN] 0x0A timeout -> READY\r\n");
         }
-        payload_data.payload.Emergency = EMG_OFF;
+        payload_data.payload.Emergency = EMG_READY;
     }
 
     /* 활동 LED 펄스 종료 */
@@ -425,8 +425,8 @@ uint32_t CAN_App_GetTxAbortCount(void)
 
 uint8_t CAN_App_IsEmergency(void)
 {
-    /* 0x0A의 Emergency가 EMG_ON(0)이고, 그 프레임이 타임아웃 안에 수신됐을 때만 비상 */
-    if (!payload_data.valid || payload_data.payload.Emergency != EMG_ON)
+    /* 0x0A의 Emergency가 1(EMG_EMERGENCY)이고, 그 프레임이 타임아웃 안에 수신됐을 때만 비상 */
+    if (!payload_data.valid || payload_data.payload.Emergency != EMG_EMERGENCY)
     {
         return 0;
     }

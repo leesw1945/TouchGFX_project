@@ -101,14 +101,14 @@ static void inject_display(uint8_t unit, uint16_t sid_mm, int16_t arm_deg, int16
 }
 
 /* 0x0A 주입: OP 보드 구조체(공용체)로 프레임을 만들어 CAN 수신과 같은 해석 경로를 탄다.
- * emergency 인수는 사람 기준(1 = 비상)이고 와이어 값은 SDK 정의대로 EMG_ON(0)/EMG_OFF(1)로 넣는다. */
+ * emergency 인수 1 = 비상 → 와이어 EMG_EMERGENCY(1), 0 → EMG_READY(0). */
 static void inject_payload(uint8_t unit, uint8_t emergency, uint16_t height_mm)
 {
     OP_To_Bucky_Key_Union_t tx;
     uint8_t d[8] = { 0 };
 
     tx.Payload.Unit          = unit ? UNIT_Inch : UNIT_Cm;
-    tx.Payload.Emergency     = emergency ? EMG_ON : EMG_OFF;
+    tx.Payload.Emergency     = emergency ? EMG_EMERGENCY : EMG_READY;
     tx.Payload.Swivel_Height = height_mm;        /* Cortex-M0+는 리틀엔디안 → OP 배치와 동일 */
 
     d[0] = CMD_BUCK_KEY_PAYLOAD;
@@ -256,7 +256,7 @@ static void run_line(const char *s)
             state_t0   = HAL_GetTick();
             inject_payload_now();
             printf("ok state %s (0x0A 300ms 반복, Emergency 바이트=%u)\r\n",
-                   a ? "EMERGENCY" : "READY", a ? (unsigned)EMG_ON : (unsigned)EMG_OFF);
+                   a ? "EMERGENCY" : "READY", a ? (unsigned)EMG_EMERGENCY : (unsigned)EMG_READY);
         }
         else
         {

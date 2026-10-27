@@ -19,7 +19,7 @@
   *          - 키 상태가 직전 송신값과 다르면 즉시, 같으면 500ms 주기로 송신
   *            (메인은 ID 103 수신이 1.5초 없으면 통신 에러 처리 → 얼라이브 겸용)
   *          - 보드는 0x02/0x0A가 1.5초 없으면 통신 두절로 보고 화면을 대시로 바꾼다
-  *          - 0x0A의 Emergency가 EMG_ON인 동안에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
+  *          - 0x0A의 Emergency가 1(EMG_EMERGENCY)인 동안에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
   *
   *          ID 103 커맨드 목록 (Data[0]):
   *            0x01 CMD_BUCK_KEY_VALUE    보드→메인  DLC3  [1..2] 키 16비트(0=눌림, bit12~15=1)
@@ -66,13 +66,13 @@ typedef enum
     UNIT_Inch = 1
 } UNIT_Type;
 
-/* USER_Type_Define.H 79행: typedef enum { EMG_ON, EMG_OFF } EMERGENCY_STATE;
- * ※ 주의: EMG_ON이 0, EMG_OFF가 1이다 (직관과 반대). 와이어 바이트 0 = 비상, 1 = 정상.
- *    OP 담당 확인 완료(2026-10-23): 0 = 비상이 맞다. */
+/* 와이어 값 규칙(2026-10-26 확정): 0 = READY, 1 = EMERGENCY.
+ * ※ SDK USER_Type_Define.H 79행의 typedef enum { EMG_ON, EMG_OFF }(EMG_ON = 0)와는 반대이므로
+ *    SDK 이름을 쓰지 않고 값이 드러나는 이름으로 정의한다. OP가 보내는 값과 맞는지 통합 시험에서 확인할 것. */
 typedef enum
 {
-    EMG_ON  = 0,
-    EMG_OFF = 1
+    EMG_READY     = 0,
+    EMG_EMERGENCY = 1
 } EMERGENCY_STATE;
 
 /* ==== 0x0A 수신 페이로드 — OP 보드 담당이 준 참고 코드와 바이트 배치가 1:1 (2026-10-23) ====
@@ -82,7 +82,7 @@ typedef enum
 typedef struct __attribute__((packed))
 {
     UNIT_Type       Unit;           /* 1바이트: UNIT_Cm(0) / UNIT_Inch(1)              */
-    EMERGENCY_STATE Emergency;      /* 1바이트: EMG_ON(0) = 비상 / EMG_OFF(1) = 정상    */
+    EMERGENCY_STATE Emergency;      /* 1바이트: 0 = READY / 1 = EMERGENCY               */
     uint16_t        Swivel_Height;  /* 2바이트: ARM 높이 mm, 리틀엔디안(LSB, MSB 순)    */
 } OP_To_Bucky_Key_Payload_t;
 
@@ -134,7 +134,7 @@ void CAN_App_Process(void);
 const BuckDisplayData *CAN_App_GetDisplayData(void);
 const BuckPayloadData *CAN_App_GetPayloadData(void);
 
-/* EMERGENCY 여부: 0x0A의 Emergency == EMG_ON 이고 CAN_DISPLAY_TIMEOUT_MS 안에 수신됐을 때 1 */
+/* EMERGENCY 여부: 0x0A의 Emergency == 1(EMG_EMERGENCY) 이고 CAN_DISPLAY_TIMEOUT_MS 안에 수신됐을 때 1 */
 uint8_t CAN_App_IsEmergency(void);
 
 /* 진단: 묵은 송신 프레임을 취소한 누적 횟수 (정상 버스에서는 0에 머문다) */

@@ -32,7 +32,7 @@ public:
         (void)valid; (void)unit; (void)heightMm;
     }
 
-    /* 0x0A Emergency. true = EMG_ON 수신 중 (상태바 빨강) */
+    /* 0x0A Emergency. true = 1(EMG_EMERGENCY) 수신 중 (상태바 빨강) */
     virtual void onEmergency(bool emergency)
     {
         (void)emergency;

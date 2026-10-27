@@ -320,6 +320,23 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "Setting",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "bg",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 238,
+              "Green": 238,
+              "Blue": 238
+            }
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
