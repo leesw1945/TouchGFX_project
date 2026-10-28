@@ -4,6 +4,11 @@
 #include <touchgfx/Color.hpp>
 #include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#ifndef SIMULATOR
+#include "can_app.h"          /* BUCKY_SW_VERSION — 부팅 팝업 숫자의 출처 (CAN 버전 응답과 같은 매크로) */
+#else
+#define BUCKY_SW_VERSION 0    /* PC 시뮬레이터에는 보드 헤더가 없다 (Model.cpp와 같은 규칙). 0은 자리값 */
+#endif
 
 using namespace touchgfx;
 
@@ -33,7 +38,7 @@ static const char* DASH_LINEAR = "---";
 static const char* DASH_ANGLE  = "--";
 
 MainView::MainView()
-    : state(STATE_READY)
+    : state(STATE_READY), verPopupLeft(0)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -80,6 +85,19 @@ void MainView::setupScreen()
     setArmUpDownDash();
     setArmDegDash();
     setDetectorDegDash();
+
+    /* 부팅 버전 팝업: 숫자는 CAN 버전 응답과 같은 매크로에서 채운다(손으로 적은 문자열 없음).
+     * 게이지 원호를 바로 위 initGauge()에서 add()로 나중에 붙였으므로 팝업 위젯 4개를 다시 맨 앞으로 올린다 */
+    Unicode::snprintf(verValueBuffer, VERVALUE_SIZE, "%d", (int)BUCKY_SW_VERSION);
+    remove(verScrim);
+    add(verScrim);
+    remove(verPanel);
+    add(verPanel);
+    remove(verLabel);
+    add(verLabel);
+    remove(verValue);
+    add(verValue);
+    verPopupLeft = VER_POPUP_FRAMES;
 }
 
 void MainView::tearDownScreen()
@@ -93,6 +111,22 @@ void MainView::handleTickEvent()
     frameCount++;
     animateGauge(GAUGE_ARM, progArm);
     animateGauge(GAUGE_DET, progDet);
+
+    /* 부팅 버전 팝업: 3초가 지나면 한 번만 숨긴다 */
+    if (verPopupLeft > 0 && --verPopupLeft == 0)
+    {
+        hideVersionPopup();
+    }
+}
+
+/* ---------------------------------------------------------------- 부팅 버전 팝업 */
+void MainView::hideVersionPopup()
+{
+    verScrim.setVisible(false);
+    verPanel.setVisible(false);
+    verLabel.setVisible(false);
+    verValue.setVisible(false);
+    verScrim.invalidate();   /* 막이 전체 화면 크기라 팝업 아래 영역이 모두 다시 그려진다 */
 }
 
 /* ---------------------------------------------------------------- 상태바 */

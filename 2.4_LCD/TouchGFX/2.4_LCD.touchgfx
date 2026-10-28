@@ -317,6 +317,61 @@
               "Green": 61,
               "Blue": 74
             }
+          },
+          {
+            "Type": "Box",
+            "Name": "verScrim",
+            "Width": 240,
+            "Height": 320,
+            "Color": {
+              "Red": 238,
+              "Green": 238,
+              "Blue": 238
+            },
+            "Alpha": 200
+          },
+          {
+            "Type": "Image",
+            "Name": "verPanel",
+            "X": 22,
+            "Y": 116,
+            "Width": 196,
+            "Height": 88,
+            "RelativeFilename": "panel_toast.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "verLabel",
+            "X": 22,
+            "Y": 137,
+            "Width": 196,
+            "Height": 15,
+            "TextId": "MAIN_VER_LABEL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "verValue",
+            "X": 22,
+            "Y": 158,
+            "Width": 196,
+            "Height": 25,
+            "TextId": "MAIN_VER_VALUE",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 37,
+              "Green": 61,
+              "Blue": 74
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
           }
         ],
         "Interactions": []

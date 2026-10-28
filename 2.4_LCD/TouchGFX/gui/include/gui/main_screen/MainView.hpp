@@ -22,7 +22,10 @@
  *                                         원호는 handleTickEvent에서 직전 값→새 값으로 등속 이동(갱신 간격에 맞춤)
  *   set*Dash()        통신 두절: 값 자리에 대시, 기호 숨김, 원호 비움
  *   setActive()       동작 중 카드: 테두리 파랑(card_act.png) + 값/기호 텍스트 파랑(#0077C0).
- *                     정지: card_nrm.png + 값/기호 텍스트 남색(#253D4A). 게이지 원호는 항상 파랑 */
+ *                     정지: card_nrm.png + 값/기호 텍스트 남색(#253D4A). 게이지 원호는 항상 파랑
+ *
+ * 부팅 버전 팝업(verScrim/verPanel/verLabel/verValue): 화면이 뜨면 가운데에 "FIRMWARE / Ver N"을
+ * 3초 동안 보이고 handleTickEvent가 숨긴다. N은 can_app.h의 BUCKY_SW_VERSION(CAN 버전 응답과 같은 출처) */
 class MainView : public MainViewBase
 {
 public:
@@ -96,6 +99,11 @@ protected:
 
     bool  cardActive[4];
     State state;
+
+    /* 부팅 버전 팝업: 남은 표시 프레임 수 (60Hz 기준 180 = 3초). 0이면 숨김 완료 */
+    static const uint16_t VER_POPUP_FRAMES = 180;
+    uint16_t verPopupLeft;
+    void hideVersionPopup();
 
     void initGauge(touchgfx::Circle& track, touchgfx::Circle& prog, int16_t cardX);
     void animateGauge(Gauge g, touchgfx::Circle& prog);

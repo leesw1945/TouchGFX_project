@@ -51,13 +51,19 @@
       <Text Id="MAIN_SID" Alignment="Center" TypographyId="Montserrat_ExtraBold_14">
         <Translation Language="GB">SID</Translation>
       </Text>
+      <Text Id="MAIN_VER_LABEL" Alignment="Center" TypographyId="Montserrat_Medium_12">
+        <Translation Language="GB">FIRMWARE</Translation>
+      </Text>
+      <Text Id="MAIN_VER_VALUE" Alignment="Center" TypographyId="Montserrat_Bold_20">
+        <Translation Language="GB">Ver &lt;value&gt;</Translation>
+      </Text>
     </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Montserrat_Bold_36" Font="Montserrat-Bold.ttf" Size="36" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789.-" />
     <Typography Id="Montserrat_Bold_30" Font="Montserrat-Bold.ttf" Size="30" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789-" />
-    <Typography Id="Montserrat_Bold_20" Font="Montserrat-Bold.ttf" Size="20" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Montserrat_Bold_20" Font="Montserrat-Bold.ttf" Size="20" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789" />
     <Typography Id="Montserrat_Medium_12" Font="Montserrat-Medium.ttf" Size="12" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Montserrat_MediumItalic_12" Font="Montserrat-MediumItalic.ttf" Size="12" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Montserrat_Bold_16" Font="Montserrat-Bold.ttf" Size="16" Bpp="8" IsVector="no" Direction="LTR" FallbackCharacter="?" />

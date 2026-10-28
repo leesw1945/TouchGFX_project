@@ -49,9 +49,10 @@ extern "C" {
 #define CMD_VERSION_INFO      0x07U  /* 보드→메인: 버전 응답 (ID 104로)                    */
 #define CMD_BUCK_KEY_PAYLOAD  10U    /* 0x0A 메인→보드: 단위 + Emergency + ARM 높이 (OP 보드 정의) */
 
-/* ==== 이 보드의 버전 (버전 응답에 실림 — 릴리스 시 갱신할 것) ==== */
+/* ==== 이 보드의 버전 (버전 응답과 부팅 팝업에 실림 — 릴리스 시 갱신할 것) ==== */
 #define BUCKY_HW_VERSION     1U      /* REV01 */
-#define BUCKY_SW_VERSION     3U      /* 3: 0x03/0x04 → OP 정의 0x0A 페이로드로 교체 (2026-10-23) */
+#define BUCKY_SW_VERSION     1U      /* 1: 출하 기준 번호를 1부터 다시 시작 (2026-10-28).
+                                        CAN 0x07 응답, 콘솔 로그, 부팅 버전 팝업(MainView)이 모두 이 값을 쓴다 */
 
 /* ==== 수신 데이터 유효 기준 ====
  * 0x02, 0x0A 모두 OP가 300ms 주기로 송신한다(OP 담당 확인 2026-10-23) → 5회 연속 놓치면 두절로 본다. */
