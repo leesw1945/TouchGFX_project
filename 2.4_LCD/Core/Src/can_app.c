@@ -365,16 +365,16 @@ void CAN_App_Process(void)
         process_rx_message(&m);
     }
 
-    /* 0x0A 타임아웃: 수신이 끊기면 상태 미상 → READY 취급, 높이는 화면에서 대시
-     * (OP가 0x0A를 안 보내는 경우 EMERGENCY에 갇히지 않게. 다시 받으면 "수신 시작" 로그가 또 찍힌다) */
+    /* 0x0A 타임아웃: valid만 내린다. payload(Emergency, 높이, 단위)는 마지막 수신값을 그대로 둔다.
+     * - Emergency는 CAN_App_IsEmergency()가 이 마지막 값을 그대로 쓰므로 두절로 바뀌지 않는다 (2026-10-29 결정):
+     *   EMERGENCY 중 두절 → 화면 빨강·키 차단·절전 금지 유지, READY 중 두절 → READY 유지
+     *   (선이 끊기거나 OP가 죽은 상황이라 키를 보내도 의미가 없고, 비상 표시 중에 키가 살아 있는 것을 막는 쪽을 택함)
+     * - 높이는 valid가 0이라 화면에서 대시. 다시 받으면 "수신 시작" 로그가 또 찍힌다 */
     if (payload_data.valid && (now - payload_data.last_rx_tick) > CAN_DISPLAY_TIMEOUT_MS)
     {
         payload_data.valid = 0;
-        if (payload_data.payload.Emergency == EMG_EMERGENCY)
-        {
-            printf("[CAN] 0x0A timeout -> READY\r\n");
-        }
-        payload_data.payload.Emergency = EMG_READY;
+        printf("[CAN] 0x0A timeout (state %s 유지)\r\n",
+               (payload_data.payload.Emergency == EMG_EMERGENCY) ? "EMERGENCY" : "READY");
     }
 
     /* 활동 LED 펄스 종료 */
@@ -425,12 +425,22 @@ uint32_t CAN_App_GetTxAbortCount(void)
 
 uint8_t CAN_App_IsEmergency(void)
 {
-    /* 0x0A의 Emergency가 1(EMG_EMERGENCY)이고, 그 프레임이 타임아웃 안에 수신됐을 때만 비상 */
-    if (!payload_data.valid || payload_data.payload.Emergency != EMG_EMERGENCY)
-    {
-        return 0;
-    }
-    return ((HAL_GetTick() - payload_data.last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS) ? 1U : 0U;
+    /* 마지막으로 받은 0x0A의 Emergency 값 그대로. 두절(타임아웃)과 무관하다 (2026-10-29 결정).
+     * EMERGENCY 중 0x0A가 끊기면 OP가 READY를 다시 보낼 때까지 비상 유지 → 화면 빨강 + 키 차단 + 절전 금지.
+     * 한 번도 못 받았으면 payload가 0(READY)이라 비상 아님. 화면·키 차단·절전이 모두 이 함수를 쓴다 */
+    return (payload_data.payload.Emergency == EMG_EMERGENCY) ? 1U : 0U;
+}
+
+uint8_t CAN_App_IsConnected(void)
+{
+    /* 주기 메시지(0x02, 0x0A) 중 하나라도 타임아웃 안에 받았으면 연결. 둘 다 없으면(한 번도 없으면 포함) 두절.
+     * 하나만 끊긴 경우는 연결로 보고 그 값만 화면에서 대시가 된다 */
+    const uint32_t now  = HAL_GetTick();
+    const uint8_t  d_ok = (disp_data.valid != 0U) &&
+                          ((now - disp_data.last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS);
+    const uint8_t  p_ok = (payload_data.valid != 0U) &&
+                          ((now - payload_data.last_rx_tick) <= CAN_DISPLAY_TIMEOUT_MS);
+    return (d_ok || p_ok) ? 1U : 0U;
 }
 
 /* ==== HAL 콜백 (ISR 컨텍스트 — printf 금지) ==================================*/

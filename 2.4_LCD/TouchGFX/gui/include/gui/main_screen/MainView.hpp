@@ -13,7 +13,7 @@
  * 게이지 원호와 값 배치 규칙, 게이지 애니메이션은 이 클래스가 담당한다.
  *
  * 외부(Presenter)에서 쓰는 진입점:
- *   setState()        READY(연두 #36D260) / EMERGENCY(빨강 #EB4B4B) 상태바
+ *   setState()        READY(연두 #36D260) / EMERGENCY(빨강 #EB4B4B) / DISCONNECTED(주황 #F5A623) 상태바
  *   setSidCm()        SID를 cm 정수로 표시 (인치 기호 없음, 단위 "cm")
  *   setSidInch()      SID를 inch 소수 1자리로 표시 (인치 기호 표시, 단위 "inch"). 인자는 1/10 inch 단위
  *   setArmUpDownCm()/setArmUpDownInch()   ARM UP/DOWN 카드, 위와 동일 규칙
@@ -25,11 +25,11 @@
  *                     정지: card_nrm.png + 값/기호 텍스트 남색(#253D4A). 게이지 원호는 항상 파랑
  *
  * 부팅 버전 팝업(verScrim/verPanel/verLabel/verValue): 화면이 뜨면 가운데에 "FIRMWARE / Ver N"을
- * 3초 동안 보이고 handleTickEvent가 숨긴다. N은 can_app.h의 BUCKY_SW_VERSION(CAN 버전 응답과 같은 출처) */
+ * 2.5초 동안 보이고 handleTickEvent가 숨긴다. N은 can_app.h의 BUCKY_SW_VERSION(CAN 버전 응답과 같은 출처) */
 class MainView : public MainViewBase
 {
 public:
-    enum State { STATE_READY, STATE_EMERGENCY };
+    enum State { STATE_READY, STATE_EMERGENCY, STATE_DISCONNECTED };
     enum Card  { CARD_SID, CARD_ARM_UD, CARD_ARM_DEG, CARD_DET_DEG };
 
     MainView();
@@ -100,8 +100,8 @@ protected:
     bool  cardActive[4];
     State state;
 
-    /* 부팅 버전 팝업: 남은 표시 프레임 수 (60Hz 기준 180 = 3초). 0이면 숨김 완료 */
-    static const uint16_t VER_POPUP_FRAMES = 180;
+    /* 부팅 버전 팝업: 남은 표시 프레임 수 (60Hz 기준 150 = 2.5초). 0이면 숨김 완료 */
+    static const uint16_t VER_POPUP_FRAMES = 150;
     uint16_t verPopupLeft;
     void hideVersionPopup();
 

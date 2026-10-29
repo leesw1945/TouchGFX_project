@@ -26,7 +26,7 @@ public:
 
     virtual void onDisplayData(bool valid, uint8_t unit, uint16_t sidMm, int16_t armDeg, int16_t detDeg);
     virtual void onHeightData(bool valid, uint8_t unit, uint16_t heightMm);
-    virtual void onEmergency(bool emergency);
+    virtual void onStatus(bool connected, bool emergency);
     virtual void onActiveCards(uint8_t mask);
 
 private:

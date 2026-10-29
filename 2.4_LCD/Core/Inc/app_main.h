@@ -17,11 +17,11 @@
 extern "C" {
 #endif
 
-/* main()의 USER CODE 2에서 1회 호출 (CAN 시작 + 키 백라이트 ON) */
+/* main()의 USER CODE 2에서 1회 호출 (CAN 시작 + 키 백라이트 ON + 절전 타이머 시작) */
 void AppMain_Init(void);
 
 /* main()의 while 루프에서 매회 호출:
- * RUN LED 하트비트 + 키 이벤트 소비/CAN 송신 + CAN 수신 처리 */
+ * RUN LED 하트비트 + 키 이벤트 소비/CAN 송신 + CAN 수신 처리 + 절전 판정 */
 void AppMain_Poll(void);
 
 #ifdef __cplusplus

@@ -84,9 +84,17 @@ void MainPresenter::showHeight()
     }
 }
 
-void MainPresenter::onEmergency(bool emergency)
+void MainPresenter::onStatus(bool connected, bool emergency)
 {
-    view.setState(emergency ? MainView::STATE_EMERGENCY : MainView::STATE_READY);
+    /* DISCONNECTED가 EMERGENCY보다 우선. 키 차단·절전은 보드 쪽(app_main/sleep_app)이 따로 판단한다 */
+    if (!connected)
+    {
+        view.setState(MainView::STATE_DISCONNECTED);
+    }
+    else
+    {
+        view.setState(emergency ? MainView::STATE_EMERGENCY : MainView::STATE_READY);
+    }
 }
 
 void MainPresenter::onActiveCards(uint8_t mask)

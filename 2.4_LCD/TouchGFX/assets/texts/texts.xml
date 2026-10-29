@@ -12,6 +12,9 @@
       <Text Id="MAIN_EMERGENCY" Alignment="Right" TypographyId="Montserrat_Bold_20">
         <Translation Language="GB">EMERGENCY</Translation>
       </Text>
+      <Text Id="MAIN_DISCONNECTED" Alignment="Right" TypographyId="Montserrat_Bold_20">
+        <Translation Language="GB">DISCONNECTED</Translation>
+      </Text>
       <Text Id="MAIN_VALUE_36" Alignment="Center" TypographyId="Montserrat_Bold_36">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>

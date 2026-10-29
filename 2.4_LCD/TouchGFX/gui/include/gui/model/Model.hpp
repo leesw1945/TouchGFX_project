@@ -52,6 +52,7 @@ protected:
         int16_t  detDeg;
         bool     heightValid;
         uint16_t heightMm;
+        bool     connected;   /* OP 연결(0x02 또는 0x0A 수신 중). false면 상단 바 DISCONNECTED */
         bool     emergency;
         uint16_t keys;        /* 물리 키 비트마스크 (1 = 눌림) */
     };
@@ -68,6 +69,7 @@ protected:
     bool     lastHeightValid;
     uint8_t  lastHeightUnit;
     uint16_t lastHeight;
+    bool     lastConnected;
     bool     lastEmergency;
     uint8_t  lastActive;
     uint32_t changeTick[CARD_COUNT];   /* 카드별 값이 마지막으로 바뀐 시각(ms) */

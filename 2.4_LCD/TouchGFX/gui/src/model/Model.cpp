@@ -28,7 +28,7 @@ Model::Model()
       refresh(true),
       lastDispValid(false), lastUnit(0), lastSid(0), lastArm(0), lastDet(0),
       lastHeightValid(false), lastHeightUnit(0), lastHeight(0),
-      lastEmergency(false),
+      lastConnected(false), lastEmergency(false),
       lastActive(0)
 {
     for (int i = 0; i < CARD_COUNT; i++)
@@ -37,7 +37,7 @@ Model::Model()
     }
 #ifdef SIMULATOR
     simMs = 0;
-    simNext = 0;
+    simNext = 4000;   /* 처음 4초는 미수신(DISCONNECTED) — 부팅 직후 OP가 아직 안 보내는 상황 */
     simPhase = 0;
     simPause = 0;
     simUnit = 0;
@@ -51,6 +51,7 @@ Model::Model()
     }
     simSnap.dispValid = false;
     simSnap.heightValid = false;
+    simSnap.connected = false;
     simSnap.emergency = false;
     simSnap.keys = 0;
     simSnap.unit = 0;
@@ -90,7 +91,12 @@ void Model::readSource(uint32_t now, Snapshot& s)
         s.unit = (uint8_t)p->payload.Unit;   /* 0x0A가 살아 있으면 그 단위 우선, 아니면 0x02의 단위 */
     }
 
+    /* 상태 표시: 마지막으로 받은 Emergency 값(CAN_App_IsEmergency). 0x0A가 끊겨도 바뀌지 않는다
+     * (EMERGENCY 중 두절 → EMERGENCY 유지, READY 중 두절 → READY 유지. 2026-10-29 결정).
+     * 키 차단(app_main)과 절전 금지(sleep_app)도 같은 함수를 쓰므로 화면과 항상 일치한다 */
     s.emergency = (CAN_App_IsEmergency() != 0);
+    /* 연결 여부: 0x02 또는 0x0A 수신 중. 아니면 상단 바 DISCONNECTED (EMERGENCY보다 우선 표시) */
+    s.connected = (CAN_App_IsConnected() != 0);
     s.keys      = KEY_GetStableMask();
 #else
     simulate(now);
@@ -148,9 +154,10 @@ void Model::tick()
         lastHeight      = s.heightMm;
     }
 
-    if (refresh || s.emergency != lastEmergency)
+    if (refresh || s.connected != lastConnected || s.emergency != lastEmergency)
     {
-        modelListener->onEmergency(s.emergency);
+        modelListener->onStatus(s.connected, s.emergency);
+        lastConnected = s.connected;
         lastEmergency = s.emergency;
     }
 
@@ -203,7 +210,7 @@ void Model::simulate(uint32_t now)
     {
         simSnap.dispValid = false;
         simSnap.heightValid = false;
-        simSnap.emergency = false;
+        simSnap.connected = false;   /* emergency는 보드처럼 마지막 값 유지 (화면은 DISCONNECTED가 우선) */
         if ((now - simLinkLostAt) >= 3000)
         {
             simLinkLost = false;
@@ -253,6 +260,7 @@ void Model::simulate(uint32_t now)
     simSnap.detDeg      = simVal[3];
     simSnap.heightValid = true;
     simSnap.heightMm    = (uint16_t)simVal[1];
+    simSnap.connected   = true;
     simSnap.emergency   = (simPhase == 3 && simPause > 0);
     simSnap.keys        = 0;
 }

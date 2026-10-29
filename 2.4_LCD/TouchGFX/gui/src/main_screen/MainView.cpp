@@ -21,6 +21,7 @@ static uint32_t texBlue[1024];
 /* 색상 (디자인 계측값) */
 static const colortype COLOR_READY_GREEN = Color::getColorFromRGB(0x36, 0xD2, 0x60);
 static const colortype COLOR_EMERGENCY   = Color::getColorFromRGB(0xEB, 0x4B, 0x4B);
+static const colortype COLOR_DISCONNECTED = Color::getColorFromRGB(0xF5, 0xA6, 0x23);   /* 주황 — 두절/미수신 */
 static const colortype COLOR_VALUE_NAVY  = Color::getColorFromRGB(0x25, 0x3D, 0x4A);
 static const colortype COLOR_VALUE_BLUE  = Color::getColorFromRGB(0x00, 0x77, 0xC0);
 static const colortype COLOR_TRACK       = Color::getColorFromRGB(0xE6, 0xE6, 0xE6);
@@ -38,7 +39,7 @@ static const char* DASH_LINEAR = "---";
 static const char* DASH_ANGLE  = "--";
 
 MainView::MainView()
-    : state(STATE_READY), verPopupLeft(0)
+    : state(STATE_DISCONNECTED), verPopupLeft(0)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -76,7 +77,7 @@ void MainView::setupScreen()
 
     /* 초기 화면: 데이터가 오기 전까지 READY + 모든 값 대시 + 강조 없음.
      * 실제 값은 Presenter가 Model 통지를 받아 채운다 */
-    setState(STATE_READY);
+    setState(STATE_DISCONNECTED);   /* 부팅 직후는 아직 아무것도 못 받은 상태. Model이 첫 틱에 실제 상태를 준다 */
     setActive(CARD_SID, false);
     setActive(CARD_ARM_UD, false);
     setActive(CARD_ARM_DEG, false);
@@ -133,10 +134,18 @@ void MainView::hideVersionPopup()
 void MainView::setState(State s)
 {
     state = s;
-    topBar.setColor(s == STATE_READY ? COLOR_READY_GREEN : COLOR_EMERGENCY);
+    colortype   barColor;
+    TypedTextId textId;
+    switch (s)
+    {
+    case STATE_EMERGENCY:    barColor = COLOR_EMERGENCY;    textId = T_MAIN_EMERGENCY;    break;
+    case STATE_DISCONNECTED: barColor = COLOR_DISCONNECTED; textId = T_MAIN_DISCONNECTED; break;
+    default:                 barColor = COLOR_READY_GREEN;  textId = T_MAIN_READY;        break;
+    }
+    topBar.setColor(barColor);
     topBar.invalidate();
 
-    stateText.setTypedText(TypedText(s == STATE_READY ? T_MAIN_READY : T_MAIN_EMERGENCY));
+    stateText.setTypedText(TypedText(textId));
     /* 텍스트는 박스 오른끝에 정렬되므로, 점은 텍스트 왼끝에서 DOT_GAP 왼쪽으로 따라간다 */
     const int16_t textLeft = stateText.getX() + stateText.getWidth() - stateText.getTextWidth();
     stateDot.setX(textLeft - DOT_GAP);

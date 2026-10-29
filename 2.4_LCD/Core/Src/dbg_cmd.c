@@ -248,7 +248,7 @@ static void run_line(const char *s)
         if (strncmp(s, "off", 3) == 0)
         {
             state_hold = -1;
-            printf("ok state off (0x0A 반복 중지 -> 1.5초 뒤 READY, 높이 대시)\r\n");
+            printf("ok state off (0x0A 반복 중지 -> 1.5초 뒤 높이 대시, 상태·키 차단 유지)\r\n");
         }
         else if (next_int(&s, &a) && (a == 0 || a == 1))
         {

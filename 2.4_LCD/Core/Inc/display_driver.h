@@ -54,6 +54,12 @@ void LCD_Init(void);
 /* LCD 백라이트 켜기/끄기 (PA1 → BSS138이 LEDK를 로우사이드 스위칭). */
 void LCD_SetBacklight(uint8_t on);
 
+/* 패널 출력 켜기/끄기 (ST7789 Display ON 0x29 / OFF 0x28). 절전 중 잔상 제거용.
+ * OFF여도 GRAM 쓰기·TE·패널 스캔은 계속되므로 TouchGFX는 평소처럼 돌고, ON 하면 최신 화면이 바로 나온다.
+ * 픽셀 블록 DMA가 나가는 중이면 보내지 않고 0을 돌려준다 → 호출자가 다음 폴에 다시 부른다. 성공 1.
+ * 메인 루프에서만 부를 것. */
+int LCD_SetDisplayOn(uint8_t on);
+
 /* ---- VSYNC 폴백 (안전장치) ---------------------------------------------------
  * TE 인터럽트가 LCD_VSYNC_TIMEOUT_MS 동안 없으면 SysTick 기반 60Hz 가짜 VSYNC로
  * 자동 전환해 TE 없이도 TouchGFX가 화면을 그리게 한다. TE가 다시 들어오면 해제.
