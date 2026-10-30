@@ -367,7 +367,7 @@ void CAN_App_Process(void)
 
     /* 0x0A 타임아웃: valid만 내린다. payload(Emergency, 높이, 단위)는 마지막 수신값을 그대로 둔다.
      * - Emergency는 CAN_App_IsEmergency()가 이 마지막 값을 그대로 쓰므로 두절로 바뀌지 않는다 (2026-10-29 결정):
-     *   EMERGENCY 중 두절 → 화면 빨강·키 차단·절전 금지 유지, READY 중 두절 → READY 유지
+     *   EMERGENCY 중 두절 → 키 차단 유지, READY 중 두절 → 키 정상 (화면은 둘 다 DISCONNECTED가 우선)
      *   (선이 끊기거나 OP가 죽은 상황이라 키를 보내도 의미가 없고, 비상 표시 중에 키가 살아 있는 것을 막는 쪽을 택함)
      * - 높이는 valid가 0이라 화면에서 대시. 다시 받으면 "수신 시작" 로그가 또 찍힌다 */
     if (payload_data.valid && (now - payload_data.last_rx_tick) > CAN_DISPLAY_TIMEOUT_MS)
@@ -426,8 +426,8 @@ uint32_t CAN_App_GetTxAbortCount(void)
 uint8_t CAN_App_IsEmergency(void)
 {
     /* 마지막으로 받은 0x0A의 Emergency 값 그대로. 두절(타임아웃)과 무관하다 (2026-10-29 결정).
-     * EMERGENCY 중 0x0A가 끊기면 OP가 READY를 다시 보낼 때까지 비상 유지 → 화면 빨강 + 키 차단 + 절전 금지.
-     * 한 번도 못 받았으면 payload가 0(READY)이라 비상 아님. 화면·키 차단·절전이 모두 이 함수를 쓴다 */
+     * EMERGENCY 중 0x0A가 끊기면 OP가 READY를 다시 보낼 때까지 비상 유지 → 키 차단 유지 (화면은 DISCONNECTED가 우선).
+     * 한 번도 못 받았으면 payload가 0(READY)이라 비상 아님. 화면 상태(Model)와 키 차단(app_main)이 이 함수를 쓴다 */
     return (payload_data.payload.Emergency == EMG_EMERGENCY) ? 1U : 0U;
 }
 

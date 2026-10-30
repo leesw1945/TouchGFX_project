@@ -19,7 +19,7 @@
   *          - 키 상태가 직전 송신값과 다르면 즉시, 같으면 500ms 주기로 송신
   *            (메인은 ID 103 수신이 1.5초 없으면 통신 에러 처리 → 얼라이브 겸용)
   *          - 보드는 0x02/0x0A가 1.5초 없으면 통신 두절로 보고 그 값을 대시로 바꾼다.
-  *            둘 다 없으면(부팅 후 미수신 포함) 상단 바를 DISCONNECTED(주황)로 바꾸고 절전을 막는다
+  *            둘 다 없으면(부팅 후 미수신 포함) 상단 바를 DISCONNECTED(주황)로 바꾼다
   *          - 0x0A의 Emergency가 1(EMG_EMERGENCY)인 동안에는 물리 키와 무관하게 "모두 안 눌림"을 보낸다
   *            (0x0A가 두절되어도 마지막 값을 유지 — EMERGENCY 중 두절이면 OP가 READY를 다시 보낼 때까지 차단)
   *
@@ -58,7 +58,7 @@ extern "C" {
 
 /* ==== 수신 데이터 유효 기준 ====
  * 0x02, 0x0A 모두 OP가 300ms 주기로 송신한다(OP 담당 확인 2026-10-23) → 5회 연속 놓치면 두절로 본다. */
-#define CAN_DISPLAY_TIMEOUT_MS  1500U  /* 0x02/0x0A가 이보다 오래 없으면 통신 두절 → 값은 화면 대시. READY/EMERGENCY(화면·키 차단·절전)는 마지막 값 유지 */
+#define CAN_DISPLAY_TIMEOUT_MS  1500U  /* 0x02/0x0A가 이보다 오래 없으면 통신 두절 → 값은 화면 대시. READY/EMERGENCY(화면·키 차단)는 마지막 값 유지 */
 
 /* ==== OP 보드와 공유하는 열거형 — SU-6000 SDK 정의 그대로, 값을 바꾸면 안 됨 ==== */
 
@@ -138,11 +138,11 @@ const BuckDisplayData *CAN_App_GetDisplayData(void);
 const BuckPayloadData *CAN_App_GetPayloadData(void);
 
 /* EMERGENCY 여부: 마지막으로 받은 0x0A의 Emergency == 1(EMG_EMERGENCY)이면 1. 두절과 무관하게 유지된다(2026-10-29).
- * 화면 상태 표시(Model), 키 차단(app_main), 절전 금지(sleep_app)가 모두 이 함수 하나를 쓴다 */
+ * 화면 상태 표시(Model)와 키 차단(app_main)이 모두 이 함수 하나를 쓴다 */
 uint8_t CAN_App_IsEmergency(void);
 
 /* OP 연결 여부: 0x02 또는 0x0A를 CAN_DISPLAY_TIMEOUT_MS 안에 받았으면 1. 부팅 후 한 번도 못 받았거나 둘 다 끊기면 0.
- * 상단 바 DISCONNECTED 표시(Model)와 절전 금지(sleep_app)가 쓴다. 키 차단은 이것과 무관하게 Emergency만 본다 */
+ * 상단 바 DISCONNECTED 표시(Model)가 쓴다. 키 차단은 이것과 무관하게 Emergency만 본다 */
 uint8_t CAN_App_IsConnected(void);
 
 /* 진단: 묵은 송신 프레임을 취소한 누적 횟수 (정상 버스에서는 0에 머문다) */

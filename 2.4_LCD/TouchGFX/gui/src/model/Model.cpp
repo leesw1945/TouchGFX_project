@@ -93,7 +93,7 @@ void Model::readSource(uint32_t now, Snapshot& s)
 
     /* 상태 표시: 마지막으로 받은 Emergency 값(CAN_App_IsEmergency). 0x0A가 끊겨도 바뀌지 않는다
      * (EMERGENCY 중 두절 → EMERGENCY 유지, READY 중 두절 → READY 유지. 2026-10-29 결정).
-     * 키 차단(app_main)과 절전 금지(sleep_app)도 같은 함수를 쓰므로 화면과 항상 일치한다 */
+     * 키 차단(app_main)도 같은 함수를 쓰므로 화면과 항상 일치한다 */
     s.emergency = (CAN_App_IsEmergency() != 0);
     /* 연결 여부: 0x02 또는 0x0A 수신 중. 아니면 상단 바 DISCONNECTED (EMERGENCY보다 우선 표시) */
     s.connected = (CAN_App_IsConnected() != 0);

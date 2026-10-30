@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    app_main.c
-  * @brief   애플리케이션 주기 처리 (하트비트 + 키 보고 + CAN + 절전 + 콘솔 테스트 명령)
+  * @brief   애플리케이션 주기 처리 (하트비트 + 키 보고 + CAN + 콘솔 테스트 명령)
   *
   *          AppMain_Poll()은 main()의 while 루프에서 매회 호출된다
   *          (메인 컨텍스트 — printf(USB CDC 콘솔)를 자유롭게 쓸 수 있다).
@@ -27,7 +27,6 @@
 #include "key_scan.h"
 #include "can_app.h"
 #include "dbg_cmd.h"
-#include "sleep_app.h"
 #include "display_driver.h"
 #include <stdio.h>
 
@@ -46,7 +45,6 @@ void AppMain_Init(void)
     }
 
     KEY_SetBacklight(1);
-    SleepApp_Init();      /* 절전 타이머 시작 (백라이트가 켜진 상태에서) */
 }
 
 void AppMain_Poll(void)
@@ -99,9 +97,6 @@ void AppMain_Poll(void)
 
     /* ---- CAN 주기 처리 (수신 해석, 상태 타임아웃, LED 소등, 버스오프 복구) ---- */
     CAN_App_Process();
-
-    /* ---- 절전: 키/Emergency/OP 값 변화가 SLEEP_IDLE_TIMEOUT_MS 동안 없으면 백라이트 OFF, 생기면 ON ---- */
-    SleepApp_Poll(now);
 
     /* ---- USB 콘솔 테스트 명령 (help 입력) ---- */
     DbgCmd_Poll();

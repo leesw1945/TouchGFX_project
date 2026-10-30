@@ -86,7 +86,7 @@ void MainPresenter::showHeight()
 
 void MainPresenter::onStatus(bool connected, bool emergency)
 {
-    /* DISCONNECTED가 EMERGENCY보다 우선. 키 차단·절전은 보드 쪽(app_main/sleep_app)이 따로 판단한다 */
+    /* DISCONNECTED가 EMERGENCY보다 우선. 키 차단은 보드 쪽(app_main)이 따로 판단한다 */
     if (!connected)
     {
         view.setState(MainView::STATE_DISCONNECTED);

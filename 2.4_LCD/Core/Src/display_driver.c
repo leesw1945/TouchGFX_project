@@ -35,7 +35,6 @@ extern void touchgfxSignalVSync(void);
 #define DCS_NORON     0x13U
 #define DCS_INVOFF    0x20U
 #define DCS_INVON     0x21U
-#define DCS_DISPOFF   0x28U
 #define DCS_DISPON    0x29U
 #define DCS_CASET     0x2AU
 #define DCS_RASET     0x2BU
@@ -170,23 +169,6 @@ void LCD_SetBacklight(uint8_t on)
 {
     HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin,
                       on ? GPIO_PIN_SET : GPIO_PIN_RESET);
-}
-
-int LCD_SetDisplayOn(uint8_t on)
-{
-    /* 픽셀 블록은 DMA 완료 ISR에서 다음 블록이 바로 이어질 수 있어, "전송 중 아님" 확인과 명령 송신을
-     * 인터럽트를 막은 채 한 덩어리로 한다 (1바이트 명령, 수 µs). 전송 중이면 보내지 않고 0을 돌려준다.
-     * 메인 루프 전용 — TouchGFX의 메인 컨텍스트 렌더링과는 순차 실행이라 겹치지 않는다. */
-    const uint32_t primask = __get_PRIMASK();
-    __disable_irq();
-    if (transmitting)
-    {
-        __set_PRIMASK(primask);
-        return 0;
-    }
-    LCD_WriteCmd(on ? DCS_DISPON : DCS_DISPOFF, NULL, 0);
-    __set_PRIMASK(primask);
-    return 1;
 }
 
 void LCD_Init(void)

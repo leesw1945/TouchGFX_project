@@ -34,7 +34,7 @@ public:
 
     /* 상단 상태바. connected=false → DISCONNECTED(주황): 부팅 후 미수신 또는 0x02/0x0A 모두 두절.
      * connected=true이면 emergency에 따라 EMERGENCY(빨강) / READY(연두).
-     * emergency는 마지막 수신값이라 두절 중에도 유지되지만(키 차단·절전용) 화면은 DISCONNECTED가 우선 */
+     * emergency는 마지막 수신값이라 두절 중에도 유지되지만(키 차단용) 화면은 DISCONNECTED가 우선 */
     virtual void onStatus(bool connected, bool emergency)
     {
         (void)connected; (void)emergency;
